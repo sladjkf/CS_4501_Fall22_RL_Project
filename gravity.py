@@ -47,15 +47,17 @@ def random_network(seed=1234,
         return pd.DataFrame({"x":x,"y":y,"pop":np.repeat(population,n)})
 
 def grenfell_network(x_lims=(-500,500),
-                     y_lims=(-500,500)):
+                     y_lims=(-500,500),
+                     core_pop=500000,
+                     sat_pop=100000):
     x = np.zeros(250)
     y = np.zeros(250)
-    pop = np.repeat(100000,250)
+    pop = np.repeat(sat_pop,250)
     
     # add the core city
     x[0] = 0
     y[0] = 0
-    pop[0] = 5000000
+    pop[0] = core_pop
     
     core = (x[0],y[0])
     
@@ -90,6 +92,7 @@ def get_distances(network):
     numpy matrix. (# of locations) x (# of locations).
     """
     num_locations = len(network.index)
+    coord_pairs = np.array(network[["x","y"]])
     distance_matrix = np.zeros((num_locations,num_locations))
     def inner_loop(i,j):
         distance = np.linalg.norm(coord_pairs[i,:]-coord_pairs[j,:],ord=2)
@@ -98,15 +101,15 @@ def get_distances(network):
         distance_matrix[i][j] = distance
         
     for i in range(0,num_locations):
-        for j in range(0,i):
-            inner_loop(i,j)
-        for j in range(i+1,num_locations):
-            inner_loop(i,j)
+        for j in list(range(0,i)) + list(range(i+1,num_locations)):
+            distance = np.linalg.norm(coord_pairs[i,:]-coord_pairs[j,:],ord=2)
+            #if distance <= 1e-6:
+            #    print("Found distance of less than 1e-6. Maybe there are duplicate rows?")
+            distance_matrix[i][j] = distance
+
     return distance_matrix
             
-def gravity(network=None, distances=None
-           infected,
-           params):
+def gravity(network,distances,infected,params):
     '''
     Generate gravity weights for a given network.
     Output:
@@ -132,14 +135,15 @@ def gravity(network=None, distances=None
     
     #x_vector = np.array(network["x"])
     #y_vector = np.array(network["y"])
-    coord_pairs = np.array(network[["x","y"]])
-    pop_vec = network["pop"]
+    #coord_pairs = np.array(network[["x","y"]])
+    pop_vec = np.array(network["pop"])
     def inner_loop(i,j):
-        distance = np.linalg.norm(coord_pairs[i,:]-coord_pairs[j,:],ord=2)
-        if distance <= 1e-6:
-            print(distance)
-            print(coord_pairs[i,:],coord_pairs[j,:])
-        adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distance**rho)
+        #distance = np.linalg.norm(coord_pairs[i,:]-coord_pairs[j,:],ord=2)
+        #if distance <= 1e-6:
+        #    print(distance)
+        #    print(coord_pairs[i,:],coord_pairs[j,:])
+        #adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distance**rho)
+        adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
     
     # unrolled loops
     #for k in range(1,num_locations):
@@ -147,10 +151,9 @@ def gravity(network=None, distances=None
     #for j in range(0,num_locations-1):
     #    inner_loop(num_locations-1,j)
     for i in range(0,num_locations):
-        for j in range(0,i):
-            inner_loop(i,j)
-        for j in range(i+1,num_locations):
-            inner_loop(i,j)
+        for j in list(range(0,i)) + list(range(i+1,num_locations)):
+            adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
+            
     # TODO: same here, don't check condition on inner loop
     # compute the parameters for the gamma distr
     m = np.array([theta*sum([adj_matrix[j][k] for j in range(0,num_locations) if j != k]) for k in range(0,num_locations)])
@@ -201,6 +204,7 @@ class spatial_tSIR:
         self.patch_pop = patch_pop
     def run_simulation(self,verbose=False):
         
+        # setup parameters
         beta = self.config['beta']
         alpha = self.config['alpha']
         pop_vec = self.patch_pop['pop']
@@ -208,22 +212,29 @@ class spatial_tSIR:
             birth_rate = self.config['birth']
         else:
             birth_rate = 0
-
+        # compute the distances
+        distances = get_distances(network=self.patch_pop)
         for iter_num in range(self.config['iters']):
             last_matrix = self.state_matrix_series[-1]
             S_t, I_t, R_t = last_matrix[:,0], last_matrix[:,1], last_matrix[:,2]
+            pop_t = S_t + I_t + R_t
             # compute new infections
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
-            grav_model_out = gravity(network=self.patch_pop, infected=I_t, params=self.config)
+            grav_model_out = gravity(network=self.patch_pop, distances=distances, infected=I_t, params=self.config)
             infection_influx = grav_model_out["influx"]
             iota_t = np.array([gamma.rvs(scale=1,a=a) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)
             for patch_k in range(0,self.num_patches):
                 if I_t[patch_k] or iota_t[patch_k] > 0:
-                    lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) ) / pop_vec[patch_k]
+                    # TODO: to normalize or not?
+                    # well... shouldn't, right? expected number of infections
+                    # in next time step is not a proportion.
+                    # But must divide by population at time t if a birth rate incorporated.
+                    lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) ) / pop_t[patch_k]
+                    # TODO: parameterizing the negative binomial correctly???
                     n = I_t[patch_k]+iota_t[patch_k]
-                    p = 1/(1+(lambda_k_t/n))
+                    p = n/(n+lambda_k_t)
                     
                     # take min, since you can't infect more individuals than there are susceptibles
                     try:
@@ -249,13 +260,24 @@ class spatial_tSIR:
                 print("infection vector", I_t)
                 print("influx",iota_t)
                 print("change in I",delta_I_t,flush=True)
-    def plot_epicurve(self):
-        ts_data = pd.DataFrame(np.array([x[:,1] for x in self.state_matrix_series]))
+    def plot_epicurve(self, normalize=False, select=None, time_range=None):
+        if normalize:
+            ts_data = self.get_ts_matrix()/np.array(self.get_ts_matrix().max())
+        else:
+            ts_data = self.get_ts_matrix()
+        
+        if select != None:
+            ts_data = ts_data.iloc[:,select]
+        if time_range != None:
+            ts_data = ts_data.iloc[time_range[0]:time_range[1],:]
         return ts_data.plot(legend=False)
 
     def get_ts_matrix(self):
         return pd.DataFrame(np.array([x[:,1] for x in self.state_matrix_series]))
     
-    def correlation_matrix(self):
-        ts_matrix = self.get_ts_matrix()
-        return np.corrcoef(sim.get_ts_matrix().T)
+    def correlation_matrix(self,normalize=True):
+        if normalize:
+            ts_matrix = self.get_ts_matrix()/np.array(self.get_ts_matrix().max())
+        else:
+            ts_matrix = self.get_ts_matrix()
+        return np.corrcoef(ts_matrix.T)
