@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from numpy import random
 from scipy.stats import nbinom, gamma
-
+from itertools import chain
 ##### NETWORK MODEL: GRAVITY MODEL #####
 
 
@@ -151,12 +151,17 @@ def gravity(network,distances,infected,params):
     #for j in range(0,num_locations-1):
     #    inner_loop(num_locations-1,j)
     for i in range(0,num_locations):
-        for j in list(range(0,i)) + list(range(i+1,num_locations)):
+        #for j in list(range(0,i)) + list(range(i+1,num_locations)):
+        for j in chain(range(0,i),range(i+1,num_locations)):
             adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
             
     # TODO: same here, don't check condition on inner loop
     # compute the parameters for the gamma distr
-    m = np.array([theta*sum([adj_matrix[j][k] for j in range(0,num_locations) if j != k]) for k in range(0,num_locations)])
+    #m = np.array([theta*sum([adj_matrix[j][k] for j in range(0,num_locations) if j != k]) for k in range(0,num_locations)])
+    m = np.array([
+            theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
+                  for k in range(0,num_locations)
+            ])
     return {"matrix":adj_matrix,"influx":m}
             
             
@@ -208,16 +213,28 @@ class spatial_tSIR:
         beta = self.config['beta']
         alpha = self.config['alpha']
         pop_vec = self.patch_pop['pop']
+        
         if 'birth' in self.config.keys():
             birth_rate = self.config['birth']
         else:
             birth_rate = 0
+            
+        if 'beta_t' in self.config.keys():
+            beta_t = self.config['beta_t']
+        else:
+            beta_t = [self.config['beta']]*26 # or however long the epidemic period is..
         # compute the distances
         distances = get_distances(network=self.patch_pop)
         for iter_num in range(self.config['iters']):
+            # get last S,I,R counts
             last_matrix = self.state_matrix_series[-1]
             S_t, I_t, R_t = last_matrix[:,0], last_matrix[:,1], last_matrix[:,2]
             pop_t = S_t + I_t + R_t
+            
+            # get current beta
+            # currently assuming mod 26 (transmission rate over a year)
+            beta = beta_t[iter_num % 26]
+            
             # compute new infections
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
@@ -232,6 +249,7 @@ class spatial_tSIR:
                     # in next time step is not a proportion.
                     # But must divide by population at time t if a birth rate incorporated.
                     lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) ) / pop_t[patch_k]
+                    #lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) )
                     # TODO: parameterizing the negative binomial correctly???
                     n = I_t[patch_k]+iota_t[patch_k]
                     p = n/(n+lambda_k_t)
@@ -257,12 +275,13 @@ class spatial_tSIR:
             
             if verbose:
                 print("---------------ITERATION {}--------".format(iter_num))
+                print("current beta",beta)
                 print("infection vector", I_t)
                 print("influx",iota_t)
                 print("change in I",delta_I_t,flush=True)
-    def plot_epicurve(self, normalize=False, select=None, time_range=None):
+    def plot_epicurve(self, normalize=False, select=None, time_range=None, alpha=0.25):
         if normalize:
-            ts_data = self.get_ts_matrix()/np.array(self.get_ts_matrix().max())
+            ts_data = self.get_ts_matrix()/np.arrspatay(self.get_ts_matrix().max())
         else:
             ts_data = self.get_ts_matrix()
         
@@ -270,7 +289,7 @@ class spatial_tSIR:
             ts_data = ts_data.iloc[:,select]
         if time_range != None:
             ts_data = ts_data.iloc[time_range[0]:time_range[1],:]
-        return ts_data.plot(legend=False)
+        return ts_data.plot(legend=False,alpha=alpha)
 
     def get_ts_matrix(self):
         return pd.DataFrame(np.array([x[:,1] for x in self.state_matrix_series]))
