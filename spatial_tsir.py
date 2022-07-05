@@ -3,6 +3,7 @@ import pandas as pd
 from numpy import random
 from scipy.stats import nbinom, gamma
 from itertools import chain
+import warnings
 ##### NETWORK MODEL: GRAVITY MODEL #####
 
 
@@ -168,7 +169,11 @@ def gravity(network,distances,infected,params):
 #### DISEASE MODEL: Spatial tSIR MODEL ####
     
 class spatial_tSIR:
-    def __init__(self, config, patch_pop, initial_state):
+    def __init__(self, 
+            config, 
+            patch_pop, initial_state,
+            distances=None
+            ):
         """
         Initialize the disease simulation with some parameters.
 
@@ -184,6 +189,9 @@ class spatial_tSIR:
         patch_pop : DataFrame, dimension N x 4
             DataFrame with the column specification
             (patch_id, pop, x, y)
+        distances : numpy matrix, dimension N x N (optional)
+            precomputed distance matrix from locations in patch_pop
+            labeling needs to correspond to the ordering in patch_pop
         initial_state: numpy matrix. dimension N x 2
             Describe the initial state of the simulation.
             Column specification: (I, R)
@@ -202,29 +210,37 @@ class spatial_tSIR:
         self.state_matrix_series = []
         S_0 = patch_pop['pop'] - initial_state[:,0] - initial_state[:,1]
         self.state_matrix_series.append(
-            np.stack([S_0,initial_state[:,0],initial_state[:,0]],axis=1)
+            np.stack([S_0,initial_state[:,0],initial_state[:,1]],axis=1)
         )
         
         self.config = config
         self.patch_pop = patch_pop
+
+        if type(distances) != type(None):
+            self.distances = distances
+        else:
+            self.distances = get_distances(network=self.patch_pop)
     def run_simulation(self,verbose=False):
         
         # setup parameters
-        beta = self.config['beta']
+        # beta = self.config['beta']
         alpha = self.config['alpha']
         pop_vec = self.patch_pop['pop']
         
-        if 'birth' in self.config.keys():
-            birth_rate = self.config['birth']
+        if 'birth_t' in self.config.keys():
+            birth_rate_t = self.config['birth_t']
+        elif 'birth' in self.config.keys():
+            birth_rate_t = [self.config['birth']]*26
         else:
-            birth_rate = 0
+            birth_rate_t = 0
             
         if 'beta_t' in self.config.keys():
             beta_t = self.config['beta_t']
         else:
             beta_t = [self.config['beta']]*26 # or however long the epidemic period is..
+
         # compute the distances
-        distances = get_distances(network=self.patch_pop)
+        #distances = get_distances(network=self.patch_pop)
         for iter_num in range(self.config['iters']):
             # get last S,I,R counts
             last_matrix = self.state_matrix_series[-1]
@@ -234,31 +250,41 @@ class spatial_tSIR:
             # get current beta
             # currently assuming mod 26 (transmission rate over a year)
             beta = beta_t[iter_num % 26]
+            try:
+                birth_rate = birth_rate_t[iter_num]
+            except IndexError as e:
+                warnings.warn("Not enough birth rate data supplied, just using last value available")
+                birth_rate = birth_rate_t[-1]
             
             # compute new infections
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
-            grav_model_out = gravity(network=self.patch_pop, distances=distances, infected=I_t, params=self.config)
+            grav_model_out = gravity(network=self.patch_pop, distances=self.distances, infected=I_t, params=self.config)
             infection_influx = grav_model_out["influx"]
             iota_t = np.array([gamma.rvs(scale=1,a=a) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)
             for patch_k in range(0,self.num_patches):
                 if I_t[patch_k] or iota_t[patch_k] > 0:
+                    if iota_t[patch_k] < 1:
+                        iota_tk = round(iota_t[patch_k])
+                    else:
+                        iota_tk = iota_t[patch_k]
                     # TODO: to normalize or not?
                     # well... shouldn't, right? expected number of infections
                     # in next time step is not a proportion.
                     # But must divide by population at time t if a birth rate incorporated.
-                    #lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) ) / pop_t[patch_k]
-                    lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) )
+                    lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_tk)**(alpha) ) / pop_t[patch_k]
+                    #lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) )
                     # TODO: parameterizing the negative binomial correctly???
                     n = I_t[patch_k]+iota_t[patch_k]
                     p = n/(n+lambda_k_t)
                     
                     # take min, since you can't infect more individuals than there are susceptibles
                     try:
-                        delta_I_t[patch_k] = min(S_t[patch_k],nbinom.rvs(n,p))
+                        delta_I_t[patch_k] = max(min(S_t[patch_k],nbinom.rvs(n,p)),0)
                     except ValueError:
-                        print(n,p,flush=True)
+                        warnings.warn("distribution parameterized incorrectly.")
+                        print(n,p,lambda_k_t,flush=True)
                         return
                 else:
                     delta_I_t[patch_k] = 0

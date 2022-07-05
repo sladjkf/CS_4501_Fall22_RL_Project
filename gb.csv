@@ -1,0 +1,2681 @@
+city,lat,lng,country,iso2,admin_name,capital,population,population_proper
+London,51.5072,-0.1275,United Kingdom,GB,"London, City of",primary,10979000,8825001
+Birmingham,52.4800,-1.9025,United Kingdom,GB,Birmingham,,2897303,1137100
+Manchester,53.4794,-2.2453,United Kingdom,GB,Manchester,,2705000,547627
+Leeds,53.7997,-1.5492,United Kingdom,GB,Leeds,,1901934,789194
+Newcastle,55.0077,-1.6578,United Kingdom,GB,Newcastle upon Tyne,,1650000,879996
+Birstall,52.6736,-1.1200,United Kingdom,GB,Leicester,,1424216,1424216
+Glasgow,55.8609,-4.2514,United Kingdom,GB,Glasgow City,,985290,633120
+Liverpool,53.4000,-2.9833,United Kingdom,GB,Liverpool,,864122,513441
+Portsmouth,50.8058,-1.0872,United Kingdom,GB,Portsmouth,,855679,238800
+Southampton,50.9000,-1.4000,United Kingdom,GB,Southampton,,855569,269781
+Nottingham,52.9500,-1.1500,United Kingdom,GB,Nottingham,,768638,321500
+Bristol,51.4500,-2.5833,United Kingdom,GB,"Bristol, City of",,724000,463400
+Sheffield,53.3833,-1.4667,United Kingdom,GB,Sheffield,,685368,518090
+Kingston upon Hull,53.7444,-0.3325,United Kingdom,GB,"Kingston upon Hull, City of",,573300,260200
+Leicester,52.6333,-1.1333,United Kingdom,GB,Leicester,,508916,329839
+Edinburgh,55.9530,-3.1890,United Kingdom,GB,"Edinburgh, City of",,488050,488050
+Caerdydd,51.4833,-3.1833,United Kingdom,GB,Cardiff,,479000,361469
+Stoke-on-Trent,53.0000,-2.1833,United Kingdom,GB,Stoke-on-Trent,,372775,249008
+Coventry,52.4081,-1.5106,United Kingdom,GB,Coventry,,362690,362690
+Reading,51.4542,-0.9731,United Kingdom,GB,Reading,,337108,230046
+Belfast,54.5964,-5.9300,United Kingdom,GB,Belfast,,333871,333871
+Derby,52.9167,-1.4667,United Kingdom,GB,Derby,,270500,248700
+Plymouth,50.3714,-4.1422,United Kingdom,GB,Plymouth,,267918,267918
+Wolverhampton,52.5833,-2.1333,United Kingdom,GB,Wolverhampton,,254406,250970
+Abertawe,51.6167,-3.9500,United Kingdom,GB,Swansea,,245508,245508
+Milton Keynes,52.0400,-0.7600,United Kingdom,GB,Milton Keynes,,229941,207057
+Aberdeen,57.1500,-2.1100,United Kingdom,GB,Aberdeen City,,214610,200680
+Norwich,52.6300,1.2970,United Kingdom,GB,Norfolk,,213166,195971
+Luton,51.8783,-0.4147,United Kingdom,GB,Luton,,213052,213052
+Islington,51.5440,-0.1027,United Kingdom,GB,Islington,,206125,206125
+Swindon,51.5600,-1.7800,United Kingdom,GB,Swindon,,192599,192599
+Croydon,51.3727,-0.1099,United Kingdom,GB,Croydon,,192064,192064
+Basildon,51.5761,0.4886,United Kingdom,GB,Essex,,185900,185900
+Bournemouth,50.7200,-1.8800,United Kingdom,GB,Bournemouth,,183491,183491
+Worthing,50.8147,-0.3714,United Kingdom,GB,West Sussex,,183000,109120
+Ipswich,52.0594,1.1556,United Kingdom,GB,Suffolk,,180000,180000
+Middlesbrough,54.5767,-1.2355,United Kingdom,GB,Redcar and Cleveland,,174700,140545
+Sunderland,54.9061,-1.3811,United Kingdom,GB,Sunderland,,174286,174286
+Ilford,51.5588,0.0855,United Kingdom,GB,Redbridge,,168168,168168
+Warrington,53.3917,-2.5972,United Kingdom,GB,Warrington,,165456,165456
+Slough,51.5100,-0.5900,United Kingdom,GB,Slough,,164455,119070
+Huddersfield,53.6450,-1.7798,United Kingdom,GB,Kirklees,,162949,162949
+Oxford,51.7519,-1.2578,United Kingdom,GB,Oxfordshire,,154600,152000
+York,53.9583,-1.0803,United Kingdom,GB,York,,153717,153717
+Poole,50.7167,-1.9833,United Kingdom,GB,Poole,,151500,144800
+Harrow,51.5836,-0.3464,United Kingdom,GB,Harrow,,149246,149246
+Dundee,56.4620,-2.9707,United Kingdom,GB,Dundee City,,148270,148270
+Saint Albans,51.7550,-0.3360,United Kingdom,GB,Hertfordshire,,147373,82146
+Telford,52.6766,-2.4469,United Kingdom,GB,Telford and Wrekin,,142723,142723
+Blackpool,53.8142,-3.0503,United Kingdom,GB,Blackpool,,139720,139305
+Brighton,50.8429,-0.1313,United Kingdom,GB,Brighton and Hove,,134293,134293
+Sale,53.4240,-2.3220,United Kingdom,GB,Trafford,,134022,134022
+Enfield,51.6522,-0.0808,United Kingdom,GB,Enfield,,132640,132640
+Tottenham,51.5880,-0.0720,United Kingdom,GB,Haringey,,129237,129237
+Bolton,53.5780,-2.4290,United Kingdom,GB,Bolton,,128139,128139
+Newport,51.5833,-3.0000,United Kingdom,GB,Newport,,128060,128060
+High Wycombe,51.6287,-0.7482,United Kingdom,GB,Buckinghamshire,,125257,120256
+Exeter,50.7167,-3.5333,United Kingdom,GB,Devon,,124180,124180
+Solihull,52.4130,-1.7780,United Kingdom,GB,Solihull,,123187,123187
+Romford,51.5768,0.1801,United Kingdom,GB,Havering,,122854,122854
+Preston,53.7590,-2.6990,United Kingdom,GB,Lancashire,,122719,122719
+Gateshead,54.9500,-1.6000,United Kingdom,GB,Gateshead,,120046,120046
+Blackburn,53.7480,-2.4820,United Kingdom,GB,Blackburn with Darwen,,117963,117963
+Cheltenham,51.9000,-2.0667,United Kingdom,GB,Gloucestershire,,116447,116447
+Basingstoke,51.2667,-1.0876,United Kingdom,GB,Hampshire,,113776,107355
+Maidstone,51.2720,0.5290,United Kingdom,GB,Kent,,113137,107627
+Colchester,51.8917,0.9030,United Kingdom,GB,Essex,,111921,111921
+Chelmsford,51.7361,0.4798,United Kingdom,GB,Essex,,111511,111511
+Wythenshawe,53.3920,-2.2640,United Kingdom,GB,Manchester,,110000,110000
+Doncaster,53.5150,-1.1330,United Kingdom,GB,Doncaster,,109805,109805
+Rotherham,53.4300,-1.3570,United Kingdom,GB,Rotherham,,109691,109691
+Walthamstow,51.5900,-0.0000,United Kingdom,GB,Waltham Forest,,109424,109424
+Rochdale,53.6136,-2.1610,United Kingdom,GB,Rochdale,,107926,107926
+Bedford,52.1350,-0.4700,United Kingdom,GB,Bedford,,106940,92407
+Crawley,51.1092,-0.1872,United Kingdom,GB,West Sussex,,106597,106597
+Mansfield,53.1500,-1.2000,United Kingdom,GB,Nottinghamshire,,106556,77551
+Dagenham,51.5397,0.1422,United Kingdom,GB,Barking and Dagenham,,106247,106247
+Stockport,53.4083,-2.1494,United Kingdom,GB,Stockport,,105878,105878
+Darlington,54.5270,-1.5526,United Kingdom,GB,Darlington,,105564,92363
+Fyfield,51.7390,0.2722,United Kingdom,GB,Essex,,104234,104234
+Gillingham,51.3850,0.5500,United Kingdom,GB,Medway,,104157,104157
+Salford,53.4830,-2.2931,United Kingdom,GB,Salford,,103886,103886
+Eastbourne,50.7700,0.2800,United Kingdom,GB,East Sussex,,103745,101547
+Wigan,53.5448,-2.6318,United Kingdom,GB,Wigan,,103608,103608
+Hounslow,51.4668,-0.3750,United Kingdom,GB,Hounslow,,103337,103337
+Wembley,51.5528,-0.2979,United Kingdom,GB,Brent,,102856,90045
+Saint Helens,53.4541,-2.7461,United Kingdom,GB,St. Helens,,102629,102629
+Worcester,52.1920,-2.2200,United Kingdom,GB,Worcestershire,,101328,101328
+Wakefield,53.6800,-1.4900,United Kingdom,GB,Wakefield,,99251,99251
+Lincoln,53.2344,-0.5386,United Kingdom,GB,Lincolnshire,,97541,97541
+Hemel Hempstead,51.7526,-0.4692,United Kingdom,GB,Hertfordshire,,97500,94932
+Watford,51.6550,-0.3957,United Kingdom,GB,Hertfordshire,,96800,90301
+Oldham,53.5444,-2.1169,United Kingdom,GB,Oldham,,96555,96555
+Sutton Coldfield,52.5630,-1.8220,United Kingdom,GB,Birmingham,,95107,95107
+Kettering,52.3931,-0.7229,United Kingdom,GB,Northamptonshire,,93475,56226
+Hastings,50.8500,0.5700,United Kingdom,GB,East Sussex,,92855,91053
+Hartlepool,54.6900,-1.2100,United Kingdom,GB,Hartlepool,,92000,88855
+Hove,50.8352,-0.1758,United Kingdom,GB,Brighton and Hove,,91900,91900
+Barnsley,53.5537,-1.4791,United Kingdom,GB,Barnsley,,91297,91297
+Southport,53.6475,-3.0053,United Kingdom,GB,Sefton,,90381,90381
+Bath,51.3800,-2.3600,United Kingdom,GB,Bath and North East Somerset,,88859,88859
+Birkenhead,53.3930,-3.0140,United Kingdom,GB,Wirral,,88818,88818
+Grimsby,53.5595,-0.0680,United Kingdom,GB,North East Lincolnshire,,88243,88243
+Halifax,53.7250,-1.8630,United Kingdom,GB,Calderdale,,88134,88134
+Bromley,51.4070,0.0210,United Kingdom,GB,Bromley,,87889,87889
+Fulham,51.4828,-0.1950,United Kingdom,GB,Hammersmith and Fulham,,87161,87161
+Nuneaton,52.5230,-1.4680,United Kingdom,GB,Warwickshire,,86552,86552
+Derry,54.9917,-7.3417,United Kingdom,GB,Derry and Strabane,,85016,85016
+Ealing,51.5175,-0.2988,United Kingdom,GB,Ealing,,85014,85014
+Stockton-on-Tees,54.5700,-1.3200,United Kingdom,GB,Stockton-on-Tees,,85000,82729
+Woolwich,51.4880,0.0630,United Kingdom,GB,Greenwich,,84959,84959
+Bracknell,51.4160,-0.7490,United Kingdom,GB,Bracknell Forest,,84469,77256
+Hayes,51.5127,-0.4211,United Kingdom,GB,Hillingdon,,83564,83564
+Edmonton,51.6154,-0.0708,United Kingdom,GB,Enfield,,82472,82472
+Scunthorpe,53.5809,-0.6502,United Kingdom,GB,North Lincolnshire,,82334,79977
+Redditch,52.3069,-1.9492,United Kingdom,GB,Worcestershire,,81919,81919
+Chester,53.1900,-2.8900,United Kingdom,GB,Cheshire West and Chester,,79645,79645
+Dudley,52.5080,-2.0890,United Kingdom,GB,Dudley,,79379,79379
+Bury,53.5930,-2.2980,United Kingdom,GB,Bury,,78723,78723
+Brixton,51.4630,-0.1060,United Kingdom,GB,Lambeth,,78536,78536
+West Bromwich,52.5190,-1.9950,United Kingdom,GB,Sandwell,,77997,77997
+Paisley,55.8466,-4.4236,United Kingdom,GB,Renfrewshire,,77310,77220
+Guildford,51.2365,-0.5703,United Kingdom,GB,Surrey,,77057,77057
+Chatham,51.3700,0.5200,United Kingdom,GB,Medway,,76792,76792
+Edgware,51.6185,-0.2729,United Kingdom,GB,Barnet,,76506,76506
+East Ham,51.5323,0.0554,United Kingdom,GB,Newham,,76186,76186
+Weston-super-Mare,51.3460,-2.9770,United Kingdom,GB,North Somerset,,76143,76143
+East Kilbride,55.7645,-4.1771,United Kingdom,GB,South Lanarkshire,,75390,75120
+South Shields,54.9950,-1.4300,United Kingdom,GB,South Tyneside,,75337,75337
+Carlisle,54.8910,-2.9440,United Kingdom,GB,Cumbria,,75306,75306
+Newcastle under Lyme,53.0109,-2.2278,United Kingdom,GB,Staffordshire,,75082,75082
+Harrogate,53.9919,-1.5378,United Kingdom,GB,North Yorkshire,,75070,73576
+Ashford,51.1465,0.8676,United Kingdom,GB,Kent,,74204,67528
+Gravesend,51.4415,0.3685,United Kingdom,GB,Kent,,74000,66000
+Burnley,53.7890,-2.2480,United Kingdom,GB,Lancashire,,73021,73021
+Burton upon Trent,52.8019,-1.6367,United Kingdom,GB,Staffordshire,,72299,72299
+Crewe,53.0990,-2.4400,United Kingdom,GB,Cheshire East,,71722,71722
+Shrewsbury,52.7080,-2.7540,United Kingdom,GB,Shropshire,,71715,71715
+Gosport,50.7948,-1.1243,United Kingdom,GB,Hampshire,,71529,71529
+Lisburn,54.5167,-6.0333,United Kingdom,GB,Lisburn and Castlereagh,,71465,71465
+Lowestoft,52.4800,1.7500,United Kingdom,GB,Suffolk,,71010,70945
+Rugby,52.3700,-1.2600,United Kingdom,GB,Warwickshire,,70628,70627
+Uxbridge,51.5404,-0.4778,United Kingdom,GB,Hillingdon,,70560,70560
+Inverness,57.4781,-4.2233,United Kingdom,GB,Highland,,70000,47290
+Keighley,53.8670,-1.9110,United Kingdom,GB,Bradford,,70000,53331
+Southall,51.5121,-0.3779,United Kingdom,GB,Ealing,,69857,69857
+Maidenhead,51.5217,-0.7177,United Kingdom,GB,Windsor and Maidenhead,,69309,63580
+Stafford,52.8066,-2.1171,United Kingdom,GB,Staffordshire,,68472,68472
+Wimbledon,51.4220,-0.2080,United Kingdom,GB,Merton,,68187,68187
+Walsall,52.5800,-1.9800,United Kingdom,GB,Walsall,,67594,67594
+Tynemouth,55.0170,-1.4230,United Kingdom,GB,North Tyneside,,67519,67519
+Washington,54.9000,-1.5200,United Kingdom,GB,Sunderland,,67085,67085
+Loughborough,52.7705,-1.2046,United Kingdom,GB,Leicestershire,,66611,59932
+Chingford,51.6310,0.0160,United Kingdom,GB,Waltham Forest,,66211,66211
+Thornton Heath,51.4002,-0.1086,United Kingdom,GB,Croydon,,65812,65812
+Finchley,51.5990,-0.1870,United Kingdom,GB,Barnet,,65812,65812
+Wrecsam,53.0460,-2.9930,United Kingdom,GB,Wrexham,,65692,61603
+Torquay,50.4700,-3.5300,United Kingdom,GB,Torbay,,65245,65245
+Farnborough,51.2900,-0.7500,United Kingdom,GB,Hampshire,,65034,65034
+Kensington,51.5000,-0.1900,United Kingdom,GB,Kensington and Chelsea,,64681,64681
+Waterlooville,50.8800,-1.0300,United Kingdom,GB,Hampshire,,64350,64350
+Hornchurch,51.5565,0.2128,United Kingdom,GB,Havering,,63583,63583
+Mitcham,51.4009,-0.1517,United Kingdom,GB,Merton,,63393,63393
+Feltham,51.4496,-0.4089,United Kingdom,GB,Hounslow,,63368,63368
+Stourbridge,52.4575,-2.1479,United Kingdom,GB,Dudley,,63298,63298
+Rochester,51.3750,0.5000,United Kingdom,GB,Medway,,62982,62982
+Dewsbury,53.6910,-1.6330,United Kingdom,GB,Kirklees,,62945,62945
+Woking,51.3162,-0.5610,United Kingdom,GB,Surrey,,62796,62796
+Rhondda,51.6159,-3.4175,United Kingdom,GB,Rhondda Cynon Taff,,62545,62545
+Sittingbourne,51.3400,0.7400,United Kingdom,GB,Kent,,62500,62500
+Acton,51.5135,-0.2707,United Kingdom,GB,Ealing,,62480,62480
+Twickenham,51.4490,-0.3370,United Kingdom,GB,Richmond upon Thames,,62148,62148
+Runcorn,53.3410,-2.7290,United Kingdom,GB,Halton,,61789,61789
+Scarborough,54.2773,-0.4017,United Kingdom,GB,North Yorkshire,,61749,61749
+Wandsworth,51.4550,-0.1920,United Kingdom,GB,Wandsworth,,61594,61594
+Widnes,53.3630,-2.7280,United Kingdom,GB,Halton,,61464,61464
+Margate,51.3850,1.3838,United Kingdom,GB,Kent,,61223,61223
+Bangor,54.6600,-5.6700,United Kingdom,GB,Ards and North Down,,61011,61011
+Morecambe,54.0730,-2.8700,United Kingdom,GB,Lancashire,,60768,34768
+Taunton,51.0190,-3.1000,United Kingdom,GB,Somerset,,60479,60479
+Wallasey,53.4158,-3.0233,United Kingdom,GB,Wirral,,60284,60284
+Royal Tunbridge Wells,51.1320,0.2630,United Kingdom,GB,Kent,,59947,57772
+Barking,51.5400,0.0800,United Kingdom,GB,Barking and Dagenham,,59068,59068
+Aylesbury,51.8168,-0.8124,United Kingdom,GB,Buckinghamshire,,58740,58740
+Ruislip,51.5760,-0.4330,United Kingdom,GB,Hillingdon,,58217,58217
+Halesowen,52.4502,-2.0509,United Kingdom,GB,Dudley,,58135,58135
+Streatham,51.4279,-0.1235,United Kingdom,GB,Lambeth,,58055,58055
+Livingston,55.8834,-3.5157,United Kingdom,GB,West Lothian,,57030,57030
+Clacton-on-Sea,51.7918,1.1457,United Kingdom,GB,Essex,,56874,50548
+Barrow in Furness,54.1108,-3.2261,United Kingdom,GB,Cumbria,,56745,56745
+Hereford,52.0565,-2.7160,United Kingdom,GB,Herefordshire,,55955,55955
+Ellesmere Port,53.2790,-2.8970,United Kingdom,GB,Cheshire West and Chester,,55715,55715
+Kidderminster,52.3885,-2.2490,United Kingdom,GB,Worcestershire,,55530,55530
+Canterbury,51.2800,1.0800,United Kingdom,GB,Kent,,55240,54880
+Corby,52.4914,-0.6965,United Kingdom,GB,Northamptonshire,,54927,54927
+Brentwood,51.6204,0.3050,United Kingdom,GB,Essex,,54885,52586
+Hamilton,55.7770,-4.0390,United Kingdom,GB,South Lanarkshire,,54230,54080
+Dunfermline,56.0719,-3.4393,United Kingdom,GB,Fife,,54050,53100
+Braintree,51.8780,0.5500,United Kingdom,GB,Essex,,53477,53477
+Weymouth,50.6130,-2.4570,United Kingdom,GB,Dorset,,53068,53068
+Hendon,51.5837,-0.2252,United Kingdom,GB,Barnet,,52972,52972
+Altrincham,53.3838,-2.3547,United Kingdom,GB,Trafford,,52419,52419
+Lancaster,54.0470,-2.8010,United Kingdom,GB,Lancashire,,52234,52234
+Barri,51.4050,-3.2700,United Kingdom,GB,"Vale of Glamorgan, The",,51502,51502
+Macclesfield,53.2581,-2.1274,United Kingdom,GB,Cheshire East,,51482,51482
+Bootle,53.4457,-2.9891,United Kingdom,GB,Sefton,,51394,51394
+Stratford,51.5423,-0.0026,United Kingdom,GB,Newham,,51387,51387
+Horsham,51.0620,-0.3250,United Kingdom,GB,West Sussex,,50934,50934
+Cumbernauld,55.9450,-3.9940,United Kingdom,GB,North Lanarkshire,,50430,50430
+Rowley Regis,52.4800,-2.0600,United Kingdom,GB,Sandwell,,50257,50257
+Kirkcaldy,56.1107,-3.1674,United Kingdom,GB,Fife,,50180,50010
+Crosby,53.4872,-3.0343,United Kingdom,GB,Sefton,,50044,50044
+Leith,55.9800,-3.1700,United Kingdom,GB,"Edinburgh, City of",,50030,50030
+Royal Leamington Spa,52.2920,-1.5370,United Kingdom,GB,Warwickshire,,49662,49662
+Llanelli,51.6840,-4.1630,United Kingdom,GB,Carmarthenshire,,49591,37050
+Batley,53.7160,-1.6270,United Kingdom,GB,Kirklees,,49448,49448
+Pen-y-Bont ar Ogwr,51.5072,-3.5784,United Kingdom,GB,Bridgend,,49404,49404
+Wellingborough,52.2939,-0.6964,United Kingdom,GB,Northamptonshire,,49128,49128
+Sutton in Ashfield,53.1250,-1.2610,United Kingdom,GB,Nottinghamshire,,49023,49023
+Paignton,50.4353,-3.5625,United Kingdom,GB,Devon,,49021,49021
+Eltham,51.4510,0.0520,United Kingdom,GB,Greenwich,,48964,48964
+Cwmbran,51.6530,-3.0210,United Kingdom,GB,Torfaen,,48535,48535
+Christchurch,50.7300,-1.7800,United Kingdom,GB,Dorset,,48368,48368
+Morden,51.4015,-0.1949,United Kingdom,GB,Merton,,48233,48233
+Durham,54.7761,-1.5733,United Kingdom,GB,Durham,,48069,48069
+Barnet,51.6444,-0.1997,United Kingdom,GB,Barnet,,47359,47359
+West Bridgford,52.9320,-1.1270,United Kingdom,GB,Nottinghamshire,,47109,47109
+Perth,56.3970,-3.4370,United Kingdom,GB,Perth and Kinross,,46960,46960
+Stretford,53.4466,-2.3086,United Kingdom,GB,Trafford,,46910,46910
+Banbury,52.0610,-1.3360,United Kingdom,GB,Oxfordshire,,46853,46853
+Beckenham,51.4080,-0.0220,United Kingdom,GB,Bromley,,46844,46844
+Greenford,51.5299,-0.3488,United Kingdom,GB,Ealing,,46787,46787
+Wokingham,51.4100,-0.8400,United Kingdom,GB,Wokingham,,46745,46745
+Folkestone,51.0810,1.1660,United Kingdom,GB,Kent,,46698,46698
+Welwyn Garden City,51.8062,-0.1932,United Kingdom,GB,Hertfordshire,,46619,46619
+Ayr,55.4580,-4.6290,United Kingdom,GB,South Ayrshire,,46490,46490
+Kilmarnock,55.6111,-4.4957,United Kingdom,GB,East Ayrshire,,46450,46450
+Havant,50.8500,-0.9800,United Kingdom,GB,Hampshire,,45826,45826
+Chippenham,51.4585,-2.1158,United Kingdom,GB,Wiltshire,,45620,45620
+Erith,51.4800,0.1778,United Kingdom,GB,Bexley,,45345,45345
+Hinckley,52.5413,-1.3725,United Kingdom,GB,Leicestershire,,45249,45249
+Ashton,53.4897,-2.0952,United Kingdom,GB,Tameside,,45198,45198
+Winchester,51.0632,-1.3080,United Kingdom,GB,Hampshire,,45184,35200
+Surbiton,51.3940,-0.3070,United Kingdom,GB,Kingston upon Thames,,45132,45132
+Yeovil,50.9452,-2.6370,United Kingdom,GB,Somerset,,45000,45000
+Catford,51.4452,-0.0207,United Kingdom,GB,Lewisham,,44905,44905
+Grantham,52.9180,-0.6380,United Kingdom,GB,Lincolnshire,,44580,34592
+Morley,53.7492,-1.6023,United Kingdom,GB,Leeds,,44440,44440
+Cheshunt,51.7020,-0.0350,United Kingdom,GB,Hertfordshire,,44000,44000
+Coatbridge,55.8625,-4.0266,United Kingdom,GB,North Lanarkshire,,43920,43920
+Wallsend,54.9910,-1.5340,United Kingdom,GB,North Tyneside,,43826,43826
+Merthyr Tudful,51.7430,-3.3780,United Kingdom,GB,Merthyr Tydfil,,43820,43820
+Bexhill,50.8424,0.4676,United Kingdom,GB,East Sussex,,43478,43478
+Sidcup,51.4263,0.1024,United Kingdom,GB,Bexley,,43109,43109
+Kingston upon Thames,51.4103,-0.2995,United Kingdom,GB,Kingston upon Thames,,43013,43013
+Middleton,53.5550,-2.1870,United Kingdom,GB,Rochdale,,42972,42972
+King’s Lynn,52.7543,0.3976,United Kingdom,GB,Norfolk,,42800,42800
+Fareham,50.8500,-1.1800,United Kingdom,GB,Hampshire,,42210,42210
+Greenock,55.9500,-4.7650,United Kingdom,GB,Inverclyde,,41990,41990
+Urmston,53.4487,-2.3747,United Kingdom,GB,Trafford,,41825,41825
+Worksop,53.3042,-1.1244,United Kingdom,GB,Nottinghamshire,,41820,41820
+Sutton,51.3656,-0.1963,United Kingdom,GB,Sutton,,41483,41483
+Caerphilly,51.5780,-3.2180,United Kingdom,GB,Caerphilly,,41402,41402
+Bridgwater,51.1280,-2.9930,United Kingdom,GB,Somerset,,41276,41276
+Leigh,53.4975,-2.5150,United Kingdom,GB,Wigan,,41275,41275
+Newbury,51.4010,-1.3230,United Kingdom,GB,West Berkshire,,41075,41075
+Welling,51.4594,0.1097,United Kingdom,GB,Bexley,,41000,41000
+Kingswood,51.4600,-2.5050,United Kingdom,GB,South Gloucestershire,,40734,40734
+Bury Saint Edmunds,52.2474,0.7183,United Kingdom,GB,Suffolk,,40664,40664
+Kirkby,53.4826,-2.8920,United Kingdom,GB,Knowsley,,40472,40472
+Ramsgate,51.3360,1.4160,United Kingdom,GB,Kent,,40408,40408
+Tonbridge,51.1987,0.2764,United Kingdom,GB,Kent,,40356,38657
+Salisbury,51.0740,-1.7936,United Kingdom,GB,Wiltshire,,40302,40302
+Castleford,53.7160,-1.3560,United Kingdom,GB,Wakefield,,40210,40210
+Bishops Stortford,51.8720,0.1725,United Kingdom,GB,Hertfordshire,,40089,38202
+Abingdon,51.6670,-1.2830,United Kingdom,GB,Oxfordshire,,39809,33130
+Aberdare,51.7130,-3.4450,United Kingdom,GB,Rhondda Cynon Taff,,39550,39550
+Farnham,51.2150,-0.7990,United Kingdom,GB,Surrey,,39488,39488
+Aldridge,52.6060,-1.9179,United Kingdom,GB,Walsall,,39348,26988
+Hatfield,51.7620,-0.2280,United Kingdom,GB,Hertfordshire,,39201,39201
+Cleethorpes,53.5533,-0.0215,United Kingdom,GB,North East Lincolnshire,,38996,38996
+Skelmersdale,53.5500,-2.7760,United Kingdom,GB,Lancashire,,38813,38813
+Tipton,52.5259,-2.0751,United Kingdom,GB,Dudley,,38777,38777
+Eccles,53.4824,-2.3390,United Kingdom,GB,Salford,,38756,38756
+Great Yarmouth,52.6060,1.7290,United Kingdom,GB,Norfolk,,38693,38693
+Ilkeston,52.9710,-1.3090,United Kingdom,GB,Derbyshire,,38640,38640
+Herne Bay,51.3700,1.1300,United Kingdom,GB,Kent,,38563,38385
+Andover,51.2080,-1.4800,United Kingdom,GB,Hampshire,,38290,38290
+Glenrothes,56.1980,-3.1780,United Kingdom,GB,Fife,,38240,38240
+Camberley,51.3350,-0.7420,United Kingdom,GB,Surrey,,38038,38038
+Stirling,56.1166,-3.9369,United Kingdom,GB,Stirling,,37810,37610
+Arnold,53.0050,-1.1270,United Kingdom,GB,Nottinghamshire,,37768,37768
+Long Eaton,52.8980,-1.2710,United Kingdom,GB,Derbyshire,,37760,37760
+Blyth,55.1260,-1.5140,United Kingdom,GB,Northumberland,,37339,37339
+Port Talbot,51.5906,-3.7986,United Kingdom,GB,Neath Port Talbot,,37276,37276
+Bletchley,51.9940,-0.7320,United Kingdom,GB,Milton Keynes,,37114,37114
+Leighton Buzzard,51.9165,-0.6617,United Kingdom,GB,Central Bedfordshire,,37000,37000
+Fleet,51.2834,-0.8456,United Kingdom,GB,Hampshire,,37000,37000
+Beeston,52.9270,-1.2150,United Kingdom,GB,Nottinghamshire,,37000,37000
+Small Heath,52.4629,-1.8542,United Kingdom,GB,Birmingham,,36898,36898
+Houghton le Spring,54.8410,-1.4680,United Kingdom,GB,Sunderland,,36746,36746
+Whitley Bay,55.0456,-1.4443,United Kingdom,GB,North Tyneside,,36623,36623
+Airdrie,55.8600,-3.9800,United Kingdom,GB,North Lanarkshire,,36620,36620
+Grays,51.4750,0.3300,United Kingdom,GB,Thurrock,,36601,36601
+Denton,53.4554,-2.1122,United Kingdom,GB,Tameside,,36591,36591
+Aldershot,51.2480,-0.7580,United Kingdom,GB,Hampshire,,36322,36322
+Redcar,54.6180,-1.0690,United Kingdom,GB,Redcar and Cleveland,,35692,35692
+Walkden,53.5239,-2.3991,United Kingdom,GB,Salford,,35616,35616
+Kenton,51.5878,-0.3086,United Kingdom,GB,Brent,,35600,35600
+Leyland,53.6920,-2.6970,United Kingdom,GB,Lancashire,,35578,35578
+Woodley,51.4530,-0.9020,United Kingdom,GB,Wokingham,,35470,35470
+Accrington,53.7534,-2.3638,United Kingdom,GB,Lancashire,,35456,35456
+Pont-y-pŵl,51.7030,-3.0410,United Kingdom,GB,Torfaen,,35447,35447
+Bridlington,54.0819,-0.1923,United Kingdom,GB,East Riding of Yorkshire,,35369,35369
+Falkirk,56.0011,-3.7835,United Kingdom,GB,Falkirk,,35168,35168
+Billingham,54.6100,-1.2700,United Kingdom,GB,Stockton-on-Tees,,35165,35165
+Boston,52.9740,-0.0214,United Kingdom,GB,Lincolnshire,,35124,35124
+Dunstable,51.8860,-0.5210,United Kingdom,GB,Central Bedfordshire,,35000,35000
+Ewell,51.3500,-0.2490,United Kingdom,GB,Surrey,,34872,34872
+Chorley,53.6530,-2.6320,United Kingdom,GB,Lancashire,,34667,34667
+Spalding,52.7858,-0.1529,United Kingdom,GB,Lincolnshire,,34613,34613
+Exmouth,50.6200,-3.4130,United Kingdom,GB,Devon,,34432,34432
+North Shields,55.0097,-1.4448,United Kingdom,GB,North Tyneside,,34423,34423
+Colwyn Bay,53.2900,-3.7000,United Kingdom,GB,Conwy,,34284,34284
+Irvine,55.6201,-4.6614,United Kingdom,GB,North Ayrshire,,34010,33698
+Hyde,53.4474,-2.0820,United Kingdom,GB,Tameside,,34003,34003
+Wisbech,52.6640,0.1600,United Kingdom,GB,Cambridgeshire,,33933,33933
+Lichfield,52.6835,-1.8265,United Kingdom,GB,Staffordshire,,33816,33816
+Wickford,51.6114,0.5207,United Kingdom,GB,Essex,,33486,33486
+Hitchin,51.9470,-0.2830,United Kingdom,GB,Hertfordshire,,33352,33352
+Dumfries,55.0700,-3.6030,United Kingdom,GB,Dumfries and Galloway,,33320,33320
+Letchworth,51.9780,-0.2300,United Kingdom,GB,Hertfordshire,,33249,33249
+Huyton,53.4100,-2.8430,United Kingdom,GB,Knowsley,,33193,33193
+Strood,51.3930,0.4780,United Kingdom,GB,Medway,,33182,33182
+Trowbridge,51.3200,-2.2100,United Kingdom,GB,Wiltshire,,33108,33108
+Glossop,53.4430,-1.9490,United Kingdom,GB,Derbyshire,,33000,33000
+Pontypridd,51.6020,-3.3420,United Kingdom,GB,Rhondda Cynon Taff,,32694,32694
+Stroud,51.7440,-2.2150,United Kingdom,GB,Gloucestershire,,32670,32670
+Bicester,51.9000,-1.1500,United Kingdom,GB,Oxfordshire,,32642,32642
+Winsford,53.1940,-2.5200,United Kingdom,GB,Cheshire West and Chester,,32610,32610
+Windsor,51.4791,-0.6095,United Kingdom,GB,Windsor and Maidenhead,,32608,32184
+Motherwell,55.7839,-3.9852,United Kingdom,GB,North Lanarkshire,,32480,32480
+Brighouse,53.7070,-1.7940,United Kingdom,GB,Calderdale,,32360,32360
+Wigston Magna,52.5812,-1.0930,United Kingdom,GB,Leicestershire,,32321,32321
+Swadlincote,52.7740,-1.5570,United Kingdom,GB,Derbyshire,,32219,32219
+Rayleigh,51.5864,0.6049,United Kingdom,GB,Essex,,32150,32150
+Whitstable,51.3610,1.0260,United Kingdom,GB,Kent,,32100,30195
+Ecclesfield,53.4429,-1.4698,United Kingdom,GB,Sheffield,,32073,31609
+Ryde,50.7271,-1.1618,United Kingdom,GB,Isle of Wight,,32072,32072
+Earley,51.4330,-0.9330,United Kingdom,GB,Wokingham,,32036,32036
+Borehamwood,51.6578,-0.2723,United Kingdom,GB,Hertfordshire,,31955,31955
+Bexleyheath,51.4590,0.1380,United Kingdom,GB,Bexley,,31929,31929
+Prestwich,53.5333,-2.2833,United Kingdom,GB,Bury,,31693,31693
+Darwen,53.6980,-2.4610,United Kingdom,GB,Blackburn with Darwen,,31570,31570
+Epsom,51.3360,-0.2670,United Kingdom,GB,Surrey,,31489,31489
+Warwick,52.2800,-1.5900,United Kingdom,GB,Warwickshire,,31345,31345
+Pinner,51.5932,-0.3894,United Kingdom,GB,Harrow,,31130,31130
+Rutherglen,55.8286,-4.2139,United Kingdom,GB,Glasgow City,,31120,31120
+Loughton,51.6494,0.0735,United Kingdom,GB,Essex,,31106,31106
+Dover,51.1295,1.3089,United Kingdom,GB,Kent,,31022,31022
+Pontefract,53.6910,-1.3120,United Kingdom,GB,Wakefield,,30881,30881
+Saint Neots,52.2280,-0.2700,United Kingdom,GB,Cambridgeshire,,30811,30811
+Bedworth,52.4750,-1.4770,United Kingdom,GB,Warwickshire,,30648,30648
+Burgess Hill,50.9535,-0.1262,United Kingdom,GB,West Sussex,,30635,30635
+Northolt,51.5470,-0.3620,United Kingdom,GB,Ealing,,30304,30304
+Farnworth,53.5452,-2.3999,United Kingdom,GB,Bolton,,30271,30271
+Wishaw,55.7739,-3.9189,United Kingdom,GB,North Lanarkshire,,30250,30250
+Harpenden,51.8175,-0.3524,United Kingdom,GB,Hertfordshire,,30240,30240
+Deal,51.2226,1.4006,United Kingdom,GB,Kent,,30085,30085
+Radcliffe,53.5615,-2.3268,United Kingdom,GB,Bury,,29950,29950
+Carshalton,51.3652,-0.1676,United Kingdom,GB,Sutton,,29917,29917
+Plympton,50.3860,-4.0510,United Kingdom,GB,Plymouth,,29899,29899
+Bulwell,53.0010,-1.1970,United Kingdom,GB,Nottingham,,29771,29771
+Cambuslang,55.8190,-4.1671,United Kingdom,GB,South Lanarkshire,,29690,29100
+Sevenoaks,51.2781,0.1874,United Kingdom,GB,Kent,,29506,29506
+Northfleet,51.4400,0.3400,United Kingdom,GB,Kent,,29474,29474
+Cramlington,55.0820,-1.5850,United Kingdom,GB,Northumberland,,29405,29405
+Rushden,52.2880,-0.6010,United Kingdom,GB,Northamptonshire,,29272,29272
+Bromsgrove,52.3353,-2.0579,United Kingdom,GB,Worcestershire,,29237,29237
+Nelson,53.8346,-2.2180,United Kingdom,GB,Lancashire,,29135,29135
+Beverley,53.8450,-0.4270,United Kingdom,GB,East Riding of Yorkshire,,29110,29110
+Cannock,52.6910,-2.0270,United Kingdom,GB,Staffordshire,,29018,29018
+Hanwell,51.5189,-0.3376,United Kingdom,GB,Ealing,,28768,28768
+Stanford le Hope,51.5140,0.4244,United Kingdom,GB,Thurrock,,28765,28765
+Kendal,54.3260,-2.7450,United Kingdom,GB,Cumbria,,28586,28586
+Willenhall,52.5798,-2.0605,United Kingdom,GB,Walsall,,28480,28480
+Wood Green,51.5981,-0.1149,United Kingdom,GB,Haringey,,28453,28453
+Heywood,53.5900,-2.2190,United Kingdom,GB,Rochdale,,28205,28205
+Bearsden,55.9192,-4.3332,United Kingdom,GB,East Dunbartonshire,,28120,28120
+Reddish,53.4383,-2.1613,United Kingdom,GB,Stockport,,28052,28052
+Billericay,51.6280,0.4184,United Kingdom,GB,Essex,,27998,27998
+Darlaston,52.5708,-2.0457,United Kingdom,GB,Walsall,,27821,27821
+Littlehampton,50.8094,-0.5409,United Kingdom,GB,West Sussex,,27795,27795
+Ashington,55.1810,-1.5680,United Kingdom,GB,Northumberland,,27764,27764
+Newton Mearns,55.7716,-4.3347,United Kingdom,GB,East Renfrewshire,,27660,26600
+Yate,51.5402,-2.4110,United Kingdom,GB,South Gloucestershire,,27603,21789
+Jarrow,54.9797,-1.4804,United Kingdom,GB,South Tyneside,,27526,27526
+Witney,51.7800,-1.4900,United Kingdom,GB,Oxfordshire,,27522,27522
+Stratford-upon-Avon,52.1928,-1.7064,United Kingdom,GB,Warwickshire,,27445,27445
+Shotley Bridge,54.8700,-1.8600,United Kingdom,GB,Durham,,27394,27394
+Ashford,51.4340,-0.4640,United Kingdom,GB,Surrey,,27382,27382
+Ormskirk,53.5665,-2.8869,United Kingdom,GB,Lancashire,,27343,27343
+Longton,52.9877,-2.1327,United Kingdom,GB,Stoke-on-Trent,,27214,27214
+Melton Mowbray,52.7661,-0.8860,United Kingdom,GB,Leicestershire,,27158,27158
+Haverhill,52.0800,0.4400,United Kingdom,GB,Suffolk,,27041,27041
+Didcot,51.6060,-1.2410,United Kingdom,GB,Oxfordshire,,26920,26920
+Clifton,52.9040,-1.1770,United Kingdom,GB,Nottingham,,26835,26835
+Chichester,50.8365,-0.7792,United Kingdom,GB,West Sussex,,26795,26795
+Hertford,51.7950,-0.0780,United Kingdom,GB,Hertfordshire,,26783,26783
+Highbury,51.5520,-0.0970,United Kingdom,GB,Islington,,26664,26664
+Newton Aycliffe,54.6200,-1.5800,United Kingdom,GB,Durham,,26633,26633
+Fern Down,50.8100,-1.9000,United Kingdom,GB,Dorset,,26559,17650
+Congleton,53.1620,-2.2170,United Kingdom,GB,Cheshire East,,26482,26482
+Cheadle Hulme,53.3761,-2.1897,United Kingdom,GB,Stockport,,26479,26479
+East Grinstead,51.1290,-0.0070,United Kingdom,GB,West Sussex,,26383,26383
+Thatcham,51.4050,-1.2640,United Kingdom,GB,West Berkshire,,26217,26217
+Frome,51.2279,-2.3215,United Kingdom,GB,Somerset,,26203,26203
+Burntwood,52.6831,-1.9200,United Kingdom,GB,Staffordshire,,26049,26049
+Clydebank,55.8997,-4.4006,United Kingdom,GB,West Dunbartonshire,,25970,25970
+Fleetwood,53.9230,-3.0150,United Kingdom,GB,Lancashire,,25939,25939
+Bournville,52.4299,-1.9355,United Kingdom,GB,Birmingham,,25938,25938
+Shenley Brook End,52.0090,-0.7890,United Kingdom,GB,Milton Keynes,,25828,25828
+Bushey,51.6429,-0.3604,United Kingdom,GB,Hertfordshire,,25763,25763
+New Milton,50.7600,-1.6500,United Kingdom,GB,Hampshire,,25717,25717
+Northfield,52.4080,-1.9630,United Kingdom,GB,Birmingham,,25707,25707
+Coulsdon,51.3211,-0.1386,United Kingdom,GB,Croydon,,25695,25695
+Bilston,52.5660,-2.0728,United Kingdom,GB,Wolverhampton,,25576,25576
+Newton Abbot,50.5290,-3.6100,United Kingdom,GB,Devon,,25556,23580
+Wellington,52.7001,-2.5157,United Kingdom,GB,Telford and Wrekin,,25554,25554
+Newport,50.7010,-1.2883,United Kingdom,GB,Isle of Wight,,25496,23957
+Oldbury,52.5050,-2.0159,United Kingdom,GB,Sandwell,,25488,25488
+Bishop Auckland,54.6566,-1.6768,United Kingdom,GB,Durham,,25455,25455
+Longbridge,52.3950,-1.9790,United Kingdom,GB,Birmingham,,25410,25410
+Bloxwich,52.6140,-2.0040,United Kingdom,GB,Walsall,,25401,25401
+Upminster,51.5557,0.2512,United Kingdom,GB,Havering,,25361,25361
+Witham,51.7978,0.6373,United Kingdom,GB,Essex,,25353,25353
+Workington,54.6365,-3.5549,United Kingdom,GB,Cumbria,,25207,25207
+Kingswinford,52.4981,-2.1657,United Kingdom,GB,Staffordshire,,25191,25191
+Rhyl,53.3210,-3.4800,United Kingdom,GB,Denbighshire,,25149,25149
+Daventry,52.2600,-1.1600,United Kingdom,GB,Northamptonshire,,25026,25026
+Hindley,53.5355,-2.5658,United Kingdom,GB,Wigan,,25001,25001
+Rainham,51.3600,0.6100,United Kingdom,GB,Medway,,25000,25000
+Portishead,51.4840,-2.7626,United Kingdom,GB,North Somerset,,25000,25000
+Pitsea,51.5690,0.5040,United Kingdom,GB,Essex,,25000,25000
+Westhoughton,53.5490,-2.5290,United Kingdom,GB,Bolton,,24974,24974
+Broadstairs,51.3589,1.4394,United Kingdom,GB,Kent,,24903,24903
+Consett,54.8500,-1.8300,United Kingdom,GB,Durham,,24828,24828
+Thornaby on Tees,54.5556,-1.3049,United Kingdom,GB,Stockton-on-Tees,,24741,24741
+Wilmslow,53.3250,-2.2390,United Kingdom,GB,Cheshire East,,24497,24497
+Kings Norton,52.4072,-1.9272,United Kingdom,GB,Birmingham,,24380,24380
+Thetford,52.4100,0.7400,United Kingdom,GB,Norfolk,,24340,24340
+Elgin,57.6500,-3.3150,United Kingdom,GB,Moray,,24320,24320
+Chester-le-Street,54.8594,-1.5699,United Kingdom,GB,Durham,,24227,24227
+Farnley,53.7876,-1.6159,United Kingdom,GB,Leeds,,24213,24213
+Great Sankey,53.3918,-2.6383,United Kingdom,GB,Warrington,,24211,24211
+Golborne,53.4758,-2.5943,United Kingdom,GB,Wigan,,24169,24169
+Plymstock,50.3569,-4.0900,United Kingdom,GB,Plymouth,,24103,24103
+Bognor Regis,50.7824,-0.6764,United Kingdom,GB,West Sussex,,24064,24064
+Barnstaple,51.0800,-4.0600,United Kingdom,GB,Devon,,24033,24033
+Rugeley,52.7599,-1.9388,United Kingdom,GB,Staffordshire,,24033,24033
+Eastleigh,50.9667,-1.3500,United Kingdom,GB,Hampshire,,24011,24011
+Ashton in Makerfield,53.4870,-2.6410,United Kingdom,GB,Wigan,,24000,24000
+Whitehaven,54.5480,-3.5855,United Kingdom,GB,Cumbria,,23986,23986
+Rickmansworth,51.6383,-0.4659,United Kingdom,GB,Hertfordshire,,23973,23973
+Littleover,52.9060,-1.5050,United Kingdom,GB,Derby,,23958,23958
+Caversham,51.4670,-0.9730,United Kingdom,GB,Reading,,23885,23885
+Oadby,52.5987,-1.0763,United Kingdom,GB,Leicestershire,,23849,23849
+Bishopbriggs,55.9046,-4.2250,United Kingdom,GB,East Dunbartonshire,,23820,23540
+Kidsgrove,53.0874,-2.2478,United Kingdom,GB,Staffordshire,,23756,23756
+Huntingdon,52.3364,-0.1717,United Kingdom,GB,Cambridgeshire,,23732,23732
+Stalybridge,53.4834,-2.0400,United Kingdom,GB,Tameside,,23731,23731
+Stanmore,51.6180,-0.3140,United Kingdom,GB,Harrow,,23700,23700
+Felixstowe,51.9639,1.3515,United Kingdom,GB,Suffolk,,23689,23689
+Marple,53.3970,-2.0610,United Kingdom,GB,Stockport,,23687,23687
+Perry Barr,52.5249,-1.9042,United Kingdom,GB,Birmingham,,23652,23652
+Gosforth,55.0070,-1.6230,United Kingdom,GB,Newcastle upon Tyne,,23620,23620
+Droitwich,52.2670,-2.1530,United Kingdom,GB,Worcestershire,,23504,23504
+Arbroath,56.5610,-2.5860,United Kingdom,GB,Angus,,23490,23490
+Seaford,50.7700,0.1000,United Kingdom,GB,East Sussex,,23463,23463
+Evesham,52.0920,-1.9470,United Kingdom,GB,Worcestershire,,23428,23428
+Whitefield,53.5521,-2.2992,United Kingdom,GB,Bury,,23283,23283
+Penwortham,53.7400,-2.7200,United Kingdom,GB,Lancashire,,23047,23047
+Harborne,52.4600,-1.9500,United Kingdom,GB,Birmingham,,23001,23001
+Swinton,53.5122,-2.3412,United Kingdom,GB,Salford,,22931,22931
+Market Harborough,52.4775,-0.9206,United Kingdom,GB,Leicestershire,,22911,22911
+Penistone,53.5250,-1.6290,United Kingdom,GB,Barnsley,,22909,22909
+Gainsborough,53.4016,-0.7732,United Kingdom,GB,Lincolnshire,,22841,22841
+Walton upon Thames,51.3868,-0.4133,United Kingdom,GB,Surrey,,22834,22834
+Erdington,52.5236,-1.8378,United Kingdom,GB,Birmingham,,22828,22828
+Haywards Heath,51.0048,-0.0979,United Kingdom,GB,West Sussex,,22800,22800
+Stratton Saint Margaret,51.5860,-1.7620,United Kingdom,GB,Swindon,,22698,22698
+Droylsden,53.4828,-2.1582,United Kingdom,GB,Tameside,,22689,22689
+Wednesfield,52.5998,-2.0817,United Kingdom,GB,Wolverhampton,,22646,22646
+Calverley,53.8266,-1.6908,United Kingdom,GB,Leeds,,22594,4328
+Leigh-on-Sea,51.5425,0.6535,United Kingdom,GB,Southend-on-Sea,,22509,22509
+Formby,53.5586,-3.0666,United Kingdom,GB,Sefton,,22419,22419
+Kenilworth,52.3410,-1.5660,United Kingdom,GB,Warwickshire,,22413,22413
+Pudsey,53.7970,-1.6630,United Kingdom,GB,Leeds,,22408,22408
+Guiseley,53.8750,-1.7060,United Kingdom,GB,Leeds,,22347,22347
+Alfreton,53.0970,-1.3800,United Kingdom,GB,Derbyshire,,22302,22302
+March,52.5510,0.0880,United Kingdom,GB,Cambridgeshire,,22298,22298
+Litherland,53.4727,-2.9990,United Kingdom,GB,Sefton,,22242,22242
+Yeadon,53.8690,-1.6880,United Kingdom,GB,Leeds,,22233,22233
+Acomb,53.9550,-1.1260,United Kingdom,GB,York,,22215,22215
+Buxton,53.2590,-1.9110,United Kingdom,GB,Derbyshire,,22215,22215
+Newton in Makerfield,53.4500,-2.6330,United Kingdom,GB,St. Helens,,22114,22114
+Penarth,51.4300,-3.1700,United Kingdom,GB,"Vale of Glamorgan, The",,22083,22083
+Horley,51.1740,-0.1720,United Kingdom,GB,Surrey,,22076,22076
+Northwood,51.6010,-0.4176,United Kingdom,GB,Hertfordshire,,22047,22047
+East Retford,53.3228,-0.9431,United Kingdom,GB,Nottinghamshire,,22013,22013
+Atherton,53.5230,-2.4950,United Kingdom,GB,Wigan,,22000,22000
+Rawtenstall,53.6990,-2.2910,United Kingdom,GB,Lancashire,,22000,22000
+Musselburgh,55.9420,-3.0540,United Kingdom,GB,East Lothian,,21900,20840
+Renfrew,55.8791,-4.3868,United Kingdom,GB,Renfrewshire,,21854,21854
+Belper,53.0290,-1.4750,United Kingdom,GB,Derbyshire,,21822,21822
+Reigate,51.2370,-0.2060,United Kingdom,GB,Surrey,,21820,21820
+Sheldon,52.4500,-1.7666,United Kingdom,GB,Solihull,,21817,21817
+Godalming,51.1800,-0.6100,United Kingdom,GB,Surrey,,21804,21804
+Falmouth,50.1500,-5.0700,United Kingdom,GB,Cornwall,,21797,21797
+Kilwinning,55.6550,-4.7030,United Kingdom,GB,North Ayrshire,,21693,16460
+Potters Bar,51.6980,-0.1830,United Kingdom,GB,Hertfordshire,,21639,21639
+Camborne,50.2130,-5.3000,United Kingdom,GB,Cornwall,,21600,21600
+Linslade,51.9243,-0.6774,United Kingdom,GB,Central Bedfordshire,,21590,21590
+Chesham,51.7120,-0.6120,United Kingdom,GB,Buckinghamshire,,21483,21483
+Richmond,51.4560,-0.3010,United Kingdom,GB,Richmond upon Thames,,21469,21469
+Chandlers Ford,50.9840,-1.3792,United Kingdom,GB,Hampshire,,21436,21436
+Darton,53.5850,-1.5325,United Kingdom,GB,Barnsley,,21345,21345
+Royton,53.5660,-2.1210,United Kingdom,GB,Oldham,,21284,21284
+Clevedon,51.4380,-2.8540,United Kingdom,GB,North Somerset,,21281,21281
+Dronfield,53.3024,-1.4664,United Kingdom,GB,Derbyshire,,21261,21261
+Ossett,53.6800,-1.5800,United Kingdom,GB,Wakefield,,21231,21231
+Penzance,50.1190,-5.5370,United Kingdom,GB,Cornwall,,21200,21200
+Waltham Abbey,51.6846,0.0004,United Kingdom,GB,Essex,,21149,21149
+Omagh,54.5900,-7.2900,United Kingdom,GB,Fermanagh and Omagh,,21056,16326
+Caterham,51.2803,-0.0816,United Kingdom,GB,Surrey,,21030,21030
+Woodlesford,53.7567,-1.4530,United Kingdom,GB,Leeds,,21010,21010
+Maesteg,51.6100,-3.6500,United Kingdom,GB,Bridgend,,21000,20612
+Normanton,53.6970,-1.4160,United Kingdom,GB,Wakefield,,20872,20872
+Wallington,51.3647,-0.1403,United Kingdom,GB,Sutton,,20850,20850
+Ripley,53.0500,-1.4070,United Kingdom,GB,Derbyshire,,20807,20807
+Sandhurst,51.3490,-0.8000,United Kingdom,GB,Hampshire,,20803,20803
+Leek,53.1080,-2.0234,United Kingdom,GB,Staffordshire,,20768,20768
+Alloa,56.1160,-3.7930,United Kingdom,GB,Clackmannanshire,,20730,20730
+Boscombe,50.7250,-1.8400,United Kingdom,GB,Bournemouth,,20719,20719
+Llandudno,53.3250,-3.8260,United Kingdom,GB,Conwy,,20701,20701
+Failsworth,53.5102,-2.1575,United Kingdom,GB,Oldham,,20680,20680
+Kirkstall,53.8160,-1.6020,United Kingdom,GB,Leeds,,20673,20673
+Kirkby in Ashfield,53.0990,-1.2450,United Kingdom,GB,Nottinghamshire,,20672,20672
+Bellshill,55.8165,-4.0262,United Kingdom,GB,North Lanarkshire,,20650,20290
+Crowborough,51.0600,0.1600,United Kingdom,GB,East Sussex,,20607,20607
+Shoreham-by-Sea,50.8340,-0.2730,United Kingdom,GB,West Sussex,,20547,20547
+Dumbarton,55.9500,-4.5667,United Kingdom,GB,West Dunbartonshire,,20527,20527
+Hythe,50.8690,-1.3990,United Kingdom,GB,Hampshire,,20526,20526
+Hailsham,50.8647,0.2577,United Kingdom,GB,East Sussex,,20476,20476
+Maghull,53.5174,-2.9449,United Kingdom,GB,Sefton,,20444,20444
+Bathgate,55.9024,-3.6431,United Kingdom,GB,West Lothian,,20363,20363
+Rothwell,53.7485,-1.4780,United Kingdom,GB,Leeds,,20354,20354
+Newquay,50.4120,-5.0757,United Kingdom,GB,Cornwall,,20342,20342
+Hoddesdon,51.7590,-0.0150,United Kingdom,GB,Hertfordshire,,20250,20250
+Seaham,54.8400,-1.3400,United Kingdom,GB,Durham,,20172,20172
+Peterlee,54.7600,-1.3300,United Kingdom,GB,Durham,,20164,20164
+Halewood,53.3599,-2.8400,United Kingdom,GB,Knowsley,,20116,20116
+Ely,52.3981,0.2622,United Kingdom,GB,Cambridgeshire,,20112,20112
+Killingworth,55.0318,-1.5557,United Kingdom,GB,North Tyneside,,20079,20079
+Horwich,53.5920,-2.5400,United Kingdom,GB,Bolton,,20067,20067
+Bispham,53.8520,-3.0410,United Kingdom,GB,Blackpool,,20001,20001
+Antrim,54.7173,-6.2055,United Kingdom,GB,Antrim and Newtownabbey,,19986,19986
+Wetherby,53.9276,-1.3839,United Kingdom,GB,Leeds,,19979,19979
+Saint Austell,50.3386,-4.7922,United Kingdom,GB,Cornwall,,19958,19958
+Irlam,53.4450,-2.4220,United Kingdom,GB,Salford,,19933,19933
+Northwich,53.2590,-2.5180,United Kingdom,GB,Cheshire West and Chester,,19924,19924
+Biddulph,53.1200,-2.1700,United Kingdom,GB,Staffordshire,,19892,19892
+Spennymoor,54.7000,-1.5900,United Kingdom,GB,Durham,,19816,19816
+Barrhead,55.8016,-4.3880,United Kingdom,GB,East Renfrewshire,,19813,17610
+Garforth,53.7920,-1.3880,United Kingdom,GB,Leeds,,19811,19811
+Tewkesbury,51.9900,-2.1600,United Kingdom,GB,Gloucestershire,,19778,19778
+Stamford,52.6560,-0.4840,United Kingdom,GB,Lincolnshire,,19701,19701
+Kirkintilloch,55.9357,-4.1547,United Kingdom,GB,East Dunbartonshire,,19700,19700
+Davyhulme,53.4559,-2.3683,United Kingdom,GB,Trafford,,19634,19634
+Skegness,53.1400,0.3400,United Kingdom,GB,Lincolnshire,,19579,19579
+Burnham-on-Sea,51.2376,-2.9935,United Kingdom,GB,Somerset,,19576,19576
+Abbots Langley,51.7010,-0.4160,United Kingdom,GB,Hertfordshire,,19574,19574
+Mirfield,53.6807,-1.6888,United Kingdom,GB,Kirklees,,19563,19563
+Tiverton,50.9030,-3.4880,United Kingdom,GB,Devon,,19544,19544
+Goole,53.6992,-0.8692,United Kingdom,GB,East Riding of Yorkshire,,19518,19518
+South Ockendon,51.5207,0.2956,United Kingdom,GB,Thurrock,,19460,19460
+Romsey,50.9890,-1.4966,United Kingdom,GB,Hampshire,,19441,19441
+Kempston,52.1140,-0.4970,United Kingdom,GB,Bedford,,19440,19440
+Adel,53.8489,-1.5849,United Kingdom,GB,Leeds,,19430,19430
+Liversedge,53.7067,-1.6900,United Kingdom,GB,Kirklees,,19420,19420
+Hampton,51.4220,-0.3670,United Kingdom,GB,Richmond upon Thames,,19372,19372
+Great Linford,52.0680,-0.7637,United Kingdom,GB,Milton Keynes,,19350,19350
+Faversham,51.3177,0.8928,United Kingdom,GB,Kent,,19316,19316
+Dukinfield,53.4739,-2.0828,United Kingdom,GB,Tameside,,19306,19306
+Stowmarket,52.1900,1.0000,United Kingdom,GB,Suffolk,,19280,19280
+Neath,51.6600,-3.8100,United Kingdom,GB,Neath Port Talbot,,19258,19258
+Ecclesall,53.3620,-1.4980,United Kingdom,GB,Sheffield,,19211,19211
+Molesey,51.4010,-0.3630,United Kingdom,GB,Surrey,,19088,19088
+Cirencester,51.7190,-1.9680,United Kingdom,GB,Gloucestershire,,19076,19076
+Dorchester,50.7154,-2.4367,United Kingdom,GB,Dorset,,19060,19060
+Monkseaton,55.0430,-1.4590,United Kingdom,GB,North Tyneside,,19044,19044
+Linlithgow,55.9791,-3.6105,United Kingdom,GB,West Lothian,,19000,19000
+Southbourne,50.7220,-1.7980,United Kingdom,GB,Bournemouth,,18960,18960
+Horsforth,53.8341,-1.6429,United Kingdom,GB,Leeds,,18895,18895
+Prestatyn,53.3310,-3.4050,United Kingdom,GB,Denbighshire,,18849,18849
+Kilbirnie,55.7550,-4.6860,United Kingdom,GB,North Ayrshire,,18829,7340
+Lancing,50.8320,-0.3190,United Kingdom,GB,West Sussex,,18810,18810
+Ware,51.8109,-0.0314,United Kingdom,GB,Hertfordshire,,18799,18799
+Truro,50.2600,-5.0510,United Kingdom,GB,Cornwall,,18766,18766
+Eastwood,53.0180,-1.3040,United Kingdom,GB,Nottinghamshire,,18612,18612
+East Dereham,52.6810,0.9400,United Kingdom,GB,Norfolk,,18609,18609
+Ebbw Vale,51.7779,-3.2117,United Kingdom,GB,Blaenau Gwent,,18558,18558
+Peterhead,57.5091,-1.7832,United Kingdom,GB,Aberdeenshire,,18537,18537
+Appley Bridge,53.5790,-2.7210,United Kingdom,GB,Lancashire,,18500,18500
+Berkhampstead,51.7600,-0.5600,United Kingdom,GB,Hertfordshire,,18500,18100
+Rawmarsh,53.4636,-1.3439,United Kingdom,GB,Rotherham,,18498,18498
+Poulton le Fylde,53.8470,-2.9950,United Kingdom,GB,Lancashire,,18495,18495
+Staines-upon-Thames,51.4330,-0.5170,United Kingdom,GB,Surrey,,18484,18484
+Bedlington,55.1330,-1.5830,United Kingdom,GB,Northumberland,,18470,18470
+Mill Hill,51.6200,-0.2300,United Kingdom,GB,Barnet,,18451,18451
+Almondbury,53.6344,-1.7489,United Kingdom,GB,Kirklees,,18346,18346
+Hadleigh,51.5535,0.6095,United Kingdom,GB,Essex,,18300,18300
+Staveley,53.2694,-1.3484,United Kingdom,GB,Derbyshire,,18247,18247
+Fulwood,53.3650,-1.5440,United Kingdom,GB,Sheffield,,18233,18233
+Redhill,51.2393,-0.1726,United Kingdom,GB,Surrey,,18163,18163
+Aberystwyth,52.4140,-4.0810,United Kingdom,GB,Ceredigion,,18093,12250
+Sunbury,51.4230,-0.4240,United Kingdom,GB,Surrey,,18041,18041
+Mickleover,52.9010,-1.5520,United Kingdom,GB,Derby,,18000,18000
+Sandbach,53.1460,-2.3670,United Kingdom,GB,Cheshire East,,17976,17976
+Madeley,52.6370,-2.4480,United Kingdom,GB,Telford and Wrekin,,17935,17935
+Grangemouth,56.0120,-3.7170,United Kingdom,GB,Falkirk,,17906,16650
+Ramsbottom,53.6484,-2.3169,United Kingdom,GB,Bury,,17872,17872
+Colne,53.8554,-2.1756,United Kingdom,GB,Lancashire,,17855,17855
+Alton,51.1498,-0.9769,United Kingdom,GB,Hampshire,,17816,17816
+Portchester,50.8420,-1.1200,United Kingdom,GB,Hampshire,,17789,17789
+Guisborough,54.5350,-1.0563,United Kingdom,GB,Redcar and Cleveland,,17777,17777
+Harwich,51.9340,1.2660,United Kingdom,GB,Essex,,17684,17684
+Sleaford,52.9960,-0.4130,United Kingdom,GB,Lincolnshire,,17671,17671
+Moreton,53.4010,-3.1110,United Kingdom,GB,Wirral,,17670,17670
+Quedgeley,51.8250,-2.2800,United Kingdom,GB,Gloucestershire,,17519,17519
+Warminster,51.2050,-2.1810,United Kingdom,GB,Wiltshire,,17490,17490
+Woodhouse,53.3580,-1.3730,United Kingdom,GB,Sheffield,,17450,17450
+Bramhall,53.3570,-2.1640,United Kingdom,GB,Stockport,,17436,17436
+Nantwich,53.0670,-2.5220,United Kingdom,GB,Cheshire East,,17424,17424
+Hednesford,52.7115,-2.0006,United Kingdom,GB,Staffordshire,,17343,17343
+Lewes,50.8756,0.0179,United Kingdom,GB,East Sussex,,17297,15988
+Houghton Regis,51.9039,-0.5247,United Kingdom,GB,Central Bedfordshire,,17280,17280
+Thornton,53.7898,-1.8504,United Kingdom,GB,Bradford,,17276,17276
+Calne,51.4380,-2.0050,United Kingdom,GB,Wiltshire,,17274,17274
+Heanor,53.0140,-1.3540,United Kingdom,GB,Derbyshire,,17251,17251
+Friern Barnet,51.6126,-0.1584,United Kingdom,GB,Barnet,,17250,17250
+Milton,53.0500,-2.1420,United Kingdom,GB,Stoke-on-Trent,,17250,17250
+Glen Parva,52.5867,-1.1617,United Kingdom,GB,Leicestershire,,17189,17189
+Cottingham,53.7822,-0.4136,United Kingdom,GB,"Kingston upon Hull, City of",,17164,17164
+Bideford,51.0160,-4.2090,United Kingdom,GB,Devon,,17107,17107
+Oswestry,52.8598,-3.0538,United Kingdom,GB,Shropshire,,17105,15613
+Mosbrough,53.3250,-1.3620,United Kingdom,GB,Sheffield,,17097,17097
+Heysham,54.0460,-2.8940,United Kingdom,GB,Lancashire,,17016,17016
+Golcar,53.6378,-1.8457,United Kingdom,GB,Kirklees,,17000,17000
+Westbury,51.2600,-2.1910,United Kingdom,GB,Wiltshire,,16989,16989
+Heckmondwike,53.7080,-1.6700,United Kingdom,GB,Kirklees,,16986,16986
+Clayton,53.7820,-1.8135,United Kingdom,GB,Bradford,,16982,16982
+Morriston,51.6647,-3.9389,United Kingdom,GB,Swansea,,16928,16928
+High Blantyre,55.7930,-4.0970,United Kingdom,GB,South Lanarkshire,,16900,16900
+Braunstone,52.6160,-1.1750,United Kingdom,GB,Leicestershire,,16850,16850
+Haslingden,53.7050,-2.3280,United Kingdom,GB,Lancashire,,16849,16849
+Northallerton,54.3378,-1.4285,United Kingdom,GB,North Yorkshire,,16832,15741
+Haslemere,51.0900,-0.7120,United Kingdom,GB,Surrey,,16826,16826
+Saint Andrews,56.3404,-2.7955,United Kingdom,GB,Fife,,16801,16680
+Fazakerley,53.4676,-2.9408,United Kingdom,GB,Liverpool,,16786,16786
+Hatfield,53.5800,-1.0000,United Kingdom,GB,Doncaster,,16776,16776
+Windlesham,51.3600,-0.6600,United Kingdom,GB,Surrey,,16775,16775
+Connahs Quay,53.2179,-3.0573,United Kingdom,GB,Flintshire,,16774,16774
+Plumstead,51.4900,0.0900,United Kingdom,GB,Greenwich,,16736,16736
+Ripon,54.1380,-1.5240,United Kingdom,GB,North Yorkshire,,16702,16702
+Brixham,50.3940,-3.5160,United Kingdom,GB,Devon,,16693,16693
+Maltby,53.4260,-1.2100,United Kingdom,GB,Rotherham,,16688,16688
+Banstead,51.3220,-0.2040,United Kingdom,GB,Surrey,,16666,16666
+Whickham,54.9456,-1.6726,United Kingdom,GB,Gateshead,,16652,16652
+Keynsham,51.4135,-2.4968,United Kingdom,GB,Bath and North East Somerset,,16641,16641
+Johnstone,55.8346,-4.5027,United Kingdom,GB,Renfrewshire,,16625,16090
+Cleckheaton,53.7250,-1.7190,United Kingdom,GB,Kirklees,,16622,16622
+Newmarket,52.2459,0.4105,United Kingdom,GB,Suffolk,,16615,16615
+The Mumbles,51.5730,-3.9992,United Kingdom,GB,Swansea,,16600,16600
+Biggleswade,52.0855,-0.2557,United Kingdom,GB,Central Bedfordshire,,16551,16551
+Cowley,51.7330,-1.2150,United Kingdom,GB,Oxfordshire,,16500,16500
+Hebburn,54.9718,-1.5128,United Kingdom,GB,South Tyneside,,16492,16492
+Enfield Lock,51.6686,-0.0260,United Kingdom,GB,Enfield,,16469,16469
+Louth,53.3669,-0.0061,United Kingdom,GB,Lincolnshire,,16419,16419
+Buckhaven,56.1776,-3.0303,United Kingdom,GB,Fife,,16391,4220
+Stone,52.9000,-2.1500,United Kingdom,GB,Staffordshire,,16385,16385
+Saint Ives,52.3344,-0.0761,United Kingdom,GB,Cambridgeshire,,16384,16384
+Denby Dale,53.5720,-1.6550,United Kingdom,GB,Kirklees,,16365,16365
+Bangor,53.2280,-4.1280,United Kingdom,GB,Isle of Anglesey,,16358,16358
+Birstall,53.7343,-1.6609,United Kingdom,GB,Kirklees,,16298,16298
+Clitheroe,53.8711,-2.3916,United Kingdom,GB,Lancashire,,16279,16279
+Queensbury,53.7683,-1.8453,United Kingdom,GB,Calderdale,,16273,16273
+Stepney,51.5152,-0.0462,United Kingdom,GB,Tower Hamlets,,16238,16238
+Basford,52.9780,-1.1690,United Kingdom,GB,Nottingham,,16207,16207
+Saltash,50.4080,-4.2120,United Kingdom,GB,Cornwall,,16184,16184
+Giffnock,55.8051,-4.2946,United Kingdom,GB,East Renfrewshire,,16178,12300
+Tyldesley,53.5166,-2.4667,United Kingdom,GB,Wigan,,16142,16142
+East Barnet,51.6430,-0.1630,United Kingdom,GB,Barnet,,16137,16137
+Upton,53.3850,-3.0990,United Kingdom,GB,Wirral,,16130,16130
+Whittlesey,52.5580,-0.1300,United Kingdom,GB,Cambridgeshire,,16058,16058
+Worcester Park,51.3752,-0.2390,United Kingdom,GB,Sutton,,16031,16031
+Porthcawl,51.4800,-3.6900,United Kingdom,GB,Bridgend,,16005,15640
+East Finchley,51.5902,-0.1753,United Kingdom,GB,Barnet,,15989,15989
+Chertsey,51.3902,-0.5074,United Kingdom,GB,Surrey,,15967,15967
+Dawlish,50.5810,-3.4660,United Kingdom,GB,Devon,,15954,15954
+Penicuik,55.8260,-3.2200,United Kingdom,GB,Midlothian,,15926,15926
+Bingley,53.8509,-1.8380,United Kingdom,GB,Bradford,,15925,15925
+Adwick le Street,53.5677,-1.1931,United Kingdom,GB,Doncaster,,15911,15911
+Hayes,51.3780,0.0192,United Kingdom,GB,Bromley,,15906,15906
+Addlestone,51.3695,-0.4901,United Kingdom,GB,Surrey,,15883,15883
+Royston,52.0471,-0.0202,United Kingdom,GB,Hertfordshire,,15781,15781
+Carterton,51.7600,-1.5900,United Kingdom,GB,Oxfordshire,,15769,15769
+Bebington,53.3500,-3.0030,United Kingdom,GB,Wirral,,15768,15768
+Lymington,50.7500,-1.5500,United Kingdom,GB,Hampshire,,15726,15726
+Bonnyrigg,55.8747,-3.1031,United Kingdom,GB,Midlothian,,15677,15677
+Buckley,53.1720,-3.0860,United Kingdom,GB,Flintshire,,15665,15665
+Ince-in-Makerfield,53.5402,-2.5990,United Kingdom,GB,Wigan,,15664,15664
+Nailsea,51.4300,-2.7600,United Kingdom,GB,North Somerset,,15630,15630
+Thundersley,51.5700,0.5900,United Kingdom,GB,Essex,,15600,15600
+Swinton,53.4877,-1.3149,United Kingdom,GB,Rotherham,,15559,15559
+Wimborne Minster,50.8040,-1.9780,United Kingdom,GB,Dorset,,15552,6418
+West Ham,51.5347,0.0077,United Kingdom,GB,Newham,,15551,15551
+Saffron Walden,52.0220,0.2430,United Kingdom,GB,Essex,,15504,15504
+Stoke Gifford,51.5170,-2.5480,United Kingdom,GB,South Gloucestershire,,15494,15494
+Shipley,53.8330,-1.7770,United Kingdom,GB,Bradford,,15483,15483
+Todmorden,53.7130,-2.0960,United Kingdom,GB,Calderdale,,15481,15481
+Weybridge,51.3620,-0.4530,United Kingdom,GB,Surrey,,15449,15449
+Knaresborough,54.0084,-1.4670,United Kingdom,GB,North Yorkshire,,15441,15441
+Helensburgh,56.0166,-4.7333,United Kingdom,GB,Argyll and Bute,,15430,13640
+Port Glasgow,55.9340,-4.6906,United Kingdom,GB,Inverclyde,,15414,14620
+Seacombe,53.4090,-3.0290,United Kingdom,GB,Wirral,,15387,15387
+Baildon,53.8510,-1.7630,United Kingdom,GB,Bradford,,15360,15360
+Hemsworth,53.6100,-1.3500,United Kingdom,GB,Wakefield,,15350,15350
+Perivale,51.5383,-0.3192,United Kingdom,GB,Ealing,,15339,15339
+Wombwell,53.5160,-1.4000,United Kingdom,GB,Barnsley,,15316,15316
+Stanley,53.7145,-1.4760,United Kingdom,GB,Wakefield,,15314,15314
+Llantrisant,51.5423,-3.3785,United Kingdom,GB,Rhondda Cynon Taff,,15313,15313
+Broxbourne,51.7495,-0.0216,United Kingdom,GB,Essex,,15303,15303
+Hazel Grove,53.3750,-2.1110,United Kingdom,GB,Stockport,,15265,15265
+Featherstone,53.7000,-1.3700,United Kingdom,GB,Wakefield,,15244,15244
+Mexborough,53.4992,-1.2830,United Kingdom,GB,Doncaster,,15244,15244
+Stapleford,52.9290,-1.2740,United Kingdom,GB,Nottinghamshire,,15241,15241
+Neston,53.2890,-3.0740,United Kingdom,GB,Cheshire West and Chester,,15221,15221
+Bidston,53.4020,-3.0780,United Kingdom,GB,Wirral,,15216,15216
+Northenden,53.4075,-2.2583,United Kingdom,GB,Manchester,,15200,15200
+Penrith,54.6648,-2.7548,United Kingdom,GB,Cumbria,,15200,14756
+Chellaston,52.8671,-1.4384,United Kingdom,GB,Derbyshire,,15198,15198
+Palmers Green,51.6178,-0.1092,United Kingdom,GB,Enfield,,15162,15162
+Totteridge,51.6354,-0.2000,United Kingdom,GB,Barnet,,15159,15159
+Blaydon,54.9630,-1.7187,United Kingdom,GB,Gateshead,,15155,15155
+New Brighton,53.4320,-3.0490,United Kingdom,GB,Wirral,,15149,15149
+Teignmouth,50.5515,-3.4886,United Kingdom,GB,Devon,,15129,14749
+Newport Pagnell,52.0870,-0.7220,United Kingdom,GB,Milton Keynes,,15118,15118
+Tredegar,51.7776,-3.2407,United Kingdom,GB,Blaenau Gwent,,15103,15103
+Swallownest,53.3623,-1.3251,United Kingdom,GB,Rotherham,,15022,15022
+Netherton,52.4908,-2.0835,United Kingdom,GB,Dudley,,15017,15017
+Hessle,53.7239,-0.4319,United Kingdom,GB,East Riding of Yorkshire,,15000,15000
+Winkfield,51.4318,-0.7096,United Kingdom,GB,Bracknell Forest,,14998,14998
+Petersfield,51.0038,-0.9345,United Kingdom,GB,Hampshire,,14974,14974
+Larkhall,55.7370,-3.9720,United Kingdom,GB,South Lanarkshire,,14951,14740
+Sudbury,51.5537,-0.3199,United Kingdom,GB,Ealing,,14950,14950
+Wyke,53.7369,-1.7700,United Kingdom,GB,Bradford,,14950,14950
+Kew Green,51.5308,-0.2248,United Kingdom,GB,Richmond upon Thames,,14915,14915
+Bromborough,53.3360,-2.9780,United Kingdom,GB,Wirral,,14850,14850
+Chislehurst,51.4120,0.0750,United Kingdom,GB,Bromley,,14831,14831
+Ilkley,53.9250,-1.8220,United Kingdom,GB,Bradford,,14809,14809
+Baguley,53.3990,-2.2760,United Kingdom,GB,Manchester,,14794,14794
+Minster,51.4210,0.8090,United Kingdom,GB,Kent,,14789,14789
+Balham,51.4434,-0.1525,United Kingdom,GB,Wandsworth,,14751,14751
+Prestwick,55.4956,-4.6142,United Kingdom,GB,South Ayrshire,,14750,14720
+Banbridge,54.3430,-6.2600,United Kingdom,GB,"Armagh, Banbridge and Craigavon",,14744,14744
+Bodmin,50.4660,-4.7180,United Kingdom,GB,Cornwall,,14736,14736
+Selby,53.7818,-1.0703,United Kingdom,GB,North Yorkshire,,14731,14731
+Conwy,53.2800,-3.8300,United Kingdom,GB,Conwy,,14723,14723
+Tilehurst,51.4579,-1.0406,United Kingdom,GB,Reading,,14683,14683
+Troon,55.5400,-4.6600,United Kingdom,GB,South Ayrshire,,14680,14680
+Melksham,51.3710,-2.1380,United Kingdom,GB,Wiltshire,,14677,14677
+Wibsey,53.7672,-1.7728,United Kingdom,GB,Bradford,,14671,14671
+Great Baddow,51.7190,0.5070,United Kingdom,GB,Essex,,14650,14650
+Farnborough,51.3591,0.0741,United Kingdom,GB,Bromley,,14632,14632
+Skipton,53.9620,-2.0170,United Kingdom,GB,North Yorkshire,,14623,14623
+Lowton,53.4710,-2.5690,United Kingdom,GB,Wigan,,14605,14605
+Burbage,52.5277,-1.3483,United Kingdom,GB,Leicestershire,,14568,14568
+Thorpe Saint Andrew,52.6354,1.3431,United Kingdom,GB,Norfolk,,14556,14556
+Wellington,50.9755,-3.2243,United Kingdom,GB,Somerset,,14549,14549
+Moston,53.5156,-2.1848,United Kingdom,GB,Manchester,,14518,14518
+Hythe,51.0716,1.0840,United Kingdom,GB,Kent,,14516,14170
+Chelsfield,51.3582,0.1278,United Kingdom,GB,Bromley,,14507,14507
+Uckfield,50.9700,0.1000,United Kingdom,GB,East Sussex,,14493,14493
+Deysbrook,53.4290,-2.9340,United Kingdom,GB,Liverpool,,14490,14490
+Bo’ness,56.0168,-3.6089,United Kingdom,GB,Falkirk,,14490,14490
+Armthorpe,53.5352,-1.0522,United Kingdom,GB,Doncaster,,14457,14457
+Southgate,51.6316,-0.1265,United Kingdom,GB,Enfield,,14454,14454
+Dollis Hill,51.5641,-0.2341,United Kingdom,GB,Brent,,14425,14425
+Wymondham,52.5700,1.1160,United Kingdom,GB,Norfolk,,14405,14405
+Hetton le Hole,54.8208,-1.4488,United Kingdom,GB,Sunderland,,14402,14402
+Amersham,51.6770,-0.6030,United Kingdom,GB,Buckinghamshire,,14384,14384
+West Derby,53.4338,-2.9070,United Kingdom,GB,Liverpool,,14382,14382
+West Drayton,51.5043,-0.4646,United Kingdom,GB,Hillingdon,,14370,14370
+Conisbrough,53.4790,-1.2270,United Kingdom,GB,Doncaster,,14333,14333
+Kidbrooke,51.4650,0.0330,United Kingdom,GB,Greenwich,,14300,14300
+Rock Ferry,53.3730,-3.0080,United Kingdom,GB,Wirral,,14298,14298
+Shirley,51.3813,-0.0543,United Kingdom,GB,Croydon,,14296,14296
+Hawick,55.4220,-2.7870,United Kingdom,GB,"Scottish Borders, The",,14294,14294
+Patcham,50.8640,-0.1500,United Kingdom,GB,Brighton and Hove,,14277,14277
+West Wickham,51.3765,-0.0193,United Kingdom,GB,Bromley,,14276,14276
+Weston,53.4130,-2.7980,United Kingdom,GB,Halton,,14263,14263
+Poynton,53.3492,-2.1222,United Kingdom,GB,Cheshire East,,14260,14260
+Seacroft,53.8222,-1.4599,United Kingdom,GB,Leeds,,14246,14246
+Maldon,51.7318,0.6758,United Kingdom,GB,Essex,,14220,14220
+Kearsley,53.5300,-2.3700,United Kingdom,GB,Bolton,,14212,14212
+Caerfyrddin,51.8560,-4.3160,United Kingdom,GB,Carmarthenshire,,14185,14185
+Leyton,51.5606,-0.0155,United Kingdom,GB,Waltham Forest,,14184,14184
+Mackworth,52.9277,-1.5373,United Kingdom,GB,Derby,,14180,14180
+Ashtead,51.3100,-0.2990,United Kingdom,GB,Surrey,,14169,14169
+Wombourn,52.5302,-2.1857,United Kingdom,GB,Staffordshire,,14157,14157
+Smethwick,52.4928,-1.9682,United Kingdom,GB,Sandwell,,14146,14146
+Childwall,53.3950,-2.8810,United Kingdom,GB,Liverpool,,14085,14085
+Cowdenbeath,56.1100,-3.3500,United Kingdom,GB,Fife,,14081,11640
+Forfar,56.6442,-2.8884,United Kingdom,GB,Angus,,14048,14048
+Redruth,50.2330,-5.2240,United Kingdom,GB,Cornwall,,14018,14018
+Morpeth,55.1675,-1.6908,United Kingdom,GB,Northumberland,,14017,14017
+Marlow,51.5700,-0.7800,United Kingdom,GB,Buckinghamshire,,14004,14004
+Pemberton,53.5360,-2.6738,United Kingdom,GB,Wigan,,13982,13982
+Verwood,50.8815,-1.8785,United Kingdom,GB,Dorset,,13969,13969
+Bourne,52.7684,-0.3775,United Kingdom,GB,Lincolnshire,,13961,13961
+Ringwood,50.8500,-1.7800,United Kingdom,GB,Hampshire,,13943,13943
+Brierley Hill,52.4795,-2.1245,United Kingdom,GB,Dudley,,13935,13935
+Streetly,52.5770,-1.8840,United Kingdom,GB,Walsall,,13934,13934
+Milford Haven,51.7142,-5.0427,United Kingdom,GB,Pembrokeshire,,13907,13725
+Bickley,51.4003,0.0466,United Kingdom,GB,Bromley,,13904,13904
+North Hykeham,53.1819,-0.5849,United Kingdom,GB,Lincolnshire,,13884,13884
+Rustington,50.8102,-0.5052,United Kingdom,GB,West Sussex,,13883,13883
+Eastham,53.3130,-2.9620,United Kingdom,GB,Liverpool,,13882,13882
+Cosham,50.8424,-1.0660,United Kingdom,GB,Portsmouth,,13830,13830
+Kidlington,51.8230,-1.2910,United Kingdom,GB,Oxfordshire,,13723,13723
+Knottingley,53.7050,-1.2490,United Kingdom,GB,Wakefield,,13710,13710
+Otley,53.9050,-1.6870,United Kingdom,GB,Leeds,,13668,13668
+Rottingdean,50.8150,-0.0650,United Kingdom,GB,Brighton and Hove,,13651,13651
+Allestree,52.9519,-1.4856,United Kingdom,GB,Derby,,13622,13622
+Middlewich,53.1920,-2.4430,United Kingdom,GB,Cheshire East,,13595,13595
+Bredbury,53.4200,-2.1130,United Kingdom,GB,Stockport,,13593,13593
+Bridport,50.7336,-2.7584,United Kingdom,GB,Dorset,,13569,13569
+Rossington,53.4759,-1.0613,United Kingdom,GB,Doncaster,,13557,13557
+Hilsea,50.8300,-1.0700,United Kingdom,GB,Portsmouth,,13552,13552
+Clifton,53.9721,-1.0979,United Kingdom,GB,York,,13548,13548
+Milngavie,55.9421,-4.3137,United Kingdom,GB,East Dunbartonshire,,13537,12940
+Shepshed,52.7711,-1.2951,United Kingdom,GB,Leicestershire,,13505,13505
+Ystrad Mynach,51.6419,-3.2405,United Kingdom,GB,Caerphilly,,13500,13500
+Little Hulton,53.5300,-2.4180,United Kingdom,GB,Salford,,13469,13469
+Alexandria,55.9800,-4.5800,United Kingdom,GB,West Dunbartonshire,,13444,6860
+Rosyth,56.0339,-3.4323,United Kingdom,GB,Fife,,13440,13440
+Chaddesden,52.9301,-1.4383,United Kingdom,GB,Derby,,13413,13413
+Heswall,53.3280,-3.0990,United Kingdom,GB,Wirral,,13401,13401
+Amblecote,52.4600,-2.1600,United Kingdom,GB,Dudley,,13393,13393
+Saint Budeaux,50.4033,-4.1856,United Kingdom,GB,Plymouth,,13369,13369
+Egg Buckland,50.4006,-4.1136,United Kingdom,GB,Plymouth,,13351,13351
+Bacup,53.7040,-2.1990,United Kingdom,GB,Lancashire,,13323,13323
+Ampthill,52.0263,-0.4906,United Kingdom,GB,Central Bedfordshire,,13307,13307
+Shirebrook,53.2048,-1.2197,United Kingdom,GB,Derbyshire,,13300,13300
+Carluke,55.7337,-3.8343,United Kingdom,GB,South Lanarkshire,,13300,13300
+Standish,53.5860,-2.6640,United Kingdom,GB,Wigan,,13278,13278
+West Boldon,54.9447,-1.4409,United Kingdom,GB,South Tyneside,,13271,13271
+Dingle,53.3774,-2.9613,United Kingdom,GB,Liverpool,,13246,13246
+Whitby,54.4858,-0.6206,United Kingdom,GB,North Yorkshire,,13213,13213
+Walsall Wood,52.6277,-1.9301,United Kingdom,GB,Walsall,,13207,13207
+Southwick,50.8360,-0.2390,United Kingdom,GB,West Sussex,,13195,13195
+Knutsford,53.3025,-2.3708,United Kingdom,GB,Cheshire East,,13191,13191
+Broughty Ferry,56.4672,-2.8699,United Kingdom,GB,Dundee City,,13155,13155
+Hamworthy,50.7207,-2.0109,United Kingdom,GB,Poole,,13141,13141
+Fraserburgh,57.6930,-2.0050,United Kingdom,GB,Aberdeenshire,,13100,13100
+Wollaston,52.4619,-2.1663,United Kingdom,GB,Dudley,,13092,13092
+Uttoxeter,52.8980,-1.8600,United Kingdom,GB,Staffordshire,,13089,13089
+Great Driffield,54.0050,-0.4380,United Kingdom,GB,East Riding of Yorkshire,,13080,13080
+Chard,50.8728,-2.9587,United Kingdom,GB,Somerset,,13074,13074
+Goodmayes,51.5584,0.1119,United Kingdom,GB,Redbridge,,13069,13069
+Pendlebury,53.5075,-2.3154,United Kingdom,GB,Salford,,13069,13069
+Sudbury,52.0417,0.7282,United Kingdom,GB,Suffolk,,13063,13063
+Milnrow,53.6101,-2.1111,United Kingdom,GB,Rochdale,,13061,13061
+Holborn,51.5172,-0.1182,United Kingdom,GB,Camden,,13023,13023
+Brackley,52.0320,-1.1470,United Kingdom,GB,Northamptonshire,,13018,13018
+Midsomer Norton,51.2842,-2.4817,United Kingdom,GB,Bath and North East Somerset,,13000,13000
+Corsham,51.4300,-2.1900,United Kingdom,GB,Wiltshire,,13000,13000
+Cumnock,55.4529,-4.2638,United Kingdom,GB,East Ayrshire,,13000,8830
+Gornalwood,52.5230,-2.1240,United Kingdom,GB,Dudley,,12992,12992
+Yiewsley,51.5130,-0.4710,United Kingdom,GB,Hillingdon,,12979,12979
+Shenley Church End,52.0220,-0.7880,United Kingdom,GB,Milton Keynes,,12961,12961
+Flint,53.2482,-3.1358,United Kingdom,GB,Flintshire,,12953,12953
+Woolton,53.3740,-2.8650,United Kingdom,GB,Liverpool,,12921,12921
+Leagrave,51.9030,-0.4660,United Kingdom,GB,Luton,,12910,12910
+Cliftonville,51.3881,1.4046,United Kingdom,GB,Kent,,12900,12900
+Buckingham,51.9950,-0.9860,United Kingdom,GB,Buckinghamshire,,12890,12890
+Chilwell,52.9160,-1.2350,United Kingdom,GB,Nottinghamshire,,12864,12864
+Syston,52.7000,-1.0800,United Kingdom,GB,Leicestershire,,12804,12804
+Little Lever,53.5630,-2.3690,United Kingdom,GB,Bolton,,12803,12803
+Sanderstead,51.3358,-0.0818,United Kingdom,GB,Croydon,,12777,12777
+Chalfont Saint Peter,51.6070,-0.5560,United Kingdom,GB,Buckinghamshire,,12766,12766
+Ainsdale,53.6021,-3.0405,United Kingdom,GB,Sefton,,12723,12723
+Flitwick,52.0038,-0.4966,United Kingdom,GB,Central Bedfordshire,,12700,12700
+Brownhills,52.6470,-1.9330,United Kingdom,GB,Walsall,,12676,12676
+Hornsey,51.5870,-0.1180,United Kingdom,GB,Haringey,,12659,12659
+Sutton on Hull,53.7806,-0.3047,United Kingdom,GB,"Kingston upon Hull, City of",,12649,12649
+Horndean,50.9136,-0.9961,United Kingdom,GB,Hampshire,,12639,12639
+North Walsham,52.8210,1.3870,United Kingdom,GB,Norfolk,,12634,12634
+Galashiels,55.6194,-2.8033,United Kingdom,GB,"Scottish Borders, The",,12600,12600
+Selston,53.0700,-1.3000,United Kingdom,GB,Nottinghamshire,,12596,12596
+Forres,57.6080,-3.6200,United Kingdom,GB,Moray,,12587,10100
+Wordsley,52.4830,-2.1500,United Kingdom,GB,Dudley,,12582,12582
+Tranent,55.9450,-2.9540,United Kingdom,GB,East Lothian,,12582,12140
+Sidmouth,50.6800,-3.2390,United Kingdom,GB,Devon,,12569,12569
+Croxley Green,51.6470,-0.4450,United Kingdom,GB,Hertfordshire,,12562,12562
+Mablethorpe,53.3409,0.2610,United Kingdom,GB,Lincolnshire,,12531,12531
+Abergavenny,51.8240,-3.0167,United Kingdom,GB,Monmouthshire,,12515,12515
+Wolverton,52.0626,-0.8102,United Kingdom,GB,Milton Keynes,,12492,12492
+Costessey,52.6602,1.2161,United Kingdom,GB,Norfolk,,12463,12463
+Barton upon Irwell,53.4760,-2.3600,United Kingdom,GB,Salford,,12462,12462
+Bickenhill,52.4390,-1.7250,United Kingdom,GB,Solihull,,12456,12456
+Tilbury,51.4606,0.3582,United Kingdom,GB,Thurrock,,12450,12450
+Chigwell,51.6225,0.0723,United Kingdom,GB,Essex,,12449,12449
+Blunsdon Saint Andrew,51.6100,-1.7900,United Kingdom,GB,Swindon,,12414,12414
+Hersham,51.3681,-0.4008,United Kingdom,GB,Surrey,,12414,12414
+Spondon,52.9200,-1.4010,United Kingdom,GB,Derby,,12377,12377
+Ashby de la Zouch,52.7460,-1.4760,United Kingdom,GB,Leicestershire,,12370,12370
+Coseley,52.5500,-2.0830,United Kingdom,GB,Dudley,,12357,12357
+Ovenden,53.7432,-1.8779,United Kingdom,GB,Calderdale,,12351,12351
+Chepstow,51.6420,-2.6750,United Kingdom,GB,Monmouthshire,,12350,12350
+Lymm,53.3834,-2.4750,United Kingdom,GB,Cheshire East,,12350,12350
+Lye,52.4590,-2.1160,United Kingdom,GB,Dudley,,12346,12346
+Thornbury,51.6094,-2.5249,United Kingdom,GB,South Gloucestershire,,12342,12342
+Dalkeith,55.8958,-3.0583,United Kingdom,GB,Midlothian,,12342,12342
+Tonyrefail,51.5840,-3.4306,United Kingdom,GB,Rhondda Cynon Taff,,12301,12301
+New Mills,53.3670,-2.0070,United Kingdom,GB,Derbyshire,,12291,12291
+Thatto Heath,53.4352,-2.7481,United Kingdom,GB,St. Helens,,12280,12280
+Harrow on the Hill,51.5655,-0.3327,United Kingdom,GB,Harrow,,12270,12270
+Newhaven,50.8000,0.0600,United Kingdom,GB,East Sussex,,12232,12232
+Caldicot,51.5910,-2.7492,United Kingdom,GB,Monmouthshire,,12230,12230
+Olton,52.4377,-1.8058,United Kingdom,GB,Solihull,,12167,12167
+Cheadle,52.9849,-1.9865,United Kingdom,GB,Staffordshire,,12165,12165
+Bamber Bridge,53.7281,-2.6606,United Kingdom,GB,Lancashire,,12126,12126
+Huntington,53.9926,-1.0430,United Kingdom,GB,York,,12108,12108
+Sedgley,52.5400,-2.1230,United Kingdom,GB,Dudley,,12087,12087
+Beaconsfield,51.6009,-0.6347,United Kingdom,GB,Buckinghamshire,,12081,12081
+Bridgnorth,52.5350,-2.4195,United Kingdom,GB,Shropshire,,12079,12079
+Fenton,52.9977,-2.1578,United Kingdom,GB,Stoke-on-Trent,,12070,12070
+Berwick-Upon-Tweed,55.7710,-2.0070,United Kingdom,GB,Northumberland,,12043,12043
+Hwlffordd,51.8000,-4.9700,United Kingdom,GB,Pembrokeshire,,12042,12042
+Wells,51.2090,-2.6470,United Kingdom,GB,Somerset,,12000,12000
+Broxburn,55.9340,-3.4710,United Kingdom,GB,West Lothian,,12000,12000
+Warsop,53.2000,-1.1500,United Kingdom,GB,Nottinghamshire,,11999,11999
+Minehead,51.2038,-3.4738,United Kingdom,GB,Somerset,,11981,11981
+Montrose,56.7080,-2.4670,United Kingdom,GB,Angus,,11955,11955
+Broughton Astley,52.5278,-1.2275,United Kingdom,GB,Leicestershire,,11940,11940
+Sheerness,51.4410,0.7600,United Kingdom,GB,Kent,,11938,11938
+Halstead,51.9451,0.6411,United Kingdom,GB,Essex,,11906,11906
+Bargoed,51.6900,-3.2400,United Kingdom,GB,Caerphilly,,11900,11900
+Rushall,52.6110,-1.9570,United Kingdom,GB,Walsall,,11871,11871
+Snaresbrook,51.5870,0.0146,United Kingdom,GB,Redbridge,,11868,11868
+Sandown,50.6551,-1.1541,United Kingdom,GB,Isle of Wight,,11868,11868
+Hoyland Nether,53.4985,-1.4406,United Kingdom,GB,Barnsley,,11852,11852
+Ivybridge,50.3890,-3.9210,United Kingdom,GB,Devon,,11851,11851
+Torton,52.4522,-2.1606,United Kingdom,GB,Worcestershire,,11841,11841
+Trentham,52.9663,-2.1899,United Kingdom,GB,Staffordshire,,11836,11836
+Hexham,54.9710,-2.1010,United Kingdom,GB,Northumberland,,11829,11139
+Honiton,50.8000,-3.1900,United Kingdom,GB,Devon,,11822,11822
+Wath upon Dearne,53.5022,-1.3402,United Kingdom,GB,Rotherham,,11816,11816
+Street,51.1235,-2.7381,United Kingdom,GB,Somerset,,11805,11805
+Oswaldtwistle,53.7430,-2.3930,United Kingdom,GB,Lancashire,,11803,11803
+Alsager,53.0961,-2.3048,United Kingdom,GB,Cheshire East,,11775,11775
+Market Drayton,52.9044,-2.4848,United Kingdom,GB,Staffordshire,,11773,11773
+Gillingham,51.0375,-2.2748,United Kingdom,GB,Dorset,,11756,11756
+Hackney,51.5414,-0.0266,United Kingdom,GB,Hackney,,11734,11734
+Tring,51.7962,-0.6592,United Kingdom,GB,Hertfordshire,,11730,11730
+Devizes,51.3530,-1.9940,United Kingdom,GB,Wiltshire,,11715,11715
+Sowerby Bridge,53.7100,-1.9100,United Kingdom,GB,Calderdale,,11703,11703
+Risca,51.6080,-3.0910,United Kingdom,GB,Caerphilly,,11693,11693
+Leominster,52.2282,-2.7385,United Kingdom,GB,Herefordshire,,11691,11691
+Ulverston,54.1930,-3.0900,United Kingdom,GB,Cumbria,,11678,11678
+Elland,53.6830,-1.8400,United Kingdom,GB,Calderdale,,11676,11676
+Prudhoe,54.9610,-1.8490,United Kingdom,GB,Northumberland,,11675,11675
+Bolsover,53.2304,-1.2875,United Kingdom,GB,Derbyshire,,11673,11673
+Bryn,53.4990,-2.6570,United Kingdom,GB,Wigan,,11662,11662
+Sandy,52.1310,-0.2970,United Kingdom,GB,Central Bedfordshire,,11657,11657
+Henley on Thames,51.5360,-0.8980,United Kingdom,GB,Oxfordshire,,11619,11619
+Ascot,51.4084,-0.6707,United Kingdom,GB,Windsor and Maidenhead,,11603,11603
+Sunninghill,51.4050,-0.6560,United Kingdom,GB,Windsor and Maidenhead,,11603,11603
+Stonehaven,56.9640,-2.2110,United Kingdom,GB,Aberdeenshire,,11602,11602
+Abertillery,51.7300,-3.1300,United Kingdom,GB,Blaenau Gwent,,11601,11601
+Wallingford,51.5990,-1.1250,United Kingdom,GB,Oxfordshire,,11600,11600
+Thame,51.7500,-0.9700,United Kingdom,GB,Oxfordshire,,11561,11561
+Belgrave,52.6566,-1.1262,United Kingdom,GB,Leicester,,11558,11558
+Wanstead,51.5778,0.0286,United Kingdom,GB,Redbridge,,11543,11543
+Blundellsands,53.4800,-3.0500,United Kingdom,GB,Sefton,,11514,11514
+Brislington,51.4316,-2.5439,United Kingdom,GB,"Bristol, City of",,11511,11511
+Gourock,55.9538,-4.8173,United Kingdom,GB,Inverclyde,,11511,10350
+Pelsall,52.6310,-1.9720,United Kingdom,GB,Walsall,,11505,11505
+Tadley,51.3506,-1.1376,United Kingdom,GB,Hampshire,,11473,11473
+Culcheth,53.4517,-2.5218,United Kingdom,GB,Warrington,,11454,11454
+Sandridge,51.7808,-0.3038,United Kingdom,GB,Hertfordshire,,11451,11451
+Holyhead,53.3090,-4.6330,United Kingdom,GB,Isle of Anglesey,,11431,11431
+Haydock,53.4678,-2.6609,United Kingdom,GB,St. Helens,,11416,11416
+Carnoustie,56.5005,-2.7147,United Kingdom,GB,Angus,,11394,11394
+Wealdstone,51.5957,-0.3352,United Kingdom,GB,Brent,,11394,11394
+Greetland,53.6869,-1.8714,United Kingdom,GB,Calderdale,,11389,11389
+Stainland,53.6728,-1.8805,United Kingdom,GB,Calderdale,,11389,11389
+Newport,52.7691,-2.3787,United Kingdom,GB,Telford and Wrekin,,11387,11387
+Royal Wootton Bassett,51.5330,-1.9000,United Kingdom,GB,Wiltshire,,11385,11385
+Buckhurst Hill,51.6320,0.0360,United Kingdom,GB,Essex,,11380,11380
+Harrow Weald,51.6040,-0.3390,United Kingdom,GB,Harrow,,11376,11376
+Newtown,52.5132,-3.3141,United Kingdom,GB,Powys,,11357,11357
+Knowsley,53.4498,-2.8501,United Kingdom,GB,Knowsley,,11343,11343
+Wantage,51.5890,-1.4270,United Kingdom,GB,Oxfordshire,,11327,11327
+Leatherhead,51.2950,-0.3290,United Kingdom,GB,Surrey,,11316,11316
+Burslem,53.0426,-2.1879,United Kingdom,GB,Stoke-on-Trent,,11314,11314
+Oxted,51.2570,-0.0060,United Kingdom,GB,Surrey,,11314,11314
+Hipperholme,53.7258,-1.8120,United Kingdom,GB,Calderdale,,11308,11308
+Chorleywood,51.6500,-0.5100,United Kingdom,GB,Hertfordshire,,11286,11286
+Stanwell,51.4570,-0.4715,United Kingdom,GB,Surrey,,11279,11279
+Astley,53.5008,-2.4454,United Kingdom,GB,Wigan,,11270,11270
+Burtonwood,53.4302,-2.6614,United Kingdom,GB,Warrington,,11265,11265
+Maryport,54.7128,-3.4926,United Kingdom,GB,Cumbria,,11262,11262
+Saltcoats,55.6352,-4.7896,United Kingdom,GB,North Ayrshire,,11260,11260
+Holywood,54.6360,-5.8450,United Kingdom,GB,Ards and North Down,,11257,11257
+Kingsnorth,51.1178,0.8615,United Kingdom,GB,Kent,,11243,11243
+Cranleigh,51.1363,-0.4784,United Kingdom,GB,Surrey,,11241,11241
+Largs,55.7940,-4.8670,United Kingdom,GB,North Ayrshire,,11241,11241
+Crayford,51.4491,0.1812,United Kingdom,GB,Kent,,11226,11226
+Saint Ives,50.2110,-5.4800,United Kingdom,GB,Cornwall,,11226,11226
+Castle Bromwich,52.5050,-1.7856,United Kingdom,GB,Birmingham,,11217,11217
+Dorking,51.2340,-0.3318,United Kingdom,GB,Surrey,,11185,11185
+Prescot,53.4220,-2.8140,United Kingdom,GB,Knowsley,,11184,11184
+Ilfracombe,51.2080,-4.1200,United Kingdom,GB,Devon,,11184,11184
+Wootton,52.2007,-0.8857,United Kingdom,GB,Northamptonshire,,11180,11180
+Helston,50.1000,-5.2700,United Kingdom,GB,Cornwall,,11178,9780
+Shoeburyness,51.5316,0.7978,United Kingdom,GB,Southend-on-Sea,,11159,11159
+Eckington,53.3080,-1.3643,United Kingdom,GB,Derbyshire,,11152,11152
+Aylestone,52.6040,-1.1540,United Kingdom,GB,Leicester,,11151,11151
+Dorridge,52.3720,-1.7554,United Kingdom,GB,Solihull,,11140,11140
+Evington,52.6210,-1.0720,United Kingdom,GB,Leicestershire,,11133,11133
+Southborough,51.1598,0.2652,United Kingdom,GB,Kent,,11124,11124
+Iver,51.5210,-0.5070,United Kingdom,GB,Buckinghamshire,,11119,11119
+Barton upon Humber,53.6833,-0.4500,United Kingdom,GB,North Lincolnshire,,11066,11066
+Timperley,53.3870,-2.3280,United Kingdom,GB,Trafford,,11061,11061
+Whitchurch,51.4064,-2.5594,United Kingdom,GB,Bath and North East Somerset,,11061,11061
+Great Wyrley,52.6593,-2.0102,United Kingdom,GB,Staffordshire,,11060,11060
+Epping,51.7004,0.1087,United Kingdom,GB,Essex,,11047,11047
+Bottesford,53.5521,-0.6714,United Kingdom,GB,North Lincolnshire,,11038,11038
+Tavistock,50.5450,-4.1500,United Kingdom,GB,Devon,,11018,11018
+Churchdown,51.8800,-2.1700,United Kingdom,GB,Gloucestershire,,10990,10990
+Cudworth,53.5784,-1.4149,United Kingdom,GB,Barnsley,,10977,10977
+Hellesdon,52.6485,1.2509,United Kingdom,GB,Norfolk,,10957,10957
+Highgate,51.5716,-0.1448,United Kingdom,GB,Camden,,10955,10955
+Ardrossan,55.6432,-4.8097,United Kingdom,GB,North Ayrshire,,10952,10670
+Oakham,52.6705,-0.7333,United Kingdom,GB,Rutland,,10922,10922
+Ponteland,55.0480,-1.7470,United Kingdom,GB,Northumberland,,10921,10921
+Mossley,53.5147,-2.0387,United Kingdom,GB,Tameside,,10921,10921
+Hollinwood,53.5183,-2.1440,United Kingdom,GB,Oldham,,10920,10920
+Inverurie,57.2800,-2.3800,United Kingdom,GB,Aberdeenshire,,10885,10885
+Soham,52.3338,0.3361,United Kingdom,GB,Cambridgeshire,,10860,10860
+Rainhill,53.4157,-2.7625,United Kingdom,GB,St. Helens,,10853,10853
+Stranraer,54.9020,-5.0270,United Kingdom,GB,Dumfries and Galloway,,10851,10320
+Earlestown,53.4500,-2.6500,United Kingdom,GB,St. Helens,,10830,10830
+Great Harwood,53.7860,-2.4080,United Kingdom,GB,Lancashire,,10800,10800
+Methil,56.1844,-3.0223,United Kingdom,GB,Fife,,10800,10800
+Wooburn,51.5810,-0.6910,United Kingdom,GB,Buckinghamshire,,10792,10792
+Flixton,53.4470,-2.3910,United Kingdom,GB,Trafford,,10786,10786
+Parkstone,50.7100,-1.9500,United Kingdom,GB,Poole,,10779,10779
+Barnoldswick,53.9147,-2.1895,United Kingdom,GB,Lancashire,,10752,10752
+Stannington,53.3960,-1.5360,United Kingdom,GB,Sheffield,,10747,10747
+Selsey,50.7350,-0.7898,United Kingdom,GB,West Sussex,,10737,10737
+Royston,53.6100,-1.4500,United Kingdom,GB,Barnsley,,10728,10728
+Amesbury,51.1700,-1.7700,United Kingdom,GB,Wiltshire,,10724,10724
+Ross on Wye,51.9140,-2.5870,United Kingdom,GB,Herefordshire,,10700,10700
+Desborough,52.4398,-0.8172,United Kingdom,GB,Northamptonshire,,10697,10697
+Hatch End,51.6010,-0.3743,United Kingdom,GB,Harrow,,10693,10693
+Darfield,53.5380,-1.3812,United Kingdom,GB,Barnsley,,10685,10685
+Knowle,52.3881,-1.7318,United Kingdom,GB,Solihull,,10678,10678
+Aylesford,51.3033,0.4796,United Kingdom,GB,Kent,,10660,10660
+Cookstown,54.6470,-6.7450,United Kingdom,GB,Mid Ulster,,10646,10646
+North Tidworth,51.2370,-1.6640,United Kingdom,GB,Wiltshire,,10621,10621
+Longbenton,55.0000,-1.5700,United Kingdom,GB,Newcastle upon Tyne,,10617,10617
+Bishops Cleeve,51.9470,-2.0610,United Kingdom,GB,Gloucestershire,,10612,10612
+Blandford Forum,50.8560,-2.1648,United Kingdom,GB,Dorset,,10610,10610
+Englefield Green,51.4301,-0.5699,United Kingdom,GB,Surrey,,10607,10607
+Felton,51.5100,-2.5740,United Kingdom,GB,North Somerset,,10607,10607
+Kingsteignton,50.5458,-3.5962,United Kingdom,GB,Devon,,10600,10600
+Abergele,53.2800,-3.5800,United Kingdom,GB,Conwy,,10577,10577
+Southwick,54.9193,-1.4062,United Kingdom,GB,Sunderland,,10535,10535
+Whitburn,55.8621,-3.6872,United Kingdom,GB,West Lothian,,10527,10527
+Monmouth,51.8100,-2.7200,United Kingdom,GB,Monmouthshire,,10508,10508
+Ryhope,54.8679,-1.3698,United Kingdom,GB,Sunderland,,10484,10484
+Fort William,56.8198,-5.1052,United Kingdom,GB,Highland,,10459,10175
+Holbeach,52.8037,0.0154,United Kingdom,GB,Lincolnshire,,10458,10458
+Chatteris,52.4560,0.0550,United Kingdom,GB,Cambridgeshire,,10453,10453
+Eccleston,53.4539,-2.7748,United Kingdom,GB,St. Helens,,10433,10433
+Scartho,53.5399,-0.0926,United Kingdom,GB,North East Lincolnshire,,10408,10408
+Cowes,50.7595,-1.3002,United Kingdom,GB,Isle of Wight,,10405,10405
+Charlton Kings,51.8877,-2.0413,United Kingdom,GB,Gloucestershire,,10396,10396
+Ickenham,51.5580,-0.4484,United Kingdom,GB,Hillingdon,,10387,10387
+Shepton Mallet,51.1930,-2.5460,United Kingdom,GB,Somerset,,10369,10369
+Prestonpans,55.9597,-2.9610,United Kingdom,GB,East Lothian,,10360,10360
+Mildenhall,52.3446,0.5089,United Kingdom,GB,Suffolk,,10315,10315
+Broadstone,50.7605,-1.9950,United Kingdom,GB,Poole,,10303,10303
+Spitalfields,51.5166,-0.0750,United Kingdom,GB,Tower Hamlets,,10286,10286
+Cheam,51.3600,-0.2100,United Kingdom,GB,Sutton,,10285,10285
+Ludlow,52.3680,-2.7180,United Kingdom,GB,Shropshire,,10266,10266
+Appleton,53.3508,-2.5441,United Kingdom,GB,Warrington,,10265,10265
+Lemington,54.9720,-1.7230,United Kingdom,GB,Newcastle upon Tyne,,10228,10228
+Snodland,51.3280,0.4467,United Kingdom,GB,Kent,,10211,10211
+Castleton,53.5907,-2.1737,United Kingdom,GB,Rochdale,,10159,10159
+Rogerstone,51.5906,-3.0537,United Kingdom,GB,Newport,,10158,10158
+Hucclecote,51.8500,-2.1800,United Kingdom,GB,Gloucestershire,,10158,10158
+Great Missenden,51.7042,-0.7078,United Kingdom,GB,Buckinghamshire,,10138,10138
+Corfe Mullen,50.7701,-2.0175,United Kingdom,GB,Dorset,,10133,10133
+Beccles,52.4580,1.5630,United Kingdom,GB,Suffolk,,10123,10123
+Padiham,53.7970,-2.3110,United Kingdom,GB,Lancashire,,10098,10098
+Worsley,53.5093,-2.3845,United Kingdom,GB,Salford,,10090,10090
+Warfield,51.4420,-0.7370,United Kingdom,GB,Bracknell Forest,,10088,10088
+Mold,53.1660,-3.1330,United Kingdom,GB,Flintshire,,10058,10058
+Chapeltown,53.4620,-1.4660,United Kingdom,GB,Sheffield,,10043,10043
+Southwater,51.0238,-0.3526,United Kingdom,GB,West Sussex,,10025,10025
+Horbury,53.6595,-1.5566,United Kingdom,GB,Wakefield,,10002,10002
+Shevington,53.5720,-2.6900,United Kingdom,GB,Wigan,,10000,9517
+Downham Market,52.6000,0.3900,United Kingdom,GB,Norfolk,,9994,9994
+Euxton,53.6620,-2.6740,United Kingdom,GB,Lancashire,,9993,9993
+Marton,54.5406,-1.2124,United Kingdom,GB,Middlesbrough,,9990,9990
+Shildon,54.6300,-1.6500,United Kingdom,GB,Durham,,9976,9976
+Bishopstoke,50.9679,-1.3278,United Kingdom,GB,Hampshire,,9974,9974
+Aberaman,51.7000,-3.4333,United Kingdom,GB,Rhondda Cynon Taff,,9964,9964
+Birchington,51.3770,1.3050,United Kingdom,GB,Kent,,9961,9961
+Handsworth,53.3700,-1.4000,United Kingdom,GB,Sheffield,,9957,9957
+Haddington,55.9580,-2.7740,United Kingdom,GB,East Lothian,,9944,9130
+Aldenham,51.6723,-0.3546,United Kingdom,GB,Hertfordshire,,9942,9942
+Baldock,51.9900,-0.1900,United Kingdom,GB,Hertfordshire,,9900,9900
+Worth,51.1130,-0.1470,United Kingdom,GB,West Sussex,,9888,9888
+Stocksbridge,53.4780,-1.5880,United Kingdom,GB,Sheffield,,9869,9869
+Kilsyth,55.9800,-4.0600,United Kingdom,GB,North Lanarkshire,,9860,9860
+Ellon,57.3660,-2.0860,United Kingdom,GB,Aberdeenshire,,9860,9860
+Abram,53.5080,-2.5880,United Kingdom,GB,Wigan,,9855,9855
+Caernarfon,53.1400,-4.2700,United Kingdom,GB,Gwynedd,,9852,9615
+Ollerton,53.2000,-1.0200,United Kingdom,GB,Nottinghamshire,,9840,9840
+Choppington,55.1450,-1.6010,United Kingdom,GB,Northumberland,,9787,9787
+Kippax,53.7669,-1.3705,United Kingdom,GB,Leeds,,9785,9785
+Tottington,53.6130,-2.3390,United Kingdom,GB,Bury,,9783,9783
+Whitchurch,52.9690,-2.6820,United Kingdom,GB,Shropshire,,9781,9781
+Dodworth,53.5417,-1.5214,United Kingdom,GB,Barnsley,,9777,9777
+Nairn,57.5860,-3.8690,United Kingdom,GB,Highland,,9773,9773
+Balderton,53.0549,-0.7727,United Kingdom,GB,Nottinghamshire,,9757,9757
+Shepperton,51.3900,-0.4600,United Kingdom,GB,Surrey,,9753,9753
+Pembroke Dock,51.6933,-4.9458,United Kingdom,GB,Pembrokeshire,,9753,9753
+Felpham,50.7905,-0.6539,United Kingdom,GB,West Sussex,,9746,9746
+Cobham,51.3290,-0.4090,United Kingdom,GB,Surrey,,9739,9739
+Raynes Park,51.4033,-0.2321,United Kingdom,GB,Merton,,9738,9738
+Rhosllanerchrugog,53.0110,-3.0520,United Kingdom,GB,Wrexham,,9694,9694
+Lambeth,51.4903,-0.1193,United Kingdom,GB,Lambeth,,9675,9675
+Bradwell,52.0500,-0.7870,United Kingdom,GB,Milton Keynes,,9657,9657
+Glenfield,52.6491,-1.2062,United Kingdom,GB,Leicestershire,,9643,9643
+Immingham,53.6139,-0.2183,United Kingdom,GB,North East Lincolnshire,,9642,9642
+Hockley,51.6014,0.6363,United Kingdom,GB,Essex,,9616,9616
+Swanage,50.6080,-1.9600,United Kingdom,GB,Dorset,,9601,9601
+Boxley,51.3024,0.5429,United Kingdom,GB,Kent,,9554,9554
+Matlock,53.1400,-1.5500,United Kingdom,GB,Derbyshire,,9543,9543
+Newburn,54.9830,-1.7430,United Kingdom,GB,Gateshead,,9536,9536
+Skelton,54.5619,-0.9874,United Kingdom,GB,Redcar and Cleveland,,9526,9526
+Sherborne,50.9469,-2.5171,United Kingdom,GB,Dorset,,9523,9350
+Tadworth,51.2940,-0.2420,United Kingdom,GB,Surrey,,9522,9522
+Worsborough,53.5200,-1.4700,United Kingdom,GB,Barnsley,,9516,9516
+London Colney,51.7260,-0.3000,United Kingdom,GB,Hertfordshire,,9507,9507
+Emsworth,50.8490,-0.9380,United Kingdom,GB,Hampshire,,9492,9492
+Llantwit Major,51.4062,-3.4750,United Kingdom,GB,"Vale of Glamorgan, The",,9486,9486
+Bewdley,52.3752,-2.3162,United Kingdom,GB,Worcestershire,,9470,9470
+Killamarsh,53.3205,-1.3116,United Kingdom,GB,Derbyshire,,9445,9445
+South Normanton,53.1070,-1.3430,United Kingdom,GB,Derbyshire,,9445,9445
+Bradford-on-Avon,51.3470,-2.2510,United Kingdom,GB,Wiltshire,,9402,9402
+Horsell,51.3286,-0.5617,United Kingdom,GB,Surrey,,9384,9384
+Broadwater,50.8282,-0.3742,United Kingdom,GB,West Sussex,,9373,9373
+Wilnecote,52.6081,-1.6677,United Kingdom,GB,Staffordshire,,9358,9358
+Kirkwall,58.9810,-2.9600,United Kingdom,GB,Orkney Islands,,9293,7420
+Ledbury,52.0339,-2.4235,United Kingdom,GB,Herefordshire,,9290,9290
+Crigglestone,53.6440,-1.5226,United Kingdom,GB,Wakefield,,9271,9271
+Towcester,52.1300,-0.9900,United Kingdom,GB,Northamptonshire,,9252,9252
+Bowdon,53.3760,-2.3660,United Kingdom,GB,Trafford,,9228,9228
+Bude,50.8240,-4.5420,United Kingdom,GB,Cornwall,,9222,9222
+Clay Cross,53.1637,-1.4128,United Kingdom,GB,Derbyshire,,9222,9222
+Launceston,50.6350,-4.3540,United Kingdom,GB,Cornwall,,9216,9216
+Cullercoats,55.0330,-1.4330,United Kingdom,GB,North Tyneside,,9202,9202
+Cupar,56.3200,-3.0100,United Kingdom,GB,Fife,,9200,9020
+Aberbargoed,51.6968,-3.2240,United Kingdom,GB,Caerphilly,,9184,9184
+Tiptree,51.8100,0.7500,United Kingdom,GB,Essex,,9182,9182
+Burscough,53.5960,-2.8430,United Kingdom,GB,Lancashire,,9182,9182
+Yaxley,52.5200,-0.2600,United Kingdom,GB,Cambridgeshire,,9174,9174
+Pencoed,51.5228,-3.5047,United Kingdom,GB,Bridgend,,9166,9166
+Brandon,52.4474,0.6242,United Kingdom,GB,Suffolk,,9145,9145
+Larbert,56.0229,-3.8260,United Kingdom,GB,Falkirk,,9143,9143
+Bingham,52.9520,-0.9530,United Kingdom,GB,Nottinghamshire,,9131,9131
+Stevenston,55.6450,-4.7580,United Kingdom,GB,North Ayrshire,,9129,9129
+Whitnash,52.2680,-1.5240,United Kingdom,GB,Warwickshire,,9129,9129
+Usworth,54.9400,-1.5500,United Kingdom,GB,Sunderland,,9100,9100
+Portlethen,57.0610,-2.1300,United Kingdom,GB,Aberdeenshire,,9090,9090
+Dinnington,53.3667,-1.2000,United Kingdom,GB,Rotherham,,9077,9077
+Frodsham,53.2950,-2.7250,United Kingdom,GB,Cheshire West and Chester,,9077,9077
+Shanklin,50.6310,-1.1734,United Kingdom,GB,Isle of Wight,,9072,9072
+Armadale,55.8978,-3.7047,United Kingdom,GB,West Lothian,,9063,9063
+Bonhill,55.9830,-4.5670,United Kingdom,GB,West Dunbartonshire,,9050,9050
+Eaton Socon,52.2200,-0.2900,United Kingdom,GB,Cambridgeshire,,9042,9042
+Rye,50.9500,0.7300,United Kingdom,GB,East Sussex,,9041,9041
+Queensferry,55.9900,-3.3980,United Kingdom,GB,"Edinburgh, City of",,9026,9026
+Barwell,52.5682,-1.3462,United Kingdom,GB,Leicestershire,,9022,9022
+Blairgowrie,56.5916,-3.3405,United Kingdom,GB,Perth and Kinross,,9020,9020
+Bovingdon,51.7231,-0.5367,United Kingdom,GB,Hertfordshire,,9000,9000
+Dunblane,56.1838,-3.9674,United Kingdom,GB,Stirling,,9000,9000
+Ferryhill,54.6900,-1.5500,United Kingdom,GB,Durham,,8942,8942
+Hayle,50.1830,-5.4160,United Kingdom,GB,Cornwall,,8939,8939
+Glastonbury,51.1485,-2.7140,United Kingdom,GB,Somerset,,8932,8932
+Felling,54.9500,-1.5640,United Kingdom,GB,Gateshead,,8908,8908
+Great Cornard,52.0245,0.7497,United Kingdom,GB,Suffolk,,8908,8908
+Caister-on-Sea,52.6510,1.7330,United Kingdom,GB,Norfolk,,8901,8901
+Irthlingborough,52.3240,-0.6140,United Kingdom,GB,Northamptonshire,,8900,8900
+Sandiacre,52.9230,-1.2910,United Kingdom,GB,Nottinghamshire,,8889,8889
+Holywell,53.2740,-3.2230,United Kingdom,GB,Flintshire,,8886,8886
+Partick,55.8699,-4.3125,United Kingdom,GB,Glasgow City,,8884,8884
+Ifield,51.1234,-0.2073,United Kingdom,GB,West Sussex,,8882,8882
+Leven,56.1950,-2.9942,United Kingdom,GB,Fife,,8850,8850
+Rhymney,51.7590,-3.2830,United Kingdom,GB,Caerphilly,,8845,8845
+Kirk of Shotts,55.8230,-3.8040,United Kingdom,GB,North Lanarkshire,,8840,8570
+Great Dunmow,51.8730,0.3617,United Kingdom,GB,Essex,,8830,8830
+Brimington,53.2580,-1.3905,United Kingdom,GB,Derbyshire,,8788,8788
+Cherry Hinton,52.1849,0.1760,United Kingdom,GB,Cambridgeshire,,8780,8780
+Cowley,51.5280,-0.4810,United Kingdom,GB,Hillingdon,,8776,8776
+Lydney,51.7286,-2.5285,United Kingdom,GB,Gloucestershire,,8766,8766
+Cockermouth,54.6613,-3.3620,United Kingdom,GB,Cumbria,,8761,8761
+Littleport,52.4568,0.3046,United Kingdom,GB,Cambridgeshire,,8738,8738
+Atherstone,52.5787,-1.5462,United Kingdom,GB,Warwickshire,,8670,8670
+Raunds,52.3450,-0.5370,United Kingdom,GB,Northamptonshire,,8641,8641
+Chapel en le Frith,53.3220,-1.9170,United Kingdom,GB,Derbyshire,,8635,8635
+Canford Cliffs,50.7000,-1.9300,United Kingdom,GB,Bournemouth,,8620,8620
+Whitwick,52.7403,-1.3556,United Kingdom,GB,Leicestershire,,8612,8612
+Polegate,50.8216,0.2442,United Kingdom,GB,East Sussex,,8586,8586
+Oban,56.4120,-5.4720,United Kingdom,GB,Argyll and Bute,,8575,8575
+Sompting,50.8303,-0.3395,United Kingdom,GB,West Sussex,,8561,8561
+Meltham,53.5920,-1.8500,United Kingdom,GB,Kirklees,,8534,8534
+Worplesdon,51.2720,-0.6120,United Kingdom,GB,Surrey,,8529,8529
+Penkridge,52.7252,-2.1164,United Kingdom,GB,Staffordshire,,8526,8526
+Clayton le Moors,53.7750,-2.3840,United Kingdom,GB,Lancashire,,8522,8522
+Oakengates,52.6950,-2.4510,United Kingdom,GB,Telford and Wrekin,,8517,8517
+Bedwas,51.5926,-3.2061,United Kingdom,GB,Caerphilly,,8512,8512
+West Auckland,54.6318,-1.7210,United Kingdom,GB,Durham,,8509,8509
+Hughenden,51.6558,-0.7490,United Kingdom,GB,Buckinghamshire,,8506,8506
+Carlton Colville,52.4540,1.6910,United Kingdom,GB,Suffolk,,8505,8505
+Skewen,51.6609,-3.8399,United Kingdom,GB,Neath Port Talbot,,8500,8500
+Cullompton,50.8550,-3.3930,United Kingdom,GB,Devon,,8499,8499
+Blackwood,51.6700,-3.1900,United Kingdom,GB,Caerphilly,,8496,8496
+Bersted,50.7970,-0.6890,United Kingdom,GB,West Sussex,,8496,8496
+Cinderford,51.8225,-2.4989,United Kingdom,GB,Gloucestershire,,8494,8494
+Liphook,51.0760,-0.8030,United Kingdom,GB,Hampshire,,8491,8491
+Dunbar,56.0027,-2.5169,United Kingdom,GB,East Lothian,,8486,8486
+Ramsey,52.4500,-0.1200,United Kingdom,GB,Cambridgeshire,,8479,8479
+Rochford,51.5821,0.7065,United Kingdom,GB,Essex,,8471,8471
+Sawbridgeworth,51.8140,0.1500,United Kingdom,GB,Hertfordshire,,8458,8458
+Great Billing,52.2577,-0.8222,United Kingdom,GB,Northamptonshire,,8457,8457
+Narborough,52.5727,-1.2023,United Kingdom,GB,Leicestershire,,8448,8448
+Audley,53.0530,-2.3040,United Kingdom,GB,Staffordshire,,8437,8437
+Hornsea,53.9108,-0.1676,United Kingdom,GB,East Riding of Yorkshire,,8432,8432
+Haxby,54.0160,-1.0750,United Kingdom,GB,York,,8428,8428
+Welwyn,51.8310,-0.2150,United Kingdom,GB,Hertfordshire,,8425,8425
+Polesworth,52.6152,-1.6174,United Kingdom,GB,Warwickshire,,8423,8423
+Richmond,54.4030,-1.7370,United Kingdom,GB,North Yorkshire,,8413,8413
+Seaton,50.7050,-3.0780,United Kingdom,GB,Devon,,8413,8413
+Woodchurch,53.3750,-3.0840,United Kingdom,GB,Wirral,,8400,8400
+Marlborough,51.4200,-1.7300,United Kingdom,GB,Wiltshire,,8395,8395
+Annan,54.9830,-3.2660,United Kingdom,GB,Dumfries and Galloway,,8389,8389
+Yarm,54.5050,-1.3480,United Kingdom,GB,Stockton-on-Tees,,8384,8384
+Aveley,51.5018,0.2534,United Kingdom,GB,Thurrock,,8381,8381
+Peebles,55.6500,-3.1800,United Kingdom,GB,"Scottish Borders, The",,8376,8376
+Birtley,54.9000,-1.5770,United Kingdom,GB,Gateshead,,8367,8367
+Torpoint,50.3760,-4.2050,United Kingdom,GB,Cornwall,,8364,7717
+Coleford,51.7910,-2.6162,United Kingdom,GB,Gloucestershire,,8359,8359
+Windermere,54.3760,-2.9070,United Kingdom,GB,Cumbria,,8359,8359
+Glascote,52.6245,-1.6680,United Kingdom,GB,Staffordshire,,8344,8344
+Aughton,53.5420,-2.9120,United Kingdom,GB,Lancashire,,8342,8342
+Pocklington,53.9309,-0.7781,United Kingdom,GB,East Riding of Yorkshire,,8337,8337
+Harlington,53.4810,-1.1820,United Kingdom,GB,Doncaster,,8276,8276
+Buckie,57.6760,-2.9650,United Kingdom,GB,Moray,,8273,8273
+Tanfield,54.8970,-1.7030,United Kingdom,GB,Durham,,8270,8270
+Silsden,53.9140,-1.9370,United Kingdom,GB,Bradford,,8268,8268
+Paddock Wood,51.1756,0.3955,United Kingdom,GB,Kent,,8263,8263
+Hadleigh,52.0440,0.9610,United Kingdom,GB,Suffolk,,8253,8253
+Lanark,55.6749,-3.7770,United Kingdom,GB,South Lanarkshire,,8253,8253
+Brecon,51.9480,-3.3910,United Kingdom,GB,Powys,,8250,8250
+Toton,52.9070,-1.2540,United Kingdom,GB,Derbyshire,,8238,8238
+Billingshurst,51.0226,-0.4508,United Kingdom,GB,West Sussex,,8232,8232
+Mountsorrel,52.7167,-1.1500,United Kingdom,GB,Leicestershire,,8223,8223
+Radcliffe on Trent,52.9470,-1.0400,United Kingdom,GB,Nottinghamshire,,8205,8205
+Bramley,53.4253,-1.2648,United Kingdom,GB,Rotherham,,8194,8194
+Egremont,54.4840,-3.5306,United Kingdom,GB,Cumbria,,8194,8194
+Brierfield,53.8240,-2.2350,United Kingdom,GB,Lancashire,,8193,8193
+Gowerton,51.6480,-4.0430,United Kingdom,GB,Swansea,,8183,8183
+Walmer,51.2043,1.3985,United Kingdom,GB,Kent,,8178,8178
+Heybridge,51.7417,0.6897,United Kingdom,GB,Essex,,8175,8175
+Goffs Oak,51.7109,-0.0825,United Kingdom,GB,Hertfordshire,,8172,8172
+Cam,51.7000,-2.3667,United Kingdom,GB,Gloucestershire,,8152,8152
+Highworth,51.6310,-1.7120,United Kingdom,GB,Swindon,,8151,8151
+Shinfield,51.4080,-0.9470,United Kingdom,GB,Wokingham,,8136,8136
+Bucksburn,57.1770,-2.1750,United Kingdom,GB,Aberdeen City,,8131,8131
+Witley,51.1500,-0.6460,United Kingdom,GB,Surrey,,8130,8130
+Dalton in Furness,54.1544,-3.1814,United Kingdom,GB,Cumbria,,8125,8125
+Merstham,51.2640,-0.1530,United Kingdom,GB,Surrey,,8123,8123
+Wistaston,53.0821,-2.4747,United Kingdom,GB,Cheshire East,,8117,8117
+Alnwick,55.4134,-1.7069,United Kingdom,GB,Northumberland,,8116,8116
+Old Colwyn,53.2910,-3.7040,United Kingdom,GB,Conwy,,8113,8113
+Monifieth,56.4810,-2.8200,United Kingdom,GB,Angus,,8110,8110
+Ystradgynlais,51.7810,-3.7511,United Kingdom,GB,Powys,,8092,8092
+Horden,54.7640,-1.3150,United Kingdom,GB,Durham,,8087,8087
+Brightlingsea,51.8100,1.0300,United Kingdom,GB,Essex,,8076,8076
+Totnes,50.4320,-3.6840,United Kingdom,GB,Devon,,8076,8076
+Caerleon,51.6150,-2.9590,United Kingdom,GB,Newport,,8061,8061
+Stornoway,58.2090,-6.3870,United Kingdom,GB,Eilean Siar,,8038,8038
+Warlingham,51.3095,-0.0574,United Kingdom,GB,Surrey,,8036,8036
+Merrow,51.2463,-0.5279,United Kingdom,GB,Surrey,,8036,8036
+Trumpington,52.1740,0.1090,United Kingdom,GB,Cambridgeshire,,8034,8034
+Wroughton,51.5250,-1.7920,United Kingdom,GB,Swindon,,8033,8033
+Radlett,51.6850,-0.3180,United Kingdom,GB,Hertfordshire,,8024,8024
+Bearsted,51.2738,0.5789,United Kingdom,GB,Kent,,8010,8010
+Exhall,52.4700,-1.4800,United Kingdom,GB,Coventry,,8006,8006
+Hawkinge,51.1170,1.1638,United Kingdom,GB,Kent,,8002,8002
+Goring by Sea,50.8122,-0.4244,United Kingdom,GB,West Sussex,,7990,7990
+Loftus,54.5569,-0.8919,United Kingdom,GB,Redcar and Cleveland,,7988,7988
+Princes Risborough,51.7240,-0.8344,United Kingdom,GB,Buckinghamshire,,7978,7978
+Seasalter,51.3456,0.9981,United Kingdom,GB,Kent,,7967,7967
+Newbold,53.2519,-1.4461,United Kingdom,GB,Derbyshire,,7962,7962
+Coppull,53.6200,-2.6610,United Kingdom,GB,Lancashire,,7959,7959
+Harworth,53.4170,-1.0750,United Kingdom,GB,Nottinghamshire,,7948,7948
+Willerby,53.7633,-0.4504,United Kingdom,GB,East Riding of Yorkshire,,7940,7940
+Denny,56.0180,-3.9070,United Kingdom,GB,Falkirk,,7934,7934
+Thurso,58.5960,-3.5210,United Kingdom,GB,Highland,,7933,7933
+Newport-On-Tay,56.4402,-2.9410,United Kingdom,GB,Fife,,7922,4310
+Wadebridge,50.5170,-4.8350,United Kingdom,GB,Cornwall,,7900,7900
+Bollington,53.2980,-2.0930,United Kingdom,GB,Cheshire East,,7885,7095
+Binfield,51.4320,-0.7920,United Kingdom,GB,Bracknell Forest,,7880,7880
+Kinmel,53.3100,-3.5190,United Kingdom,GB,Denbighshire,,7864,7864
+Latchford,53.3796,-2.5645,United Kingdom,GB,Warrington,,7856,7856
+Sileby,52.7310,-1.1060,United Kingdom,GB,Leicestershire,,7835,7835
+Crediton,50.7910,-3.6560,United Kingdom,GB,Devon,,7835,7835
+Millom,54.2096,-3.2702,United Kingdom,GB,Cumbria,,7829,7829
+Rainworth,53.1197,-1.1235,United Kingdom,GB,Nottinghamshire,,7821,7821
+Edenbridge,51.1970,0.0650,United Kingdom,GB,Kent,,7808,7808
+Willesborough,51.1386,0.8957,United Kingdom,GB,Kent,,7800,7800
+West Thurrock,51.4836,0.2820,United Kingdom,GB,Thurrock,,7795,7795
+Rainford,53.5030,-2.7830,United Kingdom,GB,St. Helens,,7779,7779
+Annfield Plain,54.8570,-1.7370,United Kingdom,GB,Durham,,7774,7774
+Cross Gates,53.8063,-1.4506,United Kingdom,GB,Leeds,,7770,7770
+Hook,51.2773,-0.9633,United Kingdom,GB,Hampshire,,7770,7770
+Stopsley,51.8990,-0.3960,United Kingdom,GB,Luton,,7760,7760
+Woodbridge,52.0940,1.3180,United Kingdom,GB,Suffolk,,7749,7749
+Stony Stratford,52.0567,-0.8526,United Kingdom,GB,Milton Keynes,,7736,7736
+Tenterden,51.0696,0.6898,United Kingdom,GB,Kent,,7735,7735
+Stonehouse,51.7478,-2.2838,United Kingdom,GB,Gloucestershire,,7725,7725
+Byfleet,51.3400,-0.4700,United Kingdom,GB,Surrey,,7724,7724
+Longridge,53.8310,-2.5970,United Kingdom,GB,Lancashire,,7724,7724
+Rothwell,52.4254,-0.8029,United Kingdom,GB,Northamptonshire,,7694,7694
+Cromer,52.9310,1.3020,United Kingdom,GB,Norfolk,,7683,7683
+Treorchy,51.6594,-3.5055,United Kingdom,GB,Rhondda Cynon Taff,,7681,7681
+Hassocks,50.9233,-0.1509,United Kingdom,GB,West Sussex,,7667,7667
+Kingsbury,52.5614,-1.6917,United Kingdom,GB,Warwickshire,,7652,7652
+Wivenhoe,51.8667,0.9625,United Kingdom,GB,Essex,,7637,7637
+Fakenham,52.8356,0.8510,United Kingdom,GB,Norfolk,,7617,7617
+Angmering,50.8288,-0.4846,United Kingdom,GB,West Sussex,,7614,7614
+Rhôs-on-Sea,53.3090,-3.7380,United Kingdom,GB,Conwy,,7593,7593
+Sundon,51.9200,-0.4700,United Kingdom,GB,Luton,,7585,7585
+Codsall,52.6267,-2.1924,United Kingdom,GB,Staffordshire,,7582,7582
+Diss,52.3812,1.1079,United Kingdom,GB,Norfolk,,7572,7572
+Saint Agnes,50.3120,-5.2040,United Kingdom,GB,Cornwall,,7565,7565
+Banchory,57.0550,-2.4900,United Kingdom,GB,Aberdeenshire,,7560,7560
+Pembroke,51.6760,-4.9158,United Kingdom,GB,Pembrokeshire,,7552,7552
+Yatton,51.3855,-2.8256,United Kingdom,GB,North Somerset,,7552,7552
+Clydach,51.6900,-3.9100,United Kingdom,GB,Swansea,,7503,7503
+Cramond,55.9797,-3.3007,United Kingdom,GB,"Edinburgh, City of",,7502,7502
+Hucknall under Huthwaite,53.1250,-1.3010,United Kingdom,GB,Nottinghamshire,,7500,7500
+Whitworth,53.6630,-2.1770,United Kingdom,GB,Lancashire,,7500,7500
+Stonehouse,55.6968,-3.9824,United Kingdom,GB,South Lanarkshire,,7500,5500
+Currie,55.8960,-3.3074,United Kingdom,GB,"Edinburgh, City of",,7494,7494
+Dinas Powys,51.4331,-3.2134,United Kingdom,GB,"Vale of Glamorgan, The",,7490,7490
+Northam,51.0393,-4.2104,United Kingdom,GB,Devon,,7489,7489
+Strathaven,55.6770,-4.0650,United Kingdom,GB,South Lanarkshire,,7484,7350
+Norton Canes,52.6833,-1.9666,United Kingdom,GB,Staffordshire,,7479,7479
+Littleborough,53.6440,-2.0980,United Kingdom,GB,Rochdale,,7467,7467
+Boultham,53.2140,-0.5561,United Kingdom,GB,Lincolnshire,,7465,7465
+Chobham,51.3480,-0.6040,United Kingdom,GB,Surrey,,7456,7456
+Burton Latimer,52.3650,-0.6780,United Kingdom,GB,Northamptonshire,,7449,7449
+Clowne,53.2760,-1.2630,United Kingdom,GB,Derbyshire,,7447,7447
+Ripponden,53.6720,-1.9460,United Kingdom,GB,Calderdale,,7421,7421
+Waltham Cross,51.6860,-0.0331,United Kingdom,GB,Hertfordshire,,7407,7407
+Pyle,51.5291,-3.6953,United Kingdom,GB,Bridgend,,7405,7405
+Wendover,51.7680,-0.7463,United Kingdom,GB,Buckinghamshire,,7399,7399
+Harefield,51.6034,-0.4780,United Kingdom,GB,Hillingdon,,7399,7399
+Wickersley,53.4199,-1.2792,United Kingdom,GB,Rotherham,,7392,7392
+Brockworth,51.8500,-2.1500,United Kingdom,GB,Gloucestershire,,7387,7387
+Durrington,51.1990,-1.7750,United Kingdom,GB,Wiltshire,,7379,7379
+Upholland,53.5410,-2.7280,United Kingdom,GB,Lancashire,,7376,7376
+Mountain Ash,51.6814,-3.3792,United Kingdom,GB,Rhondda Cynon Taff,,7374,7374
+Crieff,56.3757,-3.8426,United Kingdom,GB,Perth and Kinross,,7368,7368
+Sheringham,52.9400,1.2130,United Kingdom,GB,Norfolk,,7367,7367
+Shenstone,52.6370,-1.8410,United Kingdom,GB,Staffordshire,,7359,7359
+Braunton,51.1100,-4.1620,United Kingdom,GB,Devon,,7353,7353
+Bannockburn,56.0900,-3.9100,United Kingdom,GB,Stirling,,7352,6840
+Greenhill,51.3600,1.1030,United Kingdom,GB,Kent,,7339,7339
+Wick,58.4540,-3.0890,United Kingdom,GB,Highland,,7333,7040
+Brewood,52.6769,-2.1738,United Kingdom,GB,Staffordshire,,7329,7329
+Partington,53.4200,-2.4300,United Kingdom,GB,Trafford,,7327,7327
+Herne,51.3492,1.1331,United Kingdom,GB,Kent,,7325,7325
+Shaftesbury,51.0059,-2.1969,United Kingdom,GB,Dorset,,7314,7314
+Southwell,53.0780,-0.9550,United Kingdom,GB,Nottinghamshire,,7297,7297
+Titchfield,50.8491,-1.2344,United Kingdom,GB,Hampshire,,7280,7280
+Bramcote,52.9340,-1.2420,United Kingdom,GB,Nottinghamshire,,7270,7270
+Swaffham,52.6529,0.6843,United Kingdom,GB,Norfolk,,7258,7258
+Roby,53.4130,-2.8520,United Kingdom,GB,Knowsley,,7254,7254
+Basing,51.2704,-1.0473,United Kingdom,GB,Hampshire,,7232,7232
+Kinvere,52.4488,-2.2280,United Kingdom,GB,Staffordshire,,7225,7225
+Peterculter,57.0970,-2.2657,United Kingdom,GB,Aberdeen City,,7220,7220
+Ruddington,52.8930,-1.1500,United Kingdom,GB,Nottinghamshire,,7216,7216
+Cotgrave,52.9140,-1.0420,United Kingdom,GB,Nottinghamshire,,7203,7203
+Watton,52.5713,0.8259,United Kingdom,GB,Norfolk,,7202,6819
+Brechin,56.7299,-2.6553,United Kingdom,GB,Angus,,7199,7199
+Whitchurch,51.2300,-1.3400,United Kingdom,GB,Hampshire,,7198,7198
+Kirkham,53.7820,-2.8700,United Kingdom,GB,Lancashire,,7194,7194
+Warsash,50.8532,-1.3010,United Kingdom,GB,Hampshire,,7183,7183
+West Mersea,51.7784,0.9168,United Kingdom,GB,Essex,,7183,7183
+Wilmington,51.4309,0.1876,United Kingdom,GB,Kent,,7178,7178
+Grove,51.6120,-1.4210,United Kingdom,GB,Oxfordshire,,7178,7178
+Claygate,51.3600,-0.3420,United Kingdom,GB,Surrey,,7168,7168
+Sawston,52.1247,0.1731,United Kingdom,GB,Cambridgeshire,,7145,7145
+Higham Ferrers,52.3057,-0.5844,United Kingdom,GB,Northamptonshire,,7145,7145
+Denham,51.5630,-0.4990,United Kingdom,GB,Buckinghamshire,,7139,7139
+Coundon,54.6637,-1.6341,United Kingdom,GB,Durham,,7139,7139
+Pershore,52.1140,-2.0800,United Kingdom,GB,Worcestershire,,7125,7125
+Faringdon,51.6570,-1.5860,United Kingdom,GB,Oxfordshire,,7121,7121
+Ashbourne,53.0160,-1.7310,United Kingdom,GB,Derbyshire,,7112,7112
+Allington,51.2903,0.5019,United Kingdom,GB,Kent,,7100,7100
+Hedon,53.7395,-0.1948,United Kingdom,GB,East Riding of Yorkshire,,7100,7100
+Wardle,53.6470,-2.1320,United Kingdom,GB,Rochdale,,7092,7092
+Calverton,53.0370,-1.0830,United Kingdom,GB,Nottinghamshire,,7076,7076
+Abersychan,51.7239,-3.0587,United Kingdom,GB,Torfaen,,7064,7064
+High Ackworth,53.6408,-1.3364,United Kingdom,GB,Wakefield,,7049,7049
+Quarrington,52.9870,-0.4304,United Kingdom,GB,Lincolnshire,,7046,7046
+Kirkleatham,54.5833,-1.0833,United Kingdom,GB,Redcar and Cleveland,,7045,7045
+Saint Peters,51.3651,1.4191,United Kingdom,GB,Kent,,7042,7042
+Burley in Wharfedale,53.9137,-1.7480,United Kingdom,GB,Bradford,,7041,7041
+Coxhoe,54.7140,-1.5030,United Kingdom,GB,Durham,,7020,7020
+East Cowes,50.7570,-1.2865,United Kingdom,GB,Isle of Wight,,7010,7010
+Shifnal,52.6650,-2.3730,United Kingdom,GB,Shropshire,,7009,7009
+Eston,54.5600,-1.1440,United Kingdom,GB,Redcar and Cleveland,,7005,7005
+Crewkerne,50.8803,-2.7939,United Kingdom,GB,Somerset,,7000,7000
+Westgate on Sea,51.3814,1.3381,United Kingdom,GB,Kent,,6996,6996
+New Romney,50.9850,0.9410,United Kingdom,GB,Kent,,6996,6996
+Warrenpoint,54.0991,-6.2490,United Kingdom,GB,"Newry, Mourne and Down",,6981,6981
+Filey,54.2101,-0.2893,United Kingdom,GB,North Yorkshire,,6981,6981
+Lerwick,60.1550,-1.1450,United Kingdom,GB,Shetland Islands,,6958,6958
+Cleator Moor,54.5211,-3.5119,United Kingdom,GB,Cumbria,,6936,6936
+Dowlais,51.7585,-3.3416,United Kingdom,GB,Merthyr Tydfil,,6926,6926
+Deeping Saint James,52.6717,-0.2995,United Kingdom,GB,Lincolnshire,,6923,6923
+Kingswood,51.2931,-0.2086,United Kingdom,GB,Surrey,,6891,6891
+Church Gresley,52.7600,-1.5660,United Kingdom,GB,Derbyshire,,6881,6881
+Carlton,52.9670,-1.0880,United Kingdom,GB,Nottinghamshire,,6881,6881
+Thornhill,53.6622,-1.6124,United Kingdom,GB,Kirklees,,6875,6875
+Bonnybridge,55.9990,-3.8870,United Kingdom,GB,Falkirk,,6870,5210
+Duntocher,55.9240,-4.4170,United Kingdom,GB,West Dunbartonshire,,6850,6850
+Fishtoft,52.9617,0.0259,United Kingdom,GB,Lincolnshire,,6835,6835
+Lochgelly,56.1282,-3.3111,United Kingdom,GB,Fife,,6834,6834
+Pontardawe,51.7220,-3.8510,United Kingdom,GB,Neath Port Talbot,,6832,6832
+Pickering,54.2439,-0.7760,United Kingdom,GB,North Yorkshire,,6830,6830
+Sturry,51.3036,1.1211,United Kingdom,GB,Kent,,6820,6820
+Gedling,52.9750,-1.0810,United Kingdom,GB,Nottinghamshire,,6817,6817
+Horncastle,53.2080,-0.1140,United Kingdom,GB,Lincolnshire,,6815,6815
+Penryn,50.1690,-5.1070,United Kingdom,GB,Cornwall,,6812,6812
+Lossiemouth,57.7189,-3.2875,United Kingdom,GB,Moray,,6803,6803
+Great Chart,51.1409,0.8372,United Kingdom,GB,Kent,,6801,6801
+Saint Blazey,50.3610,-4.7160,United Kingdom,GB,Cornwall,,6799,6799
+Park Street,51.7220,-0.3390,United Kingdom,GB,Hertfordshire,,6781,6781
+Bridge of Allan,56.1550,-3.9420,United Kingdom,GB,Stirling,,6762,5380
+Torrisholme,54.0660,-2.8300,United Kingdom,GB,Lancashire,,6755,6755
+Branston,52.7870,-1.6590,United Kingdom,GB,Staffordshire,,6749,6749
+Bolton upon Dearne,53.5197,-1.3148,United Kingdom,GB,Barnsley,,6744,6744
+Esher,51.3691,-0.3650,United Kingdom,GB,Surrey,,6743,6743
+Stepps,55.8908,-4.1522,United Kingdom,GB,North Lanarkshire,,6730,6730
+North Petherton,51.0910,-3.0130,United Kingdom,GB,Somerset,,6730,6730
+Sandycroft,53.1950,-2.9990,United Kingdom,GB,Flintshire,,6724,6724
+Bishops Waltham,50.9536,-1.2118,United Kingdom,GB,Hampshire,,6723,6723
+Llandudno Junction,53.2840,-3.8090,United Kingdom,GB,Conwy,,6722,6722
+Meopham,51.3640,0.3600,United Kingdom,GB,Kent,,6722,6722
+Cranbrook,51.0967,0.5356,United Kingdom,GB,Kent,,6717,6717
+Godmanchester,52.3176,-0.1725,United Kingdom,GB,Cambridgeshire,,6711,6711
+Crowthorne,51.3700,-0.7920,United Kingdom,GB,Bracknell Forest,,6711,6711
+Uddingston,55.8183,-4.0827,United Kingdom,GB,South Lanarkshire,,6710,6370
+Dursley,51.6811,-2.3543,United Kingdom,GB,Gloucestershire,,6697,6697
+Aintree,53.4793,-2.9373,United Kingdom,GB,Liverpool,,6689,6689
+Farington,53.7030,-2.6850,United Kingdom,GB,Lancashire,,6674,6674
+Battle,50.9200,0.4800,United Kingdom,GB,East Sussex,,6673,6673
+Kimberley,52.9970,-1.2550,United Kingdom,GB,Nottinghamshire,,6659,6659
+Sherburn in Elmet,53.7973,-1.2331,United Kingdom,GB,North Yorkshire,,6657,6657
+Sawley,52.8820,-1.2990,United Kingdom,GB,Leicestershire,,6629,6629
+Rishton,53.7701,-2.4187,United Kingdom,GB,Lancashire,,6625,6625
+Twyford,51.4770,-0.8670,United Kingdom,GB,Wokingham,,6618,6618
+North Berwick,56.0580,-2.7170,United Kingdom,GB,East Lothian,,6605,6605
+Stewarton,55.6800,-4.5150,United Kingdom,GB,East Ayrshire,,6584,6584
+Budleigh Salterton,50.6284,-3.3205,United Kingdom,GB,Devon,,6575,6575
+Southam,52.2520,-1.3900,United Kingdom,GB,Warwickshire,,6567,6567
+Lydd,50.9509,0.9064,United Kingdom,GB,Kent,,6567,6567
+Downside,51.3117,-0.4095,United Kingdom,GB,Surrey,,6564,6564
+Alvechurch,52.3506,-1.9647,United Kingdom,GB,Worcestershire,,6564,6564
+Pakefield,52.4510,1.7280,United Kingdom,GB,Suffolk,,6563,6563
+Chapelhall,55.8450,-3.9472,United Kingdom,GB,North Lanarkshire,,6560,6560
+Muxton,52.7200,-2.4210,United Kingdom,GB,Telford and Wrekin,,6557,6557
+Whetstone,52.5724,-1.1799,United Kingdom,GB,Leicestershire,,6556,6556
+Billinge,53.4932,-2.7129,United Kingdom,GB,St. Helens,,6554,6554
+Cove,51.2965,-0.7939,United Kingdom,GB,Hampshire,,6548,6548
+Dingwall,57.5970,-4.4280,United Kingdom,GB,Highland,,6545,5470
+Cwmafan,51.6155,-3.7717,United Kingdom,GB,Neath Port Talbot,,6538,6538
+Sawtry,52.4400,-0.2800,United Kingdom,GB,Cambridgeshire,,6536,6536
+Wingerworth,53.2033,-1.4347,United Kingdom,GB,Derbyshire,,6533,6533
+Kelty,56.1330,-3.3800,United Kingdom,GB,Fife,,6529,6529
+Anstey,52.6715,-1.1955,United Kingdom,GB,Leicestershire,,6528,6528
+Frampton Cotterell,51.5400,-2.4800,United Kingdom,GB,South Gloucestershire,,6520,6520
+South Elmsall,53.5959,-1.2726,United Kingdom,GB,Wakefield,,6519,6519
+Newbridge,51.6700,-3.1360,United Kingdom,GB,Caerphilly,,6509,6509
+Danbury,51.7150,0.5820,United Kingdom,GB,Essex,,6500,6500
+Coleshill,52.4990,-1.7080,United Kingdom,GB,Warwickshire,,6481,6481
+Olney,52.1529,-0.7015,United Kingdom,GB,Milton Keynes,,6477,6477
+Houston,55.8670,-4.5521,United Kingdom,GB,Renfrewshire,,6470,6430
+Bothwell,55.8023,-4.0662,United Kingdom,GB,South Lanarkshire,,6458,6380
+Whaley Bridge,53.3304,-1.9838,United Kingdom,GB,Derbyshire,,6455,6455
+Pinhoe,50.7407,-3.4672,United Kingdom,GB,Devon,,6454,6454
+Girvan,55.2382,-4.8561,United Kingdom,GB,South Ayrshire,,6450,6450
+Peasedown Saint John,51.3150,-2.4240,United Kingdom,GB,Bath and North East Somerset,,6446,6446
+Loanhead,55.8780,-3.1480,United Kingdom,GB,Midlothian,,6440,6440
+Market Weighton,53.8642,-0.6624,United Kingdom,GB,East Riding of Yorkshire,,6429,6429
+Castle Donnington,52.8444,-1.3377,United Kingdom,GB,Leicestershire,,6416,6416
+Waltham,53.5165,-0.1021,United Kingdom,GB,North East Lincolnshire,,6413,6413
+Wheathampstead,51.8120,-0.2930,United Kingdom,GB,Hertfordshire,,6410,6410
+Weaverham,53.2620,-2.5770,United Kingdom,GB,Cheshire West and Chester,,6391,6391
+Abercynon,51.6445,-3.3267,United Kingdom,GB,Rhondda Cynon Taff,,6390,6390
+Egham,51.4290,-0.5480,United Kingdom,GB,Surrey,,6384,6384
+Haworth,53.8300,-1.9600,United Kingdom,GB,Bradford,,6379,6379
+Countesthorpe,52.5550,-1.1400,United Kingdom,GB,Leicestershire,,6377,6377
+Treharris,51.6689,-3.3100,United Kingdom,GB,Merthyr Tydfil,,6356,6356
+Beith,55.7533,-4.6319,United Kingdom,GB,North Ayrshire,,6346,6040
+Long Ditton,51.3850,-0.3210,United Kingdom,GB,Surrey,,6343,6343
+East Leake,52.8320,-1.1770,United Kingdom,GB,Nottinghamshire,,6337,6337
+Chipping Norton,51.9400,-1.5500,United Kingdom,GB,Oxfordshire,,6337,6337
+Enderby,52.5881,-1.2092,United Kingdom,GB,Leicestershire,,6314,6314
+Cheddleton,53.0640,-2.0430,United Kingdom,GB,Staffordshire,,6311,6311
+Sauchie,56.1296,-3.7767,United Kingdom,GB,Clackmannanshire,,6310,6310
+Burwell,52.2750,0.3270,United Kingdom,GB,Cambridgeshire,,6309,6309
+Newbiggin-by-the-Sea,55.1830,-1.5150,United Kingdom,GB,Northumberland,,6308,6308
+Lydiate,53.5360,-2.9590,United Kingdom,GB,Sefton,,6308,6308
+Thames Ditton,51.3890,-0.3310,United Kingdom,GB,Surrey,,6307,6307
+Hadfield,53.4600,-1.9700,United Kingdom,GB,Derbyshire,,6305,6305
+Swanscombe,51.4491,0.2993,United Kingdom,GB,Kent,,6300,6300
+Liss,51.0429,-0.8918,United Kingdom,GB,Hampshire,,6291,6084
+Stainforth,53.5958,-1.0253,United Kingdom,GB,Doncaster,,6282,6282
+Pontardulais,51.7100,-4.0400,United Kingdom,GB,Swansea,,6281,6281
+Newarthill,55.8100,-3.9333,United Kingdom,GB,North Lanarkshire,,6280,6280
+Alcester,52.2150,-1.8760,United Kingdom,GB,Warwickshire,,6273,6273
+Marshfield,51.5439,-3.0469,United Kingdom,GB,Newport,,6270,6270
+Burntisland,56.0600,-3.2310,United Kingdom,GB,Fife,,6269,6269
+Handforth,53.3500,-2.2160,United Kingdom,GB,Cheshire East,,6266,6266
+Southbourne,50.8450,-0.9081,United Kingdom,GB,West Sussex,,6265,6265
+Calstock,50.4970,-4.2100,United Kingdom,GB,Devon,,6253,6253
+Thrapston,52.3970,-0.5380,United Kingdom,GB,Northamptonshire,,6239,6239
+Chalford,51.7238,-2.1491,United Kingdom,GB,Gloucestershire,,6215,6215
+Altofts,53.6970,-1.4160,United Kingdom,GB,Wakefield,,6198,6198
+Blaby,52.5724,-1.1678,United Kingdom,GB,Leicestershire,,6194,6194
+Stotfold,52.0180,-0.2280,United Kingdom,GB,Hertfordshire,,6190,6190
+Bursledon,50.8847,-1.3117,United Kingdom,GB,Hampshire,,6188,6188
+Garswood,53.4880,-2.6700,United Kingdom,GB,St. Helens,,6183,6183
+Frimley,51.3143,-0.7387,United Kingdom,GB,Surrey,,6178,6178
+Bilton,52.3594,-1.2900,United Kingdom,GB,Warwickshire,,6175,6175
+Barrowford,53.8510,-2.2210,United Kingdom,GB,Lancashire,,6171,6171
+Landore,51.6400,-3.9400,United Kingdom,GB,Swansea,,6168,6168
+Rhoose,51.3906,-3.3524,United Kingdom,GB,"Vale of Glamorgan, The",,6160,6160
+Withernsea,53.7285,0.0382,United Kingdom,GB,East Riding of Yorkshire,,6159,5980
+Colnbrook,51.4835,-0.5221,United Kingdom,GB,Slough,,6157,6157
+Malvern Link,52.1255,-2.3161,United Kingdom,GB,Worcestershire,,6155,6155
+Bulkington,52.4769,-1.4250,United Kingdom,GB,Warwickshire,,6146,6146
+Magor,51.5798,-2.8312,United Kingdom,GB,Monmouthshire,,6140,6140
+Pembury,51.1456,0.3224,United Kingdom,GB,Kent,,6128,6128
+Waddington,53.1664,-0.5389,United Kingdom,GB,Lincolnshire,,6122,6122
+Kingsbridge,50.2833,-3.7765,United Kingdom,GB,Devon,,6116,6116
+Orsett,51.5100,0.3700,United Kingdom,GB,Thurrock,,6115,6115
+Wem,52.8536,-2.7267,United Kingdom,GB,Shropshire,,6100,6100
+Stonewood,51.4450,0.2560,United Kingdom,GB,Kent,,6100,6100
+Llantwit Fardre,51.5578,-3.3341,United Kingdom,GB,Rhondda Cynon Taff,,6099,6099
+Hollington,50.8750,0.5480,United Kingdom,GB,East Sussex,,6099,6099
+Rowlands Gill,54.9209,-1.7441,United Kingdom,GB,Gateshead,,6096,6096
+Cottenham,52.2865,0.1244,United Kingdom,GB,Cambridgeshire,,6095,6095
+Chipping Ongar,51.7030,0.2440,United Kingdom,GB,Essex,,6093,6093
+Kirriemuir,56.6692,-3.0051,United Kingdom,GB,Angus,,6061,6061
+Blaenavon,51.7736,-3.0828,United Kingdom,GB,Torfaen,,6055,6055
+Balloch,56.0020,-4.5800,United Kingdom,GB,West Dunbartonshire,,6050,6050
+Strensall,54.0401,-1.0344,United Kingdom,GB,York,,6047,6047
+Long Ashton,51.4300,-2.6500,United Kingdom,GB,North Somerset,,6044,6044
+Amble,55.3306,-1.5783,United Kingdom,GB,Northumberland,,6025,6025
+Freckleton,53.7530,-2.8670,United Kingdom,GB,Lancashire,,6019,6019
+Seaton Carew,54.6628,-1.1888,United Kingdom,GB,Hartlepool,,6018,6018
+Stansted Mountfitchet,51.8980,0.1980,United Kingdom,GB,Essex,,6011,6011
+Adlington,53.6165,-2.5986,United Kingdom,GB,Lancashire,,6010,6010
+Market Deeping,52.6776,-0.3173,United Kingdom,GB,Lincolnshire,,6008,6008
+Tadcaster,53.8852,-1.2620,United Kingdom,GB,North Yorkshire,,6003,6003
+Staplehurst,51.1640,0.5530,United Kingdom,GB,Kent,,6003,6003
+Fordingbridge,50.9275,-1.7901,United Kingdom,GB,Hampshire,,5998,5998
+Highbridge,51.2189,-2.9730,United Kingdom,GB,Somerset,,5986,5986
+New Inn,51.6910,-3.0090,United Kingdom,GB,Torfaen,,5986,5986
+Ventnor,50.5976,-1.2084,United Kingdom,GB,Isle of Wight,,5976,5976
+Broughton,53.1690,-2.9850,United Kingdom,GB,Flintshire,,5974,5974
+Great Warley Street,51.6070,0.3000,United Kingdom,GB,Essex,,5973,5973
+Farnham Royal,51.5386,-0.6164,United Kingdom,GB,Buckinghamshire,,5972,5972
+Porth,51.6138,-3.4095,United Kingdom,GB,Rhondda Cynon Taff,,5970,5970
+Great Burstead,51.6040,0.4450,United Kingdom,GB,Essex,,5968,5968
+Colney Heath,51.7353,-0.2564,United Kingdom,GB,Hertfordshire,,5962,5962
+Lea Town,53.7740,-2.7950,United Kingdom,GB,Lancashire,,5962,5962
+Saltburn-by-the-Sea,54.5828,-0.9732,United Kingdom,GB,Redcar and Cleveland,,5958,5958
+Burghfield,51.4110,-1.0420,United Kingdom,GB,West Berkshire,,5955,5955
+Godstone,51.2480,-0.0640,United Kingdom,GB,Surrey,,5949,5949
+Welshpool,52.6597,-3.1473,United Kingdom,GB,Powys,,5948,5948
+Crumlin,51.6798,-3.1368,United Kingdom,GB,Caerphilly,,5947,5947
+Ormesby,54.5492,-1.1817,United Kingdom,GB,Middlesbrough,,5942,5942
+Pagham,50.7708,-0.7448,United Kingdom,GB,West Sussex,,5941,5941
+East Preston,50.8104,-0.4819,United Kingdom,GB,West Sussex,,5938,5938
+Blythebridge,52.9704,-2.0709,United Kingdom,GB,Staffordshire,,5931,5931
+Chalfont Saint Giles,51.6320,-0.5760,United Kingdom,GB,Buckinghamshire,,5925,5925
+Chinnor,51.7020,-0.9110,United Kingdom,GB,Oxfordshire,,5924,5924
+Okehampton,50.7388,-4.0041,United Kingdom,GB,Devon,,5922,5922
+Briton Ferry,51.6400,-3.8300,United Kingdom,GB,Neath Port Talbot,,5911,5911
+Tillicoultry,56.1530,-3.7420,United Kingdom,GB,Clackmannanshire,,5900,4650
+Honley,53.6027,-1.7921,United Kingdom,GB,Kirklees,,5897,5897
+Studley,52.2696,-1.8915,United Kingdom,GB,Warwickshire,,5879,5879
+Bramley,51.3290,-1.0613,United Kingdom,GB,Hampshire,,5875,5875
+Govan,55.8615,-4.3083,United Kingdom,GB,Glasgow City,,5860,5860
+Barrow upon Soar,52.7517,-1.1500,United Kingdom,GB,Leicestershire,,5856,5856
+Wellesbourne Hastings,52.1943,-1.5947,United Kingdom,GB,Warwickshire,,5849,5849
+Wigton,54.8230,-3.1590,United Kingdom,GB,Cumbria,,5831,5831
+Locharbriggs,55.1000,-3.5833,United Kingdom,GB,Dumfries and Galloway,,5830,5830
+Stoke Mandeville,51.7861,-0.7914,United Kingdom,GB,Buckinghamshire,,5825,5825
+Steyning,50.8868,-0.3279,United Kingdom,GB,West Sussex,,5812,5812
+Dyce,57.2031,-2.1920,United Kingdom,GB,Aberdeen City,,5811,5811
+Ilminster,50.9262,-2.9114,United Kingdom,GB,Somerset,,5808,5808
+Helmshore,53.6870,-2.3290,United Kingdom,GB,Lancashire,,5805,5805
+Gildersome,53.7590,-1.6322,United Kingdom,GB,Leeds,,5804,5804
+Nailsworth,51.6954,-2.2234,United Kingdom,GB,Gloucestershire,,5794,5794
+East Calder,55.8960,-3.4620,United Kingdom,GB,West Lothian,,5790,5260
+Callington,50.5030,-4.3160,United Kingdom,GB,Cornwall,,5786,5786
+Selkirk,55.5500,-2.8400,United Kingdom,GB,"Scottish Borders, The",,5784,5784
+Crofton,53.6570,-1.4270,United Kingdom,GB,Wakefield,,5781,5781
+Gorebridge,55.8436,-3.0500,United Kingdom,GB,Midlothian,,5777,5777
+Hungerford,51.4140,-1.5150,United Kingdom,GB,West Berkshire,,5767,5767
+Axminster,50.7810,-3.0000,United Kingdom,GB,Devon,,5761,5761
+Ibstock,52.6870,-1.4010,United Kingdom,GB,Leicestershire,,5760,5760
+Cheddar,51.2790,-2.7780,United Kingdom,GB,Somerset,,5755,5755
+Cumnor,51.7350,-1.3320,United Kingdom,GB,Oxfordshire,,5755,5755
+Ballingry,56.1500,-3.3333,United Kingdom,GB,Fife,,5740,5740
+Galleywood,51.6970,0.4740,United Kingdom,GB,Essex,,5738,5738
+Oundle,52.4800,-0.4720,United Kingdom,GB,Northamptonshire,,5735,5735
+Treherbert,51.6722,-3.5306,United Kingdom,GB,Rhondda Cynon Taff,,5727,5727
+Broughton,53.5638,-0.5465,United Kingdom,GB,North Lincolnshire,,5726,5726
+Sidley,50.8600,0.4700,United Kingdom,GB,East Sussex,,5718,5718
+Hoylake,53.3900,-3.1800,United Kingdom,GB,Wirral,,5710,5710
+Pinxton,53.0905,-1.3237,United Kingdom,GB,Derbyshire,,5699,5699
+Cheadle,53.3933,-2.2113,United Kingdom,GB,Stockport,,5698,5698
+Preesall,53.9170,-2.9670,United Kingdom,GB,Lancashire,,5694,5694
+Hethersett,52.5983,1.1833,United Kingdom,GB,Norfolk,,5691,5691
+Ash Vale,51.2700,-0.7200,United Kingdom,GB,Surrey,,5686,5686
+Markfield,52.6878,-1.2775,United Kingdom,GB,Leicestershire,,5681,5681
+Hordle,50.7603,-1.6212,United Kingdom,GB,Hampshire,,5654,5654
+Tarleton,53.6780,-2.8410,United Kingdom,GB,Lancashire,,5652,5652
+Littlemore,51.7200,-1.2270,United Kingdom,GB,Oxfordshire,,5646,5646
+Kelso,55.5985,-2.4336,United Kingdom,GB,"Scottish Borders, The",,5639,5639
+Elderslie,55.8306,-4.4842,United Kingdom,GB,Renfrewshire,,5634,5330
+Humberston,53.5281,-0.0249,United Kingdom,GB,North East Lincolnshire,,5634,5634
+Wadsley,53.4100,-1.5200,United Kingdom,GB,Sheffield,,5631,5631
+Wotton-under-Edge,51.6380,-2.3490,United Kingdom,GB,Gloucestershire,,5627,5627
+West Byfleet,51.3380,-0.5033,United Kingdom,GB,Surrey,,5626,5626
+Brigg,53.5529,-0.4850,United Kingdom,GB,North Lincolnshire,,5626,5626
+Radstock,51.2930,-2.4480,United Kingdom,GB,Bath and North East Somerset,,5620,5620
+Headley,51.1192,-0.8271,United Kingdom,GB,Hampshire,,5613,5613
+Leavesden Green,51.6967,-0.3991,United Kingdom,GB,Hertfordshire,,5612,5612
+Holmes Chapel,53.2040,-2.3530,United Kingdom,GB,Cheshire East,,5605,5605
+Great Bookham,51.2780,-0.3730,United Kingdom,GB,Surrey,,5596,5596
+Bagshot,51.3607,-0.6982,United Kingdom,GB,Surrey,,5592,5592
+Blean,51.3070,1.0430,United Kingdom,GB,Kent,,5589,5589
+Great Wakering,51.5516,0.8165,United Kingdom,GB,Southend-on-Sea,,5587,5587
+Marchwood,50.8900,-1.4540,United Kingdom,GB,Hampshire,,5586,5586
+Arlesey,52.0070,-0.2654,United Kingdom,GB,Central Bedfordshire,,5584,5584
+Askern,53.6167,-1.1500,United Kingdom,GB,Doncaster,,5570,5570
+Pannal,53.9609,-1.5362,United Kingdom,GB,North Yorkshire,,5562,5562
+Carnforth,54.1230,-2.7660,United Kingdom,GB,Lancashire,,5560,5560
+Lexden,51.8833,0.8667,United Kingdom,GB,Essex,,5549,5549
+Gorleston-on-Sea,52.5757,1.7235,United Kingdom,GB,Norfolk,,5548,5548
+Hengoed,51.6500,-3.2300,United Kingdom,GB,Caerphilly,,5548,5548
+Brynmawr,51.7960,-3.1830,United Kingdom,GB,Blaenau Gwent,,5530,5530
+Drighlington,53.7568,-1.6616,United Kingdom,GB,Leeds,,5528,5528
+Chickerell,50.6240,-2.5047,United Kingdom,GB,Dorset,,5515,5515
+Hartford,53.2450,-2.5490,United Kingdom,GB,Cheshire West and Chester,,5515,5515
+Leiston,52.2060,1.5790,United Kingdom,GB,Suffolk,,5508,5508
+Aylsham,52.7900,1.2560,United Kingdom,GB,Norfolk,,5504,5504
+Utley,53.8800,-1.9100,United Kingdom,GB,Bradford,,5500,5500
+Longton,53.7290,-2.7970,United Kingdom,GB,Lancashire,,5500,5500
+Bowling,55.9320,-4.4940,United Kingdom,GB,Renfrewshire,,5500,560
+Dore,53.3268,-1.5345,United Kingdom,GB,Sheffield,,5496,5496
+Wareham,50.6860,-2.1099,United Kingdom,GB,Dorset,,5496,5496
+Barnard Castle,54.5500,-1.9200,United Kingdom,GB,Durham,,5495,5495
+Drayton,52.6750,1.2250,United Kingdom,GB,Norfolk,,5489,5489
+Balerno,55.8852,-3.3375,United Kingdom,GB,"Edinburgh, City of",,5486,5486
+Tidenham,51.6605,-2.6435,United Kingdom,GB,Gloucestershire,,5486,5486
+Martlesham,52.0733,1.2818,United Kingdom,GB,Suffolk,,5478,5478
+Tetbury,51.6360,-2.1580,United Kingdom,GB,Gloucestershire,,5472,5472
+Cockenzie,55.9690,-2.9620,United Kingdom,GB,East Lothian,,5470,5470
+Thorpe,51.4069,-0.5354,United Kingdom,GB,Surrey,,5465,5465
+Rhuthun,53.1150,-3.3120,United Kingdom,GB,Denbighshire,,5461,5461
+Wyke Regis,50.5920,-2.4750,United Kingdom,GB,Dorset,,5458,5458
+Barton on Sea,50.7428,-1.6552,United Kingdom,GB,Hampshire,,5454,5454
+Griffithstown,51.6853,-3.0284,United Kingdom,GB,Torfaen,,5450,5450
+Shenfield,51.6297,0.3192,United Kingdom,GB,Essex,,5432,5432
+New Alresford,51.0907,-1.1612,United Kingdom,GB,Hampshire,,5431,5431
+Cardenden,56.1330,-3.2500,United Kingdom,GB,Fife,,5420,5420
+Ammanford,51.8000,-3.9930,United Kingdom,GB,Carmarthenshire,,5411,5411
+Bilton,54.0099,-1.5359,United Kingdom,GB,North Yorkshire,,5409,5409
+Fishguard,51.9982,-4.9804,United Kingdom,GB,Pembrokeshire,,5407,5407
+Perranzabuloe,50.3260,-5.1330,United Kingdom,GB,Cornwall,,5406,5406
+Illogan,50.2500,-5.2680,United Kingdom,GB,Cornwall,,5404,5404
+Dalry,55.7110,-4.7230,United Kingdom,GB,North Ayrshire,,5398,5360
+Brotton,54.5680,-0.9370,United Kingdom,GB,Redcar and Cleveland,,5394,5394
+Lindfield,51.0135,-0.0833,United Kingdom,GB,West Sussex,,5394,5394
+Earls Barton,52.2630,-0.7460,United Kingdom,GB,Northamptonshire,,5387,5387
+Writtle,51.7290,0.4270,United Kingdom,GB,Essex,,5383,5383
+Malmesbury,51.5840,-2.0980,United Kingdom,GB,Wiltshire,,5380,5380
+Kirton,52.9278,-0.0598,United Kingdom,GB,Lincolnshire,,5371,5371
+Freshwater,50.6826,-1.5249,United Kingdom,GB,Isle of Wight,,5369,5369
+Hartley,51.3868,0.3037,United Kingdom,GB,Kent,,5359,5359
+Abercarn,51.6490,-3.1350,United Kingdom,GB,Caerphilly,,5352,5352
+Bidford-on-Avon,52.1644,-1.8567,United Kingdom,GB,Warwickshire,,5350,5350
+Sollom,53.6620,-2.8250,United Kingdom,GB,Lancashire,,5350,5350
+Redbourn,51.8002,-0.3965,United Kingdom,GB,Hertfordshire,,5344,5344
+Newton Grange,55.8680,-3.0670,United Kingdom,GB,Midlothian,,5341,5341
+Cuddington,53.2400,-2.6000,United Kingdom,GB,Cheshire West and Chester,,5333,5333
+Newmains,55.7832,-3.8771,United Kingdom,GB,North Lanarkshire,,5329,5329
+Polmont,55.9908,-3.7064,United Kingdom,GB,Falkirk,,5321,5320
+Bourne End,51.5817,-0.7134,United Kingdom,GB,Buckinghamshire,,5320,5320
+Neilston,55.7847,-4.4234,United Kingdom,GB,East Renfrewshire,,5320,5170
+Wool,50.6789,-2.2189,United Kingdom,GB,Dorset,,5310,5310
+Alness,57.6950,-4.2580,United Kingdom,GB,Highland,,5310,5310
+Paulton,51.3069,-2.5027,United Kingdom,GB,Bath and North East Somerset,,5303,5303
+Murston,51.3410,0.7524,United Kingdom,GB,Kent,,5300,5300
+Brayton,53.7682,-1.0907,United Kingdom,GB,North Yorkshire,,5299,5299
+Roundway,51.3680,-1.9810,United Kingdom,GB,Wiltshire,,5290,5290
+Glyncorrwg,51.6776,-3.6292,United Kingdom,GB,Neath Port Talbot,,5283,5283
+Wincanton,51.0559,-2.4102,United Kingdom,GB,Somerset,,5272,5272
+Keswick,54.5999,-3.1293,United Kingdom,GB,Cumbria,,5243,5243
+Tickhill,53.4305,-1.1135,United Kingdom,GB,Doncaster,,5228,5228
+Tettenhall,52.5983,-2.1680,United Kingdom,GB,Wolverhampton,,5225,5225
+Sedgefield,54.6500,-1.4500,United Kingdom,GB,Durham,,5211,5211
+Measham,52.7061,-1.5080,United Kingdom,GB,Leicestershire,,5209,5209
+Newent,51.9302,-2.4048,United Kingdom,GB,Gloucestershire,,5207,5207
+Hunters Quay,55.9707,-4.9116,United Kingdom,GB,Argyll and Bute,,5198,5198
+Ore,50.8721,0.6085,United Kingdom,GB,East Sussex,,5195,5195
+Edwinstowe,53.1600,-1.0700,United Kingdom,GB,Nottinghamshire,,5188,5188
+Church,53.7550,-2.3860,United Kingdom,GB,Lancashire,,5186,5186
+Holytown,55.8229,-3.9701,United Kingdom,GB,North Lanarkshire,,5180,5160
+Quorndon,52.7428,-1.1700,United Kingdom,GB,Leicestershire,,5177,5177
+Holmfirth,53.5700,-1.7870,United Kingdom,GB,Kirklees,,5173,5173
+Ruskington,53.0444,-0.3875,United Kingdom,GB,Lincolnshire,,5169,5169
+Waterbeach,52.2664,0.1908,United Kingdom,GB,Cambridgeshire,,5166,5166
+Brixworth,52.3290,-0.9040,United Kingdom,GB,Northamptonshire,,5162,5162
+Woodville,52.7690,-1.5330,United Kingdom,GB,Leicestershire,,5161,5161
+Pinchbeck,52.8147,-0.1605,United Kingdom,GB,Lincolnshire,,5153,5153
+Nursling,50.9449,-1.4727,United Kingdom,GB,Hampshire,,5137,5137
+Bungay,52.4496,1.4477,United Kingdom,GB,Suffolk,,5127,5127
+Kinross,56.2050,-3.4230,United Kingdom,GB,Perth and Kinross,,5120,5120
+Cwmbach,51.7072,-3.4128,United Kingdom,GB,Rhondda Cynon Taff,,5117,5117
+Llangefni,53.2560,-4.3140,United Kingdom,GB,Isle of Anglesey,,5116,5116
+Looe,50.3540,-4.4540,United Kingdom,GB,Cornwall,,5112,5112
+Great Meols,53.4014,-3.1553,United Kingdom,GB,Wirral,,5110,5110
+Elstree,51.6400,-0.3000,United Kingdom,GB,Hertfordshire,,5110,5110
+South Molton,51.0200,-3.8300,United Kingdom,GB,Devon,,5108,5108
+Botley,50.9144,-1.2700,United Kingdom,GB,Hampshire,,5100,5100
+Grangetown,54.5800,-1.1440,United Kingdom,GB,Redcar and Cleveland,,5088,5088
+Oakley,51.2510,-1.1764,United Kingdom,GB,Hampshire,,5086,5086
+Swanwick,53.0750,-1.3980,United Kingdom,GB,Derbyshire,,5084,5084
+Baystonhill,52.6727,-2.7654,United Kingdom,GB,Shropshire,,5079,5079
+Middleton-on-Sea,50.7949,-0.6197,United Kingdom,GB,West Sussex,,5077,5077
+Kings Langley,51.7156,-0.4569,United Kingdom,GB,Hertfordshire,,5072,5072
+Harleston,52.4024,1.2996,United Kingdom,GB,Norfolk,,5067,5067
+Dartmouth,50.3510,-3.5790,United Kingdom,GB,Devon,,5064,5064
+Harlescott,52.7365,-2.7226,United Kingdom,GB,Shropshire,,5060,5060
+Turriff,57.5390,-2.4611,United Kingdom,GB,Aberdeenshire,,5060,4960
+Sheriff Hill,54.9390,-1.5860,United Kingdom,GB,Gateshead,,5051,5051
+Treforest,51.5878,-3.3222,United Kingdom,GB,Rhondda Cynon Taff,,5050,5050
+Earlswood,51.2280,-0.1710,United Kingdom,GB,Surrey,,5049,5049
+Duffield,52.9890,-1.4890,United Kingdom,GB,Derbyshire,,5046,5046
+Chipping Sodbury,51.5380,-2.3940,United Kingdom,GB,South Gloucestershire,,5045,5045
+Whiston,53.4000,-1.3200,United Kingdom,GB,Rotherham,,5042,5042
+Wirksworth,53.0820,-1.5740,United Kingdom,GB,Derbyshire,,5038,5038
+Shipston on Stour,52.0600,-1.6230,United Kingdom,GB,Warwickshire,,5038,5038
+Pyrford,51.3146,-0.5064,United Kingdom,GB,Surrey,,5022,5022
+Heage,53.0500,-1.4470,United Kingdom,GB,Derbyshire,,5013,5013
+Henfield,50.9330,-0.2770,United Kingdom,GB,West Sussex,,5012,5012
+Gresford,53.0870,-2.9660,United Kingdom,GB,Wrexham,,5010,5010
+Blackrod,53.5898,-2.5809,United Kingdom,GB,Bolton,,5001,5001
+Marston Green,52.4650,-1.7400,United Kingdom,GB,Solihull,,5000,5000
+Barton-le-Clay,51.9669,-0.4241,United Kingdom,GB,Central Bedfordshire,,5000,5000
+Galston,55.6004,-4.3798,United Kingdom,GB,East Ayrshire,,5000,4740
+Sacriston,54.8170,-1.6260,United Kingdom,GB,Durham,,4999,4999
+Thirsk,54.2327,-1.3420,United Kingdom,GB,North Yorkshire,,4998,4998
+Loughor,51.6626,-4.0646,United Kingdom,GB,Swansea,,4991,4991
+Hirwaun,51.7386,-3.4989,United Kingdom,GB,Rhondda Cynon Taff,,4990,4990
+Sandwich,51.2747,1.3389,United Kingdom,GB,Kent,,4985,4985
+Speldhurst,51.1516,0.2219,United Kingdom,GB,Kent,,4978,4978
+Helsby,53.2730,-2.7700,United Kingdom,GB,Cheshire West and Chester,,4972,4972
+Hurlford,55.5985,-4.4520,United Kingdom,GB,East Ayrshire,,4968,4620
+Hilperton,51.3300,-2.1840,United Kingdom,GB,Wiltshire,,4967,4967
+New Tredegar,51.7217,-3.2403,United Kingdom,GB,Caerphilly,,4966,4966
+Llangennech,51.6930,-4.0920,United Kingdom,GB,Carmarthenshire,,4964,4964
+Alva,56.1530,-3.7996,United Kingdom,GB,Clackmannanshire,,4960,4600
+Silverdale,53.0159,-2.2675,United Kingdom,GB,Staffordshire,,4957,4957
+Bromham,52.1454,-0.5298,United Kingdom,GB,Bedford,,4957,4957
+Hildenborough,51.2140,0.2420,United Kingdom,GB,Kent,,4954,4954
+Forest Row,51.0982,0.0334,United Kingdom,GB,East Sussex,,4954,4954
+Buntingford,51.9445,-0.0160,United Kingdom,GB,Hertfordshire,,4948,4948
+Lyneham,51.5070,-1.9660,United Kingdom,GB,Wiltshire,,4945,4945
+Sturminster Newton,50.9261,-2.3051,United Kingdom,GB,Dorset,,4945,4945
+Broseley,52.6120,-2.4810,United Kingdom,GB,Shropshire,,4929,4929
+Shefford,52.0370,-0.3320,United Kingdom,GB,Central Bedfordshire,,4928,4928
+Oxshott,51.3320,-0.3560,United Kingdom,GB,Surrey,,4922,4922
+Longfield,51.3962,0.3046,United Kingdom,GB,Kent,,4919,4919
+Midhurst,50.9850,-0.7400,United Kingdom,GB,West Sussex,,4914,4914
+Datchet,51.4841,-0.5762,United Kingdom,GB,Windsor and Maidenhead,,4913,4913
+Willaston,53.2920,-3.0050,United Kingdom,GB,Cheshire West and Chester,,4913,4913
+Hawkhurst,51.0471,0.5173,United Kingdom,GB,Kent,,4911,4911
+Cranfield,52.0699,-0.6081,United Kingdom,GB,Central Bedfordshire,,4909,4909
+Winterton,53.6549,-0.5979,United Kingdom,GB,North Lincolnshire,,4899,4899
+Ottery Saint Mary,50.7520,-3.2790,United Kingdom,GB,Devon,,4898,4898
+Inverkeithing,55.9667,-3.2139,United Kingdom,GB,Fife,,4890,4890
+Malton,54.1390,-0.7920,United Kingdom,GB,North Yorkshire,,4888,4888
+Wadhurst,51.0660,0.3300,United Kingdom,GB,East Sussex,,4883,4883
+Sunningdale,51.3980,-0.6260,United Kingdom,GB,Windsor and Maidenhead,,4875,4875
+Ffestiniog,52.9900,-3.9300,United Kingdom,GB,Gwynedd,,4875,4875
+Potton,52.1271,-0.2152,United Kingdom,GB,Central Bedfordshire,,4870,4870
+Nunthorpe,54.5287,-1.1770,United Kingdom,GB,Middlesbrough,,4866,4866
+Brampton,52.3194,-0.2335,United Kingdom,GB,Cambridgeshire,,4862,4862
+Campbeltown,55.4230,-5.6080,United Kingdom,GB,Argyll and Bute,,4852,4852
+Darenth,51.4199,0.2567,United Kingdom,GB,Kent,,4851,4851
+Rothesay,55.8360,-5.0558,United Kingdom,GB,Argyll and Bute,,4850,4390
+Garlinge,51.3781,1.3566,United Kingdom,GB,Kent,,4849,4849
+Earls Colne,51.9280,0.7020,United Kingdom,GB,Essex,,4848,4848
+Melbourne,52.8230,-1.4290,United Kingdom,GB,Derbyshire,,4843,4843
+Brymbo,53.0760,-3.0500,United Kingdom,GB,Wrexham,,4836,4836
+West Hallam,52.9700,-1.3600,United Kingdom,GB,Derbyshire,,4829,4829
+Easton-in-Gordano,51.4760,-2.7000,United Kingdom,GB,North Somerset,,4828,4828
+Crowle,53.6073,-0.8321,United Kingdom,GB,North Lincolnshire,,4828,4828
+South Cave,53.7690,-0.5980,United Kingdom,GB,East Riding of Yorkshire,,4823,4823
+Long Sutton,52.7856,0.1200,United Kingdom,GB,Lincolnshire,,4821,4821
+Old Kilpatrick,55.9250,-4.4593,United Kingdom,GB,West Dunbartonshire,,4820,4680
+Wickham,50.9000,-1.1900,United Kingdom,GB,Hampshire,,4816,4816
+Blaina,51.7667,-3.1667,United Kingdom,GB,Blaenau Gwent,,4808,4808
+Wilsden,53.8167,-1.8667,United Kingdom,GB,Bradford,,4807,4807
+Shirland,53.1210,-1.4120,United Kingdom,GB,Derbyshire,,4802,4802
+Milton Regis,51.3500,0.7500,United Kingdom,GB,Kent,,4801,4801
+Stokenchurch,51.6590,-0.8960,United Kingdom,GB,Buckinghamshire,,4801,4801
+Taibach,51.5840,-3.7690,United Kingdom,GB,Neath Port Talbot,,4799,4799
+Four Marks,51.1116,-1.0443,United Kingdom,GB,Hampshire,,4799,4799
+Heslington,53.9448,-1.0434,United Kingdom,GB,York,,4792,4792
+Shiremoor,55.0366,-1.5048,United Kingdom,GB,North Tyneside,,4782,4782
+Laleham,51.4070,-0.4880,United Kingdom,GB,Surrey,,4782,4782
+Alderley Edge,53.3030,-2.2360,United Kingdom,GB,Cheshire East,,4780,4780
+Old Windsor,51.4600,-0.5860,United Kingdom,GB,Windsor and Maidenhead,,4775,4775
+Llanbradach,51.6032,-3.2296,United Kingdom,GB,Caerphilly,,4774,4774
+Cilybebyll,51.7190,-3.8300,United Kingdom,GB,Neath Port Talbot,,4769,4769
+Martock,50.9704,-2.7653,United Kingdom,GB,Somerset,,4766,4766
+Blackburn,55.8720,-3.6210,United Kingdom,GB,West Lothian,,4761,4761
+Maybole,55.3551,-4.6800,United Kingdom,GB,South Ayrshire,,4760,4610
+Stokesley,54.4712,-1.1905,United Kingdom,GB,North Yorkshire,,4757,4757
+Benson,51.6210,-1.1110,United Kingdom,GB,Oxfordshire,,4754,4754
+Stoke Poges,51.5460,-0.5840,United Kingdom,GB,Buckinghamshire,,4752,4752
+Heacham,52.9069,0.4900,United Kingdom,GB,Norfolk,,4750,4750
+Irchester,52.2783,-0.6555,United Kingdom,GB,Northamptonshire,,4745,4745
+Uppingham,52.5900,-0.7222,United Kingdom,GB,Rutland,,4745,4745
+Gnosall,52.7850,-2.2528,United Kingdom,GB,Staffordshire,,4736,4736
+Bethesda,53.1790,-4.0600,United Kingdom,GB,Gwynedd,,4735,4735
+Keith,57.5430,-2.9520,United Kingdom,GB,Moray,,4734,4690
+Fauldhouse,55.8272,-3.7091,United Kingdom,GB,West Lothian,,4730,4730
+Bovey Tracey,50.5930,-3.6720,United Kingdom,GB,Devon,,4729,4729
+Halesworth,52.3420,1.5060,United Kingdom,GB,Suffolk,,4726,4726
+Roose,54.0960,-3.1820,United Kingdom,GB,Cumbria,,4724,4724
+Kelvedon,51.8330,0.6990,United Kingdom,GB,Essex,,4717,4717
+Almondsbury,51.5567,-2.5725,United Kingdom,GB,South Gloucestershire,,4705,4705
+Coedpoeth,53.0540,-3.0740,United Kingdom,GB,Wrexham,,4702,4702
+Greenhithe,51.4504,0.2823,United Kingdom,GB,Kent,,4700,4700
+Somerton,51.0535,-2.7361,United Kingdom,GB,Somerset,,4697,4697
+Lakenheath,52.4136,0.5226,United Kingdom,GB,Suffolk,,4691,4691
+Pulborough,50.9600,-0.5100,United Kingdom,GB,West Sussex,,4685,4685
+Milton,52.2435,0.1615,United Kingdom,GB,Cambridgeshire,,4679,4679
+Fulbourn,52.1840,0.2272,United Kingdom,GB,Cambridgeshire,,4673,4673
+Church Stretton,52.5390,-2.8080,United Kingdom,GB,Shropshire,,4671,4671
+Kirby Muxloe,52.6351,-1.2341,United Kingdom,GB,Leicestershire,,4667,4667
+Milford on Sea,50.7260,-1.5890,United Kingdom,GB,Hampshire,,4660,4660
+East Wittering,50.7694,-0.8738,United Kingdom,GB,West Sussex,,4658,4658
+Eccleshall,52.8590,-2.2510,United Kingdom,GB,Staffordshire,,4651,4651
+Eynsham,51.7810,-1.3750,United Kingdom,GB,Oxfordshire,,4648,4648
+Ringmer,50.8900,0.0500,United Kingdom,GB,East Sussex,,4648,4648
+Nelson,51.6510,-3.2830,United Kingdom,GB,Caerphilly,,4647,4647
+Bray,51.5070,-0.7000,United Kingdom,GB,Windsor and Maidenhead,,4646,4646
+Dersingham,52.8447,0.5020,United Kingdom,GB,Norfolk,,4640,4640
+Bishopton,55.9086,-4.5045,United Kingdom,GB,Renfrewshire,,4640,4640
+Sandgate,51.0740,1.1454,United Kingdom,GB,Kent,,4639,4639
+Clanfield,50.9470,-1.0081,United Kingdom,GB,Hampshire,,4637,4637
+Nantyglo,51.7828,-3.1698,United Kingdom,GB,Blaenau Gwent,,4635,4635
+Bridge of Weir,55.8565,-4.5777,United Kingdom,GB,Renfrewshire,,4635,4635
+Great Ayton,54.4957,-1.1292,United Kingdom,GB,Redcar and Cleveland,,4629,4629
+Brampton,54.9409,-2.7329,United Kingdom,GB,Cumbria,,4627,4627
+Easingwold,54.1198,-1.1897,United Kingdom,GB,North Yorkshire,,4627,4627
+Norton,53.6330,-1.1750,United Kingdom,GB,Doncaster,,4625,4625
+Mytchett,51.2943,-0.7268,United Kingdom,GB,Surrey,,4624,4624
+Kennoway,56.2000,-3.0500,United Kingdom,GB,Fife,,4610,4610
+Toddington,51.9496,-0.5323,United Kingdom,GB,Central Bedfordshire,,4590,4590
+Saint Columb Major,50.4320,-4.9400,United Kingdom,GB,Cornwall,,4587,4587
+Haxey,53.4868,-0.8462,United Kingdom,GB,North Lincolnshire,,4584,4584
+Portree,57.4120,-6.1920,United Kingdom,GB,Highland,,4571,2480
+Girton,52.2330,0.0830,United Kingdom,GB,Cambridgeshire,,4559,4559
+Stoke Prior,52.3025,-2.0849,United Kingdom,GB,Worcestershire,,4559,4559
+Marston Moretaine,52.0627,-0.5478,United Kingdom,GB,Central Bedfordshire,,4556,4556
+Borough Green,51.2913,0.3062,United Kingdom,GB,Kent,,4554,4554
+Siston,51.4746,-2.4501,United Kingdom,GB,South Gloucestershire,,4552,4552
+Skelmanthorpe,53.5910,-1.6490,United Kingdom,GB,Kirklees,,4549,4549
+Sully,51.4100,-3.2100,United Kingdom,GB,"Vale of Glamorgan, The",,4543,4543
+Wetheral,54.8800,-2.8300,United Kingdom,GB,Cumbria,,4541,4541
+Winchcomb,51.9550,-1.9650,United Kingdom,GB,Gloucestershire,,4538,4538
+Earby,53.9140,-2.1440,United Kingdom,GB,North Yorkshire,,4538,4538
+Huntington,52.7150,-2.0420,United Kingdom,GB,Staffordshire,,4536,4536
+Burnopfield,54.9070,-1.7360,United Kingdom,GB,Durham,,4533,4533
+Colwich,52.7875,-1.9806,United Kingdom,GB,Staffordshire,,4528,4528
+Linton,52.0991,0.2770,United Kingdom,GB,Cambridgeshire,,4525,4525
+Ingatestone,51.6700,0.3800,United Kingdom,GB,Essex,,4504,4504
+Haddenham,51.7710,-0.9280,United Kingdom,GB,Buckinghamshire,,4502,4502
+Lees,53.5380,-2.0690,United Kingdom,GB,Oldham,,4500,4500
+Bromyard,52.1908,-2.5068,United Kingdom,GB,Herefordshire,,4500,4500
+Menston,53.8912,-1.7344,United Kingdom,GB,Bradford,,4498,4498
+Knebworth,51.8660,-0.1840,United Kingdom,GB,Hertfordshire,,4496,4496
+Saint Athan,51.4020,-3.4160,United Kingdom,GB,"Vale of Glamorgan, The",,4495,4495
+Coalville,52.7240,-1.3690,United Kingdom,GB,Leicestershire,,4494,4494
+Dunoon,55.9509,-4.9262,United Kingdom,GB,Argyll and Bute,,4487,4487
+Ferring,50.8128,-0.4481,United Kingdom,GB,West Sussex,,4480,4480
+Kingsthorpe,52.2625,-0.9000,United Kingdom,GB,Northamptonshire,,4477,4477
+Kintore,57.2332,-2.3461,United Kingdom,GB,Aberdeenshire,,4476,4476
+Westerham,51.2713,0.0701,United Kingdom,GB,Kent,,4475,4475
+Shenley,51.6920,-0.2820,United Kingdom,GB,Hertfordshire,,4474,4474
+Chirk,52.9300,-3.0500,United Kingdom,GB,Wrexham,,4468,4375
+Lingfield,51.1750,-0.0171,United Kingdom,GB,Surrey,,4467,4467
+Cowpen,55.1270,-1.5390,United Kingdom,GB,Northumberland,,4466,4466
+Huntly,57.4460,-2.7880,United Kingdom,GB,Aberdeenshire,,4460,4460
+Blidworth,53.0980,-1.1165,United Kingdom,GB,Nottinghamshire,,4457,4457
+Sutton Bridge,52.7710,0.1874,United Kingdom,GB,Lincolnshire,,4454,4454
+Swynnerton,52.9170,-2.2170,United Kingdom,GB,Staffordshire,,4453,4453
+Newlyn,50.1010,-5.5530,United Kingdom,GB,Cornwall,,4432,4432
+New Scone,56.4180,-3.4040,United Kingdom,GB,Perth and Kinross,,4430,4430
+Wilford,52.9260,-1.1600,United Kingdom,GB,Nottinghamshire,,4428,4428
+Ludgershall,51.2560,-1.6220,United Kingdom,GB,Hampshire,,4427,4427
+Long Stratton,52.4880,1.2340,United Kingdom,GB,Norfolk,,4424,4424
+Huncoat,53.7700,-2.3400,United Kingdom,GB,Lancashire,,4418,4418
+Melbourn,52.0820,0.0205,United Kingdom,GB,Cambridgeshire,,4414,4414
+Odiham,51.2541,-0.9396,United Kingdom,GB,Hampshire,,4406,4406
+West Kilbride,55.6966,-4.8576,United Kingdom,GB,North Ayrshire,,4393,4393
+Blackwell,53.1200,-1.3540,United Kingdom,GB,Derbyshire,,4389,4389
+Fazeley,52.6154,-1.7060,United Kingdom,GB,Staffordshire,,4388,4388
+Hatfield Peverel,51.7691,0.5928,United Kingdom,GB,Essex,,4376,4376
+Steeton,53.8960,-1.9480,United Kingdom,GB,Bradford,,4375,4375
+Seaton Delaval,55.0826,-1.4778,United Kingdom,GB,Northumberland,,4371,4371
+Thringstone,52.7557,-1.3657,United Kingdom,GB,Leicestershire,,4367,4367
+Winwick,53.4306,-2.5976,United Kingdom,GB,Warrington,,4366,4366
+Penmaenmawr,53.2700,-3.9280,United Kingdom,GB,Conwy,,4353,4353
+Llanasa,53.3220,-3.3440,United Kingdom,GB,Flintshire,,4353,4353
+Seamer,54.2383,-0.4410,United Kingdom,GB,North Yorkshire,,4335,4335
+Bransgore,50.7800,-1.7330,United Kingdom,GB,Hampshire,,4333,4333
+Burstow,51.1685,-0.1105,United Kingdom,GB,Surrey,,4333,4333
+Kessingland,52.4190,1.7230,United Kingdom,GB,Suffolk,,4327,4327
+Welton,53.3029,-0.4759,United Kingdom,GB,Lincolnshire,,4327,4327
+Albrighton,52.6344,-2.2770,United Kingdom,GB,Shropshire,,4326,4326
+North Hinksey,51.7490,-1.2920,United Kingdom,GB,Oxfordshire,,4316,4316
+Overton,51.2439,-1.2615,United Kingdom,GB,Hampshire,,4315,4315
+Carcroft,53.5800,-1.1700,United Kingdom,GB,Doncaster,,4312,4312
+Fremington,51.0700,-4.1200,United Kingdom,GB,Devon,,4310,4310
+Finedon,52.3400,-0.6490,United Kingdom,GB,Northamptonshire,,4309,4309
+Lawford,51.9400,1.0450,United Kingdom,GB,Essex,,4302,4302
+Kirkburton,53.6100,-1.7030,United Kingdom,GB,Kirklees,,4299,4299
+Cwm,51.7409,-3.1812,United Kingdom,GB,Blaenau Gwent,,4295,4295
+Cuffley,51.7109,-0.1134,United Kingdom,GB,Hertfordshire,,4295,4295
+Disley,53.3570,-2.0430,United Kingdom,GB,Stockport,,4294,4294
+Horsehay,52.6560,-2.4900,United Kingdom,GB,Telford and Wrekin,,4292,4292
+East Horsley,51.2610,-0.4330,United Kingdom,GB,Surrey,,4290,4290
+Hagley,52.4300,-2.1200,United Kingdom,GB,Worcestershire,,4283,4283
+Glynneath,51.7470,-3.6170,United Kingdom,GB,Neath Port Talbot,,4278,4278
+Saint Osyth,51.7990,1.0800,United Kingdom,GB,Essex,,4277,4277
+Ruabon,52.9860,-3.0390,United Kingdom,GB,Wrexham,,4274,4274
+Southminster,51.6598,0.8310,United Kingdom,GB,Essex,,4272,4272
+Garstang,53.9030,-2.7670,United Kingdom,GB,Lancashire,,4268,4268
+Nazeing,51.7367,0.0587,United Kingdom,GB,Essex,,4267,4267
+Eccleston,53.6470,-2.7260,United Kingdom,GB,Lancashire,,4263,4263
+Chartham,51.2645,1.0410,United Kingdom,GB,Kent,,4261,4261
+South Wootton,52.7794,0.4426,United Kingdom,GB,Norfolk,,4247,4247
+Send,51.2878,-0.5263,United Kingdom,GB,Surrey,,4245,4245
+Newhouse,55.8317,-3.9280,United Kingdom,GB,North Lanarkshire,,4245,4245
+Shelford,52.1503,0.1357,United Kingdom,GB,Cambridgeshire,,4233,4233
+Hunstanton,52.9300,0.4800,United Kingdom,GB,Norfolk,,4229,4229
+Dalbeattie,54.9320,-3.8220,United Kingdom,GB,Dumfries and Galloway,,4227,4200
+Cricklade,51.6410,-1.8560,United Kingdom,GB,Wiltshire,,4227,4227
+Barton under Needwood,52.7630,-1.7270,United Kingdom,GB,Staffordshire,,4225,4225
+Hope,53.1077,-3.0366,United Kingdom,GB,Flintshire,,4224,4224
+Madeley,53.0010,-2.3410,United Kingdom,GB,Staffordshire,,4222,4222
+Crowland,52.6768,-0.1688,United Kingdom,GB,Lincolnshire,,4211,4211
+Bulford,51.1900,-1.7610,United Kingdom,GB,Wiltshire,,4201,4201
+Hugglescote,52.7110,-1.3710,United Kingdom,GB,Leicestershire,,4189,4189
+Porthmadog,52.9270,-4.1320,United Kingdom,GB,Gwynedd,,4185,4185
+Cardigan,52.0842,-4.6579,United Kingdom,GB,Ceredigion,,4184,4184
+Whittington,53.2600,-1.4300,United Kingdom,GB,Derbyshire,,4181,4181
+Ferndale,51.6610,-3.4480,United Kingdom,GB,Rhondda Cynon Taff,,4178,4178
+Grenoside,53.4410,-1.5020,United Kingdom,GB,Sheffield,,4177,4177
+Castle Douglas,54.9410,-3.9290,United Kingdom,GB,Dumfries and Galloway,,4174,4080
+Copmanthorpe,53.9160,-1.1330,United Kingdom,GB,York,,4173,4173
+Loudwater,51.6060,-0.6923,United Kingdom,GB,Buckinghamshire,,4170,4170
+Ashburton,50.5170,-3.7510,United Kingdom,GB,Devon,,4170,4170
+Wingate,54.7349,-1.3801,United Kingdom,GB,Durham,,4168,4168
+Bagillt,53.2680,-3.1680,United Kingdom,GB,Flintshire,,4165,4165
+Bugle,50.3960,-4.7930,United Kingdom,GB,Cornwall,,4164,4164
+Horsford,52.7007,1.2412,United Kingdom,GB,Norfolk,,4163,4163
+Oystermouth,51.5758,-4.0072,United Kingdom,GB,Swansea,,4160,4160
+Beddau,51.5560,-3.3577,United Kingdom,GB,Rhondda Cynon Taff,,4156,4156
+Milford,51.1700,-0.6500,United Kingdom,GB,Surrey,,4156,4156
+Wootton,52.0987,-0.5319,United Kingdom,GB,Bedford,,4156,4156
+Shalford,51.2110,-0.5680,United Kingdom,GB,Surrey,,4142,4142
+Howden,53.7441,-0.8634,United Kingdom,GB,East Riding of Yorkshire,,4142,4142
+Standon,51.8827,0.0292,United Kingdom,GB,Hertfordshire,,4141,4141
+Llanllyfni,53.0450,-4.2820,United Kingdom,GB,Gwynedd,,4135,4135
+Keele,53.0044,-2.2871,United Kingdom,GB,Staffordshire,,4129,4129
+Bolton le Sands,54.1040,-2.7910,United Kingdom,GB,Lancashire,,4127,4127
+Llantarnam,51.6360,-3.0056,United Kingdom,GB,Torfaen,,4125,4125
+Terrington Saint Clement,52.7546,0.2947,United Kingdom,GB,Norfolk,,4125,4125
+Mauchline,55.5160,-4.3790,United Kingdom,GB,East Ayrshire,,4105,4010
+Skellow,53.5800,-1.1900,United Kingdom,GB,Doncaster,,4103,4103
+Lambourn,51.5090,-1.5310,United Kingdom,GB,West Berkshire,,4103,4103
+Lennoxtown,55.9740,-4.2060,United Kingdom,GB,East Dunbartonshire,,4094,4094
+Newton Stewart,54.9580,-4.4920,United Kingdom,GB,Dumfries and Galloway,,4092,4080
+Jedburgh,55.4770,-2.5460,United Kingdom,GB,"Scottish Borders, The",,4090,4030
+Boston Spa,53.9040,-1.3500,United Kingdom,GB,Leeds,,4079,4079
+Pwllheli,52.8870,-4.4180,United Kingdom,GB,Gwynedd,,4076,4076
+Invergordon,57.6879,-4.1570,United Kingdom,GB,Highland,,4075,3980
+Saltford,51.4015,-2.4592,United Kingdom,GB,Bath and North East Somerset,,4073,4073
+Bare,54.0760,-2.8370,United Kingdom,GB,Lancashire,,4067,4067
+Cowbridge,51.4605,-3.4480,United Kingdom,GB,"Vale of Glamorgan, The",,4063,4063
+Cold Ash,51.4240,-1.2640,United Kingdom,GB,West Berkshire,,4063,4063
+Theydon Bois,51.6713,0.1034,United Kingdom,GB,Essex,,4062,4062
+Thrybergh,53.4500,-1.3000,United Kingdom,GB,Rotherham,,4058,4058
+Easington,54.8060,-1.4323,United Kingdom,GB,Durham,,4044,4044
+Baxenden,53.7340,-2.3410,United Kingdom,GB,Lancashire,,4042,4042
+Hesketh Bank,53.7080,-2.8490,United Kingdom,GB,Lancashire,,4041,4041
+Altarnun,50.6030,-4.5110,United Kingdom,GB,Cornwall,,4038,4038
+Bar Hill,52.2539,0.0228,United Kingdom,GB,Cambridgeshire,,4032,4032
+Brundall,52.6244,1.4337,United Kingdom,GB,Norfolk,,4019,4019
+Branston,53.1944,-0.4717,United Kingdom,GB,Lincolnshire,,4019,4019
+Willingham,52.3200,0.0700,United Kingdom,GB,Cambridgeshire,,4015,4015
+Kemsing,51.3071,0.2252,United Kingdom,GB,Kent,,4014,4014
+Wraysbury,51.4580,-0.5520,United Kingdom,GB,Windsor and Maidenhead,,4011,4011
+Chudleigh,50.6040,-3.6050,United Kingdom,GB,Devon,,4011,4011
+Lockerbie,55.1200,-3.3570,United Kingdom,GB,Dumfries and Galloway,,4009,4009
+Woodhall Spa,53.1515,-0.2183,United Kingdom,GB,Lincolnshire,,4003,4003
+Kings Worthy,51.0878,-1.2953,United Kingdom,GB,Hampshire,,4000,4000
+Blaenau-Ffestiniog,52.9940,-3.9390,United Kingdom,GB,Gwynedd,,4000,4000
+Kilmacolm,55.8941,-4.6271,United Kingdom,GB,Inverclyde,,4000,4000
+Sible Hedingham,51.9667,0.5833,United Kingdom,GB,Essex,,3994,3994
+Warboys,52.4000,-0.0700,United Kingdom,GB,Cambridgeshire,,3994,3994
+Saxilby,53.2714,-0.6560,United Kingdom,GB,Lincolnshire,,3992,3992
+Banff,57.6670,-2.5240,United Kingdom,GB,Aberdeenshire,,3991,3991
+Hadlow,51.2303,0.3404,United Kingdom,GB,Kent,,3983,3983
+Ormesby Saint Margaret,52.6746,1.6975,United Kingdom,GB,Norfolk,,3974,3974
+Broomfield,51.7650,0.4710,United Kingdom,GB,Essex,,3971,3971
+Bisley,51.3300,-0.6400,United Kingdom,GB,Surrey,,3965,3965
+Higham,51.4150,0.4630,United Kingdom,GB,Kent,,3962,3962
+Elm,52.6300,0.1800,United Kingdom,GB,Cambridgeshire,,3962,3962
+Penn,51.6330,-0.6810,United Kingdom,GB,Buckinghamshire,,3961,3961
+Elmswell,52.2372,0.9113,United Kingdom,GB,Suffolk,,3950,3950
+Mytholmroyd,53.7300,-1.9810,United Kingdom,GB,Calderdale,,3949,3949
+Bakewell,53.2130,-1.6759,United Kingdom,GB,Derbyshire,,3949,3949
+Ynysddu,51.6267,-3.1861,United Kingdom,GB,Caerphilly,,3948,3948
+Auchterarder,56.2932,-3.7061,United Kingdom,GB,Perth and Kinross,,3945,3945
+Ushaw Moor,54.7780,-1.6457,United Kingdom,GB,Durham,,3941,3941
+Deganwy,53.2980,-3.8310,United Kingdom,GB,Conwy,,3936,3936
+Tayport,56.4467,-2.8796,United Kingdom,GB,Fife,,3920,3810
+Coggeshall,51.8717,0.6913,United Kingdom,GB,Essex,,3919,3919
+Long Melford,52.0770,0.7180,United Kingdom,GB,Suffolk,,3918,3918
+Shedfield,50.9150,-1.2091,United Kingdom,GB,Hampshire,,3914,3914
+Long Buckby,52.3030,-1.0810,United Kingdom,GB,Northamptonshire,,3913,3913
+Edwalton,52.9120,-1.1120,United Kingdom,GB,Nottinghamshire,,3908,3908
+Wheatley,51.7470,-1.1390,United Kingdom,GB,Oxfordshire,,3905,3905
+Market Rasen,53.3871,-0.3355,United Kingdom,GB,Lincolnshire,,3904,3904
+Hardwicke,51.8139,-2.2847,United Kingdom,GB,Gloucestershire,,3901,3901
+Whyteleafe,51.3088,-0.0833,United Kingdom,GB,Surrey,,3900,3900
+Whitwell,53.2850,-1.2090,United Kingdom,GB,Derbyshire,,3900,3900
+Purton,51.5880,-1.8670,United Kingdom,GB,Wiltshire,,3897,3897
+Rothley,52.7090,-1.1360,United Kingdom,GB,Leicestershire,,3897,3897
+North Ferriby,53.7200,-0.5078,United Kingdom,GB,East Riding of Yorkshire,,3893,3893
+Hartshorne,52.7890,-1.5260,United Kingdom,GB,Derbyshire,,3888,3888
+Warmsworth,53.5000,-1.1800,United Kingdom,GB,Doncaster,,3887,3887
+Chasetown,52.6700,-1.9200,United Kingdom,GB,Staffordshire,,3885,3885
+River,51.1447,1.2797,United Kingdom,GB,Kent,,3876,3876
+Hindhead,51.1172,-0.7348,United Kingdom,GB,Surrey,,3874,3874
+North Elmsall,53.6090,-1.2820,United Kingdom,GB,Wakefield,,3873,3873
+Ticehurst,51.0500,0.4100,United Kingdom,GB,East Sussex,,3873,3873
+Kemnay,57.2339,-2.4489,United Kingdom,GB,Aberdeenshire,,3870,3870
+Beaufort,51.7970,-3.2060,United Kingdom,GB,Blaenau Gwent,,3866,3866
+Coningsby,53.1051,-0.1752,United Kingdom,GB,Lincolnshire,,3864,3864
+Mayland,51.6870,0.7540,United Kingdom,GB,Essex,,3855,3855
+Pengam,51.6663,-3.2189,United Kingdom,GB,Caerphilly,,3848,3848
+Wrockwardine,52.7030,-2.5560,United Kingdom,GB,Telford and Wrekin,,3838,3838
+Linthwaite,53.6264,-1.8461,United Kingdom,GB,Kirklees,,3835,3835
+Ellesmere,52.9082,-2.8944,United Kingdom,GB,Shropshire,,3835,3835
+Capel,51.1540,-0.3210,United Kingdom,GB,Surrey,,3832,3832
+Brynna,51.5388,-3.4632,United Kingdom,GB,Rhondda Cynon Taff,,3818,3818
+Deanshanger,52.0473,-0.8928,United Kingdom,GB,Northamptonshire,,3817,3817
+Bowness-on-Windermere,54.3644,-2.9181,United Kingdom,GB,Cumbria,,3814,3814
+Holt,52.9000,1.0900,United Kingdom,GB,Norfolk,,3810,3810
+Stratfield Mortimer,51.3730,-1.0370,United Kingdom,GB,West Berkshire,,3807,3807
+Somersham,52.3823,0.0006,United Kingdom,GB,Cambridgeshire,,3802,3802
+Swanland,53.7399,-0.4905,United Kingdom,GB,East Riding of Yorkshire,,3802,3802
+Poringland,52.5655,1.3503,United Kingdom,GB,Norfolk,,3802,3802
+Belhelvie,57.2490,-2.0880,United Kingdom,GB,Aberdeenshire,,3802,3802
+Upper Beeding,50.8823,-0.3051,United Kingdom,GB,West Sussex,,3798,3798
+Stoney Stanton,52.5480,-1.2788,United Kingdom,GB,Leicestershire,,3793,3793
+Walton le Dale,53.7460,-2.6650,United Kingdom,GB,Lancashire,,3792,3792
+Banks,53.6830,-2.9170,United Kingdom,GB,Lancashire,,3792,3792
+Haltwhistle,54.9700,-2.4580,United Kingdom,GB,Northumberland,,3791,3791
+Amlwch,53.4060,-4.3410,United Kingdom,GB,Isle of Anglesey,,3789,3789
+Tibshelf,53.1430,-1.3450,United Kingdom,GB,Derbyshire,,3787,3787
+Watchet,51.1795,-3.3242,United Kingdom,GB,Somerset,,3785,3785
+Gullane,56.0370,-2.8270,United Kingdom,GB,East Lothian,,3783,2650
+Tenbury,52.3100,-2.5900,United Kingdom,GB,Worcestershire,,3777,3777
+Macduff,57.6710,-2.4970,United Kingdom,GB,Aberdeenshire,,3767,3767
+Dymchurch,51.0270,1.0000,United Kingdom,GB,Kent,,3752,3752
+Tonypandy,51.6223,-3.4512,United Kingdom,GB,Rhondda Cynon Taff,,3750,3750
+Wyberton,52.9540,-0.0412,United Kingdom,GB,Lincolnshire,,3747,3747
+Worlingham,52.4520,1.5950,United Kingdom,GB,Suffolk,,3745,3745
+Auckley,53.5020,-1.0180,United Kingdom,GB,Doncaster,,3745,3745
+Lamesley,54.9160,-1.6080,United Kingdom,GB,Gateshead,,3742,3742
+Melton,52.1058,1.3317,United Kingdom,GB,Suffolk,,3741,3741
+Epworth,53.5250,-0.8200,United Kingdom,GB,North Lincolnshire,,3734,3734
+Harewood,53.9000,-1.5100,United Kingdom,GB,Leeds,,3734,3734
+Topsham,50.6860,-3.4651,United Kingdom,GB,Devon,,3730,3730
+Addingham,53.9333,-1.8833,United Kingdom,GB,Bradford,,3730,3730
+Marden,51.1740,0.4940,United Kingdom,GB,Kent,,3724,3724
+Messingham,53.5273,-0.6535,United Kingdom,GB,North Lincolnshire,,3718,3718
+Spixworth,52.6895,1.3268,United Kingdom,GB,Norfolk,,3718,3718
+Sutton-in-Craven,53.8920,-1.9930,United Kingdom,GB,North Yorkshire,,3714,3714
+Rhuddlan,53.2940,-3.4640,United Kingdom,GB,Denbighshire,,3709,3709
+Feock,50.2060,-5.0500,United Kingdom,GB,Cornwall,,3708,3708
+Caddington,51.8631,-0.4568,United Kingdom,GB,Central Bedfordshire,,3703,3703
+Garelochhead,56.0810,-4.8300,United Kingdom,GB,Argyll and Bute,,3700,3700
+Holton le Clay,53.5055,-0.0585,United Kingdom,GB,Lincolnshire,,3691,3691
+Pirbright,51.2860,-0.6390,United Kingdom,GB,Surrey,,3691,3691
+Bembridge,50.6897,-1.0889,United Kingdom,GB,Isle of Wight,,3688,3688
+Lesmahagow,55.6380,-3.8870,United Kingdom,GB,South Lanarkshire,,3685,3685
+Aston Clinton,51.7990,-0.7210,United Kingdom,GB,Buckinghamshire,,3682,3682
+Desford,52.6250,-1.2950,United Kingdom,GB,Leicestershire,,3676,3676
+Old Brampton,53.2432,-1.4994,United Kingdom,GB,Derbyshire,,3676,3676
+Highcliffe,50.7414,-1.6959,United Kingdom,GB,Dorset,,3673,3673
+Taff’s Well,51.5454,-3.2702,United Kingdom,GB,Cardiff,,3672,3672
+Corbridge,54.9750,-2.0170,United Kingdom,GB,Northumberland,,3672,3672
+Lyme Regis,50.7250,-2.9400,United Kingdom,GB,Dorset,,3671,3671
+Dobwalls,50.4577,-4.5158,United Kingdom,GB,Cornwall,,3662,3662
+Llangollen,52.9700,-3.1700,United Kingdom,GB,Denbighshire,,3658,3658
+Maresfield,51.0000,0.0900,United Kingdom,GB,East Sussex,,3656,3656
+Pilning,51.5640,-2.6417,United Kingdom,GB,South Gloucestershire,,3647,3647
+Saxmundham,52.2150,1.4870,United Kingdom,GB,Suffolk,,3644,3644
+Clapham,52.1649,-0.5020,United Kingdom,GB,Bedford,,3643,3643
+Llanharry,51.5130,-3.4300,United Kingdom,GB,Rhondda Cynon Taff,,3643,3643
+Llanfairfechan,53.2530,-3.9730,United Kingdom,GB,Conwy,,3637,3637
+Stoneleigh,52.3514,-1.5147,United Kingdom,GB,Warwickshire,,3636,3636
+Penclawdd,51.6410,-4.0977,United Kingdom,GB,Swansea,,3635,3635
+Pewsey,51.3390,-1.7650,United Kingdom,GB,Wiltshire,,3634,3634
+Whalley,53.8240,-2.4040,United Kingdom,GB,Lancashire,,3629,3629
+Kilbarchan,55.8362,-4.5537,United Kingdom,GB,Renfrewshire,,3622,3480
+Kilburn,53.0056,-1.4254,United Kingdom,GB,Derbyshire,,3618,3618
+Aviemore,57.1940,-3.8230,United Kingdom,GB,Highland,,3613,3240
+Wembdon,51.1320,-3.0230,United Kingdom,GB,Somerset,,3613,3613
+Haven Street,50.7092,-1.2089,United Kingdom,GB,Isle of Wight,,3613,3613
+Wigginton,54.0187,-1.0936,United Kingdom,GB,York,,3610,3610
+Newton,51.4840,-3.6790,United Kingdom,GB,Bridgend,,3608,3608
+Frizington,54.5560,-3.4710,United Kingdom,GB,Cumbria,,3607,3607
+Highley,52.4480,-2.3820,United Kingdom,GB,Shropshire,,3605,3605
+Metheringham,53.1391,-0.4034,United Kingdom,GB,Lincolnshire,,3605,3605
+Kegworth,52.8369,-1.2836,United Kingdom,GB,Leicestershire,,3601,3601
+Anstruther,56.2234,-2.7027,United Kingdom,GB,Fife,,3600,3600
+Carfin,55.8009,-3.9648,United Kingdom,GB,North Lanarkshire,,3600,3190
+Boreham,51.7599,0.5420,United Kingdom,GB,Essex,,3597,3597
+Parkgate,53.2960,-3.0850,United Kingdom,GB,Cheshire West and Chester,,3591,3591
+Tain,57.8118,-4.0567,United Kingdom,GB,Highland,,3590,3590
+Bottesford,52.9375,-0.8020,United Kingdom,GB,Leicestershire,,3587,3587
+Elton,53.2766,-2.8168,United Kingdom,GB,Cheshire West and Chester,,3586,3586
+Shawforth,53.6830,-2.1660,United Kingdom,GB,Lancashire,,3586,3586
+West Parley,50.7860,-1.8860,United Kingdom,GB,Dorset,,3585,3585
+Oughtibridge,53.4360,-1.5390,United Kingdom,GB,Sheffield,,3584,3584
+Wilton,51.0800,-1.8640,United Kingdom,GB,Wiltshire,,3579,3579
+Harthill,55.8603,-3.7493,United Kingdom,GB,North Lanarkshire,,3575,2620
+Bawtry,53.4278,-1.0167,United Kingdom,GB,Nottinghamshire,,3573,3573
+Yapton,50.8200,-0.6112,United Kingdom,GB,West Sussex,,3571,3571
+Martham,52.7084,1.6328,United Kingdom,GB,Norfolk,,3569,3569
+Limpsfield,51.2606,0.0119,United Kingdom,GB,Surrey,,3569,3569
+Bramley,51.1930,-0.5580,United Kingdom,GB,Surrey,,3559,3559
+Wisbech Saint Mary,52.6300,0.1000,United Kingdom,GB,Cambridgeshire,,3556,3556
+Scarisbrick,53.6100,-2.9340,United Kingdom,GB,Lancashire,,3554,3554
+Brockenhurst,50.8200,-1.5800,United Kingdom,GB,Hampshire,,3552,3552
+Carisbrooke,50.6917,-1.3172,United Kingdom,GB,Isle of Wight,,3547,3547
+Upton,53.6200,-1.2900,United Kingdom,GB,Wakefield,,3541,3541
+Dreghorn,55.6072,-4.6169,United Kingdom,GB,North Ayrshire,,3540,3540
+Marham,52.6608,0.5255,United Kingdom,GB,Norfolk,,3531,3531
+Stamford Bridge,53.9890,-0.9125,United Kingdom,GB,East Riding of Yorkshire,,3528,3528
+Box,51.4150,-2.2520,United Kingdom,GB,Wiltshire,,3525,3525
+Kidwelly,51.7360,-4.3070,United Kingdom,GB,Carmarthenshire,,3523,3523
+Mulbarton,52.5872,1.2253,United Kingdom,GB,Norfolk,,3521,3521
+Auchinleck,55.4733,-4.2985,United Kingdom,GB,East Ayrshire,,3512,3512
+Barkham,51.4020,-0.8760,United Kingdom,GB,Wokingham,,3511,3511
+Bitton,51.4248,-2.4600,United Kingdom,GB,South Gloucestershire,,3509,3509
+Cosby,52.5517,-1.1933,United Kingdom,GB,Leicestershire,,3506,3506
+Whaplode,52.8002,-0.0370,United Kingdom,GB,Lincolnshire,,3505,3505
+Moulton,52.7980,-0.0629,United Kingdom,GB,Lincolnshire,,3504,3504
+Moulton Chapel,52.7463,-0.0841,United Kingdom,GB,Lincolnshire,,3504,3504
+Cults,57.1187,-2.1739,United Kingdom,GB,Aberdeen City,,3500,3500
+Marsden,53.6011,-1.9267,United Kingdom,GB,Kirklees,,3499,3499
+Withnell,53.6900,-2.5550,United Kingdom,GB,Lancashire,,3498,3498
+Congresbury,51.3677,-2.8109,United Kingdom,GB,North Somerset,,3497,3497
+Melling,53.4950,-2.9270,United Kingdom,GB,Sefton,,3493,3493
+Moreton in Marsh,51.9880,-1.7010,United Kingdom,GB,Gloucestershire,,3493,3493
+Yelverton,50.4920,-4.0860,United Kingdom,GB,Devon,,3493,3493
+Wollaston,52.2564,-0.6694,United Kingdom,GB,Northamptonshire,,3491,3491
+Inverkip,55.9070,-4.8703,United Kingdom,GB,Inverclyde,,3490,3490
+Denholme,53.8020,-1.8940,United Kingdom,GB,Bradford,,3489,3489
+Pilsley,53.1550,-1.3660,United Kingdom,GB,Derbyshire,,3487,3487
+Pentyrch,51.5288,-3.2973,United Kingdom,GB,Cardiff,,3483,3483
+Arundel,50.8544,-0.5539,United Kingdom,GB,West Sussex,,3475,2803
+Prestbury,53.2928,-2.1452,United Kingdom,GB,Cheshire East,,3471,3471
+Clipstone,53.1700,-1.1073,United Kingdom,GB,Nottinghamshire,,3469,3469
+Llanharan,51.5300,-3.4300,United Kingdom,GB,Rhondda Cynon Taff,,3465,3465
+Skellingthorpe,53.2364,-0.6165,United Kingdom,GB,Lincolnshire,,3465,3465
+Otford,51.3097,0.1866,United Kingdom,GB,Kent,,3465,3465
+Neyland,51.7113,-4.9452,United Kingdom,GB,Pembrokeshire,,3464,3464
+South Cerney,51.6710,-1.9320,United Kingdom,GB,Gloucestershire,,3464,3464
+Alford,53.2600,0.1800,United Kingdom,GB,Lincolnshire,,3459,3459
+Cholsey,51.5740,-1.1510,United Kingdom,GB,Oxfordshire,,3457,3457
+Moulton,52.2892,-0.8491,United Kingdom,GB,Northamptonshire,,3454,3454
+Redlynch,50.9880,-1.7120,United Kingdom,GB,Wiltshire,,3448,3448
+Sway,50.7830,-1.6000,United Kingdom,GB,Hampshire,,3448,3448
+Wootton,50.7263,-1.2321,United Kingdom,GB,Isle of Wight,,3447,3447
+Water Orton,52.5170,-1.7360,United Kingdom,GB,Warwickshire,,3444,3444
+Burton Joyce,52.9880,-1.0360,United Kingdom,GB,Nottinghamshire,,3443,3443
+Nettleham,53.2662,-0.4877,United Kingdom,GB,Lincolnshire,,3437,3437
+Gilfach Goch,51.5921,-3.4728,United Kingdom,GB,Rhondda Cynon Taff,,3436,3436
+Gilberdike,53.7520,-0.7361,United Kingdom,GB,East Riding of Yorkshire,,3430,3430
+Lytchett Matravers,50.7582,-2.0791,United Kingdom,GB,Dorset,,3424,3424
+Wonersh,51.1983,-0.5468,United Kingdom,GB,Surrey,,3412,3412
+Queenborough,51.4183,0.7450,United Kingdom,GB,Kent,,3407,3407
+Boroughbridge,54.0950,-1.3980,United Kingdom,GB,North Yorkshire,,3405,3405
+Avonmouth,51.5010,-2.6990,United Kingdom,GB,"Bristol, City of",,3402,3402
+Bramhope,53.8829,-1.6095,United Kingdom,GB,Leeds,,3400,3400
+Westerleigh,51.5100,-2.4300,United Kingdom,GB,South Gloucestershire,,3399,3399
+Marston,51.7770,-1.2360,United Kingdom,GB,Oxfordshire,,3398,3398
+Thorngumbald,53.7208,-0.1715,United Kingdom,GB,East Riding of Yorkshire,,3392,3392
+Pen-y-cae,52.9990,-3.0730,United Kingdom,GB,Wrexham,,3389,3389
+Kirkliston,55.9560,-3.4030,United Kingdom,GB,"Edinburgh, City of",,3386,3386
+Chapel Saint Leonards,53.2230,0.3365,United Kingdom,GB,Lincolnshire,,3384,3384
+Glemsford,52.1000,0.6690,United Kingdom,GB,Suffolk,,3382,3382
+Benllech,53.3216,-4.2257,United Kingdom,GB,Isle of Anglesey,,3382,2332
+Swillington,53.7680,-1.4201,United Kingdom,GB,Leeds,,3381,3381
+New Buildings,54.9580,-7.3550,United Kingdom,GB,Derry and Strabane,,3381,3381
+Llanbadarn-fawr,52.4080,-4.0600,United Kingdom,GB,Ceredigion,,3380,3380
+Menai Bridge,53.2300,-4.1600,United Kingdom,GB,Gwynedd,,3376,3376
+Bilsthorpe,53.1333,-1.0333,United Kingdom,GB,Nottinghamshire,,3375,3375
+Bloxham,52.0180,-1.3750,United Kingdom,GB,Oxfordshire,,3374,3374
+Lenham,51.2380,0.7160,United Kingdom,GB,Kent,,3370,3370
+South Petherton,50.9490,-2.8090,United Kingdom,GB,Somerset,,3367,3367
+Takeley,51.8680,0.2660,United Kingdom,GB,Essex,,3367,3367
+Saundersfoot,51.7110,-4.7000,United Kingdom,GB,Pembrokeshire,,3361,3361
+Darvel,55.6100,-4.2809,United Kingdom,GB,East Ayrshire,,3361,3361
+Washingborough,53.2233,-0.4744,United Kingdom,GB,Lincolnshire,,3356,3356
+Saint Asaph,53.2580,-3.4420,United Kingdom,GB,Denbighshire,,3355,3355
+Heckington,52.9820,-0.3040,United Kingdom,GB,Lincolnshire,,3353,3353
+Kirkcudbright,54.8320,-4.0480,United Kingdom,GB,Dumfries and Galloway,,3352,3352
+Clackmannan,56.1070,-3.7490,United Kingdom,GB,Clackmannanshire,,3348,3240
+Codicote,51.8500,-0.2360,United Kingdom,GB,Hertfordshire,,3344,3344
+Haddenham,52.3580,0.1490,United Kingdom,GB,Cambridgeshire,,3344,3344
+West Bergholt,51.9100,0.8500,United Kingdom,GB,Essex,,3344,3344
+Buxted,50.9900,0.1300,United Kingdom,GB,East Sussex,,3343,3343
+Framlingham,52.2221,1.3434,United Kingdom,GB,Suffolk,,3342,3342
+Leverington,52.6822,0.1359,United Kingdom,GB,Lincolnshire,,3339,3339
+Lowdham,53.0090,-1.0010,United Kingdom,GB,Nottinghamshire,,3334,3334
+Buckfastleigh,50.4800,-3.7800,United Kingdom,GB,Devon,,3326,3326
+Llanrwst,53.1370,-3.7950,United Kingdom,GB,Conwy,,3323,3323
+Wedmore,51.2260,-2.8100,United Kingdom,GB,Somerset,,3318,3318
+Blofield,52.6350,1.4480,United Kingdom,GB,Norfolk,,3316,3316
+West Chiltington,50.9556,-0.4490,United Kingdom,GB,West Sussex,,3315,3315
+Boughton Monchelsea,51.2293,0.5312,United Kingdom,GB,Kent,,3313,3313
+Burghill,52.1000,-2.7666,United Kingdom,GB,Herefordshire,,3309,3309
+West Wellow,50.9750,-1.5780,United Kingdom,GB,Hampshire,,3308,3308
+East Peckham,51.2200,0.3800,United Kingdom,GB,Kent,,3306,3306
+Bourton on the Water,51.8860,-1.7590,United Kingdom,GB,Gloucestershire,,3296,3296
+Nottage,51.4910,-3.7116,United Kingdom,GB,Bridgend,,3293,3293
+Ashfordby,52.7600,-0.9600,United Kingdom,GB,Leicestershire,,3286,3286
+Newtonhill,57.0320,-2.1500,United Kingdom,GB,Aberdeenshire,,3284,3140
+Pegswood,55.1798,-1.6442,United Kingdom,GB,Northumberland,,3280,3280
+Hemsby,52.6976,1.6911,United Kingdom,GB,Norfolk,,3275,3275
+Gobowen,52.8960,-3.0380,United Kingdom,GB,Shropshire,,3270,3270
+Wilstead,52.0666,-0.4333,United Kingdom,GB,Bedford,,3270,3270
+Cuckfield,51.0096,-0.1407,United Kingdom,GB,West Sussex,,3266,3266
+Crosskeys,51.6169,-3.1207,United Kingdom,GB,Caerphilly,,3265,3265
+Towyn,52.5820,-4.0890,United Kingdom,GB,Gwynedd,,3264,3264
+Barlborough,53.2870,-1.2870,United Kingdom,GB,Derbyshire,,3261,3261
+Laceby,53.5410,-0.1680,United Kingdom,GB,North East Lincolnshire,,3259,3259
+Preston,53.7566,-0.1969,United Kingdom,GB,East Riding of Yorkshire,,3258,3258
+Bishopston,51.5750,-4.0510,United Kingdom,GB,Swansea,,3251,3251
+Gamlingay,52.1579,-0.1946,United Kingdom,GB,Cambridgeshire,,3247,3247
+Little Paxton,52.2500,-0.2500,United Kingdom,GB,Cambridgeshire,,3244,3244
+Headcorn,51.1695,0.6203,United Kingdom,GB,Kent,,3241,3241
+Bishopthorpe,53.9187,-1.1008,United Kingdom,GB,York,,3237,3237
+Fairford,51.7080,-1.7850,United Kingdom,GB,Gloucestershire,,3236,3236
+Thurston,52.2499,0.8259,United Kingdom,GB,Suffolk,,3232,3232
+Rossett,53.1090,-2.9450,United Kingdom,GB,Wrexham,,3231,3231
+Mid Calder,55.8918,-3.4810,United Kingdom,GB,"Edinburgh, City of",,3230,3230
+Pontesbury,52.6490,-2.8880,United Kingdom,GB,Shropshire,,3227,3227
+Hendy,51.7130,-4.0570,United Kingdom,GB,Carmarthenshire,,3226,3226
+Cambusbarron,56.1090,-3.9680,United Kingdom,GB,Stirling,,3224,3224
+Law,55.7501,-3.8826,United Kingdom,GB,South Lanarkshire,,3223,3220
+Endon,53.0788,-2.1112,United Kingdom,GB,Staffordshire,,3221,3221
+Chestfield,51.3550,1.0640,United Kingdom,GB,Kent,,3214,3214
+Rotherfield,51.0460,0.2192,United Kingdom,GB,East Sussex,,3208,3208
+Goudhurst,51.1112,0.4636,United Kingdom,GB,Kent,,3204,3204
+Swalwell,54.9540,-1.6840,United Kingdom,GB,Gateshead,,3200,3200
+Malvern Wells,52.0785,-2.3324,United Kingdom,GB,Worcestershire,,3196,3196
+Alyth,56.6231,-3.2320,United Kingdom,GB,Perth and Kinross,,3193,2400
+Treeton,53.3845,-1.3513,United Kingdom,GB,Rotherham,,3189,3189
+Long Lawford,52.3841,-1.3020,United Kingdom,GB,Warwickshire,,3180,3180
+Knighton,52.3440,-3.0490,United Kingdom,GB,Shropshire,,3172,3172
+Holme upon Spalding Moor,53.8365,-0.7782,United Kingdom,GB,East Riding of Yorkshire,,3172,3172
+Bream,51.7498,-2.5740,United Kingdom,GB,Gloucestershire,,3171,3171
+Alderholt,50.9133,-1.8317,United Kingdom,GB,Dorset,,3171,3171
+Harrington,54.6120,-3.5650,United Kingdom,GB,Cumbria,,3167,3167
+Kingsclere,51.3260,-1.2442,United Kingdom,GB,Hampshire,,3164,3164
+Maerdy,51.6727,-3.4833,United Kingdom,GB,Rhondda Cynon Taff,,3160,3160
+Bedale,54.2880,-1.5910,United Kingdom,GB,North Yorkshire,,3156,3156
+Catterick,54.3770,-1.6300,United Kingdom,GB,North Yorkshire,,3155,3155
+Silkstone,53.5489,-1.5634,United Kingdom,GB,Barnsley,,3153,3153
+Pevensey,50.8203,0.3383,United Kingdom,GB,East Sussex,,3153,3153
+Stalham,52.7700,1.5110,United Kingdom,GB,Norfolk,,3149,3149
+Berkswell,52.4090,-1.6420,United Kingdom,GB,Solihull,,3139,3139
+Chipstead,51.3150,-0.1630,United Kingdom,GB,Surrey,,3136,3136
+Markyate,51.8360,-0.4550,United Kingdom,GB,Hertfordshire,,3135,3135
+Little Plumstead,52.6490,1.4128,United Kingdom,GB,Norfolk,,3135,3135
+Maulden,52.0300,-0.4700,United Kingdom,GB,Central Bedfordshire,,3132,3132
+Hunmanby,54.1818,-0.3175,United Kingdom,GB,North Yorkshire,,3132,3132
+Weston Turville,51.7916,-0.7577,United Kingdom,GB,Buckinghamshire,,3127,3127
+Ogmore Vale,51.6030,-3.5467,United Kingdom,GB,Bridgend,,3117,3117
+Eaglesham,55.7394,-4.2733,United Kingdom,GB,East Renfrewshire,,3114,3114
+Eastergate,50.8417,-0.6579,United Kingdom,GB,West Sussex,,3107,3107
+Willaston,53.0820,-2.4790,United Kingdom,GB,Cheshire East,,3104,3104
+Llangendeirne,51.7985,-4.2071,United Kingdom,GB,Carmarthenshire,,3102,3102
+Eriswell,52.3670,0.5330,United Kingdom,GB,Suffolk,,3101,3101
+Woodstock,51.8450,-1.3540,United Kingdom,GB,Oxfordshire,,3100,3100
+Beaminster,50.8090,-2.7391,United Kingdom,GB,Dorset,,3100,3100
+Laurencekirk,56.8300,-2.4600,United Kingdom,GB,Aberdeenshire,,3100,3040
+Leslie,56.2020,-3.2115,United Kingdom,GB,Fife,,3092,3060
+Langford,52.0529,-0.2741,United Kingdom,GB,Central Bedfordshire,,3091,3091
+Draycott,52.8944,-1.3415,United Kingdom,GB,Derbyshire,,3090,3090
+Chailey,50.9600,-0.0100,United Kingdom,GB,East Sussex,,3088,3088
+Iwade,51.3760,0.7280,United Kingdom,GB,Kent,,3087,3087
+Kenton,50.6400,-3.4700,United Kingdom,GB,Devon,,3087,3087
+Wrecclesham,51.1990,-0.8180,United Kingdom,GB,Surrey,,3079,3079
+Tutbury,52.8540,-1.6860,United Kingdom,GB,Staffordshire,,3076,3076
+Downton,50.9930,-1.7430,United Kingdom,GB,Wiltshire,,3073,3073
+West Calder,55.8520,-3.5685,United Kingdom,GB,West Lothian,,3070,3070
+Scotter,53.4990,-0.6663,United Kingdom,GB,Lincolnshire,,3068,3068
+Perranporth,50.3437,-5.1546,United Kingdom,GB,Cornwall,,3066,3066
+Porthleven,50.0840,-5.3150,United Kingdom,GB,Cornwall,,3059,3059
+Drybrook,51.8542,-2.5496,United Kingdom,GB,Gloucestershire,,3052,3052
+Felsted,51.8560,0.4360,United Kingdom,GB,Essex,,3051,3051
+Northop,53.2040,-3.1300,United Kingdom,GB,Flintshire,,3049,3049
+Norton Fitzwarren,51.0232,-3.1491,United Kingdom,GB,Somerset,,3046,3046
+Spilsby,53.1727,0.0931,United Kingdom,GB,Lincolnshire,,3045,3045
+Tardebigge,52.3220,-2.0070,United Kingdom,GB,Worcestershire,,3044,3044
+Kirkby Moorside,54.2690,-0.9300,United Kingdom,GB,North Yorkshire,,3040,3040
+Cleobury Mortimer,52.3785,-2.4821,United Kingdom,GB,Shropshire,,3036,3036
+Kincardine,56.0690,-3.7190,United Kingdom,GB,Fife,,3035,2750
+South Hetton,54.8000,-1.4100,United Kingdom,GB,Durham,,3032,3032
+Gwithian,50.2214,-5.3865,United Kingdom,GB,Cornwall,,3032,3032
+Llangynwyd,51.5869,-3.6379,United Kingdom,GB,Bridgend,,3032,3032
+Petworth,50.9860,-0.6090,United Kingdom,GB,West Sussex,,3027,3027
+High Bentham,54.1180,-2.5100,United Kingdom,GB,North Yorkshire,,3027,3027
+Painswick,51.7860,-2.1940,United Kingdom,GB,Gloucestershire,,3026,3026
+Barrow upon Humber,53.6750,-0.3818,United Kingdom,GB,North Lincolnshire,,3022,3022
+Eastchurch,51.4000,0.8667,United Kingdom,GB,Kent,,3022,3022
+Ystalyfera,51.7640,-3.7860,United Kingdom,GB,Neath Port Talbot,,3019,3019
+Margam,51.5744,-3.7528,United Kingdom,GB,Neath Port Talbot,,3017,3017
+Rendlesham,52.1301,1.4127,United Kingdom,GB,Suffolk,,3013,3013
+Newbold Verdon,52.6296,-1.3421,United Kingdom,GB,Leicestershire,,3012,3012
+Saughall,53.2234,-2.9593,United Kingdom,GB,Cheshire West and Chester,,3009,3009
+West Melton,53.5035,-1.3618,United Kingdom,GB,Rotherham,,3007,3007
+Cleland,55.8023,-3.9143,United Kingdom,GB,North Lanarkshire,,3000,3000
+Steynton,51.7295,-5.0174,United Kingdom,GB,Pembrokeshire,,3000,3000
+Longtown,55.0084,-2.9687,United Kingdom,GB,Cumbria,,3000,3000
+Breage,50.1080,-5.3320,United Kingdom,GB,Cornwall,,3000,3000
+Llanfairpwllgwyngyll,53.2232,-4.2008,United Kingdom,GB,Isle of Anglesey,,2999,2999
+Sealand,53.2120,-2.9700,United Kingdom,GB,Cheshire West and Chester,,2996,2996
+Saint Clears,51.8204,-4.5042,United Kingdom,GB,Carmarthenshire,,2995,2995
+Padstow,50.5380,-4.9380,United Kingdom,GB,Cornwall,,2993,2993
+Collingham,53.9040,-1.4139,United Kingdom,GB,Leeds,,2991,2991
+Normandy,51.2576,-0.6556,United Kingdom,GB,Surrey,,2981,2981
+Pangbourne,51.4839,-1.0869,United Kingdom,GB,West Berkshire,,2978,2978
+Lyndhurst,50.8700,-1.5800,United Kingdom,GB,Hampshire,,2973,2973
+Bletchingley,51.2410,-0.0990,United Kingdom,GB,Surrey,,2973,2973
+Colerne,51.4390,-2.2620,United Kingdom,GB,Wiltshire,,2972,2972
+Hopton on Sea,52.5340,1.7380,United Kingdom,GB,Norfolk,,2970,2970
+Lampeter,52.1202,-4.0821,United Kingdom,GB,Ceredigion,,2970,2970
+Belton,53.5530,-0.8166,United Kingdom,GB,North Lincolnshire,,2968,2968
+Cringleford,52.6056,1.2433,United Kingdom,GB,Norfolk,,2963,2963
+Mere,51.0900,-2.2660,United Kingdom,GB,Wiltshire,,2961,2961
+Llanwern,51.5720,-2.9133,United Kingdom,GB,Newport,,2961,2961
+Chiddingfold,51.1113,-0.6282,United Kingdom,GB,Surrey,,2960,2211
+Trimdon,54.7017,-1.4284,United Kingdom,GB,Durham,,2958,2958
+Gosberton,52.8500,-0.1500,United Kingdom,GB,Lincolnshire,,2958,2958
+Alveston,51.5890,-2.5330,United Kingdom,GB,South Gloucestershire,,2953,2953
+Heath,53.1982,-1.3353,United Kingdom,GB,Derbyshire,,2953,2953
+Pitstone,51.8256,-0.6302,United Kingdom,GB,Buckinghamshire,,2952,2952
+Camelford,50.6170,-4.6830,United Kingdom,GB,Cornwall,,2945,2945
+Fernhurst,51.0490,-0.7230,United Kingdom,GB,West Sussex,,2942,2942
+Charminster,50.7327,-2.4546,United Kingdom,GB,Dorset,,2940,2940
+Healing,53.5739,-0.1640,United Kingdom,GB,North East Lincolnshire,,2940,2940
+Dunchurch,52.3368,-1.2896,United Kingdom,GB,Warwickshire,,2938,2938
+Brodsworth,53.5596,-1.2370,United Kingdom,GB,Doncaster,,2936,2936
+West Grinstead,50.9741,-0.3331,United Kingdom,GB,West Sussex,,2934,2934
+Cullingworth,53.8247,-1.9027,United Kingdom,GB,Bradford,,2932,2932
+Kinghorn,56.0700,-3.1700,United Kingdom,GB,Fife,,2930,2840
+Great Totham,51.7792,0.7011,United Kingdom,GB,Essex,,2930,2930
+Llanidloes,52.4490,-3.5402,United Kingdom,GB,Powys,,2929,2929
+Totland,50.6849,-1.5366,United Kingdom,GB,Isle of Wight,,2927,2927
+Croft,53.4370,-2.5520,United Kingdom,GB,Warrington,,2920,2920
+Banwell,51.3270,-2.8640,United Kingdom,GB,North Somerset,,2919,2919
+Heighington,53.2120,-0.4574,United Kingdom,GB,Lincolnshire,,2918,2918
+Croston,53.6620,-2.7770,United Kingdom,GB,Lancashire,,2917,2917
+East Woodhay,51.3511,-1.4183,United Kingdom,GB,Hampshire,,2914,2914
+Llanrug,53.1470,-4.1930,United Kingdom,GB,Gwynedd,,2911,2911
+Holmewood,53.1893,-1.3549,United Kingdom,GB,Derbyshire,,2909,2909
+Bruton,51.1134,-2.4528,United Kingdom,GB,Somerset,,2907,2907
+Etwall,52.8840,-1.6020,United Kingdom,GB,Derbyshire,,2906,2906
+Silloth,54.8690,-3.3810,United Kingdom,GB,Cumbria,,2906,2906
+Pucklechurch,51.4870,-2.4353,United Kingdom,GB,South Gloucestershire,,2904,2904
+Teynham,51.3310,0.8020,United Kingdom,GB,Kent,,2904,2904
+Chryston,55.9060,-4.1100,United Kingdom,GB,North Lanarkshire,,2900,2900
+Bosham,50.8289,-0.8595,United Kingdom,GB,West Sussex,,2900,2900
+Prees,52.8970,-2.6660,United Kingdom,GB,Shropshire,,2895,2895
+Ryhill,53.6168,-1.4021,United Kingdom,GB,Wakefield,,2894,2894
+Wiveliscombe,51.0431,-3.3137,United Kingdom,GB,Somerset,,2893,2893
+Stainton,54.5211,-1.2595,United Kingdom,GB,Middlesbrough,,2890,2890
+Chieveley,51.4610,-1.3190,United Kingdom,GB,West Berkshire,,2890,2890
+New Cumnock,55.3968,-4.1839,United Kingdom,GB,East Ayrshire,,2884,2710
+Upton upon Severn,52.0630,-2.2150,United Kingdom,GB,Worcestershire,,2881,2881
+Papworth Everard,52.2547,-0.1189,United Kingdom,GB,Cambridgeshire,,2880,2880
+Halkyn,53.2330,-3.1830,United Kingdom,GB,Flintshire,,2879,2879
+Harton,54.8810,-1.5340,United Kingdom,GB,South Tyneside,,2878,2878
+Clifton,52.0398,-0.3017,United Kingdom,GB,Central Bedfordshire,,2878,2878
+Much Wenlock,52.5966,-2.5580,United Kingdom,GB,Shropshire,,2877,2877
+Capel Saint Mary,52.0020,1.0460,United Kingdom,GB,Suffolk,,2877,2877
+Dollar,56.1620,-3.6740,United Kingdom,GB,Clackmannanshire,,2877,2800
+Minchinhampton,51.7058,-2.1860,United Kingdom,GB,Gloucestershire,,2875,2875
+Shawbury,52.7860,-2.6550,United Kingdom,GB,Shropshire,,2872,2872
+Swanmore,50.9423,-1.1794,United Kingdom,GB,Hampshire,,2871,2871
+Fen Stanton,52.3000,-0.0700,United Kingdom,GB,Cambridgeshire,,2868,2868
+Bookham,51.2330,-0.2860,United Kingdom,GB,Surrey,,2868,2868
+Over,52.3140,0.0160,United Kingdom,GB,Cambridgeshire,,2862,2862
+Much Hadham,51.8540,0.0720,United Kingdom,GB,Hertfordshire,,2862,2862
+Barlaston,52.9457,-2.1583,United Kingdom,GB,Staffordshire,,2858,2858
+Ottershaw,51.3680,-0.5300,United Kingdom,GB,Surrey,,2853,2853
+Alrewas,52.7320,-1.7490,United Kingdom,GB,Staffordshire,,2852,2852
+Lechlade,51.6990,-1.6920,United Kingdom,GB,Gloucestershire,,2850,2850
+White Waltham,51.4900,-0.7690,United Kingdom,GB,Windsor and Maidenhead,,2850,2850
+Thaxted,51.9540,0.3460,United Kingdom,GB,Essex,,2845,2845
+Bishops Lydeard,51.0615,-3.1872,United Kingdom,GB,Somerset,,2839,2839
+Sheering,51.8043,0.1845,United Kingdom,GB,Essex,,2838,2838
+Theale,51.4370,-1.0770,United Kingdom,GB,West Berkshire,,2835,2835
+Usk,51.7040,-2.9020,United Kingdom,GB,Monmouthshire,,2834,2834
+Tattershall,53.1040,-0.1906,United Kingdom,GB,Lincolnshire,,2834,2834
+Aspatria,54.7633,-3.3281,United Kingdom,GB,Cumbria,,2834,2834
+Charlbury,51.8720,-1.4820,United Kingdom,GB,Oxfordshire,,2830,2830
+Chalgrove,51.6650,-1.0770,United Kingdom,GB,Oxfordshire,,2830,2830
+West Horsley,51.2610,-0.4540,United Kingdom,GB,Surrey,,2828,2828
+West Coker,50.9189,-2.6913,United Kingdom,GB,Somerset,,2828,2828
+Cranwell,53.0367,-0.4619,United Kingdom,GB,Lincolnshire,,2827,2827
+Feltwell,52.4864,0.5194,United Kingdom,GB,Norfolk,,2826,2826
+Cymmer,51.6500,-3.6500,United Kingdom,GB,Neath Port Talbot,,2825,2825
+Acle,52.6380,1.5550,United Kingdom,GB,Norfolk,,2824,2824
+South Brent,50.4281,-3.8358,United Kingdom,GB,Devon,,2822,2822
+Halling,51.3514,0.4413,United Kingdom,GB,Kent,,2821,2821
+Crich,53.0840,-1.4790,United Kingdom,GB,Derbyshire,,2821,2821
+Glenboig,55.8933,-4.0449,United Kingdom,GB,North Lanarkshire,,2820,2820
+Adderbury,52.0160,-1.3130,United Kingdom,GB,Oxfordshire,,2819,2819
+Cantley,53.5100,-1.0600,United Kingdom,GB,Doncaster,,2817,2817
+Lostwithiel,50.4074,-4.6696,United Kingdom,GB,Cornwall,,2814,2739
+Appledore,51.0525,-4.1945,United Kingdom,GB,Devon,,2814,2814
+Northchurch,51.7830,-0.6130,United Kingdom,GB,Hertfordshire,,2813,2813
+Donington,52.9040,-0.1982,United Kingdom,GB,Lincolnshire,,2805,2805
+Buckden,52.2800,-0.2500,United Kingdom,GB,Cambridgeshire,,2805,2805
+Milborne Port,50.9666,-2.4610,United Kingdom,GB,Somerset,,2802,2802
+Newmilns,55.6080,-4.3290,United Kingdom,GB,East Ayrshire,,2800,2800
+Clydach Vale,51.6268,-3.4719,United Kingdom,GB,Rhondda Cynon Taff,,2799,2799
+Chinley,53.3390,-1.9410,United Kingdom,GB,Derbyshire,,2796,2796
+Rudgwick,51.0930,-0.4460,United Kingdom,GB,West Sussex,,2791,2791
+West Monkton,51.0510,-3.0450,United Kingdom,GB,Somerset,,2787,2787
+Saint Dennis,50.3830,-4.8830,United Kingdom,GB,Cornwall,,2785,2785
+Fulford,53.9380,-1.0730,United Kingdom,GB,York,,2785,2785
+Smalley,52.9980,-1.3940,United Kingdom,GB,Derbyshire,,2784,2784
+Mitcheldean,51.8646,-2.4904,United Kingdom,GB,Gloucestershire,,2783,2783
+Milltimber,57.1052,-2.2311,United Kingdom,GB,Aberdeen City,,2780,2780
+Ellington,55.2209,-1.5621,United Kingdom,GB,Northumberland,,2778,2778
+Pitlochry,56.7050,-3.7330,United Kingdom,GB,Perth and Kinross,,2776,2776
+Kilnhurst,53.4703,-1.3057,United Kingdom,GB,Rotherham,,2775,2775
+Radley,51.6890,-1.2400,United Kingdom,GB,Oxfordshire,,2774,2774
+Bugbrooke,52.2105,-1.0106,United Kingdom,GB,Northamptonshire,,2773,2773
+Rowlands Castle,50.8912,-0.9601,United Kingdom,GB,Hampshire,,2770,2770
+Pontyberem,51.7790,-4.1740,United Kingdom,GB,Carmarthenshire,,2768,2768
+Charing,51.2107,0.7949,United Kingdom,GB,Kent,,2766,2766
+Sedbergh,54.3220,-2.5260,United Kingdom,GB,Cumbria,,2765,2765
+East Bergholt,51.9780,1.0170,United Kingdom,GB,Suffolk,,2765,2765
+Lickey End,52.3522,-2.0448,United Kingdom,GB,Worcestershire,,2764,2764
+Mundesley,52.8760,1.4380,United Kingdom,GB,Norfolk,,2758,2758
+Locking,51.3309,-2.9108,United Kingdom,GB,North Somerset,,2756,2756
+Callander,56.2440,-4.2145,United Kingdom,GB,Stirling,,2754,2754
+Burton upon Stather,53.6494,-0.6848,United Kingdom,GB,North Lincolnshire,,2753,2753
+Icklesham,50.9200,0.6700,United Kingdom,GB,East Sussex,,2751,2751
+Upwell,52.5956,0.2134,United Kingdom,GB,Norfolk,,2750,2750
+Davenham,53.2358,-2.5111,United Kingdom,GB,Cheshire West and Chester,,2745,2745
+Wing,51.8980,-0.7170,United Kingdom,GB,Buckinghamshire,,2745,2745
+Hambleton,53.8750,-2.9520,United Kingdom,GB,Lancashire,,2744,2744
+Llysfaen,53.2790,-3.6680,United Kingdom,GB,Conwy,,2743,2743
+Wendron,50.1340,-5.2480,United Kingdom,GB,Cornwall,,2743,2743
+Greenfield,53.2890,-3.2100,United Kingdom,GB,Flintshire,,2741,2741
+Wembury,50.3169,-4.0830,United Kingdom,GB,Devon,,2740,2740
+North Collingham,53.1478,-0.7592,United Kingdom,GB,Nottinghamshire,,2738,2738
+New Earswick,53.9920,-1.0724,United Kingdom,GB,York,,2737,2737
+Batheaston,51.4065,-2.3112,United Kingdom,GB,Bath and North East Somerset,,2735,2735
+Farnsfield,53.1028,-1.0361,United Kingdom,GB,Nottinghamshire,,2731,2731
+Tarvin,53.1949,-2.7668,United Kingdom,GB,Cheshire West and Chester,,2728,2728
+Watlington,51.6450,-1.0080,United Kingdom,GB,Oxfordshire,,2727,2727
+Mintlaw,57.5250,-2.0010,United Kingdom,GB,Aberdeenshire,,2720,2720
+Crosshouse,55.6122,-4.5528,United Kingdom,GB,East Ayrshire,,2720,2720
+Wolsingham,54.7310,-1.8820,United Kingdom,GB,Durham,,2720,2720
+Lingwood,52.6222,1.4901,United Kingdom,GB,Norfolk,,2719,2719
+Meriden,52.4379,-1.6496,United Kingdom,GB,Solihull,,2719,2719
+Lyminge,51.1270,1.0876,United Kingdom,GB,Kent,,2717,2717
+Brenchley,51.1486,0.3941,United Kingdom,GB,Kent,,2715,2715
+Burwash,51.0000,0.3900,United Kingdom,GB,East Sussex,,2713,2713
+Cowie,56.0805,-3.8670,United Kingdom,GB,Stirling,,2713,2713
+Fordham,52.3200,0.3800,United Kingdom,GB,Cambridgeshire,,2712,2712
+Effingham,51.2718,-0.4002,United Kingdom,GB,Surrey,,2711,2711
+Presteign,52.2744,-3.0054,United Kingdom,GB,Herefordshire,,2710,2710
+Hayfield,53.3800,-1.9400,United Kingdom,GB,Derbyshire,,2709,2709
+Wootton,51.7070,-1.3130,United Kingdom,GB,Oxfordshire,,2709,2709
+Reepham,52.7620,1.1120,United Kingdom,GB,Norfolk,,2709,2709
+Repton,52.8380,-1.5490,United Kingdom,GB,Derbyshire,,2707,2707
+Weedon Beck,52.2310,-1.0804,United Kingdom,GB,Northamptonshire,,2706,2706
+Gretna,54.9940,-3.0620,United Kingdom,GB,Dumfries and Galloway,,2705,2705
+Elstow,52.1069,-0.4648,United Kingdom,GB,Bedford,,2702,2702
+West Wittering,50.7806,-0.8956,United Kingdom,GB,West Sussex,,2700,2700
+Stalbridge,50.9594,-2.3784,United Kingdom,GB,Dorset,,2698,2698
+Kirton in Lindsey,53.4759,-0.5887,United Kingdom,GB,North Lincolnshire,,2694,2694
+Muir of Ord,57.5200,-4.4600,United Kingdom,GB,Highland,,2690,2690
+Dolgellau,52.7430,-3.8850,United Kingdom,GB,Gwynedd,,2688,2688
+Combe Martin,51.2000,-4.0250,United Kingdom,GB,Devon,,2687,2687
+Mistley,51.9440,1.0810,United Kingdom,GB,Essex,,2685,2685
+Nutfield,51.2380,-0.1330,United Kingdom,GB,Surrey,,2673,2673
+Hardwick,52.2133,0.0119,United Kingdom,GB,Cambridgeshire,,2670,2670
+Dundonald,55.5780,-4.5940,United Kingdom,GB,South Ayrshire,,2670,2670
+Chisledon,51.5160,-1.7310,United Kingdom,GB,Swindon,,2667,2667
+Teversham,52.2000,0.1900,United Kingdom,GB,Cambridgeshire,,2665,2665
+Long Stanton,52.2790,0.0478,United Kingdom,GB,Cambridgeshire,,2657,2657
+Badsey,52.0800,-1.8900,United Kingdom,GB,Worcestershire,,2657,2657
+Harbledown,51.2830,1.0540,United Kingdom,GB,Kent,,2656,2656
+Withyham,51.1000,0.1320,United Kingdom,GB,East Sussex,,2654,2654
+Grimsargh,53.8050,-2.6310,United Kingdom,GB,Lancashire,,2653,2653
+Tuxford,53.2310,-0.8980,United Kingdom,GB,Nottinghamshire,,2649,2649
+Loddon,52.5330,1.4830,United Kingdom,GB,Norfolk,,2648,2648
+Llandow,51.4490,-3.5230,United Kingdom,GB,"Vale of Glamorgan, The",,2643,2643
+Horam,50.9300,0.2400,United Kingdom,GB,East Sussex,,2642,2642
+Holsworthy,50.8167,-4.3500,United Kingdom,GB,Devon,,2641,2641
+Robertsbridge,50.9900,0.4700,United Kingdom,GB,East Sussex,,2641,2624
+Speen,51.4098,-1.3417,United Kingdom,GB,West Berkshire,,2635,2635
+Wrington,51.3610,-2.7630,United Kingdom,GB,North Somerset,,2633,2633
+Mattishall,52.6585,1.0347,United Kingdom,GB,Norfolk,,2631,2631
+South Hanningfield,51.6504,0.5183,United Kingdom,GB,Essex,,2629,2629
+Lochwinnoch,55.7925,-4.6286,United Kingdom,GB,Renfrewshire,,2628,2628
+Cuxton,51.3750,0.4500,United Kingdom,GB,Medway,,2627,2627
+Kington,52.2035,-3.0300,United Kingdom,GB,Herefordshire,,2626,2626
+Oxenhope,53.8120,-1.9520,United Kingdom,GB,Bradford,,2626,2626
+Tangmere,50.8510,-0.7160,United Kingdom,GB,West Sussex,,2625,2625
+Timsbury,51.3268,-2.4757,United Kingdom,GB,Bath and North East Somerset,,2624,2624
+Tollesbury,51.7600,0.8400,United Kingdom,GB,Essex,,2621,2621
+Biddenham,52.1406,-0.5051,United Kingdom,GB,Bedford,,2620,2620
+Emneth,52.6426,0.2091,United Kingdom,GB,Norfolk,,2617,2617
+Stocksfield,54.9480,-1.9140,United Kingdom,GB,Northumberland,,2616,2616
+Tarporley,53.1602,-2.6694,United Kingdom,GB,Cheshire West and Chester,,2614,2614
+Herstmonceux,50.8900,0.3200,United Kingdom,GB,East Sussex,,2613,2598
+Kelsall,53.2070,-2.7120,United Kingdom,GB,Cheshire West and Chester,,2609,2609
+Kempsey,52.1391,-2.2177,United Kingdom,GB,Worcestershire,,2609,2609
+Brynamman,51.8151,-3.8714,United Kingdom,GB,Neath Port Talbot,,2608,2608
+Williton,51.1648,-3.3087,United Kingdom,GB,Somerset,,2607,2607
+Willington,52.8540,-1.5650,United Kingdom,GB,Derbyshire,,2604,2604
+Whittington,52.6700,-1.7600,United Kingdom,GB,Staffordshire,,2603,2603
+Nefyn,52.9350,-4.5240,United Kingdom,GB,Gwynedd,,2602,2602
+Kilmaurs,55.6394,-4.5303,United Kingdom,GB,East Ayrshire,,2601,2601
+Caistor,53.4940,-0.3220,United Kingdom,GB,Lincolnshire,,2601,2601
+Bushbury,52.6200,-2.1130,United Kingdom,GB,Wolverhampton,,2600,2600
+Ambleside,54.4251,-2.9626,United Kingdom,GB,Cumbria,,2600,2600
+Clent,52.4152,-2.1140,United Kingdom,GB,Worcestershire,,2600,2600
+Duns,55.7784,-2.3426,United Kingdom,GB,"Scottish Borders, The",,2594,2594
+Eythorne,51.1971,1.2662,United Kingdom,GB,Kent,,2594,2594
+Whittington,52.8740,-3.0030,United Kingdom,GB,Shropshire,,2592,2592
+West Malling,51.2917,0.4152,United Kingdom,GB,Kent,,2590,2590
+Dalston,54.8432,-2.9835,United Kingdom,GB,Cumbria,,2590,2590
+Fishburn,54.6831,-1.4364,United Kingdom,GB,Durham,,2588,2588
+Eyemouth,55.8710,-2.0930,United Kingdom,GB,"Scottish Borders, The",,2587,2587
+Stone,51.8044,-0.8649,United Kingdom,GB,Buckinghamshire,,2587,2587
+Innerleithen,55.6184,-3.0590,United Kingdom,GB,"Scottish Borders, The",,2586,2586
+Sherborne Saint John,51.2944,-1.1098,United Kingdom,GB,Hampshire,,2584,2584
+Westfield,50.9100,0.5800,United Kingdom,GB,East Sussex,,2583,2583
+Wilpshire,53.7780,-2.4790,United Kingdom,GB,Lancashire,,2582,2582
+Ironbridge,52.6277,-2.4850,United Kingdom,GB,Telford and Wrekin,,2582,2582
+Hutton,51.3219,-2.9270,United Kingdom,GB,North Somerset,,2582,2582
+Reydon,52.3376,1.6695,United Kingdom,GB,Suffolk,,2582,2582
+Parbold,53.5930,-2.7640,United Kingdom,GB,Lancashire,,2582,2582
+Crowan,50.1630,-5.2940,United Kingdom,GB,Cornwall,,2581,2581
+Biddenden,51.1139,0.6441,United Kingdom,GB,Kent,,2574,2574
+Snettisham,52.8771,0.5024,United Kingdom,GB,Norfolk,,2570,2570
+Dornoch,57.8800,-4.0300,United Kingdom,GB,Highland,,2570,1330
+Builth Wells,52.1490,-3.4050,United Kingdom,GB,Powys,,2568,2568
+Carron,56.0238,-3.7896,United Kingdom,GB,Falkirk,,2567,2420
+Brookwood,51.3038,-0.6367,United Kingdom,GB,Surrey,,2565,2565
+Settle,54.0721,-2.2819,United Kingdom,GB,North Yorkshire,,2564,2564
+Bampton,51.7270,-1.5440,United Kingdom,GB,Oxfordshire,,2564,2564
+Wolston,52.3700,-1.3900,United Kingdom,GB,Warwickshire,,2564,2564
+Kelvedon Hatch,51.6633,0.2783,United Kingdom,GB,Essex,,2563,2563
+Elstead,51.1840,-0.6980,United Kingdom,GB,Surrey,,2557,2557
+Newington,51.3520,0.6679,United Kingdom,GB,Kent,,2551,2551
+Marks Tey,51.8760,0.7720,United Kingdom,GB,Essex,,2551,2551
+Hartlebury,52.3300,-2.2300,United Kingdom,GB,Worcestershire,,2549,2549
+Luddenden Foot,53.7178,-1.9381,United Kingdom,GB,Calderdale,,2547,2547
+Mobberley,53.3134,-2.3263,United Kingdom,GB,Cheshire East,,2546,2546
+Yarnton,51.8110,-1.3100,United Kingdom,GB,Oxfordshire,,2545,2545
+Bredon,52.0300,-2.1170,United Kingdom,GB,Worcestershire,,2542,2542
+Trimsaran,51.7178,-4.2379,United Kingdom,GB,Carmarthenshire,,2541,2541
+Broadway,52.0400,-1.8600,United Kingdom,GB,Worcestershire,,2540,2540
+Llandwrog,53.0790,-4.3140,United Kingdom,GB,Gwynedd,,2539,2539
+Charfield,51.6261,-2.4058,United Kingdom,GB,South Gloucestershire,,2538,2538
+Kintbury,51.3990,-1.4490,United Kingdom,GB,West Berkshire,,2534,2534
+Hemingford Grey,52.3180,-0.1040,United Kingdom,GB,Cambridgeshire,,2524,2524
+Barmouth,52.7220,-4.0550,United Kingdom,GB,Gwynedd,,2522,2522
+Holywell,52.3190,-0.0340,United Kingdom,GB,Cambridgeshire,,2517,2517
+Lower Kingswood,51.2940,-0.2115,United Kingdom,GB,Surrey,,2511,2511
+Moffat,55.3320,-3.4420,United Kingdom,GB,Dumfries and Galloway,,2510,2510
+Stanton,52.3240,0.8850,United Kingdom,GB,Suffolk,,2507,2507
+Rainow,53.2802,-2.0727,United Kingdom,GB,Cheshire East,,2505,2505
+Baschurch,52.7910,-2.8540,United Kingdom,GB,Shropshire,,2503,2503
+Delabole,50.6220,-4.7330,United Kingdom,GB,Cornwall,,2500,2500
+Elsecar,53.4960,-1.4120,United Kingdom,GB,Rotherham,,2500,2500
+Newmacher,57.2670,-2.1920,United Kingdom,GB,Aberdeenshire,,2500,2500
+Pontycymer,51.6116,-3.5842,United Kingdom,GB,Bridgend,,2499,2499
+Saint Margaret’s at Cliffe,51.1536,1.3714,United Kingdom,GB,Kent,,2499,2499
+Broughton,52.0500,-0.6940,United Kingdom,GB,Milton Keynes,,2493,2493

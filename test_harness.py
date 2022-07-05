@@ -13,39 +13,63 @@ import numpy as np
 import sys
 
 sys.path.append("/run/media/nicholasw/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/")
-#from gravity import *
+#from spatial_tsir import *
 #%%
 
 core_pop = 5000000
-sat_pop= 150000
+sat_pop= 100000
 #network_df = random_network(n=100)
 network_df=grenfell_network(core_pop=core_pop, sat_pop=sat_pop)
 
 
 # setup time_varying beta
+
+# this one is from "measles metapopulation dynamics"
+# on the theoretical city
 not_term = np.array([1,8,15,16,17,18,19,23,26])-1
 term = np.array([x for x in np.arange(0,26) if x not in not_term])
 beta_t = np.zeros(26)
 beta_t[not_term] = 24.6
 beta_t[term]= 33.3
+
+# here's the one from the experimental london data?
+
+beta_t = [1.24, 1.14,1.16,1.31,1.24,1.12,1.06,1.02,0.94,0.98,1.06,1.08,
+          0.96,0.92,0.92,0.86,0.76,0.63,0.62,0.83,1.13,1.20,1.11,1.02,1.04,1.08]
+beta_t = np.array(beta_t)*30
+
+# "pre-scaled" beta
+# for use with the formulation that doesn't divide by the population?
+#beta_t = np.array(
+#    [1.11,1.11,1.10,1.09,1.06,1.03,1.01,.984,.963,.940,.910,.871,
+#     .829,.789,.760,.749,.760,.793,.842,.895,.943,.980,1.01,1.03,1.05,1.08])*1e-5
 print(beta_t)
+
 config = {
     "iters":36*10,
     
     "tau1":1,
     "tau2":1,
     "rho":1,
+
     "theta":0.015/core_pop,
     
     "alpha":0.97,
     "beta":24.6,
     "beta_t":beta_t,
-    
+   
     "birth": 0.17/26
 }
 
 initial_state = np.zeros((len(network_df.index),2))
 initial_state[0,0]=1
+
+# try 50% vaccination
+vax_rate = 0
+initial_state = np.zeros((len(network_df.index),2))
+initial_state[:,1]=np.array(network_df['pop'])*vax_rate
+initial_state[0,0]=1
+
 
 #%%
 # plot grenfell network
