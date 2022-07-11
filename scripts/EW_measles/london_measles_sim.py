@@ -283,7 +283,7 @@ def OLS_loss(actual,
             # filter nonzero
             observed_y_nonzero = observed_y[observed_y > 0]
             sim_y_nonzero = sim_y.iloc[observed_y_nonzero.index]
-            # how are they not the same length lmao
+            # how are they not the same length lol
             #assert len(observed_y_nonzero) == len(sim_y_nonzero), "{},{}".format(len(observed_y_nonzero),len(sim_y_nonzero))
             this_length = len(observed_y_nonzero.index)
             this_pop = pop.iloc[k,0]
