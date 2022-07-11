@@ -6,24 +6,27 @@ import seaborn as sns
 
 #%%
 # load data
+
+# change this based on where you have stored the project
 project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-#project_path = "/run/media/nicholasw/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 
-distances = pd.read_csv(project_path.format("EW_city_distances.csv"),index_col=0)
+distances = pd.read_csv(project_path.format("data/EW_measles/EW_city_distances.csv"),index_col=0)
 
-pop = pd.read_csv(project_path.format("EW_pop_cleaned.csv"),index_col='city')
+pop = pd.read_csv(project_path.format("data/EW_measles/EW_pop_cleaned.csv"),index_col='city')
 pop = pop.reindex(distances.index)
 
-cases = pd.read_csv(project_path.format("EW_cases_cleaned.csv"))
+cases = pd.read_csv(project_path.format("data/EW_measles/EW_cases_cleaned.csv"))
+
 #%%
 # import module
 import sys
-sys.path.append("/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/")
-#sys.path.append("/run/media/nicholasw/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/")
+sys.path.append(project_path.format("scripts/EW_measles/"))
 from spatial_tsir import *
 
 #%%
 # simulation configuration 
+
+# retrieved from "A Gravity Model for Epidemic Metapopulations"
 beta_t = [1.24, 1.14,1.16,1.31,1.24,1.12,1.06,1.02,0.94,0.98,1.06,1.08,
           0.96,0.92,0.92,0.86,0.76,0.63,0.62,0.83,1.13,1.20,1.11,1.02,1.04,1.08]
 beta_t = np.array(beta_t)*30
@@ -37,7 +40,7 @@ config = {
     "iters":599,
     
     "tau1":1,
-    "tau2":1,
+    "tau2":1.4,
     "rho":1,
     "theta":0.015/pop.loc['London','pop'],
 
@@ -138,6 +141,9 @@ actual_to_merge['value'] = np.int64(actual_to_merge['value'])
 
 full = sim_to_merge.merge(actual_to_merge,how='outer')
 
+# rename columns
+full = full.rename(columns = {'variable':'city', 'value':'cases'})
+
 #%%
 
 # normalized data
@@ -166,9 +172,19 @@ full_norm = sim_tm_norm.merge(actual_tm_norm,how='outer')
 
 # non normalized plot: how does the scale compare?
 from plotnine import *
-(ggplot(full,aes(x='time',y='value',color='source'))+
+from plotnine.themes import element_text
+(ggplot(full,aes(x='time',y='cases',color='source'))+
         geom_line()+
-        facet_wrap('~variable'))
+        facet_wrap('~city', scales='free_y')+
+        ggtitle("E&W 7 cities: tau1={:.2f},tau2={:.2f},rho={:.2f},theta={:.2e},immun_rate={:.2f}".format(
+            config['tau1'],config['tau2'], config['rho'], config['theta'], immun_rate
+            )
+        )+
+        theme(
+            text=element_text(size=13),
+            subplots_adjust={'wspace':0.20}
+        )
+)
 
 # normalized plot: how does the synchrony compare?
 
