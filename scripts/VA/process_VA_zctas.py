@@ -26,8 +26,13 @@ va_zcta_list = pd.read_csv(project_path.format("data/VA_zcta_list.csv"),header=N
 # filter out VA zip codes
 va_zipcodes_geodata = us_zipcode_geodata[us_zipcode_geodata['GEOID20'].astype('int').isin(va_zcta_list[1])]
 
+
 # plot it to check
 va_zipcodes_geodata.plot()
+
+# alternate strat: max/min? seem to be missing some
+
+us_zipcode_geodata[us_zipcode_geodata['GEOID20'].astype('int').between(20105,24657)].plot()
 
 #%%
 # compute the distance matrix between all the VA zip codes?
@@ -37,11 +42,14 @@ va_zipcodes_geodata.plot()
 # TODO: something about map projections??
 # https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.to_crs.html
 centroids = va_zipcodes_geodata.to_crs(crs=3857).centroid.to_crs(crs=4326)
+rep_points = va_zipcodes_geodata.representative_point()
 
-plt.figure()
-ax = va_zipcodes_geodata.plot()
-centroids.plot(color="red",ax=ax,markersize=1)
-plt.show()
+ax1 = va_zipcodes_geodata.plot()
+centroids.plot(color="red",ax=ax1,markersize=1)
+
+ax2 = va_zipcodes_geodata.plot()
+rep_points.plot(color="red",ax=ax2,markersize=1)
+
 
 #%%
 # get the population of all VA zctas
@@ -50,6 +58,52 @@ us_zcta_pop = pd.read_csv(project_path.format("data/DECENNIALSF12010.P1_2022-07-
 # get zip codes
 us_zcta_pop.id = pd.Series([x[9:] for x in us_zcta_pop.id])
 
+
+# better population data at
+# https://data.census.gov/cedsci/table?q=B01001%20SEX%20BY%20AGE&g=0400000US51%248600000&tid=ACSDT5Y2020.B01001
+#  https://www.virginia-demographics.com/zip_codes_by_population
+va_zcta_pop = pd.read_csv(project_path.format("data/VA_zcta_pop.csv")).dropna()
 #%%
 
 # write population counts and centroids
+# or compute distances now?
+
+# I think this gives the distance in meters.
+# TODO: maybe this computations is good enough for a first start, but
+# it can probably be refined I guess...
+dists = rep_points.to_crs(3857)
+dists = np.array([x.distance(y) for x in dists for y in dists]).reshape(len(rep_points.index),len(rep_points.index))
+labels = rep_points.index
+
+dists = pd.DataFrame(dists)
+dists.index = labels
+dists.columns = labels
+
+us_zcta_pop = us_zcta_pop[['id','Total']]
+us_zcta_pop.columns = ['patch_id','pop']
+
+us_zcta_pop = us_zcta_pop[us_zcta_pop['patch_id'].isin(va_zcta_list[1].astype('str'))]
+
+# basic validation: did it sum to the population estimate of va in 2010?
+# no.
+sum(us_zcta_pop['pop'])
+
+#%%
+
+# discrepancy between number of zipcodes in the geoindex set and from the population data from US census?
+# what's going on?
+# maybe use the population data 
+# to select the relevant zctas from the geodata
+
+# maybe only some are geographically distinct?
+# in which case... assign the excess population to the closest centroid?
+va_zcta_pop[~va_zcta_pop.patch_id.astype('int').astype('str').isin(us_zipcode_geodata['ZCTA5CE20'])]
+
+#%%
+
+# try a python package
+from uszipcode import SearchEngine
+search = SearchEngine()
+va_zipcodes = va_zcta_pop['patch_id'].astype('int').astype('str')
+results = [search.by_zipcode(code).to_dict() for code in va_zipcodes]
+latlng = [(x["lat"],x["lng"]) for x in results]

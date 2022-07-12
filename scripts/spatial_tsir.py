@@ -306,7 +306,7 @@ class spatial_tSIR:
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
             grav_model_out = gravity(network=self.patch_pop, 
-                    distances=self.distances, infected=I_t, params=self.config, parallel=parallel_grav)
+                    distances=self.distances, infected=I_t, params=self.config)
             infection_influx = grav_model_out["influx"]
             iota_t = np.array([gamma.rvs(scale=1,a=a) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)
