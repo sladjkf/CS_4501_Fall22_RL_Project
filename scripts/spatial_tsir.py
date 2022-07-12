@@ -2,8 +2,13 @@ import numpy as np
 import pandas as pd
 from numpy import random
 from scipy.stats import nbinom, gamma
+
 from itertools import chain
+from functools import partial
+
 import warnings
+import multiprocess
+
 ##### NETWORK MODEL: GRAVITY MODEL #####
 
 
@@ -83,7 +88,8 @@ def grenfell_network(x_lims=(-500,500),
 
 def get_distances(network):
     """
-    Generate the network distances for use in the gravity model
+    Generate the network distances for use in the gravity model.
+    Pretty naive, but it works.
     Parameters
     ----------
     network : DataFrame 
@@ -110,7 +116,8 @@ def get_distances(network):
 
     return distance_matrix
             
-def gravity(network,distances,infected,params):
+def gravity(network,distances,infected,params,
+        parallel=False,cores=4):
     '''
     Generate gravity weights for a given network.
     Output:
@@ -134,35 +141,74 @@ def gravity(network,distances,infected,params):
     # TODO: can definitely be more efficient (vectorization?)
     # i.e don't check condition on inner loop but just do the checking before hand
     
-    #x_vector = np.array(network["x"])
-    #y_vector = np.array(network["y"])
-    #coord_pairs = np.array(network[["x","y"]])
     pop_vec = np.array(network["pop"])
-    def inner_loop(i,j):
-        #distance = np.linalg.norm(coord_pairs[i,:]-coord_pairs[j,:],ord=2)
-        #if distance <= 1e-6:
-        #    print(distance)
-        #    print(coord_pairs[i,:],coord_pairs[j,:])
-        #adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distance**rho)
-        adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
-    
-    # unrolled loops
-    #for k in range(1,num_locations):
-    #    inner_loop(0,k)
-    #for j in range(0,num_locations-1):
-    #    inner_loop(num_locations-1,j)
-    for i in range(0,num_locations):
-        #for j in list(range(0,i)) + list(range(i+1,num_locations)):
-        for j in chain(range(0,i),range(i+1,num_locations)):
-            adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
-            
-    # TODO: same here, don't check condition on inner loop
-    # compute the parameters for the gamma distr
-    #m = np.array([theta*sum([adj_matrix[j][k] for j in range(0,num_locations) if j != k]) for k in range(0,num_locations)])
-    m = np.array([
-            theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
-                  for k in range(0,num_locations)
-            ])
+    #if parallel == True:
+    #    # generate list of iterables?
+    #    i_arr = np.repeat(np.arange(0,num_locations),num_locations)
+    #    j_arr = np.tile(np.arange(0,num_locations),num_locations)
+    #    #j_arr = np.concatenate([np.delete(np.arange(0,num_locations),i) for i in range(0,num_locations)])
+    #    pairs = zip(i_arr,j_arr)
+
+    #    def compute_influx(ij,infected,distances,tau1,tau2,rho):
+    #        i = ij[0]
+    #        j = ij[1]
+    #        if i==j:
+    #            return 0
+    #        return (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
+
+    #    compute_influx_partial = partial(compute_influx, 
+    #            infected=infected,distances=distances,tau1=tau1,tau2=tau2,rho=rho)
+    #    p = multiprocess.Pool(cores)
+    #    result = p.map_async(compute_influx_partial,pairs).get()
+    #    p.terminate()
+
+    #    adj_matrix = np.array(result).reshape((num_locations,num_locations))
+
+    #    print(adj_matrix)
+
+    #    # compute m (axis shouldn't really matter since symmetric?)
+    #    # subtract off diagonal entries
+    #    #m = np.sum(adj_matrix,axis=1)
+    #    #m = theta*(m - np.array([adj_matrix[k,k] for k in range(0,adj_matrix.shape[0])]))
+    #    m = np.array([
+    #            theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
+    #                  for k in range(0,num_locations)
+    #            ])
+
+    #else:
+    if False:
+        # ---- old serial method with for loop ---#
+        for i in range(0,num_locations):
+            for j in chain(range(0,i),range(i+1,num_locations)):
+                adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
+                
+        # TODO: same here, don't check condition on inner loop
+        # compute the parameters for the gamma distr
+        m = np.array([
+                theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
+                      for k in range(0,num_locations)
+                ])
+    if True:
+        # ---- attempt to vectorize ---- #
+        # repeat vectors akin to i,j in for loop
+        inf_i = np.repeat(infected,num_locations)
+        pop_j = np.tile(pop_vec,num_locations)
+
+        # add 1 to diagonal to avoid numerical error
+        distances_ij = distances + np.eye(distances.shape[0])
+        distances_ij = np.reshape(distances_ij,num_locations**2)
+
+        # compute gravity weights and reshape
+        adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
+        adj_matrix = adj_mat_flat.reshape(num_locations,num_locations)
+
+        # remove diagonal entries by using a "hollow" matrix (zeros on diagonal, 1 elsewhere)
+        adj_matrix = adj_matrix*(1-np.eye(num_locations))
+
+        # freely sum; since diagonal is 0 don't need to add conditional
+        m = theta*np.sum(adj_matrix,axis=0)
+        print(m)
+
     return {"matrix":adj_matrix,"influx":m}
             
             
@@ -259,7 +305,8 @@ class spatial_tSIR:
             # compute new infections
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
-            grav_model_out = gravity(network=self.patch_pop, distances=self.distances, infected=I_t, params=self.config)
+            grav_model_out = gravity(network=self.patch_pop, 
+                    distances=self.distances, infected=I_t, params=self.config, parallel=parallel_grav)
             infection_influx = grav_model_out["influx"]
             iota_t = np.array([gamma.rvs(scale=1,a=a) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)

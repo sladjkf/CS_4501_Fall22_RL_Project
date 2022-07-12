@@ -3,17 +3,24 @@
 """
 Created on Mon Jun 27 12:11:01 2022
 
+synthetic dynamics and testing/validating model
+
 @author: nicholasw
 """
 
 #%%
 
-# imports
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import sys
 
-sys.path.append("/run/media/nicholasw/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/")
-#from spatial_tsir import *
+project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+
+sys.path.append(project_path.format("scripts"))
+#sys.path.append("/run/media/nicholasw/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/")
+from spatial_tsir import *
 #%%
 
 core_pop = 5000000
@@ -79,7 +86,7 @@ plt.scatter(data=network_df,x='x',y='y')
 #%%
 # run simulation
 sim = spatial_tSIR(config,network_df,initial_state)
-sim.run_simulation(verbose=True)
+sim.run_simulation(verbose=True,parallel_grav=False)
 
 #%%
 
