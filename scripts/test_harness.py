@@ -86,7 +86,7 @@ plt.scatter(data=network_df,x='x',y='y')
 #%%
 # run simulation
 sim = spatial_tSIR(config,network_df,initial_state)
-sim.run_simulation(verbose=True,parallel_grav=False)
+sim.run_simulation(verbose=True)
 
 #%%
 

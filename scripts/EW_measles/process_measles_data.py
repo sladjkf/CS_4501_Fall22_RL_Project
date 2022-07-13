@@ -94,10 +94,10 @@ measles_cities = gb_latlng[gb_latlng['city'].isin(measles_data_agg.columns)].res
 # maybe it's fine since they just need to be on the same scale?
 # idk.
 # https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
-from math import cos, asin, sqrt, pi
 from scipy.special import binom
 import itertools
 
+from math import cos, asin, sqrt, pi
 def distance(lat1, lon1, lat2, lon2):
     p = pi/180
     a = 0.5 - cos((lat2-lat1)*p)/2 + cos(lat1*p) * cos(lat2*p) * (1-cos((lon2-lon1)*p))/2

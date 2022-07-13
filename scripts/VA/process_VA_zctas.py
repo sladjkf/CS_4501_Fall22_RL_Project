@@ -107,3 +107,53 @@ search = SearchEngine()
 va_zipcodes = va_zcta_pop['patch_id'].astype('int').astype('str')
 results = [search.by_zipcode(code).to_dict() for code in va_zipcodes]
 latlng = [(x["lat"],x["lng"]) for x in results]
+latlng = pd.DataFrame(latlng)
+
+#%%
+
+# plot to check?
+# looks legit..
+import geopandas
+gdf = geopandas.GeoDataFrame(latlng, geometry=geopandas.points_from_xy(latlng[1],latlng[0]))
+gdf.plot(markersize=2)
+
+#%%
+
+# directly compute distances using haversine formula?
+from math import cos, asin, sqrt, pi
+#def distance(lat1, lon1, lat2, lon2):
+def distance(loc1, loc2):
+    lat1, lon1 = loc1
+    lat2, lon2 = loc2
+    p = pi/180
+    a = 0.5 - cos((lat2-lat1)*p)/2 + cos(lat1*p) * cos(lat2*p) * (1-cos((lon2-lon1)*p))/2
+    return 12742 * asin(sqrt(a)) #2*R*asin...
+
+num_locations = len(latlng.index)
+dist_matrix = np.zeros((num_locations,num_locations))
+for i in range(0,num_locations):
+    for j in range(0,i):
+        loc_i = tuple(latlng.iloc[i,0:2])
+        loc_j = tuple(latlng.iloc[j,0:2])
+        dist_matrix[i][j] = distance(loc_i, loc_j)
+        dist_matrix[j][i] = dist_matrix[i][j]
+
+#%% save the haversine distance matrix
+
+haversine_dist_df = pd.DataFrame(dist_matrix, index=list(va_zipcodes), columns=list(va_zipcodes))
+haversine_dist_df.to_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zipcodes_dist_haversine.csv"))
+
+#%%
+
+# compared to geopandas + projection method
+gdf_projected = gdf.set_crs('4326').to_crs('3857')
+
+gdf_projected = gdf.set_crs('4269').to_crs('3857')
+
+gdf_dist_matrix = np.zeros((num_locations,num_locations))
+
+for i in range(0,num_locations):
+    for j in range(0,i):
+        gdf_dist_matrix[i,j] = gdf_projected.iloc[i,2].distance(gdf_projected.iloc[j,2])
+        gdf_dist_matrix[j,i] = gdf_dist_matrix[i,j] 
+

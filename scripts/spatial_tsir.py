@@ -7,7 +7,7 @@ from itertools import chain
 from functools import partial
 
 import warnings
-import multiprocess
+#import multiprocess
 
 ##### NETWORK MODEL: GRAVITY MODEL #####
 
@@ -199,15 +199,24 @@ def gravity(network,distances,infected,params,
         distances_ij = np.reshape(distances_ij,num_locations**2)
 
         # compute gravity weights and reshape
-        adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
+        try:
+            adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
+        except RuntimeWarning:
+            print("num_locations",num_locations)
+            print(np.argwhere(np.isnan(inf_i)))
+            print(np.argwhere(np.isnan(pop_j)))
+            print(np.argwhere(np.isnan(distances_ij)))
+            print(np.argwhere(distances_ij==0))
         adj_matrix = adj_mat_flat.reshape(num_locations,num_locations)
 
         # remove diagonal entries by using a "hollow" matrix (zeros on diagonal, 1 elsewhere)
         adj_matrix = adj_matrix*(1-np.eye(num_locations))
-
+        
+        # if any nan still remains... remove it?
+        adj_matrix = np.nan_to_num(adj_matrix)
         # freely sum; since diagonal is 0 don't need to add conditional
         m = theta*np.sum(adj_matrix,axis=0)
-        print(m)
+        #print(m)
 
     return {"matrix":adj_matrix,"influx":m}
             
@@ -278,7 +287,7 @@ class spatial_tSIR:
         elif 'birth' in self.config.keys():
             birth_rate_t = [self.config['birth']]*26
         else:
-            birth_rate_t = 0
+            birth_rate_t = [0]*26
             
         if 'beta_t' in self.config.keys():
             beta_t = self.config['beta_t']
@@ -352,17 +361,29 @@ class spatial_tSIR:
                 print("infection vector", I_t)
                 print("influx",iota_t)
                 print("change in I",delta_I_t,flush=True)
-    def plot_epicurve(self, normalize=False, select=None, time_range=None, alpha=0.25):
-        if normalize:
+    def plot_epicurve(self, normalize=False, total=False,
+                      select=None, time_range=None, alpha=0.25):
+        if normalize and not total:
             ts_data = self.get_ts_matrix()/np.array(self.get_ts_matrix().max())
+        if not normalize and total:
+            ts_data = np.sum(self.get_ts_matrix(),axis=1)
         else:
             ts_data = self.get_ts_matrix()
         
         if select != None:
             ts_data = ts_data.iloc[:,select]
+            if total:
+                print("Total enabled - ignoring select")
         if time_range != None:
-            ts_data = ts_data.iloc[time_range[0]:time_range[1],:]
-        return ts_data.plot(legend=False,alpha=alpha)
+            if total:
+                ts_data = ts_data.iloc[time_range[0]:time_range[1]]
+            else:
+                ts_data = ts_data.iloc[time_range[0]:time_range[1],:]
+        
+        if total:
+            return ts_data.plot(legend=False)
+        else:
+            return ts_data.plot(legend=False,alpha=alpha)
 
     def get_ts_matrix(self):
         return pd.DataFrame(np.array([x[:,1] for x in self.state_matrix_series]))
