@@ -7,7 +7,7 @@ from itertools import chain
 from functools import partial
 
 import warnings
-#import multiprocess
+from multiprocess import Pool
 
 ##### NETWORK MODEL: GRAVITY MODEL #####
 
@@ -264,6 +264,8 @@ class spatial_tSIR:
         # to check: make sure I+R <= S
         self.state_matrix_series = []
         S_0 = patch_pop['pop'] - initial_state[:,0] - initial_state[:,1]
+        assert all(S_0 >= 0), "some entries of susceptible state are <0 (or maybe float comparison?) check initial state"
+        assert not any(np.isnan(S_0))), "some entries of susceptible state are nan. Check initial state again"
         self.state_matrix_series.append(
             np.stack([S_0,initial_state[:,0],initial_state[:,1]],axis=1)
         )
@@ -394,3 +396,30 @@ class spatial_tSIR:
         else:
             ts_matrix = self.get_ts_matrix()
         return np.corrcoef(ts_matrix.T)
+
+class spatial_tSIR_pool:
+    '''
+    helper class for running and analyzing multiple tSIR simulations at once
+    '''
+    def __init__(self, 
+            config, 
+            patch_pop, initial_state,
+            distances=None, n_sim=100,threads=10):
+        self.simulation_list = [spatial_tSIR(config,patch_pop,initial_state,distances) for i in range(0,n_sim)]
+        self.thread_count=threads
+        self.state_matrix_list = []
+    def run_simulation(self):
+        with Pool(self.thread_count) as p:
+            # wow this is bad
+            self.simulation_list = p.map(
+                    lambda sim: (
+                        sim.run_simulation(),
+                        sim)[-1],
+                    self.simulation_list)
+    def summary_ts_matrix(self):
+
+
+#%% testing code
+plt.figure()
+for sim in pool.simulation_list:
+    sim.plot_epicurve(select=82)
