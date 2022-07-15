@@ -110,8 +110,7 @@ I = np.array(va_zcta_pop['patch_id'].isin(top_5_pop['patch_id']).astype(int))
 initial_state[:,0] = I
 initial_state[:,1] = R
 
-#%% setup initial state with vaccination file
-
+#%% setup initial state with vaccination file (from Rivanna directory)
 
 va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/all-immunization-info-by-zip.txt"))
 #filter just VA
@@ -149,6 +148,17 @@ I = np.array(va_zcta_pop['patch_id'].isin(top_5_pop['patch_id']).astype(int))
 
 initial_state[:,0] = I
 initial_state[:,1] = np.int64(total_R)
+
+#%% setup initial state with vaccination file (from sifat)
+
+va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/ZC_immunization_sifat.csv"))
+
+# although this df has 876 rows that correspond to the acquired zcta data from us census,
+# we won't be able to use all of them so let's jsut drop 0 rows first
+# they won't affect the simulation
+va_vax_schedule = va_vax_schedule[va_vax_schedule['population'] > 0 ]
+
+#%%
 
 #%%
 sim = spatial_tSIR(config,

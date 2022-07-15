@@ -157,3 +157,32 @@ for i in range(0,num_locations):
         gdf_dist_matrix[i,j] = gdf_projected.iloc[i,2].distance(gdf_projected.iloc[j,2])
         gdf_dist_matrix[j,i] = gdf_dist_matrix[i,j] 
 
+
+########## ------------------ #################3
+
+#%% get VA zip code latlong from Nominatim
+
+va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/ZC_immunization_sifat.csv"))
+
+# although this df has 876 rows that correspond to the acquired zcta data from us census,
+# we won't be able to use all of them so let's jsut drop 0 rows first
+# they won't affect the simulation
+va_vax_schedule = va_vax_schedule[va_vax_schedule['population'] > 0 ]
+# it's easier if we modify the distance matrix, too
+# but some entries not in there??
+# may need to recompute from scratch
+from geopy.geocoders import Nominatim
+from geopy.extra.rate_limiter import RateLimiter
+locator = Nominatim(user_agent="get_VA_zipcodes")
+coder = RateLimiter(locator.geocode,min_delay_seconds=1)
+queries = ["{} VA United States".format(x) for x in va_vax_schedule['zipcode']]
+locations = [coder(query) for query in queries]
+
+result = pd.DataFrame([x.raw for x in locations])
+result.drop('licence',axis=1,inplace=True)
+result['zipcode'] = va_vax_schedule.reset_index()['zipcode']
+
+result.to_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zips_latlong_nominatim.csv"))
+#%%
+
+

@@ -1,0 +1,17 @@
+va_zcta_pop.csv - retrieved from US census data (sex by age by zcta)
+VA_zipcodes_haversine.csv - computed by Nick, uses uszipcodes PyPI package
+VAZipDistance.csv 
+- retrieved from biocommplexity rivanna
+- /project/biocomplexity/anil/APCD/VAZipDistance
+
+all-immunization-info-by-zip.txt
+- fraction of immunized kids by zipcode
+- retrieved from /project/biocommplexity/anil/APCD/data
+
+ZC_immunization_sifat.csv
+- zipcode level immunization, with population counts
+- obtained from Sifat via email
+
+VA_zips_latlong_nominatim.csv
+- VA zipcode data matching zipcodes in ZC_immunization_sifat.csv
+- retrieved from Nominatim using geopy package

@@ -9,8 +9,7 @@ from functools import partial
 import warnings
 from multiprocess import Pool
 
-##### NETWORK MODEL: GRAVITY MODEL #####
-
+##### MOBILITY MODEL: GRAVITY MODEL #####
 
 def random_network(seed=1234,
                    n=100,
@@ -219,7 +218,54 @@ def gravity(network,distances,infected,params,
         #print(m)
 
     return {"matrix":adj_matrix,"influx":m}
-            
+
+
+#### MOBILITY MODEL: Radiation model ####
+
+def get_radiation_flows(pop,distances,mobile):
+    """
+    get the flow matrix described by the radiation model.
+    pop: DataFrame
+    distances: NumPy matrix mobile: float in [0,1] or numpy vector
+    """
+    num_locations = len(pop.index)
+    if np.isscalar(mobile):
+        mobile_vec = np.repeat(mobile,num_locations)
+    else:
+        assert len(mobile) == num_locations, "mobility vector length doesn't match number of locations in pop"
+        mobile_vec = mobile
+
+    flow_matrix = np.zeros((num_locations,num_locations))
+
+    # start with a naive double-for loop
+    # could be vectorized or stored
+
+    for i in range(0,num_locations):
+        for j in range(0,num_locations):
+            pop_i = pop['pop'].iloc[i]
+            pop_j = pop['pop'].iloc[j]
+            # we can only use the information at the given spatial resolution
+            # to compute the total population in a particular radius
+            # zip code is pretty fine so maybe ok?
+            dist_ij = distances[i,j]
+
+            # mask to remove population sizes of location i and location j
+            mask = np.ones(num_locations)
+            mask[i], mask[j] = 0, 0
+            to_iterate_over = zip(pop['pop']*mask,distances[i,:])
+            pop_in_radius = sum(x[0] for x in zip(pop['pop'],distances[i,:]) if x[1]<dist_ij)
+
+            with warnings.catch_warnings(): # in case places have 0 population or something?
+                warnings.filterwarnings('error')
+                try:
+                    flow_matrix[i][j] = mobile_vec[i]* (pop_i*pop_j) / ((pop_i + pop_in_radius)*(pop_i + pop_j + pop_in_radius))
+                except:
+                    flow_matrix[i][j] = 0
+
+    return flow_matrix
+
+#def get_radiation_influx(flows,infected,theta):
+    # TODO: later
             
 #### DISEASE MODEL: Spatial tSIR MODEL ####
     
@@ -265,7 +311,7 @@ class spatial_tSIR:
         self.state_matrix_series = []
         S_0 = patch_pop['pop'] - initial_state[:,0] - initial_state[:,1]
         assert all(S_0 >= 0), "some entries of susceptible state are <0 (or maybe float comparison?) check initial state"
-        assert not any(np.isnan(S_0))), "some entries of susceptible state are nan. Check initial state again"
+        assert not any(np.isnan(S_0)), "some entries of susceptible state are nan. Check initial state again"
         self.state_matrix_series.append(
             np.stack([S_0,initial_state[:,0],initial_state[:,1]],axis=1)
         )
@@ -416,10 +462,10 @@ class spatial_tSIR_pool:
                         sim.run_simulation(),
                         sim)[-1],
                     self.simulation_list)
-    def summary_ts_matrix(self):
+    #def summary_ts_matrix(self):
 
 
 #%% testing code
-plt.figure()
-for sim in pool.simulation_list:
-    sim.plot_epicurve(select=82)
+#plt.figure()
+#for sim in pool.simulation_list:
+#    sim.plot_epicurve(select=82)
