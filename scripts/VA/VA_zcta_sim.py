@@ -8,9 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # windows machine at the office
-#project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+#%%
 # my home desktop
-project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+#project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 
 import sys
 sys.path.append(project_path.format("scripts/"))
@@ -98,7 +99,7 @@ config = {
 #%% setup initial state - seed top 5 most populated, constant immunization rate
 initial_state = np.zeros((len(va_zcta_pop.index),2))
 # in lieu of more detailed local immunization data, initialize with fixed immunity rate?
-immun_rate = 0.975
+immun_rate = 0.96
 
 # initialize immune/recovered
 R = np.int64(np.floor(va_zcta_pop['pop']*immun_rate))
@@ -111,52 +112,52 @@ initial_state[:,0] = I
 initial_state[:,1] = R
 
 #%% setup initial state with vaccination file (from Rivanna directory)
-
-va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/all-immunization-info-by-zip.txt"))
-#filter just VA
-va_vax_schedule = va_vax_schedule[vax_schedule['zip'].isin(va_zcta_pop['patch_id'])]
-
-# TODO: idk if the years even match here???
-
-# merge with the pop df
-# some will be zero for sure (left join and rows don't match)
-pop_vax_merged = va_zcta_pop.merge(va_vax_schedule, left_on="patch_id",right_on="zip",how="left")
-pop_vax_merged['num_kids'] = pop_vax_merged['num_kids'].fillna(0)
-
-# some rows where pop < num_kids?
-# let's just replace pop w/ num_kids for now...
-pop_lt_numkids = pop_vax_merged[pop_vax_merged['pop'] < pop_vax_merged['num_kids']].index
-pop_vax_merged.loc[pop_lt_numkids,"pop"] = pop_vax_merged['num_kids'].iloc[pop_lt_numkids]
-
-pop_vax_merged['num_vacc'] = pop_vax_merged['num_vacc'].fillna(0)
-
-pop_vax_merged['num_adults'] = pop_vax_merged['pop'] - pop_vax_merged['num_kids']
-
-adult_vax_rate = 0.95
-adult_R = np.floor(pop_vax_merged['num_adults']*adult_vax_rate)
-kids_R = np.floor(pop_vax_merged['num_vacc'])
-
-total_R = adult_R + kids_R
-
-# quick checks
-assert not any(total_R < 0) # nonnegative
-assert not any(np.isnan(total_R))
-
-# now let's say we seed the top 5 locations
-top_5_pop = va_zcta_pop.sort_values(by='pop').tail()
-I = np.array(va_zcta_pop['patch_id'].isin(top_5_pop['patch_id']).astype(int))
-
-initial_state[:,0] = I
-initial_state[:,1] = np.int64(total_R)
+if False:
+    va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/all-immunization-info-by-zip.txt"))
+    #filter just VA
+    va_vax_schedule = va_vax_schedule[va_vax_schedule['zip'].isin(va_zcta_pop['patch_id'])]
+    
+    # TODO: idk if the years even match here???
+    
+    # merge with the pop df
+    # some will be zero for sure (left join and rows don't match)
+    pop_vax_merged = va_zcta_pop.merge(va_vax_schedule, left_on="patch_id",right_on="zip",how="left")
+    pop_vax_merged['num_kids'] = pop_vax_merged['num_kids'].fillna(0)
+    
+    # some rows where pop < num_kids?
+    # let's just replace pop w/ num_kids for now...
+    pop_lt_numkids = pop_vax_merged[pop_vax_merged['pop'] < pop_vax_merged['num_kids']].index
+    pop_vax_merged.loc[pop_lt_numkids,"pop"] = pop_vax_merged['num_kids'].iloc[pop_lt_numkids]
+    
+    pop_vax_merged['num_vacc'] = pop_vax_merged['num_vacc'].fillna(0)
+    
+    pop_vax_merged['num_adults'] = pop_vax_merged['pop'] - pop_vax_merged['num_kids']
+    
+    adult_vax_rate = 0.95
+    adult_R = np.floor(pop_vax_merged['num_adults']*adult_vax_rate)
+    kids_R = np.floor(pop_vax_merged['num_vacc'])
+    
+    total_R = adult_R + kids_R
+    
+    # quick checks
+    assert not any(total_R < 0) # nonnegative
+    assert not any(np.isnan(total_R))
+    
+    # now let's say we seed the top 5 locations
+    top_5_pop = va_zcta_pop.sort_values(by='pop').tail()
+    I = np.array(va_zcta_pop['patch_id'].isin(top_5_pop['patch_id']).astype(int))
+    
+    initial_state[:,0] = I
+    initial_state[:,1] = np.int64(total_R)
 
 #%% setup initial state with vaccination file (from sifat)
-
-va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/ZC_immunization_sifat.csv"))
-
-# although this df has 876 rows that correspond to the acquired zcta data from us census,
-# we won't be able to use all of them so let's jsut drop 0 rows first
-# they won't affect the simulation
-va_vax_schedule = va_vax_schedule[va_vax_schedule['population'] > 0 ]
+if False:
+    va_vax_schedule = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/ZC_immunization_sifat.csv"))
+    
+    # although this df has 876 rows that correspond to the acquired zcta data from us census,
+    # we won't be able to use all of them so let's jsut drop 0 rows first
+    # they won't affect the simulation
+    va_vax_schedule = va_vax_schedule[va_vax_schedule['population'] > 0 ]
 
 #%%
 
@@ -170,3 +171,11 @@ sim.run_simulation(verbose=False)
 #%%
 sim.plot_epicurve(normalize=True)
 sim.plot_epicurve(normalize=True,total=True)
+
+#%% multithreaded test
+sim = spatial_tSIR_pool(config,
+        va_zcta_pop,
+        initial_state,
+        distances=np.array(va_zcta_distances),n_sim=150)
+
+sim.run_simulation(multi=False)

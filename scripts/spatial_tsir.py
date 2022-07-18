@@ -261,11 +261,37 @@ def get_radiation_flows(pop,distances,mobile):
                     flow_matrix[i][j] = mobile_vec[i]* (pop_i*pop_j) / ((pop_i + pop_in_radius)*(pop_i + pop_j + pop_in_radius))
                 except:
                     flow_matrix[i][j] = 0
+    
+    # vectorized version
 
     return flow_matrix
 
-#def get_radiation_influx(flows,infected,theta):
-    # TODO: later
+def get_radiation_influx(flows,infected,theta):
+    """
+
+    Parameters
+    ----------
+    flows : numpy array (NxN)
+        DESCRIPTION.
+    infected : numpy array (N)
+        DESCRIPTION.
+    theta : float
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
+    # can do dimension checks as usual
+    N = len(infected)
+    # mask diagonal entries
+    flows_masked = flows * (np.ones((N,N)) - np.eye(N))
+    # left multiply to do the sum
+    # theta*sum(flow[i,k]*infected[i] for all i != k) over all k
+    return theta*(infected[np.newaxis,:] @ flows_masked)
+    
             
 #### DISEASE MODEL: Spatial tSIR MODEL ####
     
@@ -450,19 +476,42 @@ class spatial_tSIR_pool:
     def __init__(self, 
             config, 
             patch_pop, initial_state,
-            distances=None, n_sim=100,threads=10):
+            n_sim, distances=None):
         self.simulation_list = [spatial_tSIR(config,patch_pop,initial_state,distances) for i in range(0,n_sim)]
-        self.thread_count=threads
-        self.state_matrix_list = []
-    def run_simulation(self):
-        with Pool(self.thread_count) as p:
-            # wow this is bad
-            self.simulation_list = p.map(
-                    lambda sim: (
-                        sim.run_simulation(),
-                        sim)[-1],
-                    self.simulation_list)
-    #def summary_ts_matrix(self):
+    def run_simulation(self,multi=True,threads=10):
+        if multi:
+            with Pool(threads) as p:
+                # wow this is bad but it works
+                self.simulation_list = p.map(
+                        lambda sim: (
+                            sim.run_simulation(),
+                            sim)[-1],
+                        self.simulation_list)
+        else:
+            for sim in self.simulation_list:
+                sim.run_simulation()
+    def summary_ts_matrix(self):
+        ts_matrices = [np.array(sim.get_ts_matrix()) for sim in self.simulation_list]
+        mean_matrix = np.mean(ts_matrices,axis=0) # is this right? think it is
+        sd_matrix = np.std(ts_matrices,axis=0)
+        return {"mean":mean_matrix,"sd":sd_matrix}
+    def plot_sd(self,select,sd_width=1.96):
+        summary = self.summary_ts_matrix()
+        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
+        # Wait, but this assumes the distribution is (approximately) Gaussian
+        # maybe not always true.
+        low_sd = summary['mean'][:,select] - sd_width*summary['sd'][:,select]
+        up_sd = np.max(0,summary['mean'][:,select] + sd_width*summary['sd'][:,select])
+        # asymptotic exponential CI
+        #low_sd = summary['mean'][:,select] - sd_width*summary['mean'][:,select]/np.sqrt(len(self.simulation_list))
+        #up_sd = summary['mean'][:,select] + sd_width*summary['mean'][:,select]/np.sqrt(len(self.simulation_list))
+        ax.plot(low_sd,color="red",linestyle='dashed')
+        ax.plot(up_sd,color="red",linestyle='dashed')
+        return ax
+    def plot_mean(self):
+        summary = self.summary_ts_matrix()
+        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
+        return ax
 
 
 #%% testing code

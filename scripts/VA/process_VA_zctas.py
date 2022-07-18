@@ -8,11 +8,12 @@ Load and process the Virginia zip code data from the US Census.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import geopandas as gpd
+#import seaborn as sns
+#import geopandas as gpd
 
 #%%
 project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 
 # https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2021.html
 us_zipcode_geodata = gpd.read_file(project_path.format("data/tl_2021_us_zcta520/tl_2021_us_zcta520.shp"))
@@ -158,7 +159,7 @@ for i in range(0,num_locations):
         gdf_dist_matrix[j,i] = gdf_dist_matrix[i,j] 
 
 
-########## ------------------ #################3
+########## ------------------ #################
 
 #%% get VA zip code latlong from Nominatim
 
@@ -183,6 +184,49 @@ result.drop('licence',axis=1,inplace=True)
 result['zipcode'] = va_vax_schedule.reset_index()['zipcode']
 
 result.to_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zips_latlong_nominatim.csv"))
-#%%
+#%% Use nominatim data to compute distances?
+from geopy.distance import distance
+
+zip_latlng = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zips_latlong_nominatim.csv"))
+
+# compute the distances using geodesic distances?
+# https://stackoverflow.com/questions/38248046/is-the-haversine-formula-or-the-vincentys-formula-better-for-calculating-distan
+# for zipcode level geospatial data, the error arising from sphere approximation is likely not negligible
+
+distance_df = {
+    "zipcode1":[],
+    "zipcode2":[],
+    "distKM":[]
+}
+
+num_locations = len(zip_latlng.index)
+
+# just add two-way entries...
+for i in range(num_locations):
+    for j in range(i+1,num_locations):
+        row_i = zip_latlng.iloc[i,:]
+        row_j = zip_latlng.iloc[j,:]
+        dist = distance((row_i['lat'], row_i['lon']),(row_j['lat'],row_j['lon'])).km
+        print(dist)
+        
+        distance_df['zipcode1'].append(row_i['zipcode'])
+        distance_df['zipcode2'].append(row_j['zipcode'])
+        distance_df['distKM'].append(dist)
+        
+        distance_df['zipcode2'].append(row_i['zipcode'])
+        distance_df['zipcode1'].append(row_j['zipcode'])
+        distance_df['distKM'].append(dist)
 
 
+
+#%% save distances
+distance_df = pd.DataFrame(distance_df)
+distance_df.to_csv(project_path.format("data/VA_zipcodes_cleaned/ZC_distance_sifat_nom_geopy.csv"))
+
+#%% convert to matrix-style structure
+
+distance_mat = distance_df.pivot(index='zipcode1',columns='zipcode2',values='distKM')
+
+# diagonal
+for k in range(1,num_locations):
+    distance_mat.iat[k,k]=0
