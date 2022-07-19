@@ -78,17 +78,26 @@ for locality in localities_list:
     if not any([locality in x for x in locality_names]): # if a match was not found, print it.
         print(locality)
 
-# output
-#runcell('check if each locality in the list is actually in the flow data', 'D:/Summer 2022 (C4GC with BII)/measles_metapop/scripts/VA/gravity_calibration.py')
-#Wayne...
-# So 'Wayne' is a locality not in the flow data (we'll probably need to drop it)
+# output currently blank.. good
 
-#%% combine locality list and remove 'Wayne'
+#%% combine locality list 
 
 # assume that no county and no major city share a name
-# god I hope
-#zip_county_df['locality'] = [locality.strip("County").strip("City") for locality in localities_list]
-zip_county_df['locality'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in localities_list]
+# NOTE: this assumption is incorrect. there is a Fairfax city and a Fairfax County
+#zip_county_df['locality'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in localities_list]
+
+# let's use 'name_county' and 'name_city' format instead.
+#zip_county_df['locality'] = ['_'.join([word.lower() for word in locality.split()]) for locality in localities_list]
+
+locality_list_cleaned = []
+for locality in localities_list:
+    if 'county' in locality.lower():
+        loc = '_'.join([word.lower() for word in locality.split()])
+    else:
+        loc = '_'.join([word.lower() for word in locality.split()]+['city'])
+    locality_list_cleaned.append(loc)
+zip_county_df['locality'] = locality_list_cleaned
+    
 
 #zip_county_df = zip_county_df[~zip_county_df['locality'].str.contains('Wayne')]
 
@@ -119,12 +128,13 @@ grav_mod(np.array(dist_mat),vacc_df,1,1,1,0.0015)
 
 zip_county = zip_county_df[['locality']]
 zip_county.index = zip_county_df['zipcode']
+zip_county_dict = {row[0]:row[1] for row in zip_county.itertuples()}
 
 def agg_flow(grav_output,zips,zip_county,theta):
     '''
     grav_output: output from gravity model code
     zips: the zipcode labeling vector for the grav_output
-    zip_county_df: dataframe containing mapping from zipcode -> 'locality'
+    zip_county_df: dictionary containing mapping from zipcode -> 'locality'
     theta: constant to scale flows by (should be same theta as in original model?)
     '''
     grav_matrix = grav_output['matrix']
@@ -140,11 +150,17 @@ def agg_flow(grav_output,zips,zip_county,theta):
     grav_matrix_list.columns = ['from_zc','to_zc','flow']
 
     # definitely going to need to be faster if to be used for calibration
+    # convert to numpy data structures
+
+    grav_matrix_list_np = np.array(grav_matrix_list)
     renamed = []
-    for row in grav_matrix_list.itertuples():
-        county_from = zip_county.loc[row.from_zc,'locality']
-        county_to = zip_county.loc[row.to_zc,'locality']
-        renamed.append((county_from,county_to,row.flow))
+    #for row in grav_matrix_list.itertuples():
+    for i in range(grav_matrix_list_np.shape[0]):
+        row = grav_matrix_list_np[i,:]
+        county_from = zip_county[row[0]]
+        county_to = zip_county[row[1]]
+        #print(county_from,county_to)
+        renamed.append((county_from,county_to,row[2]))
 
     renamed = pd.DataFrame(renamed)
     renamed.columns = ['from','to','flow']
@@ -157,8 +173,10 @@ def agg_flow(grav_output,zips,zip_county,theta):
 #%% get predictions and actual data in similar forms
 
 va_commuter = va_commuter[['county_name1','county_name2','flow','error']]
-va_commuter['county_name1'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in va_commuter['county_name1']]
-va_commuter['county_name2'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in va_commuter['county_name2']]
+#va_commuter['county_name1'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in va_commuter['county_name1']]
+#va_commuter['county_name2'] = [' '.join([word for word in locality.split() if word.lower() not in ['county','city']]) for locality in va_commuter['county_name2']]
+va_commuter['county_name1'] = ['_'.join([word.lower() for word in locality.split()]) for locality in va_commuter['county_name1']]
+va_commuter['county_name2'] = ['_'.join([word.lower() for word in locality.split()]) for locality in va_commuter['county_name2']]
 va_commuter.columns = ['from','to','flow','error']
 
 
@@ -167,7 +185,7 @@ va_commuter.columns = ['from','to','flow','error']
 va_commuter_localities = set(list(va_commuter['from'])+list(va_commuter['to']))
 agg_flow_localities = set(zip_county['locality'])
 print(va_commuter_localities - agg_flow_localities)
-# OUTPUT: {'Colonial Heights', 'Covington', 'Hopewell', 'Sussex', 'Lexington'}
+# Output: {'lexington_city', 'colonial_heights_city', 'radford_city', 'covington_city', 'sussex_county', 'portsmouth_city', 'hopewell_city'}
 # what to do?
 #  1. omit
 #  2. get location data from nominatim (and reincporate)
@@ -177,6 +195,8 @@ print(va_commuter_localities - agg_flow_localities)
 def compare(agg_flow_output,va_commuter,return_not_found=False):
     # use numpy arrays for speed
     va_commuter_mat = np.array(va_commuter)
+    loc_to = []
+    loc_from = []
     obs = va_commuter_mat[:,2]
     pred= np.zeros(len(obs))
     not_found = []
@@ -186,25 +206,78 @@ def compare(agg_flow_output,va_commuter,return_not_found=False):
         try:
             flow = agg_flow_output.loc[(from_county,to_county)].item()
             pred[i] = flow
+            loc_from.append(from_county)
+            loc_to.append(to_county)
         except KeyError:
             print((from_county,to_county),"not found")
             not_found.append((from_county,to_county))
 
     if return_not_found:
-        return pd.DataFrame({'obs':obs,'pred':pred}),not_found
+        return pd.DataFrame({'from':loc_from,'to':loc_to,'obs':obs,'pred':pred}),not_found
     else:
-        return pd.DataFrame({'obs':obs,'pred':pred})
+        return pd.DataFrame({'from':loc_from,'to':loc_to,'obs':obs,'pred':pred})
 
 #%% test (omit missing locations for now)
-to_filter = ['Colonial Heights', 'Covington', 'Hopewell', 'Sussex', 'Lexington']
+to_filter = ['lexington_city', 'colonial_heights_city', 'radford_city', 'covington_city', 'sussex_county', 'portsmouth_city', 'hopewell_city']
 va_commuter_filtrd = va_commuter[np.logical_and(~va_commuter['from'].isin(to_filter),~va_commuter['to'].isin(to_filter))]
 
-zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,1,1,1,1.5e-5)
-agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county,1.5e-5)
+zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,1,1,1,3.5e-6)
+agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,3.5e-6)
 to_compare = compare(agg_flow_output,va_commuter_filtrd)
-
 #%%
-plt.figure()
-plt.scatter(data=to_compare, x='pred', y='obs',s=7,alpha=0.25)
+plt.scatter(data=to_compare, y='pred', x='obs',s=7,alpha=0.25)
 plt.axline((0,0),(1,1))
-plt.show()
+
+#%% calibration test?
+from sklearn.metrics import mean_squared_error as mse
+from scipy.optimize import minimize,differential_evolution
+from scipy.stats import pearsonr
+
+#def objective(tau1,tau2,rho,theta):
+def objective1(x): # mse
+    tau1, tau2, rho, theta = x
+    zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,tau1,tau2,rho,theta)
+    agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,theta)
+    to_compare = compare(agg_flow_output,va_commuter_filtrd)
+    to_return = mse(to_compare['obs'],to_compare['pred'])
+    print(x,to_return)
+    return to_return
+
+def objective2(x): # correlation
+    tau1, tau2, rho, theta = x
+    zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,tau1,tau2,rho,theta)
+    agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,theta)
+    to_compare = compare(agg_flow_output,va_commuter_filtrd)
+    to_return = pearsonr(to_compare['obs'],to_compare['pred'])
+    print(x,to_return)
+    return to_return[0]
+
+def plot_obj(x):
+    tau1, tau2, rho, theta = x
+    zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,tau1,tau2,rho,theta)
+    agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,theta)
+    to_compare = compare(agg_flow_output,va_commuter_filtrd)
+    fig,ax = plt.subplots()
+    ax.scatter(data=to_compare, y='pred', x='obs',s=7,alpha=0.25)
+    ax.axline((0,0),(1,1))
+    return (fig,ax)
+
+minimize(objective1,
+        np.array([1,1,1,3.5e-6]),
+        bounds=[
+            (1e-2,1.5),
+            (1e-2,1.5),
+            (1e-2,1.5),
+            (0,1e-2)]
+        )
+
+differential_evolution(objective,
+        bounds=[
+            (0.5,1.5),
+            (0.5,1.5),
+            (0.5,1.5),
+            (0,1e-5)
+            ])
+
+#%% remove outliers (e.g data that gravity model is especially bad at) and try again
+
