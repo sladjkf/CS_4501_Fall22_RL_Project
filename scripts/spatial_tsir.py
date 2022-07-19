@@ -495,20 +495,41 @@ class spatial_tSIR_pool:
         mean_matrix = np.mean(ts_matrices,axis=0) # is this right? think it is
         sd_matrix = np.std(ts_matrices,axis=0)
         return {"mean":mean_matrix,"sd":sd_matrix}
-    def plot_sd(self,select,sd_width=1.96):
+    def plot_sd(self,select,time_range=None):
+        """
+        plot with the uncertainty
+        currently uses empirical quantiles
+        """
         summary = self.summary_ts_matrix()
+        if type(time_range) != type(None): # or if arraylike ig
+            time_range = range(time_range[0],time_range[1])
+            summary['mean'] = summary['mean'][time_range,:]
+            summary['sd'] = summary['sd'][time_range,:]
         ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
-        # Wait, but this assumes the distribution is (approximately) Gaussian
-        # maybe not always true.
-        low_sd = summary['mean'][:,select] - sd_width*summary['sd'][:,select]
-        up_sd = np.max(0,summary['mean'][:,select] + sd_width*summary['sd'][:,select])
-        # asymptotic exponential CI
-        #low_sd = summary['mean'][:,select] - sd_width*summary['mean'][:,select]/np.sqrt(len(self.simulation_list))
-        #up_sd = summary['mean'][:,select] + sd_width*summary['mean'][:,select]/np.sqrt(len(self.simulation_list))
+        quantiles = self.get_quantiles(sim_pool,select,time_range)
+        #quantiles = spatial_tSIR_pool.get_quantiles(self,sim_pool,select,time_range)
+        low_sd = quantiles.iloc[:,0]
+        up_sd = quantiles.iloc[:,1]
         ax.plot(low_sd,color="red",linestyle='dashed')
         ax.plot(up_sd,color="red",linestyle='dashed')
         return ax
-    def plot_mean(self):
+    def get_samples(self,select,time_range):
+        """
+        get the sample matrix. to make life easier, select will be a scalar. otherwise you get 3d matrices
+        select: scalar (which location to get the time series for?)
+        time_range: list of length 2: (start, stop) index or scalar
+        """
+        ts_matrices = [np.array(sim.get_ts_matrix()) for sim in self.simulation_list]
+        if np.isscalar(time_range):
+            to_return = [ts_matrix[time_range,select] for ts_matrix in ts_matrices]
+            return np.array(to_return)
+        else:
+            to_return = [ts_matrix[range(time_range[0],time_range[1]),select] for ts_matrix in ts_matrices]
+            return np.stack(to_return,axis=1)
+    def get_quantiles(self,select,time_range,quantiles=[0.25,0.975]):
+        samples = self.get_samples(select,time_range)
+        return np.quantile(samples,q=quantiles,axis=1).T
+    def plot_mean(self,select):
         summary = self.summary_ts_matrix()
         ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
         return ax

@@ -279,5 +279,3 @@ differential_evolution(objective,
             (0,1e-5)
             ])
 
-#%% remove outliers (e.g data that gravity model is especially bad at) and try again
-

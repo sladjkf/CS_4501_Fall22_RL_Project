@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 
 # windows machine at the office
 project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+
 import sys
 sys.path.append(project_path.format("scripts/"))
 
@@ -53,12 +55,12 @@ beta_t = np.array(beta_t)*30
 birth_rate = 60/1000/28
 
 config = {
-    "iters":360,
+    "iters":20,
     
     "tau1":1,
-    "tau2":1.4,
+    "tau2":1,
     "rho":1,
-    "theta":0.015/max(vacc_df['pop']),
+    "theta":4e-6,
     "alpha":0.97,
     "beta":24.6
     #"birth":birth_rate
@@ -75,10 +77,10 @@ R = vacc_df['pop'] - vacc_df['nVaccCount']
 # one way - again, try seeding top 5 counties
 top_5 = vacc_df.sort_values(by='pop',ascending=False).head(5)
 # another way - try seeding the top 5 unvaccinated counties (by raw numbers)
-top_5 = vacc_df.sort_values(by='nVaccCount',ascending=False).head(5)
+#top_5 = vacc_df.sort_values(by='nVaccCount',ascending=False).head(5)
 # another way - try seeding the top 5 unvaccinated counties (by ratio)
-vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
-top_5 = vacc_df.sort_values(by='ratio',ascending=False).head(5)
+#vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
+#top_5 = vacc_df.sort_values(by='ratio',ascending=False).head(5)
 
 I = np.zeros(len(vacc_df.index))
 np.put(I,top_5.index,1)
@@ -94,4 +96,16 @@ sim = spatial_tSIR(config,
 
 sim.run_simulation()
 
-#%% 
+#%% multithread simulation
+sim_pool = spatial_tSIR_pool(config,
+        vacc_df,
+        initial_state,
+        n_sim=1500,
+        distances=np.array(dist_mat))
+sim_pool.run_simulation(threads=10)
+
+
+ax = spatial_tSIR_pool.plot_mean(sim_pool,25)
+qs = spatial_tSIR_pool.get_quantiles(sim_pool,25,[0,20])
+ax.plot(qs[:,0],color="red",linestyle='dashed')
+ax.plot(qs[:,1],color="red",linestyle='dashed')
