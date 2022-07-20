@@ -223,10 +223,20 @@ va_commuter_filtrd = va_commuter[np.logical_and(~va_commuter['from'].isin(to_fil
 
 zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,1,1,1,3.5e-6)
 agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,3.5e-6)
+
 to_compare = compare(agg_flow_output,va_commuter_filtrd)
-#%%
 plt.scatter(data=to_compare, y='pred', x='obs',s=7,alpha=0.25)
 plt.axline((0,0),(1,1))
+#%% for illustration purposes, get zip_grav_output in long format
+
+zip_grav_long = pd.DataFrame(zip_grav_output['matrix'])
+zip_grav_long.columns = zip_county_df['zipcode']
+zip_grav_long['zc_from'] = zip_county_df['zipcode']
+zip_grav_long = zip_grav_long.melt(id_vars='zc_from')
+zip_grav_long.columns = ['zc_from','zc_to','flow']
+zip_grav_long['flow'] = zip_grav_long['flow']*3.5e-6
+
+zip_grav_long
 
 #%% calibration test?
 from sklearn.metrics import mean_squared_error as mse

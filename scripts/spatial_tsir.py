@@ -55,6 +55,26 @@ def grenfell_network(x_lims=(-500,500),
                      y_lims=(-500,500),
                      core_pop=500000,
                      sat_pop=100000):
+    """
+    Generate a synthetic network that's similar to the one used in the paper
+    "Measles Metapopulation Dynamics: A Gravity Model for Epidemiological Coupling and Dynamics" (Xia et al.)
+    in the section "Theoretical Dynamics"
+    
+    x_lims,y_lims: 
+        Tuple of length 2. Float elements.
+        Used to specify the limits of the grid to generate the network on.
+    core_pop:
+        Population of the core city. Positive integer.
+    sat_pop:
+        Population of the satellite cities. Positive integer.
+
+    Return:
+        A DataFrame with columns [x,y,pop].
+        Each row specifies a city or subpopulation
+        x and y are the coordinates
+        pop is the population of a city.
+    """
+
     x = np.zeros(250)
     y = np.zeros(250)
     pop = np.repeat(sat_pop,250)
@@ -96,6 +116,7 @@ def get_distances(network):
     Returns
     -------
     numpy matrix. (# of locations) x (# of locations).
+    The ordering of the rows and the columns is the same as in the argument 'network.'
     """
     num_locations = len(network.index)
     coord_pairs = np.array(network[["x","y"]])
@@ -118,104 +139,79 @@ def get_distances(network):
 def gravity(network,distances,infected,params,
         parallel=False,cores=4):
     '''
-    Generate gravity weights for a given network.
-    Output:
-        - adjacency matrix of weights
-        - vector of m parameters
-    network: 
+    Generate gravity weights for a given network. 
+    May throw warnings if there are 0 entries off-diagonal in the 'distances' matrix
+
+    network: DataFrame
         a data frame of locations
-        each row is a location, specified by tuple (x,y,pop)
-    distances:
-        adjacency matrix of distances (save computation time)
-        (# of locations) x (# of locations)
-        It's symmetric.
+        each row is a location, specified by tuple (x,y,pop).
+        X,Y not needed if the 'distances' parameter provided
+    distances: numpy array
+        Dimensions: (# of locations) x (# of locations)
+        Matrix of distances. It's symmetric.
+        The labeling should match that in network.
+        (e.g row i in distances and row i in network must refer to the same patch)
     infected:
         a vector of infection counts
-        rows should match those in 'network'
+        The labeling should match that in 'network'
+
+    Returns: dictionary
+        - 'matrix':  numpy array. 
+            Dimensions: (# of locations) x (# of locations)
+            Matrix of (unscaled) gravity weights.
+        - 'influx': 
+            Dimensions: (# of locations)
+            vector of (scaled) travel volume into each location in the network. 
+
+        The labeling/ordering of 'matrix','influx' should match that of the 
+        distance matrix that was passed in.
     '''
     tau1,tau2,rho,theta = params["tau1"], params["tau2"], params["rho"], params["theta"]
     num_locations = network.shape[0]
     adj_matrix = np.zeros((num_locations,num_locations))
-    # compute matrix
-    # TODO: can definitely be more efficient (vectorization?)
-    # i.e don't check condition on inner loop but just do the checking before hand
-    
     pop_vec = np.array(network["pop"])
-    #if parallel == True:
-    #    # generate list of iterables?
-    #    i_arr = np.repeat(np.arange(0,num_locations),num_locations)
-    #    j_arr = np.tile(np.arange(0,num_locations),num_locations)
-    #    #j_arr = np.concatenate([np.delete(np.arange(0,num_locations),i) for i in range(0,num_locations)])
-    #    pairs = zip(i_arr,j_arr)
 
-    #    def compute_influx(ij,infected,distances,tau1,tau2,rho):
-    #        i = ij[0]
-    #        j = ij[1]
-    #        if i==j:
-    #            return 0
-    #        return (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
-
-    #    compute_influx_partial = partial(compute_influx, 
-    #            infected=infected,distances=distances,tau1=tau1,tau2=tau2,rho=rho)
-    #    p = multiprocess.Pool(cores)
-    #    result = p.map_async(compute_influx_partial,pairs).get()
-    #    p.terminate()
-
-    #    adj_matrix = np.array(result).reshape((num_locations,num_locations))
-
-    #    print(adj_matrix)
-
-    #    # compute m (axis shouldn't really matter since symmetric?)
-    #    # subtract off diagonal entries
-    #    #m = np.sum(adj_matrix,axis=1)
-    #    #m = theta*(m - np.array([adj_matrix[k,k] for k in range(0,adj_matrix.shape[0])]))
+    # ---- old serial method with for loop ---#
+    #if False:
+    #    for i in range(0,num_locations):
+    #        for j in chain(range(0,i),range(i+1,num_locations)):
+    #            adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
+    #            
+    #    # TODO: same here, don't check condition on inner loop
+    #    # compute the parameters for the gamma distr
     #    m = np.array([
     #            theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
     #                  for k in range(0,num_locations)
     #            ])
 
-    #else:
-    if False:
-        # ---- old serial method with for loop ---#
-        for i in range(0,num_locations):
-            for j in chain(range(0,i),range(i+1,num_locations)):
-                adj_matrix[i][j] = (infected[i]**tau1) * (pop_vec[j]**tau2) / (distances[i][j]**rho)
-                
-        # TODO: same here, don't check condition on inner loop
-        # compute the parameters for the gamma distr
-        m = np.array([
-                theta*sum([adj_matrix[j][k] for j in chain(range(0,k),range(k+1,num_locations))]) 
-                      for k in range(0,num_locations)
-                ])
-    if True:
-        # ---- attempt to vectorize ---- #
-        # repeat vectors akin to i,j in for loop
-        inf_i = np.repeat(infected,num_locations)
-        pop_j = np.tile(pop_vec,num_locations)
+    # ---- vectorized version ---- #
+    # repeat vectors akin to i,j in for loop
+    inf_i = np.repeat(infected,num_locations)
+    pop_j = np.tile(pop_vec,num_locations)
 
-        # add 1 to diagonal to avoid numerical error
-        distances_ij = distances + np.eye(distances.shape[0])
-        distances_ij = np.reshape(distances_ij,num_locations**2)
+    # add 1 to diagonal to avoid numerical error
+    distances_ij = distances + np.eye(distances.shape[0])
+    distances_ij = np.reshape(distances_ij,num_locations**2)
 
-        # compute gravity weights and reshape
-        try:
-            adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
-        except RuntimeWarning:
-            print("num_locations",num_locations)
-            print(np.argwhere(np.isnan(inf_i)))
-            print(np.argwhere(np.isnan(pop_j)))
-            print(np.argwhere(np.isnan(distances_ij)))
-            print(np.argwhere(distances_ij==0))
-        adj_matrix = adj_mat_flat.reshape(num_locations,num_locations)
+    # compute gravity weights and reshape
+    try:
+        adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
+    except RuntimeWarning:
+        print("num_locations",num_locations)
+        print(np.argwhere(np.isnan(inf_i)))
+        print(np.argwhere(np.isnan(pop_j)))
+        print(np.argwhere(np.isnan(distances_ij)))
+        print(np.argwhere(distances_ij==0))
+    adj_matrix = adj_mat_flat.reshape(num_locations,num_locations)
 
-        # remove diagonal entries by using a "hollow" matrix (zeros on diagonal, 1 elsewhere)
-        adj_matrix = adj_matrix*(1-np.eye(num_locations))
-        
-        # if any nan still remains... remove it?
-        adj_matrix = np.nan_to_num(adj_matrix)
-        # freely sum; since diagonal is 0 don't need to add conditional
-        m = theta*np.sum(adj_matrix,axis=0)
-        #print(m)
+    # remove diagonal entries by using a "hollow" matrix (zeros on diagonal, 1 elsewhere)
+    adj_matrix = adj_matrix*(1-np.eye(num_locations))
+    
+    # if any nan still remains... remove it?
+    adj_matrix = np.nan_to_num(adj_matrix)
+    # freely sum; since diagonal is 0 don't need to add conditional
+    m = theta*np.sum(adj_matrix,axis=0)
+    #print(m)
 
     return {"matrix":adj_matrix,"influx":m}
 
@@ -224,7 +220,7 @@ def gravity(network,distances,infected,params,
 
 def get_radiation_flows(pop,distances,mobile):
     """
-    get the flow matrix described by the radiation model.
+    Get the flow matrix described by the radiation model (incomplete)
     pop: DataFrame
     distances: NumPy matrix mobile: float in [0,1] or numpy vector
     """
@@ -268,7 +264,8 @@ def get_radiation_flows(pop,distances,mobile):
 
 def get_radiation_influx(flows,infected,theta):
     """
-
+    TODO: Incomplete.
+    Turn radiation flows into raw volume flows (suitable for use in Xia's model.)
     Parameters
     ----------
     flows : numpy array (NxN)
@@ -296,13 +293,18 @@ def get_radiation_influx(flows,infected,theta):
 #### DISEASE MODEL: Spatial tSIR MODEL ####
     
 class spatial_tSIR:
+    '''
+    Implementation of the spatial tSIR model as described in 
+    'Measles Metapopulation Dynamics: A Gravity Model for Epidemiological Coupling and Dynamics.'
+    '''
     def __init__(self, 
             config, 
             patch_pop, initial_state,
             distances=None
             ):
         """
-        Initialize the disease simulation with some parameters.
+        Initialize and parameterize the disease simulation.
+        Will warn you if invalid 'initial_state' passed in.
 
         Parameters
         ----------
@@ -312,10 +314,14 @@ class spatial_tSIR:
             - iters: Number of iterations to run the simulation for
             - tau1, tau2, rho, theta: Parameters for the gravity model.
             - alpha: Mixing exponent
-            - beta: Contact rate
+            - beta: Contact rate. Constant over time
+            - beta_t: Time-varying contact rate. Requires a list of 26 floats for each biweek of measles simulation.
+            - birth: Per-capita birth rate. Constant over time.
+            - birth_t: Time-varying per-capita birth rate. Requires a list of 26 floats for each biweek of measles simulation.
         patch_pop : DataFrame, dimension N x 4
             DataFrame with the column specification
-            (patch_id, pop, x, y)
+            (patch_id, pop, x, y).
+            Population is the most important.
         distances : numpy matrix, dimension N x N (optional)
             precomputed distance matrix from locations in patch_pop
             labeling needs to correspond to the ordering in patch_pop
@@ -350,7 +356,11 @@ class spatial_tSIR:
         else:
             self.distances = get_distances(network=self.patch_pop)
     def run_simulation(self,verbose=False):
-        
+        """
+        Run the simulation. 
+        The results can be analyzed through other methods of the class, 
+        or by accessing the state_matrix_series directly.
+        """
         # setup parameters
         # beta = self.config['beta']
         alpha = self.config['alpha']
@@ -435,8 +445,31 @@ class spatial_tSIR:
                 print("infection vector", I_t)
                 print("influx",iota_t)
                 print("change in I",delta_I_t,flush=True)
+
     def plot_epicurve(self, normalize=False, total=False,
                       select=None, time_range=None, alpha=0.25):
+        """
+        Plot the infection counts from the epidemic simulation.
+
+        Choose either one of normalize or total, but not both.
+        If both selected nothing will be changed.
+        Arguments:
+            normalize: bool
+                If true, normalize infection counts of each patch to the max of that patch.
+                i.e something like i_t = I_t/max(I)
+            total: bool
+                If true, display the total epicurve summed across all patches.
+            select: list of ints or int
+                Select which patches to display the time series for.
+                The numbering of the patches corresponds to the index of the patch 
+                in the 'patch_pop', 'distances' dataframes passed at the beginning of the simulation.
+            time_range: list of int, length 2
+                Specify the start and end of the time series to display.
+            alpha: float
+                Transparency parameter of the drawn curves.
+
+        Return: Matplotlib plot.
+        """
         if normalize and not total:
             ts_data = self.get_ts_matrix()/np.array(self.get_ts_matrix().max())
         if not normalize and total:
@@ -471,14 +504,36 @@ class spatial_tSIR:
 
 class spatial_tSIR_pool:
     '''
-    helper class for running and analyzing multiple tSIR simulations at once
+    Helper class for running and analyzing many tSIR simulations at once.
+    This is useful for obtaining the distribution of the process at any particular time 
+    via Monte-Carlo methods.
     '''
     def __init__(self, 
             config, 
             patch_pop, initial_state,
             n_sim, distances=None):
+        '''
+        Initialize the the simulation pool.
+        It is initialized in exactly the same way as the 'spatial_tSIR' object.
+        Please consult the documentation for that class.
+
+        n_sim: positive integer
+            Controls how many simulations will be run in the pool.
+
+        Return: None.
+        '''
         self.simulation_list = [spatial_tSIR(config,patch_pop,initial_state,distances) for i in range(0,n_sim)]
     def run_simulation(self,multi=True,threads=10):
+        """
+        Run the pool of simulations.
+        multi: bool
+            If true, the simulations will be run using multiple threads/cores
+            via the 'multiprocess' module.
+        threads: positive int
+            Controls the number of threads to use.
+
+        Return: None.
+        """
         if multi:
             with Pool(threads) as p:
                 # wow this is bad but it works
@@ -490,15 +545,36 @@ class spatial_tSIR_pool:
         else:
             for sim in self.simulation_list:
                 sim.run_simulation()
-    def summary_ts_matrix(self):
+    def get_mean_sd(self):
+        """
+        Get time-indexed mean and time-indexed standard deviation for each patch.
+        The mean and standard deviation are taken across the simulations.
+
+        Return: dictionary 
+            - 'mean': numpy array
+                Dimensions: (# of simulation timesteps) x (# of patches)
+            - 'sd': numpy array
+                Dimensions: (# of simulation timesteps) x (# of patches)
+            Row specifies timestep, column specifies which patch.
+        """
         ts_matrices = [np.array(sim.get_ts_matrix()) for sim in self.simulation_list]
         mean_matrix = np.mean(ts_matrices,axis=0) # is this right? think it is
         sd_matrix = np.std(ts_matrices,axis=0)
         return {"mean":mean_matrix,"sd":sd_matrix}
-    def plot_sd(self,select,time_range=None):
+    def plot_interval(self,select,time_range=None,quantiles=[0.025,0.975],int_type="pred"):
         """
-        plot with the uncertainty
-        currently uses empirical quantiles
+        Plot the curve of infected individuals with a interval of a specified width about the mean path.
+        Empirical quantiles are used to get the prediction interval.
+
+        Arguments:
+            select: int
+                Describes which patch to select.
+                Indices correspond to the labeling of the 'patch_pop' or 'distances' matrix
+                passed when initializing the simulation.
+                If None passed, then the total will be plotted.
+            time_range: int list of two elements
+            quantiles: float list of two elements
+            int_type: str
         """
         summary = self.summary_ts_matrix()
         if type(time_range) != type(None): # or if arraylike ig
@@ -526,10 +602,14 @@ class spatial_tSIR_pool:
         else:
             to_return = [ts_matrix[range(time_range[0],time_range[1]),select] for ts_matrix in ts_matrices]
             return np.stack(to_return,axis=1)
-    def get_quantiles(self,select,time_range,quantiles=[0.25,0.975]):
+    def get_quantiles(self,select,time_range,quantiles=[0.025,0.975]):
+        """
+        """
         samples = self.get_samples(select,time_range)
         return np.quantile(samples,q=quantiles,axis=1).T
     def plot_mean(self,select):
+        """
+        """
         summary = self.summary_ts_matrix()
         ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
         return ax

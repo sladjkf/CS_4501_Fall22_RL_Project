@@ -104,8 +104,23 @@ sim_pool = spatial_tSIR_pool(config,
         distances=np.array(dist_mat))
 sim_pool.run_simulation(threads=10)
 
+#%%
 
 ax = spatial_tSIR_pool.plot_mean(sim_pool,25)
 qs = spatial_tSIR_pool.get_quantiles(sim_pool,25,[0,20])
 ax.plot(qs[:,0],color="red",linestyle='dashed')
 ax.plot(qs[:,1],color="red",linestyle='dashed')
+
+#%% total 95% interval?
+
+simulation_sample_list = [sim_pool.get_samples(select=k,time_range=[0,20]) for k in range(len(vacc_df.index))]
+
+total = sum(simulation_sample_list)
+mean_path = np.mean(total,axis=1)
+qs = np.quantile(total,[0.025,0.975],axis=1).T
+fig,ax = plt.subplots()
+ax.plot(mean_path)
+ax.plot(qs[:,0],color="red",linestyle='dashed')
+ax.plot(qs[:,1],color="red",linestyle='dashed')
+
+

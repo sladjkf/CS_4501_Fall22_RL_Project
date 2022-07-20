@@ -8,10 +8,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # windows machine at the office
-project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-#%%
+#project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 # my home desktop
-#project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 
 import sys
 sys.path.append(project_path.format("scripts/"))
@@ -21,11 +20,19 @@ from spatial_tsir import *
 #%% load data
 
 # haversine matrix computed by me
-va_zcta_distances = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zipcodes_dist_haversine.csv"),index_col=0)
+#va_zcta_distances = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zipcodes_dist_haversine.csv"),index_col=0)
 
 # another distance matrix from rivanna... clean it up
-va_zcta_distances = pd.read_csv(project_path.format('data/VA_zipcodes_cleaned/VAZipDistance.csv'))
-va_zcta_distances = va_zcta_distances.pivot_table(index='zip1',columns='zip2',values='distanceinKM')
+#va_zcta_distances = pd.read_csv(project_path.format('data/VA_zipcodes_cleaned/VAZipDistance.csv'))
+#va_zcta_distances = va_zcta_distances.pivot_table(index='zip1',columns='zip2',values='distanceinKM')
+
+# nominatim distance matrix
+va_zcta_distances = pd.read_csv(project_path.format('data/VA_zipcodes_cleaned/ZC_distance_sifat_nom_geopy.csv'),index_col=0)
+# fill zeros in distance matrix 
+dist_zero_indices = va_zcta_distances[va_zcta_distances['distKM']<1e-6].index
+va_zcta_distances.loc[dist_zero_indices,'distKM']=0.4
+va_zcta_distances = va_zcta_distances.pivot(index='zipcode1',columns='zipcode2',values='distKM') # matrix form
+va_zcta_distances = va_zcta_distances.fillna(0)
 
 va_zcta_pop = pd.read_csv(project_path.format("data/VA_zipcodes_cleaned/VA_zcta_pop.csv")).dropna()
 
@@ -88,7 +95,7 @@ config = {
     "tau1":1,
     "tau2":1,
     "rho":1,
-    "theta":0.015/max(va_zcta_pop['pop']),
+    "theta":4e-6,
     "alpha":0.97,
     "beta":24.6,
     "birth":birth_rate
