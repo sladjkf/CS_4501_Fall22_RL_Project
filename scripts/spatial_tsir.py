@@ -9,6 +9,9 @@ from functools import partial
 import warnings
 from multiprocess import Pool
 
+import scipy.stats
+import time
+
 ##### MOBILITY MODEL: GRAVITY MODEL #####
 
 def random_network(seed=1234,
@@ -300,7 +303,8 @@ class spatial_tSIR:
     def __init__(self, 
             config, 
             patch_pop, initial_state,
-            distances=None
+            distances=None,
+            seed=None
             ):
         """
         Initialize and parameterize the disease simulation.
@@ -329,6 +333,9 @@ class spatial_tSIR:
             Describe the initial state of the simulation.
             Column specification: (I, R)
             Rows correspond to the ones in patch_df.        
+        seed: int
+            Set a random seed for the simulation.
+            By default, will just use the current time as an int if not passed.
         Returns
         -------
         None.
@@ -355,6 +362,13 @@ class spatial_tSIR:
             self.distances = distances
         else:
             self.distances = get_distances(network=self.patch_pop)
+
+        # initialize random seed
+        if type(seed) == type(None):
+            self.random_state = np.random.RandomState(int(time.time()))
+        else:
+            self.random_state = np.random.RandomState(seed)
+
     def run_simulation(self,verbose=False):
         """
         Run the simulation. 
@@ -401,7 +415,7 @@ class spatial_tSIR:
             grav_model_out = gravity(network=self.patch_pop, 
                     distances=self.distances, infected=I_t, params=self.config)
             infection_influx = grav_model_out["influx"]
-            iota_t = np.array([gamma.rvs(scale=1,a=a) if a > 0 else 0 for a in infection_influx])
+            iota_t = np.array([gamma.rvs(scale=1,a=a,random_state=self.random_state) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)
             for patch_k in range(0,self.num_patches):
                 if I_t[patch_k] or iota_t[patch_k] > 0:
@@ -421,7 +435,7 @@ class spatial_tSIR:
                     
                     # take min, since you can't infect more individuals than there are susceptibles
                     try:
-                        delta_I_t[patch_k] = max(min(S_t[patch_k],nbinom.rvs(n,p)),0)
+                        delta_I_t[patch_k] = max(min(S_t[patch_k],nbinom.rvs(n,p,random_state=self.random_state)),0)
                     except ValueError:
                         warnings.warn("distribution parameterized incorrectly.")
                         print(n,p,lambda_k_t,flush=True)
@@ -511,19 +525,37 @@ class spatial_tSIR_pool:
     def __init__(self, 
             config, 
             patch_pop, initial_state,
-            n_sim, distances=None):
+            n_sim, distances=None,
+            load=None):
         '''
         Initialize the the simulation pool.
-        It is initialized in exactly the same way as the 'spatial_tSIR' object.
-        Please consult the documentation for that class.
 
-        n_sim: positive integer
-            Controls how many simulations will be run in the pool.
+        If running from scratch:
+            It is initialized in a similar way as the 'spatial_tSIR' object.
+            Check the documentation for that class.
+            n_sim: positive integer
+                Controls how many simulations will be run in the pool.
+
+        If loading: (i.e load != None):
+            load: path to load from.
+            Should be a matrix that was saved from a previous simulation (.npy file).
 
         Return: None.
         '''
-        self.simulation_list = [spatial_tSIR(config,patch_pop,initial_state,distances) for i in range(0,n_sim)]
-    def run_simulation(self,multi=True,threads=10):
+        if type(load) != type(None):
+            self.sim_state_mats = np.load(load)
+        else:
+            # seed the simulation to avoid having simulations that get run in the same batch having
+            # the same exact result
+            # factor of 10 chosen somewhat arbitrarily but needed to be sufficiently large
+            seeds = [int(time.time() + i*10) for i in range(0,n_sim)]
+            self.sim_list = [spatial_tSIR(config,patch_pop,initial_state,distances=distances,seed=seed) for seed in seeds]
+            self.sim_state_mats = None
+    def save(self,path):
+        np.save(file=path,arr=self.sim_state_mats)
+    def load(self,path):
+        pass
+    def run_simulation(self,multi=True,threads=10,reseed=False):
         """
         Run the pool of simulations.
         multi: bool
@@ -536,15 +568,57 @@ class spatial_tSIR_pool:
         """
         if multi:
             with Pool(threads) as p:
-                # wow this is bad but it works
-                self.simulation_list = p.map(
-                        lambda sim: (
-                            sim.run_simulation(),
-                            sim)[-1],
-                        self.simulation_list)
+                    self.sim_list = p.map(
+                            lambda sim: 
+                                    (sim.run_simulation(),
+                                    sim)[-1],
+                            self.sim_list)
         else:
-            for sim in self.simulation_list:
+            for sim in self.sim_list:
                 sim.run_simulation()
+        # retrieve the state matrices of each simulation and make life slightly easier
+        self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in self.sim_list])
+    def plot_mean(self,select):
+        """
+        """
+        summary = self.summary_ts_matrix()
+        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
+        return ax
+    def plot_interval(self,select,time_range=None,quantiles=[0.025,0.975],int_type="pred"):
+        """
+        Plot the curve of infected individuals with a interval of a specified width about the mean path.
+        Empirical quantiles are used to get the prediction interval.
+
+        TODO: currently broken
+        Arguments:
+            select: int
+                Describes which patch to select.
+                Indices correspond to the labeling of the 'patch_pop' or 'distances' matrix
+                passed when initializing the simulation.
+                If None passed, then the total will be plotted.
+            time_range: int list of two elements
+            quantiles: float list of two elements
+            int_type: str
+        """
+        summary = self.get_mean_sd()
+        if type(time_range) != type(None): # or if arraylike ig
+            time_range = range(time_range[0],time_range[1])
+            summary['mean'] = summary['mean'][time_range,:]
+            summary['sd'] = summary['sd'][time_range,:]
+        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
+        quantiles = self.get_quantiles(select,time_range)
+        #quantiles = spatial_tSIR_pool.get_quantiles(self,sim_pool,select,time_range)
+        low_sd = quantiles[:,0]
+        up_sd = quantiles[:,1]
+        ax.plot(low_sd,color="red",linestyle='dashed')
+        ax.plot(up_sd,color="red",linestyle='dashed')
+        return ax
+    def survival_plot(self):
+        """
+        plot:  % of simulations that have 0 infections vs. time
+        """
+        n_sim = len(self.sim_state_mats)
+        return plt.plot([sum(self.get_samples()[:,i]<1e-16)/n_sim for i in range(50)])
     def get_mean_sd(self):
         """
         Get time-indexed mean and time-indexed standard deviation for each patch.
@@ -557,62 +631,60 @@ class spatial_tSIR_pool:
                 Dimensions: (# of simulation timesteps) x (# of patches)
             Row specifies timestep, column specifies which patch.
         """
-        ts_matrices = [np.array(sim.get_ts_matrix()) for sim in self.simulation_list]
+        ts_matrices = self.sim_state_mats
         mean_matrix = np.mean(ts_matrices,axis=0) # is this right? think it is
         sd_matrix = np.std(ts_matrices,axis=0)
         return {"mean":mean_matrix,"sd":sd_matrix}
-    def plot_interval(self,select,time_range=None,quantiles=[0.025,0.975],int_type="pred"):
+    def get_samples(self,select=None,time_range=None):
         """
-        Plot the curve of infected individuals with a interval of a specified width about the mean path.
-        Empirical quantiles are used to get the prediction interval.
-
-        Arguments:
-            select: int
-                Describes which patch to select.
-                Indices correspond to the labeling of the 'patch_pop' or 'distances' matrix
-                passed when initializing the simulation.
-                If None passed, then the total will be plotted.
-            time_range: int list of two elements
-            quantiles: float list of two elements
-            int_type: str
-        """
-        summary = self.summary_ts_matrix()
-        if type(time_range) != type(None): # or if arraylike ig
-            time_range = range(time_range[0],time_range[1])
-            summary['mean'] = summary['mean'][time_range,:]
-            summary['sd'] = summary['sd'][time_range,:]
-        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
-        quantiles = self.get_quantiles(sim_pool,select,time_range)
-        #quantiles = spatial_tSIR_pool.get_quantiles(self,sim_pool,select,time_range)
-        low_sd = quantiles.iloc[:,0]
-        up_sd = quantiles.iloc[:,1]
-        ax.plot(low_sd,color="red",linestyle='dashed')
-        ax.plot(up_sd,color="red",linestyle='dashed')
-        return ax
-    def get_samples(self,select,time_range):
-        """
-        get the sample matrix. to make life easier, select will be a scalar. otherwise you get 3d matrices
-        select: scalar (which location to get the time series for?)
+        Get the sample matrix. 
+        To make life easier, select will be a scalar. otherwise you get 3d matrices
+        select: 
+            scalar (which location to get the time series for?)
+            If not specfied, get the sample path for the entire simulation
+            (aggregate infection counts across all patches)
         time_range: list of length 2: (start, stop) index or scalar
         """
-        ts_matrices = [np.array(sim.get_ts_matrix()) for sim in self.simulation_list]
-        if np.isscalar(time_range):
-            to_return = [ts_matrix[time_range,select] for ts_matrix in ts_matrices]
-            return np.array(to_return)
+        if type(select) == type(None):
+            # aggregate each matrix in the list of state matrices to get the total
+            to_return = [np.sum(mat,axis=1) for mat in self.sim_state_mats]
+            if np.isscalar(time_range):
+                to_return = [ts_matrix[time_range,:] for ts_matrix in to_return]
+            elif type(time_range) == list or type(time_range) == tuple:
+                to_return = [ts_matrix[range(time_range[0],time_range[1]),:] for ts_matrix in to_return]
         else:
-            to_return = [ts_matrix[range(time_range[0],time_range[1]),select] for ts_matrix in ts_matrices]
-            return np.stack(to_return,axis=1)
+            if type(time_range) == type(None):
+                to_return = [ts_matrix[:,select] for ts_matrix in self.sim_state_mats]
+            elif np.isscalar(time_range):
+                to_return = [ts_matrix[time_range,select] for ts_matrix in self.sim_state_mats]
+            else:
+                to_return = [ts_matrix[range(time_range[0],time_range[1]),select] for ts_matrix in self.sim_state_mats]
+                to_return = np.stack(to_return,axis=1)
+        return np.array(to_return)
     def get_quantiles(self,select,time_range,quantiles=[0.025,0.975]):
         """
+        Get empirical quantiles for 
         """
         samples = self.get_samples(select,time_range)
         return np.quantile(samples,q=quantiles,axis=1).T
-    def plot_mean(self,select):
-        """
-        """
-        summary = self.summary_ts_matrix()
-        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
-        return ax
+
+    def get_CIs(self,select,time_range):
+        if select == -1:
+            pass
+        else:
+            samples = self.get_samples(select,time_range)
+            intervals = np.zeros((samples.shape[0],2))
+            with warnings.catch_warnings():
+                warnings.simplefilter("always")
+                for t_index in range(samples.shape[0]):
+                    sample_t = samples[t_index,:]
+                    try:
+                        result = bootstrap((sample_t,),np.mean).confidence_interval
+                        intervals[t_index,:] = np.array([result.low,result.high])
+                    except: 
+                        intervals[t_index,:] = np.array([sample_t[0],sample_t[0]]) # if degenerate, should be all same
+        return intervals
+
 
 
 #%% testing code

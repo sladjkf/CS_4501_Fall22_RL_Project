@@ -55,14 +55,14 @@ beta_t = np.array(beta_t)*30
 birth_rate = 60/1000/28
 
 config = {
-    "iters":20,
+    "iters":50,
     
     "tau1":1,
     "tau2":1,
     "rho":1,
     "theta":4e-6,
     "alpha":0.97,
-    "beta":24.6
+    "beta":10
     #"birth":birth_rate
     #"beta_t":beta_t
     #"birth_t":cases['birth_per_cap']
@@ -97,19 +97,32 @@ sim = spatial_tSIR(config,
 sim.run_simulation()
 
 #%% multithread simulation
+# test
+sim_pool = spatial_tSIR_pool(config,
+        vacc_df,
+        initial_state,
+        n_sim=100,
+        distances=np.array(dist_mat))
+sim_pool.run_simulation(threads=10)
+
+sim_pool.run_simulation(multi=False)
+
+
+
 sim_pool = spatial_tSIR_pool(config,
         vacc_df,
         initial_state,
         n_sim=1500,
         distances=np.array(dist_mat))
-sim_pool.run_simulation(threads=10)
+sim_pool.run_simulation(threads=11)
 
 #%%
 
 ax = spatial_tSIR_pool.plot_mean(sim_pool,25)
+
 qs = spatial_tSIR_pool.get_quantiles(sim_pool,25,[0,20])
-ax.plot(qs[:,0],color="red",linestyle='dashed')
-ax.plot(qs[:,1],color="red",linestyle='dashed')
+plt.plot(qs[:,0],color="red",linestyle='dashed')
+plt.plot(qs[:,1],color="red",linestyle='dashed')
 
 #%% total 95% interval?
 
@@ -124,3 +137,6 @@ ax.plot(qs[:,0],color="red",linestyle='dashed')
 ax.plot(qs[:,1],color="red",linestyle='dashed')
 
 
+
+plt.plot(np.quantile(sim_pool.get_samples(),q=[0.025,0.975],axis=0).T,color="red",linestyle='dashed')
+plt.plot(np.mean(sim_pool.get_samples(),axis=0))
