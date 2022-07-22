@@ -114,7 +114,7 @@ assert all(vacc_df['zipcode'] == dist_mat.columns)
 def grav_mod(distances,population,tau1,tau2,rho,theta):
     params = {"tau1":tau1, "tau2":tau2, "rho":rho, "theta":theta}
     # if I is replaced by N, it should be equivalent.
-    return gravity(population,distances,np.array(population['pop']),params)
+    return gravity(population,distances,np.array(population['pop']),params,variant='orig')
 
 # test
 grav_mod(np.array(dist_mat),vacc_df,1,1,1,0.0015)
@@ -221,12 +221,19 @@ def compare(agg_flow_output,va_commuter,return_not_found=False):
 to_filter = ['lexington_city', 'colonial_heights_city', 'radford_city', 'covington_city', 'sussex_county', 'portsmouth_city', 'hopewell_city']
 va_commuter_filtrd = va_commuter[np.logical_and(~va_commuter['from'].isin(to_filter),~va_commuter['to'].isin(to_filter))]
 
-zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,1,1,1,3.5e-6)
-agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,3.5e-6)
+#%%
+zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,params[0],params[1],params[2],params[3])
+agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,params[3])
 
 to_compare = compare(agg_flow_output,va_commuter_filtrd)
 plt.scatter(data=to_compare, y='pred', x='obs',s=7,alpha=0.25)
 plt.axline((0,0),(1,1))
+
+
+#%% aggregate into outflow and see which zips are the most connected according to gravity
+outflow = pd.DataFrame({'zip':dist_mat.index,'outflow':np.sum(zip_grav_output['matrix'],axis=0)})
+outflow = outflow.sort_values(by='outflow',ascending=False).reset_index()
+
 #%% for illustration purposes, get zip_grav_output in long format
 
 zip_grav_long = pd.DataFrame(zip_grav_output['matrix'])
@@ -252,6 +259,19 @@ def objective1(x): # mse
     to_return = mse(to_compare['obs'],to_compare['pred'])
     print(x,to_return)
     return to_return
+
+def objective1_alt(x): # mse rescaled
+    tau1, tau2, rho, theta = np.exp(x)
+    zip_grav_output = grav_mod(np.array(dist_mat),vacc_df,tau1,tau2,rho,theta)
+    agg_flow_output = agg_flow(zip_grav_output,zip_county.index,zip_county_dict,theta)
+    to_compare = compare(agg_flow_output,va_commuter_filtrd)
+    to_return = mse(to_compare['obs'],to_compare['pred'])
+    print(x,to_return)
+    return to_return
+
+def objective1_ll(x): #likelihood based estimation/poisson regression
+
+
 
 def objective2(x): # correlation
     tau1, tau2, rho, theta = x
@@ -280,6 +300,66 @@ minimize(objective1,
             (1e-2,1.5),
             (0,1e-2)]
         )
+
+
+# x: array([  0.79516011,  -0.22805439,   0.44530395, -21.70887529])
+minimize(objective1_alt,
+        np.log(np.array([1,1,1,3.5e-6])),
+        bounds=[
+            (None,None),
+            (None,None),
+            (None,None),
+            (None,None)]
+        )
+# x: array([  0.79516011,  -0.22805439,   0.44530395, -21.70887529])
+minimize(objective1_alt,
+        np.log(params),
+        bounds=[
+            (None,None),
+            (None,None),
+            (None,None),
+            (None,None)]
+        )
+
+minimize(objective1_alt,
+        Out[147]['x'],
+        bounds=[
+            (None,None),
+            (None,None),
+            (None,None),
+            (None,None)]
+        )
+
+
+
+
+# [1.02360428 0.32901247 1.61855813 0.00999999]
+# fitting w/ flow < 30000
+minimize(objective1,
+        np.array([0.99,0.339,1.5,0.00866901]),
+        bounds=[
+            (1e-2,1.5),
+            (1e-2,1.5),
+            (1e-2,1.7),
+            (0,1e-2)]
+        )
+
+# fitting w/ flow < 7000
+#[0.01       1.28475751 1.52038396 0.00999999]
+
+# fitting w/ flow < 3000a
+# array([0.18458969, 1.0641397 , 1.43245603, 0.01      ])
+minimize(objective1,
+        Out[43]['x'],
+        bounds=[
+            (1e-3,1.5),
+            (1e-3,1.5),
+            (1e-3,1.7),
+            (0,1e-2)]
+        )
+
+
+
 
 differential_evolution(objective,
         bounds=[

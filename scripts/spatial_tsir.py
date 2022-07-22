@@ -12,6 +12,8 @@ from multiprocess import Pool
 import scipy.stats
 import time
 
+import dill
+
 ##### MOBILITY MODEL: GRAVITY MODEL #####
 
 def random_network(seed=1234,
@@ -140,7 +142,8 @@ def get_distances(network):
     return distance_matrix
             
 def gravity(network,distances,infected,params,
-        parallel=False,cores=4):
+        parallel=False,cores=4,
+        variant="xia"):
     '''
     Generate gravity weights for a given network. 
     May throw warnings if there are 0 entries off-diagonal in the 'distances' matrix
@@ -157,6 +160,11 @@ def gravity(network,distances,infected,params,
     infected:
         a vector of infection counts
         The labeling should match that in 'network'
+
+    variant (optional):
+        There are different versions of the gravity model.
+        "xia": version in "measles metapopulation dynamics"
+        "orig": classical formulation of the gravity model.
 
     Returns: dictionary
         - 'matrix':  numpy array. 
@@ -189,8 +197,10 @@ def gravity(network,distances,infected,params,
 
     # ---- vectorized version ---- #
     # repeat vectors akin to i,j in for loop
-    inf_i = np.repeat(infected,num_locations)
+    #inf_i = np.repeat(infected,num_locations)
+    pop_i = np.repeat(pop_vec,num_locations)
     pop_j = np.tile(pop_vec,num_locations)
+    inf_j = np.tile(infected,num_locations)
 
     # add 1 to diagonal to avoid numerical error
     distances_ij = distances + np.eye(distances.shape[0])
@@ -198,7 +208,11 @@ def gravity(network,distances,infected,params,
 
     # compute gravity weights and reshape
     try:
-        adj_mat_flat = (inf_i**tau1) * (pop_j**tau2) / (distances_ij**rho)
+        if variant=="xia":
+            #adj_mat_flat =  (pop_j**tau1) * (inf_i**tau2) / (distances_ij**rho)
+            adj_mat_flat = (pop_i**tau1) * (inf_j**tau2) / (distances_ij**rho)
+        elif variant=="orig":
+            adj_mat_flat = (pop_i**tau1) * (pop_j**tau2) * (inf_j/pop_j) / (distances_ij**rho)
     except RuntimeWarning:
         print("num_locations",num_locations)
         print(np.argwhere(np.isnan(inf_i)))
@@ -322,6 +336,7 @@ class spatial_tSIR:
             - beta_t: Time-varying contact rate. Requires a list of 26 floats for each biweek of measles simulation.
             - birth: Per-capita birth rate. Constant over time.
             - birth_t: Time-varying per-capita birth rate. Requires a list of 26 floats for each biweek of measles simulation.
+            - grav_variant: "xia" or "orig". If not specified, then "xia" is used
         patch_pop : DataFrame, dimension N x 4
             DataFrame with the column specification
             (patch_id, pop, x, y).
@@ -369,6 +384,10 @@ class spatial_tSIR:
         else:
             self.random_state = np.random.RandomState(seed)
 
+        # check gravity variant mode
+        if "grav_variant" not in self.config.keys():
+            self.config['grav_variant'] = 'xia'
+
     def run_simulation(self,verbose=False):
         """
         Run the simulation. 
@@ -413,7 +432,7 @@ class spatial_tSIR:
             delta_I_t = np.zeros(self.num_patches)
             # TODO: allow alternate network weight parameterizations?
             grav_model_out = gravity(network=self.patch_pop, 
-                    distances=self.distances, infected=I_t, params=self.config)
+                    distances=self.distances, infected=I_t, params=self.config, variant=self.config['grav_variant'])
             infection_influx = grav_model_out["influx"]
             iota_t = np.array([gamma.rvs(scale=1,a=a,random_state=self.random_state) if a > 0 else 0 for a in infection_influx])
             #print(infection_influx)
@@ -543,8 +562,14 @@ class spatial_tSIR_pool:
         Return: None.
         '''
         if type(load) != type(None):
-            self.sim_state_mats = np.load(load)
+            with open(load,'rb') as save_file:
+                save = dill.load(save_file)
+                self.sim_state_mats = save['sim_state_mats']
+                self.config = save['config']
+                self.n_sim = save['n_sim']
         else:
+            self.n_sim = n_sim
+            self.config = config
             # seed the simulation to avoid having simulations that get run in the same batch having
             # the same exact result
             # factor of 10 chosen somewhat arbitrarily but needed to be sufficiently large
@@ -552,9 +577,26 @@ class spatial_tSIR_pool:
             self.sim_list = [spatial_tSIR(config,patch_pop,initial_state,distances=distances,seed=seed) for seed in seeds]
             self.sim_state_mats = None
     def save(self,path):
-        np.save(file=path,arr=self.sim_state_mats)
-    def load(self,path):
-        pass
+        """
+        how to save config?
+        """
+        with open(path,'wb') as out_file:
+            dill.dump({'config':self.config,'sim_state_mats':self.sim_state_mats,'n_sim':self.n_sim},file=out_file)
+    def save_csv(self,path,names=None):
+        """
+        write the results of the simulation to a csv
+        """
+        time_range = self.config['iters']+1 # +1 for 0th state
+        n_sim = self.n_sim
+        sim_indices = np.repeat(np.arange(n_sim),time_range)
+        time_indices = np.tile(np.arange(time_range),n_sim)
+        to_save = np.concatenate(self.sim_state_mats)
+        to_save = pd.DataFrame(to_save)
+        if type(names) != type(None):
+            to_save.columns = names
+        to_save.insert(0,"sim_num",sim_indices)
+        to_save.insert(1,"time",time_indices)
+        to_save.to_csv(path, index=False)
     def run_simulation(self,multi=True,threads=10,reseed=False):
         """
         Run the pool of simulations.
@@ -578,18 +620,12 @@ class spatial_tSIR_pool:
                 sim.run_simulation()
         # retrieve the state matrices of each simulation and make life slightly easier
         self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in self.sim_list])
-    def plot_mean(self,select):
-        """
-        """
-        summary = self.summary_ts_matrix()
-        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
-        return ax
-    def plot_interval(self,select,time_range=None,quantiles=[0.025,0.975],int_type="pred"):
+    def plot_interval(self,
+            select=None,time_range=None,
+            quantiles=[0.025,0.975],int_type="pred"):
         """
         Plot the curve of infected individuals with a interval of a specified width about the mean path.
         Empirical quantiles are used to get the prediction interval.
-
-        TODO: currently broken
         Arguments:
             select: int
                 Describes which patch to select.
@@ -600,25 +636,27 @@ class spatial_tSIR_pool:
             quantiles: float list of two elements
             int_type: str
         """
-        summary = self.get_mean_sd()
-        if type(time_range) != type(None): # or if arraylike ig
-            time_range = range(time_range[0],time_range[1])
-            summary['mean'] = summary['mean'][time_range,:]
-            summary['sd'] = summary['sd'][time_range,:]
-        ax = pd.DataFrame(summary['mean'][:,select]).plot(legend=False)
-        quantiles = self.get_quantiles(select,time_range)
-        #quantiles = spatial_tSIR_pool.get_quantiles(self,sim_pool,select,time_range)
-        low_sd = quantiles[:,0]
-        up_sd = quantiles[:,1]
-        ax.plot(low_sd,color="red",linestyle='dashed')
-        ax.plot(up_sd,color="red",linestyle='dashed')
+        samples = self.get_samples(select,time_range)
+        mean = np.mean(samples,axis=0).T
+        quantiles = self.get_quantiles(select,time_range,quantiles=quantiles)
+        fig,ax = plt.subplots()
+        ax.plot(mean)
+        ax.plot(quantiles,color="red",linestyle="dashed")
         return ax
-    def survival_plot(self):
+    def plot_paths(self,select=None,time_range=None,alpha=0.25):
+        samples = self.get_samples(select,time_range)
+        return plt.plot(samples.T,alpha=alpha)
+    def plot_survival(self):
+        return plt.plot(self.survival())
+    def survival(self):
         """
-        plot:  % of simulations that have 0 infections vs. time
+        get a vector indexed by time
+        % of simulations drawn that are nonzero at that time
+        can use binomial confidence interval (probably not that necessary; just draw more samples??)
         """
-        n_sim = len(self.sim_state_mats)
-        return plt.plot([sum(self.get_samples()[:,i]<1e-16)/n_sim for i in range(50)])
+        n_sim = self.n_sim
+        time_len = self.config['iters']
+        return 1-np.array([sum(self.get_samples()[:,i]<1e-16)/n_sim for i in range(time_len)])
     def get_mean_sd(self):
         """
         Get time-indexed mean and time-indexed standard deviation for each patch.
@@ -661,13 +699,12 @@ class spatial_tSIR_pool:
                 to_return = [ts_matrix[range(time_range[0],time_range[1]),select] for ts_matrix in self.sim_state_mats]
                 to_return = np.stack(to_return,axis=1)
         return np.array(to_return)
-    def get_quantiles(self,select,time_range,quantiles=[0.025,0.975]):
+    def get_quantiles(self,select=None,time_range=None,quantiles=[0.025,0.975]):
         """
         Get empirical quantiles for 
         """
         samples = self.get_samples(select,time_range)
-        return np.quantile(samples,q=quantiles,axis=1).T
-
+        return np.quantile(samples,q=quantiles,axis=0).T
     def get_CIs(self,select,time_range):
         if select == -1:
             pass

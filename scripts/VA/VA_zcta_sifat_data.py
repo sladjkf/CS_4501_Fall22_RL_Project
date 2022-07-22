@@ -54,15 +54,17 @@ beta_t = np.array(beta_t)*30
 # https://www.marchofdimes.org/peristats/data?reg=99&top=2&stop=1&lev=1&slev=4&obj=1&sreg=51
 birth_rate = 60/1000/28
 
+params = np.load(project_path.format("outputs/log_calib_grav_params_jul22.npy"))
+
 config = {
     "iters":50,
     
-    "tau1":1,
-    "tau2":1,
-    "rho":1,
-    "theta":4e-6,
+    "tau1":params[0],
+    "tau2":params[1],
+    "rho":params[2],
+    "theta":params[3],
     "alpha":0.97,
-    "beta":10
+    "beta":9
     #"birth":birth_rate
     #"beta_t":beta_t
     #"birth_t":cases['birth_per_cap']
