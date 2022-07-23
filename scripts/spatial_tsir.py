@@ -597,27 +597,27 @@ class spatial_tSIR_pool:
         to_save.insert(0,"sim_num",sim_indices)
         to_save.insert(1,"time",time_indices)
         to_save.to_csv(path, index=False)
-    def run_simulation(self,multi=True,threads=10,reseed=False):
+    def run_simulation(self,multi=True,pool=None):
         """
         Run the pool of simulations.
         multi: bool
             If true, the simulations will be run using multiple threads/cores
             via the 'multiprocess' module.
-        threads: positive int
-            Controls the number of threads to use.
+        pool: multiprocess.Pool object
 
         Return: None.
         """
-        if multi:
-            with Pool(threads) as p:
-                    self.sim_list = p.map(
-                            lambda sim: 
-                                    (sim.run_simulation(),
-                                    sim)[-1],
-                            self.sim_list)
-        else:
+        if multi and type(Pool) != type(None):
+            self.sim_list = pool.map(
+                    lambda sim: 
+                            (sim.run_simulation(),
+                            sim)[-1],
+                    self.sim_list)
+        elif not multi:
             for sim in self.sim_list:
                 sim.run_simulation()
+        else:
+            print("Invalid arguments - either multi=False, or multi=True and a pool object supplied")
         # retrieve the state matrices of each simulation and make life slightly easier
         self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in self.sim_list])
     def plot_interval(self,

@@ -5,11 +5,10 @@ Run a lot of simulations for a simulation experiment..
 ####### imports and setup design parameters #####
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import argparse
 import sys
 from copy import deepcopy
+from multiprocess import Pool
 
 # argparse - get seed strat,project path, # of cores to use
 
@@ -74,48 +73,47 @@ config = {
 ##### run simulations ########
 
 vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
+with Pool(cores) as worker_pool:
+    for k in inf_to_allocate:
+        # keep the randomly selected seed constant
+        # across the simulation.
+        # help isolate effect of changing beta
+        if seeding_strat == "unif":
+            selected = vacc_df.sample(k)
+        for beta in betas:
+            initial_state = np.zeros((len(vacc_df.index),2))
+            R = vacc_df['pop'] - vacc_df['nVaccCount']
+            if seeding_strat == "pop":
+                selected = vacc_df.sort_values(by='pop',ascending=False).head(k)
+            elif seeding_strat == "vax_ratio":
+                selected = vacc_df.sort_values(by='ratio',ascending=False).head(k)
+            elif seeding_strat == "vax_raw":
+                selected = vacc_df.sort_values(by='nVaccCount',ascending=False).head(k)
+            elif seeding_strat == "unif":
+                print(selected)
+            elif seeding_strat == "outflux":
+                selected = vacc_df[vacc_df['zipcode'].isin(outflow_rank.head(k)['zip'])]
+            else:
+                print("invalid seeding strategy!")
+                sys.exit(-1)
 
-for k in inf_to_allocate:
-    # keep the randomly selected seed constant
-    # across the simulation.
-    # help isolate effect of changing beta
-    if seeding_strat == "unif":
-        selected = vacc_df.sample(k)
-    for beta in betas:
-        initial_state = np.zeros((len(vacc_df.index),2))
-        R = vacc_df['pop'] - vacc_df['nVaccCount']
-        if seeding_strat == "pop":
-            # one way - again, try seeding top 5 counties
-            selected = vacc_df.sort_values(by='pop',ascending=False).head(k)
-        elif seeding_strat == "vax_ratio":
-            selected = vacc_df.sort_values(by='ratio',ascending=False).head(k)
-            # another way - try seeding the top 5 unvaccinated counties (by ratio)
-            # another way - try seeding the top 5 unvaccinated counties (by raw numbers)
-        elif seeding_strat == "vax_raw":
-            selected = vacc_df.sort_values(by='nVaccCount',ascending=False).head(k)
-        elif seeding_strat == "unif":
-            print(selected)
-        elif seeding_strat == "outflux":
-            selected = vacc_df[vacc_df['zipcode'].isin(outflow_rank.head(k)['zip'])]
-        else:
-            print("invalid seeding strategy!")
-            sys.exit(-1)
+            I = np.zeros(len(vacc_df.index))
+            np.put(I,selected.index,1)
+            initial_state[:,0] = I
+            initial_state[:,1] = R
 
-        I = np.zeros(len(vacc_df.index))
-        np.put(I,selected.index,1)
-        initial_state[:,0] = I
-        initial_state[:,1] = R
+            this_config= deepcopy(config)
+            this_config['beta'] = beta
 
-        this_config= deepcopy(config)
-        this_config['beta'] = beta
+            save_name = "{}_{}_{}_VA_analysis.save".format(seeding_strat,int(beta),int(k))
 
-        save_name = "{}_{}_{}_VA_analysis.save".format(seeding_strat,int(beta),int(k))
-
-        sim_pool = spatial_tSIR_pool(this_config,
-                vacc_df,
-                initial_state,
-                n_sim=DRAWS,
-                distances=np.array(dist_mat))
-        sim_pool.run_simulation(threads=cores)
-        sim_pool.save(project_path.format("outputs/va_sensitivity_analysis/"+save_name))
+            sim_pool = spatial_tSIR_pool(this_config,
+                    vacc_df,
+                    initial_state,
+                    n_sim=DRAWS,
+                    distances=np.array(dist_mat))
+            sim_pool.run_simulation(multi=True, pool=worker_pool)
+            sim_pool.save(project_path.format("outputs/va_sensitivity_analysis/"+save_name))
+    worker_pool.close()
+    worker_pool.join()
 
