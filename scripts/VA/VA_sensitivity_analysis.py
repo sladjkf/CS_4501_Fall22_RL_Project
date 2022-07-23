@@ -9,20 +9,31 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import argparse
 import sys
+from copy import deepcopy
 
 # argparse - get seed strat,project path, # of cores to use
-seeding_strat = ""
-project_path = ""
-cores = 0
 
+parser = argparse.ArgumentParser(description="run a bunch of simulations")
+parser.add_argument('--seeding_strat',type=str)
+parser.add_argument('--project_path',type=str)
+parser.add_argument('--cores',type=int)
+args = parser.parse_args()
+
+seeding_strat = args.seeding_strat
+project_path = args.project_path + "{}" # so format works right
+cores = args.cores
+
+project_path.format("scripts/")
 sys.path.append(project_path.format("scripts/"))
+
 from spatial_tsir import *
 
 # design parameters - hardcoded in
-betas = np.linspace(9,27,6)
+betas = np.linspace(8,27,6)
+
 inf_to_allocate = np.arange(5,10)
-draws = 8000
-time_range = 100
+DRAWS = 8000
+TIME_RANGE = 100
 
 
 ###### load and clean VA data ######
@@ -45,12 +56,14 @@ dist_mat = dist_mat.replace(np.nan,0)
 # align matrix
 dist_mat = dist_mat.loc[vacc_df['zipcode'],vacc_df['zipcode']]
 
+outflow_rank = pd.read_csv(project_path.format("outputs/jul_22_grav_zip_outflow_ranking.csv"))
+
 ##### load and setup fixed parameters ####
 
 params = np.load(project_path.format("outputs/log_calib_grav_params_jul22.npy"))
 
 config = {
-    "iters":time_range,
+    "iters":TIME_RANGE,
     "tau1":params[0],
     "tau2":params[1],
     "rho":params[2],
@@ -62,29 +75,47 @@ config = {
 
 vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
 
-for i_to_all in inf_to_allocate:
+for k in inf_to_allocate:
+    # keep the randomly selected seed constant
+    # across the simulation.
+    # help isolate effect of changing beta
+    if seeding_strat == "unif":
+        selected = vacc_df.sample(k)
     for beta in betas:
         initial_state = np.zeros((len(vacc_df.index),2))
         R = vacc_df['pop'] - vacc_df['nVaccCount']
         if seeding_strat == "pop":
             # one way - again, try seeding top 5 counties
-            selected = vacc_df.sort_values(by='pop',ascending=False).head(i_to_all)
-        if seeding_strat == "vax_ratio":
-            selected = vacc_df.sort_values(by='ratio',ascending=False).head(i_to_all)
+            selected = vacc_df.sort_values(by='pop',ascending=False).head(k)
+        elif seeding_strat == "vax_ratio":
+            selected = vacc_df.sort_values(by='ratio',ascending=False).head(k)
             # another way - try seeding the top 5 unvaccinated counties (by ratio)
             # another way - try seeding the top 5 unvaccinated counties (by raw numbers)
-        if seeding_strat == "vax_raw":
-            top_5 = vacc_df.sort_values(by='nVaccCount',ascending=False).head(i_to_all)
-        if seeding_strat == "unif":
-        if seeding_strat == "outflux":
+        elif seeding_strat == "vax_raw":
+            selected = vacc_df.sort_values(by='nVaccCount',ascending=False).head(k)
+        elif seeding_strat == "unif":
+            print(selected)
+        elif seeding_strat == "outflux":
+            selected = vacc_df[vacc_df['zipcode'].isin(outflow_rank.head(k)['zip'])]
+        else:
+            print("invalid seeding strategy!")
+            sys.exit(-1)
+
         I = np.zeros(len(vacc_df.index))
         np.put(I,selected.index,1)
         initial_state[:,0] = I
         initial_state[:,1] = R
 
-        save_name = "{}_".format(seeding_strat,beta,i_to_all)
+        this_config= deepcopy(config)
+        this_config['beta'] = beta
 
-        sim_pool = ...
-        sim_pool.run_simulation()
-        sim_pool.save()
+        save_name = "{}_{}_{}_VA_analysis.save".format(seeding_strat,int(beta),int(k))
+
+        sim_pool = spatial_tSIR_pool(this_config,
+                vacc_df,
+                initial_state,
+                n_sim=DRAWS,
+                distances=np.array(dist_mat))
+        sim_pool.run_simulation(threads=cores)
+        sim_pool.save(project_path.format("outputs/va_sensitivity_analysis/"+save_name))
 
