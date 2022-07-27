@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from numpy import random
 from scipy.stats import nbinom, gamma
-
+import matplotlib.pyplot as plt
 from itertools import chain
 from functools import partial
 
@@ -425,7 +425,7 @@ class spatial_tSIR:
             try:
                 birth_rate = birth_rate_t[iter_num]
             except IndexError as e:
-                warnings.warn("Not enough birth rate data supplied, just using last value available")
+                #warnings.warn("Not enough birth rate data supplied, just using last value available")
                 birth_rate = birth_rate_t[-1]
             
             # compute new infections
@@ -542,9 +542,9 @@ class spatial_tSIR_pool:
     via Monte-Carlo methods.
     '''
     def __init__(self, 
-            config, 
-            patch_pop, initial_state,
-            n_sim, distances=None,
+            config=None, 
+            patch_pop=None, initial_state=None,
+            n_sim=None, distances=None,
             load=None):
         '''
         Initialize the the simulation pool.
@@ -561,13 +561,17 @@ class spatial_tSIR_pool:
 
         Return: None.
         '''
-        if type(load) != type(None):
+        load_supplied = type(load) != type(None)
+        sim_params_supplied = all([type(x) != type(None) for x in (config,patch_pop, initial_state,n_sim)])
+
+        if load_supplied:
             with open(load,'rb') as save_file:
+                print("loading",load)
                 save = dill.load(save_file)
                 self.sim_state_mats = save['sim_state_mats']
                 self.config = save['config']
                 self.n_sim = save['n_sim']
-        else:
+        elif sim_params_supplied:
             self.n_sim = n_sim
             self.config = config
             # seed the simulation to avoid having simulations that get run in the same batch having
@@ -576,6 +580,8 @@ class spatial_tSIR_pool:
             seeds = [int(time.time() + i*10) for i in range(0,n_sim)]
             self.sim_list = [spatial_tSIR(config,patch_pop,initial_state,distances=distances,seed=seed) for seed in seeds]
             self.sim_state_mats = None
+        else:
+            raise ValueError("parameters specified incorrectly - either provide a path in 'load' or provide the tSIR simulation parameters.")
     def save(self,path):
         """
         how to save config?
