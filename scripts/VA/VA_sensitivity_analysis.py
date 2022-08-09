@@ -9,7 +9,7 @@ import argparse
 import sys
 from copy import deepcopy
 from multiprocess import Pool
-
+from os.path import exists
 # argparse - get seed strat,project path, # of cores to use
 
 parser = argparse.ArgumentParser(description="run a bunch of simulations")
@@ -32,7 +32,7 @@ betas = np.linspace(8,27,6)
 
 inf_to_allocate = np.arange(5,10)
 DRAWS = 8000
-TIME_RANGE = 100
+TIME_RANGE = 80
 
 
 ###### load and clean VA data ######
@@ -75,12 +75,19 @@ config = {
 vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
 with Pool(cores) as worker_pool:
     for k in inf_to_allocate:
+        
         # keep the randomly selected seed constant
         # across the simulation.
         # help isolate effect of changing beta
         if seeding_strat == "unif":
             selected = vacc_df.sample(k)
         for beta in betas:
+            save_name = "{}_{}_{}_VA_analysis.save".format(seeding_strat,int(beta),int(k))
+            save_path = project_path.format("outputs/va_sensitivity_analysis/"+save_name)
+            print(save_path,flush=True)
+            if exists(project_path.format(save_path)):
+                continue
+
             initial_state = np.zeros((len(vacc_df.index),2))
             R = vacc_df['pop'] - vacc_df['nVaccCount']
             if seeding_strat == "pop":
@@ -105,7 +112,6 @@ with Pool(cores) as worker_pool:
             this_config= deepcopy(config)
             this_config['beta'] = beta
 
-            save_name = "{}_{}_{}_VA_analysis.save".format(seeding_strat,int(beta),int(k))
 
             sim_pool = spatial_tSIR_pool(this_config,
                     vacc_df,

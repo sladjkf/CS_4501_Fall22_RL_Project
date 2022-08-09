@@ -6,7 +6,7 @@ import seaborn as sns
 from numpy import random
 
 from scipy.stats import nbinom, gamma
-
+import matplotlib.pyplot as plt
 from itertools import chain
 from functools import partial
 
@@ -430,7 +430,7 @@ class spatial_tSIR:
             try:
                 birth_rate = birth_rate_t[iter_num]
             except IndexError as e:
-                warnings.warn("Not enough birth rate data supplied, just using last value available")
+                #warnings.warn("Not enough birth rate data supplied, just using last value available")
                 birth_rate = birth_rate_t[-1]
             
             # compute new infections
@@ -566,12 +566,12 @@ class spatial_tSIR_pool:
 
         Return: None.
         '''
-
         load_supplied = type(load) != type(None)
         sim_params_supplied = all([type(x) != type(None) for x in (config,patch_pop, initial_state,n_sim)])
 
         if load_supplied:
             with open(load,'rb') as save_file:
+                print("loading",load)
                 save = dill.load(save_file)
                 self.sim_state_mats = save['sim_state_mats']
                 self.config = save['config']

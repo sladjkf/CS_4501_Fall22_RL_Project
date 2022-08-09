@@ -1,0 +1,270 @@
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_8_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_11_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_15_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_19_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_23_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_27_5_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+283   592    24283   2782         220  0.079080
+507  1021    22180  22018        1996  0.090653
+645  1343    22656   7158         583  0.081447
+548  1181    20111  31925        2723  0.085294
+433   889    23350   3292         261  0.079283
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_8_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_11_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_15_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_19_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_23_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_27_6_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+592  1259    22503   1974         169  0.085613
+311   626    24348   2556         185  0.072379
+418   868    22740   2457         181  0.073667
+200   477    22315  24850        2520  0.101408
+419   870    22742   1717         130  0.075713
+630  1316    22637   1677         167  0.099583
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_8_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_11_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_15_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_19_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_23_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_27_7_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+35     94    23146   2206         212  0.096102
+237   529    24179  18632        1517  0.081419
+25     84    20169  24680        1718  0.069611
+204   481    20105  19750        1567  0.079342
+493   992    23079   1002          72  0.071856
+507  1021    22180  22018        1996  0.090653
+122   274    24550   7933         634  0.079919
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_8_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_11_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_15_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_19_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_23_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_27_8_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+314   630    24354  14049        1160  0.082568
+165   332    24641   3266         276  0.084507
+352   716    24085   2052         172  0.083821
+516  1042    23187   1193         112  0.093881
+456   923    23418   1854         153  0.082524
+538  1143    24441   3662         324  0.088476
+141   296    24588   3527         284  0.080522
+135   289    24572  10630         933  0.087770
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_8_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_11_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_15_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_19_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_23_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
+/scratch/nrw5cq/measles_metapop/outputs/va_sensitivity_analysis/unif_27_9_VA_analysis.save
+     node  zipcode    pop  nVaccCount     ratio
+341   692    23934    696          51  0.073276
+639  1333    23938   1445         101  0.069896
+347   711    24078   7727         629  0.081403
+165   332    24641   3266         276  0.084507
+530  1133    24422   7112         591  0.083099
+233   525    24171   5769         484  0.083897
+473   947    22931    919          81  0.088139
+243   535    24211   9236         785  0.084994
+76    182    23505  26872        2213  0.082353
