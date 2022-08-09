@@ -4,7 +4,6 @@ Created on Mon Jul 18 11:40:49 2022
 
 @author: nrw5cq
 
-
 """
 #%% standard imports
 
@@ -13,9 +12,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # windows machine at the office
-project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-
+#project_path = "D:/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+#project_path = "/run/media/nick/9D47-AA7C/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "{}"
 import sys
 sys.path.append(project_path.format("scripts/"))
 
@@ -57,14 +56,14 @@ birth_rate = 60/1000/28
 params = np.load(project_path.format("outputs/log_calib_grav_params_jul22.npy"))
 
 config = {
-    "iters":50,
+    "iters":75,
     
     "tau1":params[0],
     "tau2":params[1],
     "rho":params[2],
     "theta":params[3],
     "alpha":0.97,
-    "beta":9
+    "beta":4
     #"birth":birth_rate
     #"beta_t":beta_t
     #"birth_t":cases['birth_per_cap']
@@ -77,13 +76,12 @@ initial_state = np.zeros((len(vacc_df.index),2))
 R = vacc_df['pop'] - vacc_df['nVaccCount']
 
 # one way - again, try seeding top 5 counties
-top_5 = vacc_df.sort_values(by='pop',ascending=False).head(5)
+#top_5 = vacc_df.sort_values(by='pop',ascending=False).head(5)
 # another way - try seeding the top 5 unvaccinated counties (by raw numbers)
-#top_5 = vacc_df.sort_values(by='nVaccCount',ascending=False).head(5)
+top_5 = vacc_df.sort_values(by='nVaccCount',ascending=False).head(5)
 # another way - try seeding the top 5 unvaccinated counties (by ratio)
 #vacc_df['ratio'] = vacc_df['nVaccCount']/vacc_df['pop']
 #top_5 = vacc_df.sort_values(by='ratio',ascending=False).head(5)
-
 I = np.zeros(len(vacc_df.index))
 np.put(I,top_5.index,1)
 
@@ -100,12 +98,14 @@ sim.run_simulation()
 
 #%% multithread simulation
 # test
+import multiprocess
 sim_pool = spatial_tSIR_pool(config,
         vacc_df,
         initial_state,
         n_sim=100,
         distances=np.array(dist_mat))
-sim_pool.run_simulation(threads=10)
+with multiprocess.Pool(10) as p:
+    sim_pool.run_simulation(pool=p)
 
 sim_pool.run_simulation(multi=False)
 
