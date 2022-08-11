@@ -1,6 +1,8 @@
 """
 test the vaccination objective function routine.
 """
+
+# Standard imports
 import sys
 project_path = "/home/nick/Documents/4tb_sync/UVA GDrive/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 sys.path.append(project_path.format("scripts/bayes_opt/"))
@@ -36,10 +38,7 @@ tsir_config = {
     "rho":params[2],
     "theta":params[3],
     "alpha":0.97,
-    "beta":4
-    #"birth":birth_rate
-    #"beta_t":beta_t
-    #"birth_t":cases['birth_per_cap']
+    "beta":3
 }
 sim_params = {
         'config':tsir_config,
@@ -53,22 +52,26 @@ I = np.zeros(len(vacc_df.index))
 np.put(I,top_5.index,1)
 # optimization parameters
 opt_config = {
-    'obj':"peak",
-    'V_repr':"ratio",
-    'constraint_bnd':0.5
+    'obj':"attacksize",
+    'V_repr':"max_ratio",
+    'constraint_bnd':0.05,
+    "attacksize_cutoff":1000
 }
 
 #%%
 import multiprocess
+
 V_0 = (vacc_df['pop']-vacc_df['nVaccCount'])/(vacc_df['pop'])
+V_0 = (vacc_df['pop']-vacc_df['nVaccCount'])/(max(vacc_df['pop']))
 engine = vacc.VaccRateOptEngine(
-        opt_params=opt_config,
+        opt_config=opt_config,
         V_0=V_0, seed=I,
         sim_config=tsir_config,
         pop=vacc_df,
         distances=np.array(dist_mat))
-V_prime = engine.V_0 - 0.01
+V_prime = engine.V_0.copy()
+V_prime[512] = V_prime[512]-0.8
 
-with multiprocess.Pool(10) as p:
-    result = engine.query(V_prime,pool=p,n_sim=100)
-    result2 = engine.query(V_prime-0.05,pool=p,n_sim=100)
+with multiprocess.Pool(12) as p:
+    engine.query(engine.V_0,pool=p,n_sim=50)
+    result = engine.query(V_prime,pool=p,n_sim=50)
