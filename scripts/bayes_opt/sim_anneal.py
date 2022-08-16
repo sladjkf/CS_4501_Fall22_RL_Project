@@ -2,19 +2,18 @@ import numpy as np
 import multiprocess
 from scipy.stats import uniform, randint
 from functools import partial
-
+import random
 def sim_anneal(init_state,init_temp,
         num_iters,move_func,engine,
         cores=7,n_samples=150):
     s = init_state
+    s_cost = -np.mean(engine.query(seed_prime=s,pool=pool,n_sim=n_samples))
     T = init_temp
     with multiprocess.Pool(cores) as pool:
         for k in range(num_iters):
             T = init_temp*(1-(k+1)/num_iters)
             s_next = move_func(s)
-            #s_cost = cost_func(s)
-            s_cost = np.mean(engine.query(seed_prime=s,pool=pool,n_sim=n_samples))
-            s_next_cost = np.mean(engine.query(seed_prime=s_next,pool=pool,n_sim=n_samples)) 
+            s_next_cost = -np.mean(engine.query(seed_prime=s_next,pool=pool,n_sim=n_samples)) 
             # compute acceptance probability
             if s_next_cost < s_cost:
                 prob = 1
@@ -23,9 +22,10 @@ def sim_anneal(init_state,init_temp,
             # make the jump
             if prob >= random.random():
                 s = s_next
-                print("cost",s_next_cost)
+                s_cost = s_next_cost
+                print("cost",s_next_cost,flush=True)
             else:
-                print("cost",s_cost)
+                print("cost",s_cost,flush=True)
     return s
 
 def move_seed(S,budget=None):

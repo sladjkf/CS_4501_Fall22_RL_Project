@@ -4,7 +4,7 @@ import dill
 import pandas as pd
 # TODO Need to import spatial tSIR module. is there a better way to do this??
 import sys
-project_path = "/home/nicholasw/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/scratch/nrw5cq/measles_metapop/{}"
 sys.path.append(project_path.format("scripts/"))
 from spatial_tsir import *
 """
