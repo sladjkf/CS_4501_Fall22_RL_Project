@@ -1,0 +1,3 @@
+[submodule "scripts/bayes_opt/saasbo"]
+	path = scripts/bayes_opt/saasbo
+	url = https://github.com/martinjankowiak/saasbo.git
