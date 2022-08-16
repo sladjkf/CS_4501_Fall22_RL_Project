@@ -4,7 +4,7 @@ import dill
 import pandas as pd
 # TODO Need to import spatial tSIR module. is there a better way to do this??
 import sys
-project_path = "/home/nick/Documents/4tb_sync/UVA GDrive/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/home/nicholasw/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 sys.path.append(project_path.format("scripts/"))
 from spatial_tsir import *
 """
@@ -122,8 +122,23 @@ class VaccRateOptEngine:
         print(result_num) # print the constraint value
         result = (result_num < constraint_bnd) and in_domain
         return result
-    def query(self,V_prime,
+    def query(self,V_prime=None,seed_prime=None,
             multithread=True,pool=None,n_sim=None):
+        if (type(V_prime) == type(None) and type(seed_prime) is type(None)) or\
+                (type(V_prime) != type(None) and type(seed_prime) != type(None)):
+            print("Please provide either V_prime or seed_prime")
+
+        if type(seed_prime) != type(None):
+            V_prime = self.V_0
+            eval_mode = "seed"
+        elif type(V_prime) != type(None):
+            # default to computation with the passed V_0
+            seed_prime = self.seed
+            eval_mode = "V"
+        else:
+            print("bad argumetns") # TODO:
+            return
+
         passed = self.check_constraint(V_prime)
         if not passed:
             print("Constraint violated")
@@ -140,7 +155,8 @@ class VaccRateOptEngine:
             raise ValueError("Invalid string for V_repr")
         V_unscaled = np.round(V_unscaled)
         initial_state = np.zeros((len(self.pop_df.index),2))
-        initial_state[:,0] = self.seed
+        #initial_state[:,0] = self.seed
+        initial_state[:,0] = seed_prime
         initial_state[:,1] = V_unscaled
 
         if not multithread:
@@ -167,13 +183,19 @@ class VaccRateOptEngine:
             # 1 if exceeded, 0 if below the bound
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
-
+        print(eval_mode)
         # keep a record of the evaluation results
         if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            self.eval_history['input'] = np.array([V_prime])
+            if eval_mode == "V":
+                self.eval_history['input'] = np.array([V_prime])
+            elif eval_mode == "seed":
+                self.eval_history['input'] = np.array([seed_prime])
             self.eval_history['output'] = np.array([result])
         else:
-            self.eval_history['input']= np.concatenate([self.eval_history['input'],np.array([V_prime])],axis=0)
+            if eval_mode == "V":
+                self.eval_history['input']= np.concatenate([self.eval_history['input'],np.array([V_prime])],axis=0)
+            elif eval_mode == "seed":
+                self.eval_history['input']= np.concatenate([self.eval_history['input'],np.array([seed_prime])],axis=0)
             self.eval_history['output']= np.concatenate([self.eval_history['output'],np.array([result])],axis=0)
         return result
     def save_eval_history(self,

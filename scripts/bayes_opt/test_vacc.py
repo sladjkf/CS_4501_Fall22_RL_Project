@@ -4,7 +4,8 @@ test the vaccination objective function routine.
 
 # Standard imports
 import sys
-project_path = "/home/nick/Documents/4tb_sync/UVA GDrive/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/home/nick/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
+project_path = "/home/nicholasw/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
 sys.path.append(project_path.format("scripts/bayes_opt/"))
 import vacc
 import numpy as np
@@ -72,6 +73,17 @@ engine = vacc.VaccRateOptEngine(
 V_prime = engine.V_0.copy()
 V_prime[512] = V_prime[512]-0.8
 
-with multiprocess.Pool(12) as p:
-    engine.query(engine.V_0,pool=p,n_sim=50)
-    result = engine.query(V_prime,pool=p,n_sim=50)
+with multiprocess.Pool(7) as p:
+    #engine.query(V_prime=engine.V_0,pool=p,n_sim=50)
+    engine.query
+    #result = engine.query(V_prime,pool=p,n_sim=50)
+
+#%%
+top_5_alt_seed = vacc_df.sort_values(by='zipcode',ascending=False).head(5)
+alt_seed = np.zeros(len(vacc_df.index))
+np.put(alt_seed,top_5_alt_seed.index,1)
+with multiprocess.Pool(7) as p:
+    engine.query(seed_prime=engine.seed,pool=p,n_sim=50)
+
+#%%
+import sim_anneal
