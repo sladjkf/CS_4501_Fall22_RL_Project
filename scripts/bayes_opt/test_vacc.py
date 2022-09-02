@@ -3,13 +3,12 @@ test the vaccination objective function routine.
 """
 
 # Standard imports
-import sys
-project_path = "/home/nick/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-project_path = "/home/nicholasw/Documents/sync/UVA files/Summer 2022 (C4GC with BII)/measles_metapop/{}"
-sys.path.append(project_path.format("scripts/bayes_opt/"))
-import vacc
+import scripts.bayes_opt.vacc as vacc
 import numpy as np
 import pandas as pd
+
+with open("project_dir.txt") as f:
+    project_path = f.read().strip() + "{}"
 
 #%%
 # vaccination data and population data from sifat
@@ -39,7 +38,7 @@ tsir_config = {
     "rho":params[2],
     "theta":params[3],
     "alpha":0.97,
-    "beta":3
+    "beta":7
 }
 sim_params = {
         'config':tsir_config,
@@ -54,16 +53,15 @@ np.put(I,top_5.index,1)
 # optimization parameters
 opt_config = {
     'obj':"attacksize",
-    'V_repr':"max_ratio",
+    'V_repr':"ratio",
     'constraint_bnd':0.05,
     "attacksize_cutoff":1000
 }
 
 #%%
 import multiprocess
-
 V_0 = (vacc_df['pop']-vacc_df['nVaccCount'])/(vacc_df['pop'])
-V_0 = (vacc_df['pop']-vacc_df['nVaccCount'])/(max(vacc_df['pop']))
+#V_0 = (vacc_df['pop']-vacc_df['nVaccCount'])/(max(vacc_df['pop']))
 engine = vacc.VaccRateOptEngine(
         opt_config=opt_config,
         V_0=V_0, seed=I,
@@ -73,17 +71,28 @@ engine = vacc.VaccRateOptEngine(
 V_prime = engine.V_0.copy()
 V_prime[512] = V_prime[512]-0.8
 
-with multiprocess.Pool(7) as p:
-    #engine.query(V_prime=engine.V_0,pool=p,n_sim=50)
-    engine.query
+with multiprocess.Pool(12) as p:
+    engine.query(V_prime=engine.V_0,pool=p,n_sim=150)
+    #engine.query
     #result = engine.query(V_prime,pool=p,n_sim=50)
 
 #%%
+# test inputting based on seeding
 top_5_alt_seed = vacc_df.sort_values(by='zipcode',ascending=False).head(5)
 alt_seed = np.zeros(len(vacc_df.index))
 np.put(alt_seed,top_5_alt_seed.index,1)
-with multiprocess.Pool(7) as p:
-    engine.query(seed_prime=engine.seed,pool=p,n_sim=50)
+
+with multiprocess.Pool(12) as p:
+    engine.query(seed_prime=engine.seed,pool=p,n_sim=150)
+    engine.query(seed_prime=seed_argmax,pool=p,n_sim=150)
 
 #%%
-import sim_anneal
+import scripts.bayes_opt.sim_anneal as sim_anneal
+sim_anneal.sim_anneal(
+    init_state=I,
+    init_temp=15,
+    num_iters=100,
+    move_func=sim_anneal.move_seed,
+    engine=engine,
+    cores=12,n_samples=150)
+

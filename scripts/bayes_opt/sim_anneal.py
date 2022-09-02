@@ -7,9 +7,9 @@ def sim_anneal(init_state,init_temp,
         num_iters,move_func,engine,
         cores=7,n_samples=150):
     s = init_state
-    s_cost = -np.mean(engine.query(seed_prime=s,pool=pool,n_sim=n_samples))
     T = init_temp
     with multiprocess.Pool(cores) as pool:
+        s_cost = -np.mean(engine.query(seed_prime=s,pool=pool,n_sim=n_samples))
         for k in range(num_iters):
             T = init_temp*(1-(k+1)/num_iters)
             s_next = move_func(s)

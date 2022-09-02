@@ -423,7 +423,13 @@ class spatial_tSIR:
             last_matrix = self.state_matrix_series[-1]
             S_t, I_t, R_t = last_matrix[:,0], last_matrix[:,1], last_matrix[:,2]
             pop_t = S_t + I_t + R_t
-            
+
+            # stop if I_t = 0 in order to save on simulation
+            # TODO: good idea, but you get "ragged nested sequences."
+            # how do you fix that?
+            #if np.sum(I_t) == 0:
+            #    break
+
             # get current beta
             # currently assuming mod 26 (transmission rate over a year)
             beta = beta_t[iter_num % 26]

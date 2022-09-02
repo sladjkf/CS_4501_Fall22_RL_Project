@@ -4,9 +4,7 @@ import dill
 import pandas as pd
 # TODO Need to import spatial tSIR module. is there a better way to do this??
 import sys
-project_path = "/scratch/nrw5cq/measles_metapop/{}"
-sys.path.append(project_path.format("scripts/"))
-from spatial_tsir import *
+from scripts.spatial_tsir import *
 """
 Write a wrapper for the stochastic tSIR that takes in different representations
 of the vaccination vector and runs the simulation.
@@ -106,6 +104,8 @@ class VaccRateOptEngine:
         V_repr = self.opt_config['V_repr']
         constraint_bnd = self.opt_config['constraint_bnd']
         if V_repr == "ratio":
+            # TODO: for now, this is the only that really matters
+            # TODO: reformulate using V_delta definition.
             # check the basic domain constraint
             in_domain = (0 < V_prime).all() and (V_prime < 1).all()
             result_num = ((V_0 - V_prime) @ P)/np.linalg.norm(P,ord=1)
@@ -122,16 +122,17 @@ class VaccRateOptEngine:
         print(result_num) # print the constraint value
         result = (result_num < constraint_bnd) and in_domain
         return result
-    def query(self,V_prime=None,seed_prime=None,
+    def query(self,
+            V_prime=None,seed_prime=None,
             multithread=True,pool=None,n_sim=None):
         if (type(V_prime) == type(None) and type(seed_prime) is type(None)) or\
                 (type(V_prime) != type(None) and type(seed_prime) != type(None)):
             print("Please provide either V_prime or seed_prime")
 
-        if type(seed_prime) != type(None):
+        if type(seed_prime) != type(None): # if solving problems where seed is the decision variable
             V_prime = self.V_0
             eval_mode = "seed"
-        elif type(V_prime) != type(None):
+        elif type(V_prime) != type(None): # if solving problems where V is the decision variable
             # default to computation with the passed V_0
             seed_prime = self.seed
             eval_mode = "V"
@@ -145,6 +146,8 @@ class VaccRateOptEngine:
             return np.array([-1]) # TODO: probably bad behavior, but ok for placeholding?
 
         # SETUP INITIAL STATE #
+        # TODO: modify computation of V_unscaled such that V_prime
+        # represents a change in vaccination rates rather than a new state
         if self.opt_config['V_repr'] == "max_ratio":
             V_unscaled = self._max_pop*V_prime
         elif self.opt_config['V_repr'] == "ratio":
@@ -160,8 +163,9 @@ class VaccRateOptEngine:
         initial_state[:,1] = V_unscaled
 
         if not multithread:
-            # TODO singlethread evaluation
+            # TODO singlethread evaluation, but i'm almost always going to multithread
             pass
+
         assert type(pool) != type(None) and type(n_sim) != type(None),\
                 "You must pass a multithread.Pool object and n_sim when in multithreading mode"
         sim_pool = spatial_tSIR_pool(
