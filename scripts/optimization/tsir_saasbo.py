@@ -18,7 +18,7 @@ sys.path.append(project_path.format("saasbo/"))
 #sys.path.append(project_path.format("scripts/bayes_opt/"))
 
 from saasbo import run_saasbo
-import scripts.bayes_opt.vacc as vacc
+import scripts.optimization.vacc as vacc
 
 def attacksize_mean(engine,pool, n_sim, q):
     """
