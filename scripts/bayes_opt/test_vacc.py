@@ -54,8 +54,7 @@ np.put(I,top_5.index,1)
 opt_config = {
     'obj':"attacksize",
     'V_repr':"ratio",
-    'constraint_bnd':0.05,
-    "attacksize_cutoff":1000
+    'constraint_bnd':0.05
 }
 
 #%%
