@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 import sys
 import multiprocess
 
-from bayes_opt import BayesianOptimization
+from optimization import BayesianOptimization
 
-import scripts.bayes_opt.vacc as vacc
+import scripts.optimization.vacc as vacc
 
 #def test(q):
 #    return q@np.array([1,2,3,4,5])

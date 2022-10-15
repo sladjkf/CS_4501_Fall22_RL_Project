@@ -3,7 +3,7 @@ test the vaccination objective function routine.
 """
 
 # Standard imports
-import scripts.bayes_opt.vacc as vacc
+import scripts.optimization.vacc as vacc
 import numpy as np
 import pandas as pd
 
