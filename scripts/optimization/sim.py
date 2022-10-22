@@ -33,7 +33,9 @@ if __name__ == '__main__':
             pop=vacc_df,                    # vector, populations at each region
             distances=dist)                 # distance matrix
 
-    # setup for multithreading using 5 processes
+
+    #------------------------------------------------ THIS IS ALL CONFIG ^^^^
+
     with multiprocess.Pool() as p:
         # query the vector where we uniformly distribute the vaccination decrease over all districts
         result, sim_pool = oracle.query(V_delta=0.05*np.ones_like(vacc_rate),
