@@ -4,8 +4,13 @@ with a very simple example problem instance.
 """
 import numpy as np
 import pandas as pd
-import scripts.optimization.vacc as vacc
 import multiprocess
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+import scripts.optimization.vacc as vacc
+
 
 # NOTE: we assume the labeling is consistent
 # between vacc_df and dist_mat
