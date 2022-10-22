@@ -105,7 +105,8 @@ class VaccRateOptEngine:
         return vacc_not_decreased_past_zero and budget_satisfied
     def query(self,
             V_delta=None,
-            multithread=True,pool=None,n_sim=None):
+            multithread=True,pool=None,n_sim=None,
+            return_sim_pool=False):
 
         passed = self.check_constraint(V_delta)
         if not passed:
@@ -163,7 +164,10 @@ class VaccRateOptEngine:
         else:
             self.eval_history['input'].append(np.array(V_delta))
             self.eval_history['output'].append(np.array(result))
-        return result
+        if return_sim_pool:
+            return result, sim_pool
+        else:
+            return result
 
     def save_eval_history(self,
             path=None,
