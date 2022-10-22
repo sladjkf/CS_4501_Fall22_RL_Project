@@ -47,7 +47,7 @@ class VaccRateOptEngine:
                 - 'constraint_bnd': float
                     Specifies the constraint that gets used to constrain the decision
                     space of the optimization problem. Broadly speaking, the constraint
-                    will be of the form |V_0 - V'| < c where c is the constant specified
+                    will be of the form |V_0 - V'| = c where c is the constant specified
                     by 'constraint_bnd.'
             V_0 (numpy.ndarray):
                 Vector of length (# of patches).
@@ -94,53 +94,21 @@ class VaccRateOptEngine:
         # precompute vector forms of population, max to avoid recomputing it later
         self._pop_vec = np.array(self.pop_df['pop']) 
         self._max_pop = max(self._pop_vec)
+        self._pop_norm = np.sum(self._pop_vec)
         # store (input vector, objective) pairs
         self.eval_history = {'input':None,'output':None}
-    def check_constraint(self,V_prime):
-        # derivations for these constraints were in overleaf doc 'measles_optimization'
-        #P = np.array(self.sim_params['pop']['pop']) # index 'pop' column from dataframe
-        P = self._pop_vec
-        V_0 = self.V_0
-        V_repr = self.opt_config['V_repr']
-        constraint_bnd = self.opt_config['constraint_bnd']
-        if V_repr == "ratio":
-            # TODO: for now, this is the only that really matters
-            # TODO: reformulate using V_delta definition.
-            # check the basic domain constraint
-            in_domain = (0 < V_prime).all() and (V_prime < 1).all()
-            result_num = ((V_0 - V_prime) @ P)/np.linalg.norm(P,ord=1)
-        elif V_repr == "max_ratio":
-            in_domain = (0 < V_prime).all() and (V_prime < 1).all()
-            result_num = (np.linalg.norm(P,ord=np.inf)/np.linalg.norm(P,ord=1))*\
-                    np.abs(np.linalg.norm(V_0,ord=1) - np.linalg.norm(V_prime,ord=1))
-        elif V_repr == "raw":
-            in_domain = (0 < V_prime).all()
-            result_num = np.linalg.norm(V_0-V_prime,ord=1) < constraint_bnd
-        else:
-            print("No constraint function exists for the V_repr type you've passed")
-            result = -np.inf
-        print(result_num) # print the constraint value
-        result = (result_num < constraint_bnd) and in_domain
-        return result
+    def check_constraint(self,V_delta):
+        vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
+        budget_satisfied = np.isclose(
+                V_delta @ self._pop_vec,
+                self.opt_config['constraint_bnd']*self._pop_norm)
+        return vacc_not_decreased_past_zero and budget_satisfied
     def query(self,
-            V_prime=None,seed_prime=None,
-            multithread=True,pool=None,n_sim=None):
-        if (type(V_prime) == type(None) and type(seed_prime) is type(None)) or\
-                (type(V_prime) != type(None) and type(seed_prime) != type(None)):
-            print("Please provide either V_prime or seed_prime")
+            V_delta=None,
+            multithread=True,pool=None,n_sim=None,
+            return_sim_pool=False):
 
-        if type(seed_prime) != type(None): # if solving problems where seed is the decision variable
-            V_prime = self.V_0
-            eval_mode = "seed"
-        elif type(V_prime) != type(None): # if solving problems where V is the decision variable
-            # default to computation with the passed V_0
-            seed_prime = self.seed
-            eval_mode = "V"
-        else:
-            print("bad argumetns") # TODO:
-            return
-
-        passed = self.check_constraint(V_prime)
+        passed = self.check_constraint(V_delta)
         if not passed:
             print("Constraint violated")
             return np.array([-1]) # TODO: probably bad behavior, but ok for placeholding?
@@ -149,21 +117,22 @@ class VaccRateOptEngine:
         # TODO: modify computation of V_unscaled such that V_prime
         # represents a change in vaccination rates rather than a new state
         if self.opt_config['V_repr'] == "max_ratio":
-            V_unscaled = self._max_pop*V_prime
+            V_unscaled = self._max_pop*(self.V_0 - V_delta)
         elif self.opt_config['V_repr'] == "ratio":
-            V_unscaled = self._pop_vec*V_prime # element by element
+            V_unscaled = self._pop_vec*(self.V_0 - V_delta)  # element by element
         elif self.opt_config['V_repr'] == "raw":
             pass
         else:
             raise ValueError("Invalid string for V_repr")
         V_unscaled = np.round(V_unscaled)
         initial_state = np.zeros((len(self.pop_df.index),2))
-        #initial_state[:,0] = self.seed
-        initial_state[:,0] = seed_prime
-        initial_state[:,1] = V_unscaled
+        initial_state[:, 0] = self.seed
+        #initial_state[:,0] = seed_prime
+        initial_state[:, 1] = V_unscaled
 
         if not multithread:
             # TODO singlethread evaluation, but i'm almost always going to multithread
+            print("singlethread not implemented")
             pass
 
         assert type(pool) != type(None) and type(n_sim) != type(None),\
@@ -187,21 +156,19 @@ class VaccRateOptEngine:
             # 1 if exceeded, 0 if below the bound
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
-        print(eval_mode)
         # keep a record of the evaluation results
         if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            if eval_mode == "V":
-                self.eval_history['input'] = np.array([V_prime])
-            elif eval_mode == "seed":
-                self.eval_history['input'] = np.array([seed_prime])
-            self.eval_history['output'] = np.array([result])
+            # just store as a list to enable ragged inputs
+            self.eval_history['input'] = [np.array(V_delta)]
+            self.eval_history['output'] = [np.array(result)]
         else:
-            if eval_mode == "V":
-                self.eval_history['input']= np.concatenate([self.eval_history['input'],np.array([V_prime])],axis=0)
-            elif eval_mode == "seed":
-                self.eval_history['input']= np.concatenate([self.eval_history['input'],np.array([seed_prime])],axis=0)
-            self.eval_history['output']= np.concatenate([self.eval_history['output'],np.array([result])],axis=0)
-        return result
+            self.eval_history['input'].append(np.array(V_delta))
+            self.eval_history['output'].append(np.array(result))
+        if return_sim_pool:
+            return result, sim_pool
+        else:
+            return result
+
     def save_eval_history(self,
             path=None,
             as_csv=False,as_serial=True):
@@ -212,12 +179,28 @@ class VaccRateOptEngine:
             print("No data to write.")
             return
         if as_serial:
-            dill.dump(self.eval_history,file=out_file)
-        elif as_csv:
+            with open(path+".save","wb") as out_file:
+                dill.dump(self.eval_history, file=out_file)
+        elif as_csv: #TODO: how to deal with ragged input arrays?
             input_shape = np.shape(self.eval_history['input'])
-            joined = np.concatenate([self.eval_history['input'],self.eval_history['output']],axis=1)
-            joined = pd.DataFrame(joined)
-            joined.rename(columns={0:'input',input_shape[1]:'output'})
-            joined.to_csv(file=path,index=False)
+            #joined = np.concatenate([self.eval_history['input'], self.eval_history['output']], axis=1)
+            #joined = pd.DataFrame(joined)
+            num_evals = len(self.eval_history['input'])
+            with open(path+".csv","w") as out_file:
+                print("input"+","*(input_shape[1]-1)+","+"output",file=out_file)
+                for i in range(num_evals):
+                    this_input = self.eval_history['input'][i]
+                    this_output = self.eval_history['output'][i]
+                    input_str = np.array2string(this_input,
+                                                separator=",",
+                                                max_line_width=np.inf,
+                                                precision=5).strip("[]")
+                    output_str = np.array2string(this_output,
+                                                 separator=",",
+                                                 max_line_width=np.inf,
+                                                 precision=5).strip("[]")
+                    print(input_str, file=out_file, end="")
+                    print(output_str, file=out_file, end="")
+                    print(file=out_file)
         else:
             print("no valid save format specified")
