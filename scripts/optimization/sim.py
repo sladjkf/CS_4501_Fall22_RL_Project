@@ -31,6 +31,9 @@ if __name__ == '__main__':
             distances=dist)                 # distance matrix
 
     # setup for multithreading using 5 processes
-    with multiprocess.Pool(5) as p:
+    with multiprocess.Pool() as p:
         # query the vector where we uniformly distribute the vaccination decrease over all districts
-        result, sim_pool = oracle.query(V_delta=0.05*np.ones(4),pool=p,n_sim=150, return_sim_pool=True)
+        result, sim_pool = oracle.query(V_delta=0.05*np.ones(4),
+                                        pool=p,
+                                        n_sim=150,
+                                        return_sim_pool=True)
