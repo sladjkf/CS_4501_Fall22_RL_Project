@@ -375,20 +375,15 @@ class spatial_tSIR:
         """
         # num_patches and initial_state length must match
         self.num_patches = len(patch_pop.index)
-        assert self.num_patches == initial_state.shape[
-            0], "number of rows in patch_df, initial_state didn't match"
+        assert self.num_patches == initial_state.shape[0], "number of rows in patch_df, initial_state didn't match"
 
         # initialize the first state matrix
         # to check: make sure I+R <= S
         self.state_matrix_series = []
         S_0 = patch_pop['pop'] - initial_state[:, 0] - initial_state[:, 1]
-        assert all(
-            S_0 >= 0), "some entries of susceptible state are <0 (or maybe float comparison?) check initial state"
-        assert not any(np.isnan(
-            S_0)), "some entries of susceptible state are nan. Check initial state again"
-        self.state_matrix_series.append(
-            np.stack([S_0, initial_state[:, 0], initial_state[:, 1]], axis=1)
-        )
+        assert all(S_0 >= 0), "some entries of susceptible state are <0 (or maybe float comparison?) check initial state"
+        assert not any(np.isnan(S_0)), "some entries of susceptible state are nan. Check initial state again"
+        self.state_matrix_series.append(np.stack([S_0, initial_state[:, 0], initial_state[:, 1]], axis=1))
 
         self.config = config
         self.patch_pop = patch_pop
@@ -437,8 +432,7 @@ class spatial_tSIR:
         for iter_num in range(self.config['iters']):
             # get last S,I,R counts
             last_matrix = self.state_matrix_series[-1]
-            S_t, I_t, R_t = last_matrix[:,
-                                        0], last_matrix[:, 1], last_matrix[:, 2]
+            S_t, I_t, R_t = last_matrix[:,0], last_matrix[:, 1], last_matrix[:, 2]
             pop_t = S_t + I_t + R_t
 
             # stop if I_t = 0 in order to save on simulation
@@ -462,9 +456,14 @@ class spatial_tSIR:
             grav_model_out = gravity(network=self.patch_pop,
                                      distances=self.distances, infected=I_t, params=self.config, variant=self.config['grav_variant'])
             infection_influx = grav_model_out["influx"]
-            iota_t = np.array([gamma.rvs(
-                scale=1, a=a, random_state=self.random_state) if a > 0 else 0 for a in infection_influx])
-            # print(infection_influx)
+            
+
+            iota_t = np.zeros(len(infection_influx))
+
+            for index, a in enumerate(infection_influx):
+                if a > 0:
+                    iota_t[index] = gamma.rvs(scale=1, a=a, random_state=self.random_state)
+
             for patch_k in range(0, self.num_patches):
                 if I_t[patch_k] or iota_t[patch_k] > 0:
                     if iota_t[patch_k] < 1:
@@ -655,11 +654,7 @@ class spatial_tSIR_pool:
         Return: None.
         """
         if multi and type(Pool) != type(None):
-            self.sim_list = pool.map(
-                lambda sim:
-                (sim.run_simulation(),
-                 sim)[-1],
-                self.sim_list)
+            self.sim_list = pool.map(lambda sim: (sim.run_simulation(), sim)[-1], self.sim_list)
         elif not multi:
             for sim in self.sim_list:
                 sim.run_simulation()
