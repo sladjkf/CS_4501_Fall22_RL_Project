@@ -4,6 +4,7 @@ with a very simple example problem instance.
 """
 import numpy as np
 import pandas as pd
+#from vacc import vacc
 import scripts.optimization.vacc as vacc
 import multiprocess
 
@@ -66,3 +67,6 @@ engine = vacc.VaccRateOptEngine(
 with multiprocess.Pool(5) as p:
     # query the vector where we uniformly distribute the vaccination decrease over all districts
     result, sim_pool = engine.query(V_delta=0.05*np.ones(4),pool=p,n_sim=150, return_sim_pool=True)
+print(result)
+sim_pool.plot_paths()
+#PYTHONPATH=$(pwd) python3 scripts/optimization/call_oracle_example.py
