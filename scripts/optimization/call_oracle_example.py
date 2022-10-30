@@ -18,19 +18,19 @@ if __name__ == '__main__':
         # between vacc_df and dist_mat
         # set up population dataframe
         # with vaccination rates
-        vacc_df = {
-                'pop': [1200,1200,1500,2000],
-                'vacc': [0.9,0.9,0.9,0.9]
-        }
-        vacc_df = pd.DataFrame(vacc_df)
+
+        pop = np.array([1200,1200,1500,2000])
+        vacc_rate = np.array([0.9,0.9,0.9,0.9])
+
         # set up distance matrix
         # all pairwise distances
-        dist_mat = [
+        dist_mat = np.array([
                 [0,1,5,5],
                 [1,0,5,5],
                 [5,5,0,10],
                 [5,5,10,0],
-        ]
+        ])
+
         # setup the configuration
         # for the disease simulation
         tsir_config = {
@@ -45,8 +45,8 @@ if __name__ == '__main__':
         # arguments for optimizer oracle
         sim_params = {
                 'config':tsir_config,  # contains all disease parameters
-                'pop':vacc_df,
-                'distances':np.array(dist_mat)
+                'pop':pop,
+                'distances':dist_mat
         }
         # optimizer oracle configuration
         opt_config = {
@@ -58,9 +58,9 @@ if __name__ == '__main__':
         # plug all arguments into oracle
         engine = vacc.VaccRateOptEngine(
                 opt_config=opt_config,
-                V_0=vacc_df['vacc'], seed=I,
+                V_0=vacc_rate, seed=I,
                 sim_config=tsir_config,
-                pop=vacc_df,
+                pop=pop,
                 distances=np.array(dist_mat))
         # setup for multithreading using 5 threads
         with multiprocess.Pool(5) as p:
