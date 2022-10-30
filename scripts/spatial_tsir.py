@@ -1,19 +1,15 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 from numpy import random
 
 from scipy.stats import nbinom, gamma
 import matplotlib.pyplot as plt
-from itertools import chain
-from functools import partial
 
 import warnings
 from multiprocess import Pool
 
-import scipy.stats
 import time
 
 import dill
@@ -327,7 +323,7 @@ class spatial_tSIR:
     'Measles Metapopulation Dynamics: A Gravity Model for Epidemiological Coupling and Dynamics.'
     '''
 
-    def __init__(self, config, patch_pop, initial_state, distances=None, seed=None):
+    def __init__(self, config, patch_pop, initial_state, distances=None, seed=None, coordinates=None):
         """
         Initialize and parameterize the disease simulation.
         Will warn you if invalid 'initial_state' passed in.
@@ -380,7 +376,7 @@ class spatial_tSIR:
         if type(distances) != type(None):
             self.distances = distances
         else:
-            self.distances = get_distances(network=self.patch_pop)
+            self.distances = get_distances(network=coordinates)
 
         # initialize random seed
         if type(seed) == type(None):
@@ -416,8 +412,6 @@ class spatial_tSIR:
             # or however long the epidemic period is..
             beta_t = [self.config['beta']]*26
 
-        # compute the distances
-        #distances = get_distances(network=self.patch_pop)
         for iter_num in range(self.config['iters']):
             # get last S,I,R counts
             last_matrix = self.state_matrix_series[-1]
@@ -561,7 +555,7 @@ class spatial_tSIR_pool:
     via Monte-Carlo methods.
     '''
 
-    def __init__(self, config=None, patch_pop=None, initial_state=None, n_sim=None, distances=None, load=None):
+    def __init__(self, config=None, patch_pop=None, initial_state=None, n_sim=None, distances=None, load=None, coordinates=None):
         '''
         Initialize the the simulation pool.
 
@@ -596,7 +590,7 @@ class spatial_tSIR_pool:
             # the same exact result
             # factor of 10 chosen somewhat arbitrarily but needed to be sufficiently large
             seeds = [int(time.time() + i*10) for i in range(0, n_sim)]
-            self.sim_list = [spatial_tSIR(config, patch_pop, initial_state, distances=distances, seed=seed) for seed in seeds]
+            self.sim_list = [spatial_tSIR(config, patch_pop, initial_state, distances=distances, seed=seed, coordinates=coordinates) for seed in seeds]
             self.sim_state_mats = None
         else:
             raise ValueError("parameters specified incorrectly - either provide a path in 'load' or provide the tSIR simulation parameters.")

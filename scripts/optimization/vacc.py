@@ -18,7 +18,7 @@ class VaccRateOptEngine:
     It serves as the "oracle" that you can query during the optimization routine.
     """
 
-    def __init__(self, opt_config, V_0, seed, sim_config, pop, distances):
+    def __init__(self, opt_config, V_0, seed, sim_config, pop, distances, coordinates=None):
         # TODO: fill out the rest of the docstring
         """
         Create a new optimization oracle, initializing with certain fixed parameters.
@@ -83,7 +83,7 @@ class VaccRateOptEngine:
         self.seed = seed
         self.pop_vec = pop
         self.distances = distances
-
+        self.coordinates = coordinates
         # precompute vector forms of population, max to avoid recomputing it later
         self._max_pop = max(self.pop_vec)
         self._pop_norm = np.sum(self.pop_vec)
@@ -130,7 +130,8 @@ class VaccRateOptEngine:
             patch_pop=self.pop_vec,
             initial_state=initial_state,
             n_sim=n_sim,
-            distances=self.distances)
+            distances=self.distances,
+            coordinates=self.coordinates)
 
         sim_pool.run_simulation(pool=pool)
 
