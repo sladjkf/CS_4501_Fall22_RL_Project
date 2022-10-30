@@ -89,7 +89,7 @@ class VaccRateOptEngine:
         self._pop_norm = np.sum(self.pop_vec)
 
         # store (input vector, objective) pairs
-        self.eval_history = {'input': None, 'output': None}
+        self.eval_history = {'input': [], 'output': []}
 
     def passed_constraint(self, V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
@@ -97,8 +97,7 @@ class VaccRateOptEngine:
         
         return vacc_not_decreased_past_zero and budget_satisfied
 
-    def query(self, V_delta=None, multithread=True, pool=None, n_sim=None, return_sim_pool=False):
-
+    def query(self, V_delta=None, pool=None, n_sim=None, return_sim_pool=False):
         if not self.passed_constraint(V_delta):
             print("Constraint violated")
             return None
@@ -131,8 +130,8 @@ class VaccRateOptEngine:
             patch_pop=self.pop_vec,
             initial_state=initial_state,
             n_sim=n_sim,
-            distances=self.distances
-        )
+            distances=self.distances)
+
         sim_pool.run_simulation(pool=pool)
 
         # return a sample of the statistic
@@ -150,13 +149,9 @@ class VaccRateOptEngine:
                               > self.opt_config['attacksize_cutoff'])
         
         # keep a record of the evaluation results
-        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            # just store as a list to enable ragged inputs
-            self.eval_history['input'] = [np.array(V_delta)]
-            self.eval_history['output'] = [np.array(result)]
-        else:
-            self.eval_history['input'].append(np.array(V_delta))
-            self.eval_history['output'].append(np.array(result))
+        self.eval_history['input'].append(V_delta)
+        self.eval_history['output'].append([result])
+        
         if return_sim_pool:
             return result, sim_pool
         else:

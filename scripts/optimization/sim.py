@@ -26,7 +26,7 @@ oracle = vacc.VaccRateOptEngine(
         V_0=vacc_rate,            # vector, number of people vaccinated in each region
         seed=seed,                      # vector, number of starting infected in each region
         sim_config=config.TSIR_CONFIG,  # constant hyperparameters
-        pop=pop_vec,                    # vector, populations at each region HEH???????
+        pop=pop_vec,                    # vector, populations at each region
         distances=dist)                 # distance matrix
 
 
