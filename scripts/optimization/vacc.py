@@ -110,8 +110,7 @@ class VaccRateOptEngine:
             V_unscaled = self._max_pop*(self.V_0 - V_delta)
         
         elif self.opt_config['V_repr'] == "ratio":
-            V_unscaled = self.pop_vec * \
-                (self.V_0 - V_delta)  # element by element
+            V_unscaled = self.pop_vec * (self.V_0 - V_delta)  # element by element
         
         elif self.opt_config['V_repr'] == "raw":
             pass
