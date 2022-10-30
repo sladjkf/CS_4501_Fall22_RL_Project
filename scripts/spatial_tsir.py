@@ -152,17 +152,13 @@ def get_distances(network):
     return distance_matrix
 
 
-def gravity(network, distances, infected, params,
-            parallel=False, cores=4,
-            variant="xia"):
+def gravity(network, distances, infected, params, parallel=False, cores=4, variant="xia"):
     '''
     Generate gravity weights for a given network. 
     May throw warnings if there are 0 entries off-diagonal in the 'distances' matrix
 
-    network: DataFrame
-        a data frame of locations
-        each row is a location, specified by tuple (x,y,pop).
-        X,Y not needed if the 'distances' parameter provided
+    network: np.ndarray
+        vector with population of each region
     distances: numpy array
         Dimensions: (# of locations) x (# of locations)
         Matrix of distances. It's symmetric.
@@ -191,7 +187,7 @@ def gravity(network, distances, infected, params,
     tau1, tau2, rho, theta = params["tau1"], params["tau2"], params["rho"], params["theta"]
     num_locations = network.shape[0]
     adj_matrix = np.zeros((num_locations, num_locations))
-    pop_vec = np.array(network["pop"])
+    pop_vec = network
 
     # ---- old serial method with for loop ---#
     # if False:
@@ -331,12 +327,7 @@ class spatial_tSIR:
     'Measles Metapopulation Dynamics: A Gravity Model for Epidemiological Coupling and Dynamics.'
     '''
 
-    def __init__(self,
-                 config,
-                 patch_pop, initial_state,
-                 distances=None,
-                 seed=None
-                 ):
+    def __init__(self, config, patch_pop, initial_state, distances=None, seed=None):
         """
         Initialize and parameterize the disease simulation.
         Will warn you if invalid 'initial_state' passed in.
@@ -354,10 +345,8 @@ class spatial_tSIR:
             - birth: Per-capita birth rate. Constant over time.
             - birth_t: Time-varying per-capita birth rate. Requires a list of 26 floats for each biweek of measles simulation.
             - grav_variant: "xia" or "orig". If not specified, then "xia" is used
-        patch_pop : DataFrame, dimension N x 4
-            DataFrame with the column specification
-            (patch_id, pop, x, y).
-            Population is the most important.
+        patch_pop : np.ndarray, dimension N
+            vector containing the population of each region.
         distances : numpy matrix, dimension N x N (optional)
             precomputed distance matrix from locations in patch_pop
             labeling needs to correspond to the ordering in patch_pop
@@ -374,13 +363,13 @@ class spatial_tSIR:
 
         """
         # num_patches and initial_state length must match
-        self.num_patches = len(patch_pop.index)
+        self.num_patches = patch_pop.shape[0]
         assert self.num_patches == initial_state.shape[0], "number of rows in patch_df, initial_state didn't match"
 
         # initialize the first state matrix
         # to check: make sure I+R <= S
         self.state_matrix_series = []
-        S_0 = patch_pop['pop'] - initial_state[:, 0] - initial_state[:, 1]
+        S_0 = patch_pop - initial_state[:, 0] - initial_state[:, 1]
         assert all(S_0 >= 0), "some entries of susceptible state are <0 (or maybe float comparison?) check initial state"
         assert not any(np.isnan(S_0)), "some entries of susceptible state are nan. Check initial state again"
         self.state_matrix_series.append(np.stack([S_0, initial_state[:, 0], initial_state[:, 1]], axis=1))
@@ -412,7 +401,7 @@ class spatial_tSIR:
         # setup parameters
         # beta = self.config['beta']
         alpha = self.config['alpha']
-        pop_vec = self.patch_pop['pop']
+        pop_vec = self.patch_pop
 
         if 'birth_t' in self.config.keys():
             birth_rate_t = self.config['birth_t']
@@ -457,14 +446,13 @@ class spatial_tSIR:
                                      distances=self.distances, infected=I_t, params=self.config, variant=self.config['grav_variant'])
             infection_influx = grav_model_out["influx"]
             
-
             iota_t = np.zeros(len(infection_influx))
 
             for index, a in enumerate(infection_influx):
                 if a > 0:
                     iota_t[index] = gamma.rvs(scale=1, a=a, random_state=self.random_state)
 
-            for patch_k in range(0, self.num_patches):
+            for patch_k in range(self.num_patches):
                 if I_t[patch_k] or iota_t[patch_k] > 0:
                     if iota_t[patch_k] < 1:
                         iota_tk = round(iota_t[patch_k])
@@ -474,8 +462,7 @@ class spatial_tSIR:
                     # well... shouldn't, right? expected number of infections
                     # in next time step is not a proportion.
                     # But must divide by population at time t if a birth rate incorporated.
-                    lambda_k_t = (
-                        beta*S_t[patch_k] * (I_t[patch_k]+iota_tk)**(alpha)) / pop_t[patch_k]
+                    lambda_k_t = (beta*S_t[patch_k] * (I_t[patch_k]+iota_tk)**(alpha)) / pop_t[patch_k]
                     #lambda_k_t = ( beta*S_t[patch_k] * (I_t[patch_k]+iota_t[patch_k])**(alpha) )
                     # TODO: parameterizing the negative binomial correctly???
                     n = I_t[patch_k]+iota_t[patch_k]
@@ -574,11 +561,7 @@ class spatial_tSIR_pool:
     via Monte-Carlo methods.
     '''
 
-    def __init__(self,
-                 config=None,
-                 patch_pop=None, initial_state=None,
-                 n_sim=None, distances=None,
-                 load=None):
+    def __init__(self, config=None, patch_pop=None, initial_state=None, n_sim=None, distances=None, load=None):
         '''
         Initialize the the simulation pool.
 
@@ -605,6 +588,7 @@ class spatial_tSIR_pool:
                 self.sim_state_mats = save['sim_state_mats']
                 self.config = save['config']
                 self.n_sim = save['n_sim']
+
         elif sim_params_supplied:
             self.n_sim = n_sim
             self.config = config
@@ -612,12 +596,10 @@ class spatial_tSIR_pool:
             # the same exact result
             # factor of 10 chosen somewhat arbitrarily but needed to be sufficiently large
             seeds = [int(time.time() + i*10) for i in range(0, n_sim)]
-            self.sim_list = [spatial_tSIR(
-                config, patch_pop, initial_state, distances=distances, seed=seed) for seed in seeds]
+            self.sim_list = [spatial_tSIR(config, patch_pop, initial_state, distances=distances, seed=seed) for seed in seeds]
             self.sim_state_mats = None
         else:
-            raise ValueError(
-                "parameters specified incorrectly - either provide a path in 'load' or provide the tSIR simulation parameters.")
+            raise ValueError("parameters specified incorrectly - either provide a path in 'load' or provide the tSIR simulation parameters.")
 
     def save(self, path):
         """
@@ -659,11 +641,10 @@ class spatial_tSIR_pool:
             for sim in self.sim_list:
                 sim.run_simulation()
         else:
-            print(
-                "Invalid arguments - either multi=False, or multi=True and a pool object supplied")
+            print("Invalid arguments - either multi=False, or multi=True and a pool object supplied")
+        
         # retrieve the state matrices of each simulation and make life slightly easier
-        self.sim_state_mats = np.array(
-            [np.array(sim.get_ts_matrix()) for sim in self.sim_list])
+        self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in self.sim_list])
 
     def plot_interval(self,
                       select=None, time_range=None,
@@ -796,9 +777,3 @@ class spatial_tSIR_pool:
             return np.sum(AS_samples < x)/len(AS_samples)
         else:
             return np.array([np.sum(AS_samples < x_i)/len(AS_samples) for x_i in x])
-
-
-# %% testing code
-# plt.figure()
-# for sim in pool.simulation_list:
-#    sim.plot_epicurve(select=82)

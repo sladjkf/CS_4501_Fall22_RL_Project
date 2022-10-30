@@ -17,15 +17,8 @@ class VaccRateOptEngine:
     query the spatial tSIR model in an optimization problem.
     It serves as the "oracle" that you can query during the optimization routine.
     """
-    # def __init__(self,
-    #         V_0,inf_seed,
-    #         sim_config, pop, distances,
-    #         obj,V_repr,
-    #         aux_param):
 
-    def __init__(self,
-                 opt_config, V_0, seed,
-                 sim_config, pop, distances):
+    def __init__(self, opt_config, V_0, seed, sim_config, pop, distances):
         # TODO: fill out the rest of the docstring
         """
         Create a new optimization oracle, initializing with certain fixed parameters.
@@ -60,10 +53,9 @@ class VaccRateOptEngine:
                 The initial seeding strategy vector.
             sim_config (dict):
                 Used to specify the parameters of the tSIR simulation.
-            pop (Pandas.DataFrame):
-                DataFrame. Has (# of patches) rows, and at least the column
-                'patch_id' - names of the locations
-                'pop' - population size of that location
+            pop (numpy.ndarray):
+                Vector of length (# of patches).
+                The population vector. Contains the number of people in each region.
             distances (numpy.ndarray):
                 2D matrix of dimension (# of patches) x (# of patches).
                 It specifies the distances between patches.
@@ -93,27 +85,23 @@ class VaccRateOptEngine:
         self.sim_params = sim_config
         self.V_0 = V_0
         self.seed = seed
-        self.pop_df = pop
+        self.pop_vec = pop
         self.distances = distances
 
         # precompute vector forms of population, max to avoid recomputing it later
-        self._pop_vec = np.array(self.pop_df['pop'])
-        self._max_pop = max(self._pop_vec)
-        self._pop_norm = np.sum(self._pop_vec)
+        self._max_pop = max(self.pop_vec)
+        self._pop_norm = np.sum(self.pop_vec)
         # store (input vector, objective) pairs
         self.eval_history = {'input': None, 'output': None}
 
     def check_constraint(self, V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
         budget_satisfied = np.isclose(
-            V_delta @ self._pop_vec,
+            V_delta @ self.pop_vec,
             self.opt_config['constraint_bnd']*self._pop_norm)
         return vacc_not_decreased_past_zero and budget_satisfied
 
-    def query(self,
-              V_delta=None,
-              multithread=True, pool=None, n_sim=None,
-              return_sim_pool=False):
+    def query(self, V_delta=None, multithread=True, pool=None, n_sim=None, return_sim_pool=False):
 
         passed = self.check_constraint(V_delta)
         if not passed:
@@ -127,14 +115,14 @@ class VaccRateOptEngine:
         if self.opt_config['V_repr'] == "max_ratio":
             V_unscaled = self._max_pop*(self.V_0 - V_delta)
         elif self.opt_config['V_repr'] == "ratio":
-            V_unscaled = self._pop_vec * \
+            V_unscaled = self.pop_vec * \
                 (self.V_0 - V_delta)  # element by element
         elif self.opt_config['V_repr'] == "raw":
             pass
         else:
             raise ValueError("Invalid string for V_repr")
         V_unscaled = np.round(V_unscaled)
-        initial_state = np.zeros((len(self.pop_df.index), 2))
+        initial_state = np.zeros((self.pop_vec.shape[0], 2))
         initial_state[:, 0] = self.seed
         #initial_state[:,0] = seed_prime
         initial_state[:, 1] = V_unscaled
@@ -146,9 +134,10 @@ class VaccRateOptEngine:
 
         assert type(pool) != type(None) and type(n_sim) != type(None),\
             "You must pass a multithread.Pool object and n_sim when in multithreading mode"
+
         sim_pool = spatial_tSIR_pool(
             config=self.sim_params,
-            patch_pop=self.pop_df,
+            patch_pop=self.pop_vec,
             initial_state=initial_state,
             n_sim=n_sim,
             distances=self.distances
@@ -158,14 +147,17 @@ class VaccRateOptEngine:
         # return a sample of the statistic
         if self.opt_config['obj'] == "attacksize":
             result = sim_pool.get_attack_size_samples()
+
         elif self.opt_config['obj'] == "peak":
             result = np.max(sim_pool.get_samples(), axis=1)
+        
         elif self.opt_config['obj'] == "attacksize_prob":
             # It seems more natural to formulate it as
             # 1 if exceeded, 0 if below the bound
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples()
                               > self.opt_config['attacksize_cutoff'])
+        
         # keep a record of the evaluation results
         if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
             # just store as a list to enable ragged inputs
