@@ -4,3 +4,5 @@ seaborn
 matplotlib
 scipy
 multiprocess
+git+https://github.com/DavidWalz/diversipy.git@master
+sklearn
