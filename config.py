@@ -7,10 +7,3 @@ TSIR_CONFIG = {
     "alpha": 0.97, # mixing rate
     "beta": 7      # disease infectiousness
 }
-
-# optimizer oracle configuration
-OPT_CONFIG = {
-    'obj':"attacksize",    # objective function
-    'V_repr':"ratio",      # represent vacc rates as a ratio: [0,1]
-    'constraint_bnd': 0.05 # set c=0.05 (percentage can go down by 5%)
-}

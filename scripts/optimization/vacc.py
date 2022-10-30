@@ -60,12 +60,8 @@ class VaccRateOptEngine:
                 2D matrix of dimension (# of patches) x (# of patches).
                 It specifies the distances between patches.
         """
-        # store constants for simulation runs
-        # store values relevant to optimization routine
-        # that stay fixed over the duration of the optimization routine
         # TODO: validate parameters (e.g S+I+R = pop)?
         # TODO: objective with auxiliary parameters (i.e attacksize prob needs to specify the cutoff)?
-        # input validation - these are essential
         # TODO: type checking too?
         assert 'obj' in opt_config.keys()
         assert 'V_repr' in opt_config.keys()
@@ -91,46 +87,42 @@ class VaccRateOptEngine:
         # precompute vector forms of population, max to avoid recomputing it later
         self._max_pop = max(self.pop_vec)
         self._pop_norm = np.sum(self.pop_vec)
+
         # store (input vector, objective) pairs
         self.eval_history = {'input': None, 'output': None}
 
-    def check_constraint(self, V_delta):
+    def passed_constraint(self, V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
-        budget_satisfied = np.isclose(
-            V_delta @ self.pop_vec,
-            self.opt_config['constraint_bnd']*self._pop_norm)
+        budget_satisfied = np.isclose(V_delta @ self.pop_vec, self.opt_config['constraint_bnd']*self._pop_norm)
+        
         return vacc_not_decreased_past_zero and budget_satisfied
 
     def query(self, V_delta=None, multithread=True, pool=None, n_sim=None, return_sim_pool=False):
 
-        passed = self.check_constraint(V_delta)
-        if not passed:
+        if not self.passed_constraint(V_delta):
             print("Constraint violated")
-            # TODO: probably bad behavior, but ok for placeholding?
-            return np.array([-1])
+            return None
 
         # SETUP INITIAL STATE #
         # TODO: modify computation of V_unscaled such that V_prime
         # represents a change in vaccination rates rather than a new state
         if self.opt_config['V_repr'] == "max_ratio":
             V_unscaled = self._max_pop*(self.V_0 - V_delta)
+        
         elif self.opt_config['V_repr'] == "ratio":
             V_unscaled = self.pop_vec * \
                 (self.V_0 - V_delta)  # element by element
+        
         elif self.opt_config['V_repr'] == "raw":
             pass
+        
         else:
             raise ValueError("Invalid string for V_repr")
+        
         V_unscaled = np.round(V_unscaled)
         initial_state = np.zeros((self.pop_vec.shape[0], 2))
         initial_state[:, 0] = self.seed
-        #initial_state[:,0] = seed_prime
         initial_state[:, 1] = V_unscaled
-
-        if not multithread:
-            # TODO singlethread evaluation, but i'm almost always going to multithread
-            print("singlethread not implemented")
-            pass
 
         assert type(pool) != type(None) and type(n_sim) != type(None),\
             "You must pass a multithread.Pool object and n_sim when in multithreading mode"
