@@ -5,6 +5,9 @@ import pandas as pd
 # TODO Need to import spatial tSIR module. is there a better way to do this??
 import sys
 from scripts.spatial_tsir import *
+import datetime
+import os
+import multiprocess
 """
 Write a wrapper for the stochastic tSIR that takes in different representations
 of the vaccination vector and runs the simulation.
@@ -75,6 +78,8 @@ class VaccRateOptEngine:
         assert 'obj' in opt_config.keys()
         assert 'V_repr' in opt_config.keys()
         assert 'constraint_bnd' in opt_config.keys()
+        assert 'constraint_type' in opt_config.keys()
+        assert opt_config['constraint_type'] in ['ineq','eq']
         if opt_config['obj'] in ['attacksize_prob']: 
             # if you've specified the CDF based objective
             # you need to specify the cutoff quantity
@@ -99,9 +104,12 @@ class VaccRateOptEngine:
         self.eval_history = {'input':None,'output':None}
     def check_constraint(self,V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
-        budget_satisfied = np.isclose(
-                V_delta @ self._pop_vec,
-                self.opt_config['constraint_bnd']*self._pop_norm)
+        if self.opt_config['constraint_type'] == 'eq':
+            budget_satisfied = np.isclose(
+                    V_delta @ self._pop_vec,
+                    self.opt_config['constraint_bnd']*self._pop_norm)
+        if self.opt_config['constraint_type'] == 'ineq':
+            budget_satisfied = np.all(V_delta @ self._pop_vec <= self.opt_config['constraint_bnd']*self._pop_norm)
         return vacc_not_decreased_past_zero and budget_satisfied
     def query(self,
             V_delta=None,
@@ -204,3 +212,50 @@ class VaccRateOptEngine:
                     print(file=out_file)
         else:
             print("no valid save format specified")
+
+class VaccProblemLAMCTSWrapper:
+    def __init__(self,
+            opt_config, V_0, seed,
+            sim_config, pop, distances,
+            cores, n_sim,
+            output_dir, name):
+        self.engine = VaccRateOptEngine(
+            opt_config=opt_config,
+            V_0=V_0, seed=seed,
+            sim_config=sim_config,
+            pop=pop,
+            distances=distances
+        )
+        self.pool = multiprocess.Pool(cores)
+        self.best_x = None
+        self.best_y = None
+        self.n_sim = n_sim
+        self.cores = cores
+        assert os.path.exists(output_dir), "invalid directory"
+        self.output_file = "{}vacc_sim_{}_{}.csv".format(output_dir,name,datetime.datetime.now().isoformat())
+
+    def __call__(self, x):
+        result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
+        result = np.mean(result)
+        if self.best_x is None and self.best_y is None:
+            self.best_x = x
+            self.best_y = result
+        else:
+            if self.best_y <= result:
+                self.best_x = x
+                self.best_y = result
+        self.track()
+        return result
+        
+    def track(self):
+        if os.path.exists(self.output_file):
+            with open(self.output_file, "a+") as log:
+                np.savetxt(log,self.best_x,delimiter=",", newline=",")
+                print(self.best_y,file=log)
+        else:
+            with open(self.output_file, "w+") as log:
+                np.savetxt(log,self.best_x,delimiter=",", newline=",")
+                print(self.best_y,file=log)
+
+    def close_pool(self):
+        self.pool.close()
