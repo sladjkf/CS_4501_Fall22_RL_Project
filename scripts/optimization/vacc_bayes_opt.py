@@ -29,12 +29,13 @@ def UCB(x, GP, beta):
 
 #### Constrained sampling from polytope #####
 def constraint_sample(n,dim,V_0,P,c):
+    # inequality now...
     samples = polytope.sample(
             n_points=n,
             lower=np.zeros(dim),
             upper=V_0,
-            A2=np.array([P]),
-            b2=np.array([c*np.sum(P)])
+            A1=np.array([P]),
+            b1=np.array([c*np.sum(P)])
     )
     return samples
 
@@ -112,7 +113,8 @@ def vacc_bayes_opt_w_constr(
     # PROPOSING THE NEXT POINT #
     # setup constraint functions
     ineq_constr = scipy.optimize.LinearConstraint(A=np.eye(dim), lb=np.zeros(dim), ub=V_0)
-    budget_constr = scipy.optimize.LinearConstraint(A=P, lb=c*P_sum, ub=c*P_sum)
+    #budget_constr = scipy.optimize.LinearConstraint(A=P, lb=c*P_sum, ub=c*P_sum)
+    budget_constr = scipy.optimize.LinearConstraint(A=P, lb=0, ub=c*P_sum)
 
     n_iters = 0
     best_argmax_sofar = np.argmax(query_fvals)

@@ -1,0 +1,564 @@
+
+In [1]: import pandas as pd; import numpy as np; import matplotlib.pyplot as plt
+
+In [2]: turbo = pd.read_csv("vacc_sim_5by5_2022-11-30T19:56:28.452165_TurBO_seed_center_final_soluti
+   ...: on.csv")
+
+In [3]: bo = pd.read_csv("vacc_sim_5by5_2022-11-30T22:36:49.756057_vanilla_BO_seed_center_final_solu
+   ...: tion.csv")
+
+In [4]: turbo
+Out[4]: 
+      3.625775925961136764e-02  3.536368345292977000e-02  ...  3.479660766183492043e-02   5072.96
+0                     0.037757                  0.039777  ...                  0.040876   7055.27
+1                     0.037757                  0.039777  ...                  0.040876   7055.27
+2                     0.037757                  0.039777  ...                  0.040876   7055.27
+3                     0.037757                  0.039777  ...                  0.040876   7055.27
+4                     0.037757                  0.039777  ...                  0.040876   7055.27
+...                        ...                       ...  ...                       ...       ...
+1348                  0.000121                  0.001016  ...                  0.001634  17119.54
+1349                  0.000121                  0.001016  ...                  0.001634  17119.54
+1350                  0.000121                  0.001016  ...                  0.001634  17119.54
+1351                  0.000121                  0.001016  ...                  0.001634  17119.54
+1352                  0.000121                  0.001016  ...                  0.001634  17119.54
+
+[1353 rows x 26 columns]
+
+In [5]: turbo = pd.read_csv("vacc_sim_5by5_2022-11-30T19:56:28.452165_TurBO_seed_center_final_soluti
+   ...: on.csv",header=None)
+
+In [6]: bo = pd.read_csv("vacc_sim_5by5_2022-11-30T22:36:49.756057_vanilla_BO_seed_center_final_solu
+   ...: tion.csv",header=None)
+
+In [7]: turbo
+Out[7]: 
+            0         1         2         3   ...        22        23        24        25
+0     0.036258  0.035364  0.036307  0.034394  ...  0.034651  0.036414  0.034797   5072.96
+1     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+2     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+3     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+4     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+...        ...       ...       ...       ...  ...       ...       ...       ...       ...
+1349  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1350  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1351  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1352  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1353  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+
+[1354 rows x 26 columns]
+
+In [8]: turbo[:,25]
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3621, in Index.get_loc(self, key, method, tolerance)
+   3620 try:
+-> 3621     return self._engine.get_loc(casted_key)
+   3622 except KeyError as err:
+
+File ~/.local/lib/python3.10/site-packages/pandas/_libs/index.pyx:136, in pandas._libs.index.IndexEngine.get_loc()
+
+File ~/.local/lib/python3.10/site-packages/pandas/_libs/index.pyx:142, in pandas._libs.index.IndexEngine.get_loc()
+
+TypeError: '(slice(None, None, None), 25)' is an invalid key
+
+During handling of the above exception, another exception occurred:
+
+InvalidIndexError                         Traceback (most recent call last)
+Cell In [8], line 1
+----> 1 turbo[:,25]
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/frame.py:3505, in DataFrame.__getitem__(self, key)
+   3503 if self.columns.nlevels > 1:
+   3504     return self._getitem_multilevel(key)
+-> 3505 indexer = self.columns.get_loc(key)
+   3506 if is_integer(indexer):
+   3507     indexer = [indexer]
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3628, in Index.get_loc(self, key, method, tolerance)
+   3623         raise KeyError(key) from err
+   3624     except TypeError:
+   3625         # If we have a listlike key, _check_indexing_error will raise
+   3626         #  InvalidIndexError. Otherwise we fall through and re-raise
+   3627         #  the TypeError.
+-> 3628         self._check_indexing_error(key)
+   3629         raise
+   3631 # GH#42269
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:5637, in Index._check_indexing_error(self, key)
+   5633 def _check_indexing_error(self, key):
+   5634     if not is_scalar(key):
+   5635         # if key is not a scalar, directly raise an error (the code below
+   5636         # would convert to numpy arrays and raise later any way) - GH29926
+-> 5637         raise InvalidIndexError(key)
+
+InvalidIndexError: (slice(None, None, None), 25)
+
+In [9]: turbo.iloc[:,25]
+Out[9]: 
+0        5072.96
+1        7055.27
+2        7055.27
+3        7055.27
+4        7055.27
+          ...   
+1349    17119.54
+1350    17119.54
+1351    17119.54
+1352    17119.54
+1353    17119.54
+Name: 25, Length: 1354, dtype: float64
+
+In [10]: plt.plot(turbo.iloc[:,25])
+Out[10]: [<matplotlib.lines.Line2D at 0x7f526b486200>]
+
+In [11]: %matplotlib qt
+
+In [12]: plt.plot(turbo.iloc[:,25])
+Out[12]: [<matplotlib.lines.Line2D at 0x7f526008fd90>]
+
+In [13]: plt.plot(bo.iloc[:,25])
+Out[13]: [<matplotlib.lines.Line2D at 0x7f52601374c0>]
+
+In [14]: turbo_f_evals = turbo.iloc[:,25]
+
+In [15]: bo_f_evals = bo.iloc[:,25]
+
+In [16]: len(bo_f_evals)
+Out[16]: 1301
+
+In [17]: len(turbo_f_evals)
+Out[17]: 1354
+
+In [18]: turbo_f_evals[0:1354]
+Out[18]: 
+0        5072.96
+1        7055.27
+2        7055.27
+3        7055.27
+4        7055.27
+          ...   
+1349    17119.54
+1350    17119.54
+1351    17119.54
+1352    17119.54
+1353    17119.54
+Name: 25, Length: 1354, dtype: float64
+
+In [19]: len(turbo_f_evals[0:1354])
+Out[19]: 1354
+
+In [20]: len(turbo_f_evals[0:1301])
+Out[20]: 1301
+
+In [21]: plt.figure(); plt.plot(turbo_f_evals[0:1301]); plt.plot(bo_f_evals)
+Out[21]: [<matplotlib.lines.Line2D at 0x7f524ca61510>]
+
+In [22]: plt.figure(); plt.plot(turbo_f_evals[0:1301]); plt.plot(bo_f_evals)
+Out[22]: [<matplotlib.lines.Line2D at 0x7f524ca9bf40>]
+
+In [23]: plt.figure(); plt.plot(turbo_f_evals[0:1301]); plt.plot(bo_f_evals)
+Out[23]: [<matplotlib.lines.Line2D at 0x7f524c627340>]
+
+In [24]: plt.figure(); plt.plot(turbo_f_evals[0:1301]); plt.plot(bo_f_evals)
+Out[24]: [<matplotlib.lines.Line2D at 0x7f524c7a6500>]
+
+In [25]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,"BO")
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In [25], line 1
+----> 1 plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_evals,"BO")
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/pyplot.py:2767, in plot(scalex, scaley, data, *args, **kwargs)
+   2765 @_copy_docstring_and_deprecators(Axes.plot)
+   2766 def plot(*args, scalex=True, scaley=True, data=None, **kwargs):
+-> 2767     return gca().plot(
+   2768         *args, scalex=scalex, scaley=scaley,
+   2769         **({"data": data} if data is not None else {}), **kwargs)
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_axes.py:1635, in Axes.plot(self, scalex, scaley, data, *args, **kwargs)
+   1393 """
+   1394 Plot y versus x as lines and/or markers.
+   1395 
+   (...)
+   1632 (``'green'``) or hex strings (``'#008000'``).
+   1633 """
+   1634 kwargs = cbook.normalize_kwargs(kwargs, mlines.Line2D)
+-> 1635 lines = [*self._get_lines(*args, data=data, **kwargs)]
+   1636 for line in lines:
+   1637     self.add_line(line)
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_base.py:312, in _process_plot_var_args.__call__(self, data, *args, **kwargs)
+    310     this += args[0],
+    311     args = args[1:]
+--> 312 yield from self._plot_args(this, kwargs)
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_base.py:449, in _process_plot_var_args._plot_args(self, tup, kwargs, return_kwargs)
+    446 if len(tup) > 1 and isinstance(tup[-1], str):
+    447     # xy is tup with fmt stripped (could still be (y,) only)
+    448     *xy, fmt = tup
+--> 449     linestyle, marker, color = _process_plot_format(fmt)
+    450 elif len(tup) == 3:
+    451     raise ValueError('third arg must be a format string')
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_base.py:199, in _process_plot_format(fmt)
+    197         i += 2
+    198     else:
+--> 199         raise ValueError(
+    200             'Unrecognized character %c in format string' % c)
+    202 if linestyle is None and marker is None:
+    203     linestyle = mpl.rcParams['lines.linestyle']
+
+ValueError: Unrecognized character B in format string
+
+In [26]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,label="BO")
+Out[26]: [<matplotlib.lines.Line2D at 0x7f5227dc5ea0>]
+
+In [27]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,label="BO"), plt.legend()
+Out[27]: 
+([<matplotlib.lines.Line2D at 0x7f5227abe110>],
+ <matplotlib.legend.Legend at 0x7f5227dc7160>)
+
+In [28]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,label="BO"), plt.legend(); plt.title("5x5 disease simulation, seed_center, LA-MCTS vs. BO
+    ...: ")
+Out[28]: Text(0.5, 1.0, '5x5 disease simulation, seed_center, LA-MCTS vs. BO')
+
+In [29]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,label="BO"), plt.legend(); plt.title("5x5 disease simulation, seed_center, LA-MCTS vs. BO
+    ...: "); plt.xlabel("# of function evals"); plt.ylabel("Best f(x) so far")
+Out[29]: Text(0, 0.5, 'Best f(x) so far')
+
+In [30]: plt.rc('font',size=15)
+
+In [31]: plt.figure(); plt.plot(turbo_f_evals[0:1301], label="LA-MCTS w/ TurBO"); plt.plot(bo_f_eval
+    ...: s,label="BO"), plt.legend(); plt.title("5x5 disease simulation, seed_center, LA-MCTS vs. BO
+    ...: "); plt.xlabel("# of function evals"); plt.ylabel("Best f(x) so far")
+Out[31]: Text(0, 0.5, 'Best f(x) so far')
+
+In [32]: turbo
+Out[32]: 
+            0         1         2         3   ...        22        23        24        25
+0     0.036258  0.035364  0.036307  0.034394  ...  0.034651  0.036414  0.034797   5072.96
+1     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+2     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+3     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+4     0.037757  0.039777  0.032908  0.030879  ...  0.039065  0.033881  0.040876   7055.27
+...        ...       ...       ...       ...  ...       ...       ...       ...       ...
+1349  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1350  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1351  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1352  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+1353  0.000121  0.001016  0.000092  0.001472  ...  0.000698  0.001350  0.001634  17119.54
+
+[1354 rows x 26 columns]
+
+In [33]: turbo[1301,:]
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3621, in Index.get_loc(self, key, method, tolerance)
+   3620 try:
+-> 3621     return self._engine.get_loc(casted_key)
+   3622 except KeyError as err:
+
+File ~/.local/lib/python3.10/site-packages/pandas/_libs/index.pyx:136, in pandas._libs.index.IndexEngine.get_loc()
+
+File ~/.local/lib/python3.10/site-packages/pandas/_libs/index.pyx:142, in pandas._libs.index.IndexEngine.get_loc()
+
+TypeError: '(1301, slice(None, None, None))' is an invalid key
+
+During handling of the above exception, another exception occurred:
+
+InvalidIndexError                         Traceback (most recent call last)
+Cell In [33], line 1
+----> 1 turbo[1301,:]
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/frame.py:3505, in DataFrame.__getitem__(self, key)
+   3503 if self.columns.nlevels > 1:
+   3504     return self._getitem_multilevel(key)
+-> 3505 indexer = self.columns.get_loc(key)
+   3506 if is_integer(indexer):
+   3507     indexer = [indexer]
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3628, in Index.get_loc(self, key, method, tolerance)
+   3623         raise KeyError(key) from err
+   3624     except TypeError:
+   3625         # If we have a listlike key, _check_indexing_error will raise
+   3626         #  InvalidIndexError. Otherwise we fall through and re-raise
+   3627         #  the TypeError.
+-> 3628         self._check_indexing_error(key)
+   3629         raise
+   3631 # GH#42269
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:5637, in Index._check_indexing_error(self, key)
+   5633 def _check_indexing_error(self, key):
+   5634     if not is_scalar(key):
+   5635         # if key is not a scalar, directly raise an error (the code below
+   5636         # would convert to numpy arrays and raise later any way) - GH29926
+-> 5637         raise InvalidIndexError(key)
+
+InvalidIndexError: (1301, slice(None, None, None))
+
+In [34]: turbo[.iloc1301,:]
+  Cell In [34], line 1
+    turbo[.iloc1301,:]
+          ^
+SyntaxError: invalid syntax
+
+
+In [35]: turbo.iloc[1301,:]
+Out[35]: 
+0         0.000121
+1         0.001016
+2         0.000092
+3         0.001472
+4         0.000702
+5         0.000343
+6         0.000724
+7         0.000580
+8         0.000115
+9         0.000092
+10        0.000677
+11        0.001181
+12        0.001388
+13        0.000545
+14        0.000941
+15        0.000517
+16        0.000275
+17        0.000798
+18        0.124049
+19        0.001432
+20        0.000568
+21        0.000693
+22        0.000698
+23        0.001350
+24        0.001634
+25    17119.540000
+Name: 1301, dtype: float64
+
+In [36]: turbo.iloc[1301,0:-1]
+Out[36]: 
+0     0.000121
+1     0.001016
+2     0.000092
+3     0.001472
+4     0.000702
+5     0.000343
+6     0.000724
+7     0.000580
+8     0.000115
+9     0.000092
+10    0.000677
+11    0.001181
+12    0.001388
+13    0.000545
+14    0.000941
+15    0.000517
+16    0.000275
+17    0.000798
+18    0.124049
+19    0.001432
+20    0.000568
+21    0.000693
+22    0.000698
+23    0.001350
+24    0.001634
+Name: 1301, dtype: float64
+
+In [37]: turbo.iloc[1301,0:-1].reshape(5,5)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In [37], line 1
+----> 1 turbo.iloc[1301,0:-1].reshape(5,5)
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/generic.py:5575, in NDFrame.__getattr__(self, name)
+   5568 if (
+   5569     name not in self._internal_names_set
+   5570     and name not in self._metadata
+   5571     and name not in self._accessors
+   5572     and self._info_axis._can_hold_identifiers_and_holds_name(name)
+   5573 ):
+   5574     return self[name]
+-> 5575 return object.__getattribute__(self, name)
+
+AttributeError: 'Series' object has no attribute 'reshape'
+
+In [38]: np.array(turbo.iloc[1301,0:-1]).reshape(5,5)
+Out[38]: 
+array([[1.21092411e-04, 1.01566306e-03, 9.21892099e-05, 1.47197304e-03,
+        7.02151275e-04],
+       [3.43250601e-04, 7.24491536e-04, 5.80121260e-04, 1.14817585e-04,
+        9.23890777e-05],
+       [6.76639773e-04, 1.18131460e-03, 1.38812524e-03, 5.45217842e-04,
+        9.40828424e-04],
+       [5.17203708e-04, 2.74973098e-04, 7.98242895e-04, 1.24049089e-01,
+        1.43165342e-03],
+       [5.68277338e-04, 6.92863557e-04, 6.97522119e-04, 1.34973349e-03,
+        1.63357569e-03]])
+
+In [39]: np.array(bo.iloc[1301,0:-1]).reshape(5,5)
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+Cell In [39], line 1
+----> 1 np.array(bo.iloc[1301,0:-1]).reshape(5,5)
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexing.py:961, in _LocationIndexer.__getitem__(self, key)
+    959     if self._is_scalar_access(key):
+    960         return self.obj._get_value(*key, takeable=self._takeable)
+--> 961     return self._getitem_tuple(key)
+    962 else:
+    963     # we by definition only have the 0th axis
+    964     axis = self.axis or 0
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexing.py:1458, in _iLocIndexer._getitem_tuple(self, tup)
+   1456 def _getitem_tuple(self, tup: tuple):
+-> 1458     tup = self._validate_tuple_indexer(tup)
+   1459     with suppress(IndexingError):
+   1460         return self._getitem_lowerdim(tup)
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexing.py:769, in _LocationIndexer._validate_tuple_indexer(self, key)
+    767 for i, k in enumerate(key):
+    768     try:
+--> 769         self._validate_key(k, i)
+    770     except ValueError as err:
+    771         raise ValueError(
+    772             "Location based indexing can only have "
+    773             f"[{self._valid_types}] types"
+    774         ) from err
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexing.py:1361, in _iLocIndexer._validate_key(self, key, axis)
+   1359     return
+   1360 elif is_integer(key):
+-> 1361     self._validate_integer(key, axis)
+   1362 elif isinstance(key, tuple):
+   1363     # a tuple should already have been caught by this point
+   1364     # so don't treat a tuple as a valid indexer
+   1365     raise IndexingError("Too many indexers")
+
+File ~/.local/lib/python3.10/site-packages/pandas/core/indexing.py:1452, in _iLocIndexer._validate_integer(self, key, axis)
+   1450 len_axis = len(self.obj._get_axis(axis))
+   1451 if key >= len_axis or key < -len_axis:
+-> 1452     raise IndexError("single positional indexer is out-of-bounds")
+
+IndexError: single positional indexer is out-of-bounds
+
+In [40]: np.array(bo.iloc[-1,0:-1]).reshape(5,5)
+Out[40]: 
+array([[4.17405555e-03, 1.05437493e-02, 5.22257375e-03, 6.58988676e-02,
+        2.50417574e-03],
+       [1.60823020e-03, 4.23249989e-04, 7.93573848e-03, 1.25963102e-01,
+        6.47623850e-02],
+       [3.56587071e-04, 3.90281139e-02, 5.37402739e-05, 3.45160310e-02,
+        2.79330892e-03],
+       [6.74690222e-02, 4.26895924e-05, 3.02008266e-03, 9.23323882e-02,
+        6.06183062e-02],
+       [4.23831779e-04, 1.05383380e-03, 1.10863740e-03, 1.18279060e-03,
+        3.87012027e-02]])
+
+In [41]: plt.imshow(np.array(bo.iloc[-1,0:-1]).reshape(5,5))
+Out[41]: <matplotlib.image.AxesImage at 0x7f52271bb9d0>
+
+In [42]: plt.figure(); plt.imshow(np.array(bo.iloc[-1,0:-1]).reshape(5,5))
+Out[42]: <matplotlib.image.AxesImage at 0x7f52251c3ee0>
+
+In [43]: 
+
+In [43]: plt.figure(); plt.imshow(np.array(turbo.iloc[1301,0:-1]).reshape(5,5))
+Out[43]: <matplotlib.image.AxesImage at 0x7f5224ff99c0>
+
+In [44]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]).reshape(5,5))
+Out[44]: <matplotlib.collections.QuadMesh at 0x7f5224cf2fe0>
+
+In [45]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1],edgecolors='k').reshape(5,5))
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In [45], line 1
+----> 1 plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1],edgecolors='k').reshape(5,5))
+
+TypeError: array() got an unexpected keyword argument 'edgecolors'
+
+In [46]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]), edgecolors='k').reshape(5,5))
+    ...: 
+  Cell In [46], line 1
+    plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]), edgecolors='k').reshape(5,5))
+                                                                                              ^
+SyntaxError: unmatched ')'
+
+
+In [47]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]), edgecolors='k').reshape(5,5)
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In [47], line 1
+----> 1 plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]), edgecolors='k').reshape(5,5)
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/pyplot.py:2728, in pcolormesh(alpha, norm, cmap, vmin, vmax, shading, antialiased, data, *args, **kwargs)
+   2723 @_copy_docstring_and_deprecators(Axes.pcolormesh)
+   2724 def pcolormesh(
+   2725         *args, alpha=None, norm=None, cmap=None, vmin=None,
+   2726         vmax=None, shading=None, antialiased=False, data=None,
+   2727         **kwargs):
+-> 2728     __ret = gca().pcolormesh(
+   2729         *args, alpha=alpha, norm=norm, cmap=cmap, vmin=vmin,
+   2730         vmax=vmax, shading=shading, antialiased=antialiased,
+   2731         **({"data": data} if data is not None else {}), **kwargs)
+   2732     sci(__ret)
+   2733     return __ret
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/__init__.py:1414, in _preprocess_data.<locals>.inner(ax, data, *args, **kwargs)
+   1411 @functools.wraps(func)
+   1412 def inner(ax, *args, data=None, **kwargs):
+   1413     if data is None:
+-> 1414         return func(ax, *map(sanitize_sequence, args), **kwargs)
+   1416     bound = new_sig.bind(ax, *args, **kwargs)
+   1417     auto_label = (bound.arguments.get(label_namer)
+   1418                   or bound.kwargs.get(label_namer))
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_axes.py:6064, in Axes.pcolormesh(self, alpha, norm, cmap, vmin, vmax, shading, antialiased, *args, **kwargs)
+   6061 shading = shading.lower()
+   6062 kwargs.setdefault('edgecolors', 'none')
+-> 6064 X, Y, C, shading = self._pcolorargs('pcolormesh', *args,
+   6065                                     shading=shading, kwargs=kwargs)
+   6066 coords = np.stack([X, Y], axis=-1)
+   6067 # convert to one dimensional array
+
+File ~/.local/lib/python3.10/site-packages/matplotlib/axes/_axes.py:5520, in Axes._pcolorargs(self, funcname, shading, *args, **kwargs)
+   5518 if len(args) == 1:
+   5519     C = np.asanyarray(args[0])
+-> 5520     nrows, ncols = C.shape
+   5521     if shading in ['gouraud', 'nearest']:
+   5522         X, Y = np.meshgrid(np.arange(ncols), np.arange(nrows))
+
+ValueError: not enough values to unpack (expected 2, got 1)
+
+In [48]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]).reshape(5,5), edgecolors='k')
+Out[48]: <matplotlib.collections.QuadMesh at 0x7f5213369ea0>
+
+In [49]: plt.figure(); plt.pcolormesh(np.array(turbo.iloc[1301,0:-1]).reshape(5,5).T, edgecolors='k'
+    ...: )
+Out[49]: <matplotlib.collections.QuadMesh at 0x7f5227c8c250>
+
+In [50]: plt.figure(); plt.imshow(np.array(turbo.iloc[1301,0:-1]).reshape(5,5))
+Out[50]: <matplotlib.image.AxesImage at 0x7f5227cc1960>
+
+In [51]: plt.figure(); plt.imshow(np.array(turbo.iloc[1301,0:-1]).reshape(5,5)); plt.colorbar()
+Out[51]: <matplotlib.colorbar.Colorbar at 0x7f5212e78730>
+
+In [52]: plt.figure(); plt.imshow(np.array(bo.iloc[-1,0:-1]).reshape(5,5)); plt.colorbar()
+Out[52]: <matplotlib.colorbar.Colorbar at 0x7f5212f0bfa0>
+
+In [53]: plt.figure(); plt.pcolormesh(np.array(bo.iloc[-1,0:-1]).reshape(5,5)); plt.colorbar()
+Out[53]: <matplotlib.colorbar.Colorbar at 0x7f5212c92bc0>
+
+In [54]: plt.figure(); plt.pcolormesh(np.array(bo.iloc[-1,0:-1]).reshape(5,5)); plt.colorbar()
+Out[54]: <matplotlib.colorbar.Colorbar at 0x7f52129e77f0>
+
+In [55]: plt.figure(); plt.imshow(np.array(bo.iloc[-1,0:-1]).reshape(5,5)); plt.colorbar()
+Out[55]: <matplotlib.colorbar.Colorbar at 0x7f5212aaf490>
+
+In [56]: plt.figure(); plt.imshow(np.array(bo.iloc[-1,0:-1]).reshape(5,5)); plt.colorbar(); plt.titl
+    ...: e("BO solution, 5x5 grid, seed_center")
+Out[56]: Text(0.5, 1.0, 'BO solution, 5x5 grid, seed_center')
+
+

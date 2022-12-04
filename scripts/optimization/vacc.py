@@ -218,6 +218,7 @@ class VaccProblemLAMCTSWrapper:
             opt_config, V_0, seed,
             sim_config, pop, distances,
             cores, n_sim,
+            negate, scale,
             output_dir, name):
         self.engine = VaccRateOptEngine(
             opt_config=opt_config,
@@ -233,6 +234,18 @@ class VaccProblemLAMCTSWrapper:
         self.cores = cores
         assert os.path.exists(output_dir), "invalid directory"
         self.output_file = "{}vacc_sim_{}_{}.csv".format(output_dir,name,datetime.datetime.now().isoformat())
+        if negate:
+            self.sign = -1
+        else:
+            self.sign = 1
+        assert len(V_0) == len(seed) == len(pop) == distances.shape[0] == distances.shape[1]
+        if scale:
+            self.scale = np.sum(pop['pop'])
+        else:
+            self.scale = 1
+        self.dims = len(V_0)
+        self.lb = np.zeros(self.dims)
+        self.ub = np.ones(self.dims)
 
     def __call__(self, x):
         result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
@@ -245,7 +258,7 @@ class VaccProblemLAMCTSWrapper:
                 self.best_x = x
                 self.best_y = result
         self.track()
-        return result
+        return self.sign*result/self.scale
         
     def track(self):
         if os.path.exists(self.output_file):
