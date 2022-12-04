@@ -6,3 +6,8 @@ scipy
 multiprocess
 git+https://github.com/DavidWalz/diversipy.git@master
 sklearn
+hopsy
+scikit-learn
+torch
+botorch
+gpytorch
