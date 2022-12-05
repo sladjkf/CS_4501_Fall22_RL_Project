@@ -10,7 +10,7 @@ from ConstrainedLaMCTS.LAMCTS import bayes_opt
 import multiprocess
 import torch
 import argparse
-
+import os.path
 parser = argparse.ArgumentParser(
         prog = "Run optimization"
     )
@@ -25,9 +25,13 @@ parser.add_argument('--sim_draws', default=100)
 parser.add_argument('--n_init_pts',default=150)
 parser.add_argument('--iters', default=250)
 parser.add_argument('--method', default="lamcts")
-parser.parse_args()
+args = parser.parse_args()
+
+assert os.path.exists(args.cfg_dir)
+assert os.path.exists(args.out_dir)
+
 #config_dir = "config/5_by_5/{}"
-config_dir = parser.cfg_dir
+config_dir = args.cfg_dir + "{}"
 
 sim_param_config = configparser.ConfigParser()
 sim_param_config.optionxform = str  # retain case sensitivity
@@ -90,8 +94,8 @@ if args.method == "lamcts":
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo'
                  )
-
     agent.search(iterations = args.iters)
+    agent.dump(name=args.name+"mcts_agent", out_dir=args.out_dir)
 elif args.method == "bo":
     agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
