@@ -8,8 +8,26 @@ from scripts.optimization import vacc
 #from scripts.optimization import vacc_bayes_opt
 from ConstrainedLaMCTS.LAMCTS import bayes_opt
 import multiprocess
+import torch
+import argparse
 
-config_dir = "config/5_by_5/{}"
+parser = argparse.ArgumentParser(
+        prog = "Run optimization"
+    )
+
+parser.add_argument('--cfg_dir', required=True)
+parser.add_argument('--out_dir', required=True)
+parser.add_argument('--name', required=True)
+parser.add_argument('--dims',type=int,required=True)
+
+parser.add_argument('--threads', default=12)
+parser.add_argument('--sim_draws', default=100)
+parser.add_argument('--n_init_pts',default=150)
+parser.add_argument('--iters', default=250)
+parser.add_argument('--method', default="lamcts")
+parser.parse_args()
+#config_dir = "config/5_by_5/{}"
+config_dir = parser.cfg_dir
 
 sim_param_config = configparser.ConfigParser()
 sim_param_config.optionxform = str  # retain case sensitivity
@@ -35,6 +53,8 @@ dist_mat = dist_list.pivot(index='0', columns='1', values='2')
 seed = pd.read_csv(config_dir.format(sim_param_config['seed']['seed']),header=None)
 seed = np.array(seed).flatten()
 
+
+torch.set_num_threads(args.threads)
 v = vacc.VaccProblemLAMCTSWrapper(
         opt_config = opt_config, 
         V_0= vacc_df['vacc'], 
@@ -43,9 +63,9 @@ v = vacc.VaccProblemLAMCTSWrapper(
         pop = vacc_df, 
         distances = np.array(dist_mat),
         negate=True, scale=True,
-        cores=12, n_sim=100,
-        output_dir = "/home/nick/Documents/4tb_sync/UVA GDrive/Semesters/Semester 7/CS 4501/project/CS_4501_Fall22_RL_Project/output/5by5/",
-        name="5by5"
+        cores=args.threads, n_sim=args.sim_draws,
+        output_dir = args.out_dir,
+        name=args.name
     )
 
 
@@ -54,41 +74,41 @@ from ConstrainedLaMCTS.LAMCTS.lamcts import MCTS
 P = np.array(vacc_df['pop'])
 c = opt_config['constraint_bnd']
 
-# agent = MCTS(
-#              lb = np.zeros(25),      # the lower bound of each problem dimensions
-#              ub = np.ones(25),       # the upper bound of each problem dimensions
-#              dims = 25,              # the problem dimensions
-#              ninits = 150,           # the number of random samples used in initializations 
-#              A_ineq = np.array([P]),
-#              b_ineq = np.array([c*np.sum(P)]),
-#              A_eq = None, b_eq = None,
-#              func = v,               # function object to be optimized
-#              Cp = 10,              # Cp for MCTS
-#              leaf_size = 5, # tree leaf size
-#              kernel_type = 'linear', #SVM configruation
-#              gamma_type = "auto",    #SVM configruation
-#              solver_type = 'turbo'
-#              )
+if args.method == "lamcts":
+    agent = MCTS(
+                 lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
+                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 dims = args.dims,              # the problem dimensions
+                 ninits = args.n_init_pts,           # the number of random samples used in initializations 
+                 A_ineq = np.array([P]),
+                 b_ineq = np.array([c*np.sum(P)]),
+                 A_eq = None, b_eq = None,
+                 func = v,               # function object to be optimized
+                 Cp = 10,              # Cp for MCTS
+                 leaf_size = 5, # tree leaf size
+                 kernel_type = 'linear', #SVM configruation
+                 gamma_type = "auto",    #SVM configruation
+                 solver_type = 'turbo'
+                 )
 
-# agent.search(iterations = 200)
-
-agent = MCTS(
-             lb = np.zeros(25),      # the lower bound of each problem dimensions
-             ub = np.ones(25),       # the upper bound of each problem dimensions
-             dims = 25,              # the problem dimensions
-             ninits = 150,           # the number of random samples used in initializations 
-             A_ineq = np.array([P]),
-             b_ineq = np.array([c*np.sum(P)]),
-             A_eq = None, b_eq = None,
-             func = v,               # function object to be optimized
-             Cp = 10,              # Cp for MCTS
-             leaf_size = np.inf, # tree leaf size
-             kernel_type = 'linear', #SVM configruation
-             gamma_type = "auto",    #SVM configruation
-             solver_type = 'bo'
-             )
-
-agent.search(iterations = 1354)
+    agent.search(iterations = args.iters)
+elif args.method == "bo":
+    agent = MCTS(
+                 lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
+                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 dims = args.dims,              # the problem dimensions
+                 ninits = args.n_init_pts,           # the number of random samples used in initializations 
+                 A_ineq = np.array([P]),
+                 b_ineq = np.array([c*np.sum(P)]),
+                 A_eq = None, b_eq = None,
+                 func = v,               # function object to be optimized
+                 Cp = 10,              # Cp for MCTS
+                 leaf_size = np.inf, # tree leaf size
+                 kernel_type = 'linear', #SVM configruation
+                 gamma_type = "auto",    #SVM configruation
+                 solver_type = 'bo'
+                 )
+    agent.search(iterations = args.iters)
 
 # with multiprocess.Pool(15) as pool:
 #     bayes_opt.vacc_bayes_opt_w_constr(
