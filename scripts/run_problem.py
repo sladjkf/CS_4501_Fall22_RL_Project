@@ -92,7 +92,8 @@ if args.method == "lamcts":
                  leaf_size = 5, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
-                 solver_type = 'turbo'
+                 solver_type = 'turbo',
+                 num_threads = args.threads
                  )
     agent.search(iterations = args.iters)
     agent.dump(name=args.name+"mcts_agent", out_dir=args.out_dir)
@@ -110,7 +111,8 @@ elif args.method == "bo":
                  leaf_size = np.inf, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
-                 solver_type = 'bo'
+                 solver_type = 'bo',
+                 num_threads = args.num_threads
                  )
     agent.search(iterations = args.iters)
 
