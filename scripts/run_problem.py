@@ -25,7 +25,10 @@ parser.add_argument('--sim_draws', type=int, default=100)
 parser.add_argument('--n_init_pts',type=int,default=150)
 parser.add_argument('--iters', type=int,default=250)
 parser.add_argument('--method', default="lamcts")
+parser.add_argument('--load', type=str, default="")
+
 args = parser.parse_args()
+print(args)
 
 assert os.path.exists(args.cfg_dir)
 assert os.path.exists(args.out_dir)
@@ -52,7 +55,8 @@ with open(config_dir.format("params.cfg")) as config_file:
 # load vaccination/population data and distance matrix
 vacc_df = pd.read_csv(config_dir.format("pop.csv"))
 dist_list = pd.read_csv(config_dir.format("dist.csv"))
-dist_mat = dist_list.pivot(index='0', columns='1', values='2')
+dist_mat = dist_list.pivot(index='zipcode1', columns='zipcode2', values='distKM')
+dist_mat = dist_mat.fillna(0)
 
 seed = pd.read_csv(config_dir.format(sim_param_config['seed']['seed']),header=None)
 seed = np.array(seed).flatten()
@@ -79,7 +83,29 @@ P = np.array(vacc_df['pop'])
 c = opt_config['constraint_bnd']
 
 if args.method == "lamcts":
-    agent = MCTS(
+    if args.load != "":
+        print("hello!")
+        agent = MCTS(
+                 lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
+                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 dims = args.dims,              # the problem dimensions
+                 ninits = 0,           # the number of random samples used in initializations 
+                 A_ineq = np.array([P]),
+                 b_ineq = np.array([c*np.sum(P)]),
+                 A_eq = None, b_eq = None,
+                 func = v,               # function object to be optimized
+                 Cp = 10,              # Cp for MCTS
+                 leaf_size = 5, # tree leaf size
+                 kernel_type = 'linear', #SVM configruation
+                 gamma_type = "auto",    #SVM configruation
+                 solver_type = 'turbo',
+                 num_threads = args.threads
+                 )
+        agent.load_agent(load_path=args.load)
+        agent.search(iterations=args.iters)
+    else:
+        print("else branch")
+        agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
                  ub = np.ones(args.dims),       # the upper bound of each problem dimensions
                  dims = args.dims,              # the problem dimensions
@@ -95,8 +121,8 @@ if args.method == "lamcts":
                  solver_type = 'turbo',
                  num_threads = args.threads
                  )
-    agent.search(iterations = args.iters)
-    agent.dump(name=args.name+"mcts_agent", out_dir=args.out_dir)
+        agent.search(iterations = args.iters)
+    #agent.dump(name=args.name+"mcts_agent", out_dir=args.out_dir)
 elif args.method == "bo":
     agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
