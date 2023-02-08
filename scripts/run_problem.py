@@ -122,7 +122,7 @@ if args.method == "lamcts":
                  num_threads = args.threads
                  )
         agent.search(iterations = args.iters)
-    #agent.dump(name=args.name+"mcts_agent", out_dir=args.out_dir)
+    agent.dump_agent(name=args.name+"mcts_agent", out_dir=args.out_dir)
 elif args.method == "bo":
     agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
