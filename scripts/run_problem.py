@@ -24,6 +24,7 @@ parser.add_argument('--threads', type=int, default=12)
 parser.add_argument('--sim_draws', type=int, default=100)
 parser.add_argument('--n_init_pts',type=int,default=150)
 parser.add_argument('--iters', type=int,default=250)
+parser.add_argument('--samples',default=np.inf)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
 
@@ -104,7 +105,7 @@ if args.method == "lamcts":
                  solver_type = 'turbo',
                  num_threads = args.threads
                  )
-        agent.load_agent(load_path=args.load)
+        agent.load_agent(load_path=args.load, max_samples=args.samples)
         agent.search(iterations=args.iters)
     else:
         print("else branch")
@@ -124,7 +125,7 @@ if args.method == "lamcts":
                  solver_type = 'turbo',
                  num_threads = args.threads
                  )
-        agent.search(iterations = args.iters)
+        agent.search(iterations = args.iters, max_samples=args.samples)
     agent.dump_agent(name=args.name+"mcts_agent", out_dir=args.out_dir)
 elif args.method == "bo":
     agent = MCTS(
