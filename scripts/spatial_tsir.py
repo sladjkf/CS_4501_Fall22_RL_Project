@@ -18,6 +18,7 @@ import time
 
 import dill
 
+from numba import njit
 
 ##### MOBILITY MODEL: GRAVITY MODEL #####
 
@@ -145,8 +146,63 @@ def get_distances(network):
             distance_matrix[i][j] = distance
 
     return distance_matrix
-            
+
+@njit
+def gravity_numba(pop_vec, distances, infected, tau1, tau2, rho, theta, variant="xia"):
+    num_locations = len(pop_vec)
+    adj_matrix = np.zeros((num_locations,num_locations))
+
+    pop_i = np.repeat(pop_vec,num_locations)
+    #not supported by numba
+    #pop_j = np.tile(pop_vec,num_locations)
+    #inf_j = np.tile(infected,num_locations)
+    expanded_vec_len = len(pop_vec)*num_locations
+    pop_j = np.zeros(expanded_vec_len)
+    inf_j = np.zeros(expanded_vec_len)
+    for i in range(expanded_vec_len):
+        pop_j[i] = pop_vec[i % num_locations]
+        inf_j[i] = infected[i % num_locations]
+
+    # add 1 to diagonal to avoid numerical error
+    distances_ij = distances + np.eye(distances.shape[0])
+    distances_ij = np.reshape(distances_ij,num_locations**2)
+
+    # compute gravity weights and reshape
+    # try:
+    if variant=="xia":
+        #adj_mat_flat =  (pop_j**tau1) * (inf_i**tau2) / (distances_ij**rho)
+        adj_mat_flat = (pop_i**tau1) * (inf_j**tau2) / (distances_ij**rho)
+    elif variant=="orig":
+        adj_mat_flat = (pop_i**tau1) * (pop_j**tau2) * (inf_j/pop_j) / (distances_ij**rho)
+    # except RuntimeWarning:
+    #     print("num_locations",num_locations)
+    #     print(np.argwhere(np.isnan(pop_j)))
+    #     print(np.argwhere(np.isnan(distances_ij)))
+    #     print(np.argwhere(distances_ij==0))
+    adj_matrix = adj_mat_flat.reshape(num_locations,num_locations)
+    # remove diagonal entries by using a "hollow" matrix (zeros on diagonal, 1 elsewhere)
+    adj_matrix = adj_matrix*(1-np.eye(num_locations))
+    # if any nan still remains... remove it?
+    #adj_matrix = np.nan_to_num(adj_matrix)
+    shape = adj_matrix.shape
+    adj_matrix = adj_matrix.ravel()
+    adj_matrix[np.isnan(adj_matrix)] = 0
+    adj_matrix = adj_matrix.reshape(shape)
+
+    # freely sum; since diagonal is 0 don't need to add conditional
+    m = theta*np.sum(adj_matrix,axis=0)
+    #print(m)
+
+    return adj_matrix, m
+
 def gravity(network,distances,infected,params,
+        parallel=False,cores=4,
+        variant="xia"):
+    matrix,influx = gravity_numba(np.array(network['pop']), distances, infected, 
+        params["tau1"], params["tau2"], params["rho"], params["theta"],variant)
+    return {"matrix":matrix, "influx":influx}
+
+def old_gravity(network,distances,infected,params,
         parallel=False,cores=4,
         variant="xia"):
     '''
