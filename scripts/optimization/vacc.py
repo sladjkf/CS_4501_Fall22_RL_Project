@@ -230,10 +230,16 @@ class VaccProblemLAMCTSWrapper:
         self.pool = multiprocess.Pool(cores)
         self.best_x = None
         self.best_y = None
+        self.last_x = None
+        self.last_y = None
+
         self.n_sim = n_sim
         self.cores = cores
         assert os.path.exists(output_dir), "invalid directory"
-        self.output_file = "{}vacc_sim_{}_{}.csv".format(output_dir,name,datetime.datetime.now().isoformat())
+
+        date = datetime.datetime.now()
+        self.output_file_trace = "{}vacc_sim_{}_{}_best_trace.csv".format(output_dir,name,date.isoformat())
+        self.output_file_samples = "{}vacc_sim_{}_{}_samples.csv".format(output_dir,name,date.isoformat())
         if negate:
             self.sign = -1
         else:
@@ -257,18 +263,29 @@ class VaccProblemLAMCTSWrapper:
             if self.best_y <= result:
                 self.best_x = x
                 self.best_y = result
+        self.last_x = x
+        self.last_y = result
         self.track()
         return self.sign*result/self.scale
         
     def track(self):
-        if os.path.exists(self.output_file):
-            with open(self.output_file, "a+") as log:
+        if os.path.exists(self.output_file_trace):
+            with open(self.output_file_trace, "a+") as log:
                 np.savetxt(log,self.best_x,delimiter=",", newline=",")
                 print(self.best_y,file=log)
         else:
-            with open(self.output_file, "w+") as log:
+            with open(self.output_file_trace, "w+") as log:
                 np.savetxt(log,self.best_x,delimiter=",", newline=",")
                 print(self.best_y,file=log)
+
+        if os.path.exists(self.output_file_samples):
+            with open(self.output_file_samples, "a+") as log:
+                np.savetxt(log,self.last_x,delimiter=",", newline=",")
+                print(self.last_y,file=log)
+        else:
+            with open(self.output_file_samples, "w+") as log:
+                np.savetxt(log,self.last_x,delimiter=",", newline=",")
+                print(self.last_y,file=log)
 
     def close_pool(self):
         self.pool.close()
