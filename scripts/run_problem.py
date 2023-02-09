@@ -27,6 +27,9 @@ parser.add_argument('--iters', type=int,default=250)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
 
+parser.add_argument("--cp",type=float,default=0.1)
+parser.add_argument("--treesize",type=int,default=10)
+
 args = parser.parse_args()
 print(args)
 
@@ -94,8 +97,8 @@ if args.method == "lamcts":
                  b_ineq = np.array([c*np.sum(P)]),
                  A_eq = None, b_eq = None,
                  func = v,               # function object to be optimized
-                 Cp = 10,              # Cp for MCTS
-                 leaf_size = 5, # tree leaf size
+                 Cp = args.cp,              # Cp for MCTS
+                 leaf_size = args.treesize, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
@@ -114,8 +117,8 @@ if args.method == "lamcts":
                  b_ineq = np.array([c*np.sum(P)]),
                  A_eq = None, b_eq = None,
                  func = v,               # function object to be optimized
-                 Cp = 10,              # Cp for MCTS
-                 leaf_size = 5, # tree leaf size
+                 Cp = args.cp,              # Cp for MCTS
+                 leaf_size = args.treesize, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
