@@ -105,8 +105,8 @@ if args.method == "lamcts":
                  solver_type = 'turbo',
                  num_threads = args.threads
                  )
-        agent.load_agent(load_path=args.load, max_samples=args.samples)
-        agent.search(iterations=args.iters)
+        agent.load_agent(load_path=args.load)
+        agent.search(iterations=args.iters, max_samples=args.samples)
     else:
         print("else branch")
         agent = MCTS(
