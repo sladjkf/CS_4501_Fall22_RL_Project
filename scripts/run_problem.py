@@ -24,7 +24,7 @@ parser.add_argument('--threads', type=int, default=12)
 parser.add_argument('--sim_draws', type=int, default=100)
 parser.add_argument('--n_init_pts',type=int,default=150)
 parser.add_argument('--iters', type=int,default=250)
-parser.add_argument('--samples',default=np.inf)
+parser.add_argument('--samples',type=int, default=1000000000)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
 
