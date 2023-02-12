@@ -25,7 +25,8 @@ class VaccRateOptEngine:
     #         aux_param):
     def __init__(self,
             opt_config, V_0, seed,
-            sim_config, pop, distances):
+            sim_config, pop, distances, 
+            agg_vector=None, agg_size=None):
         # TODO: fill out the rest of the docstring
         """
         Create a new optimization oracle, initializing with certain fixed parameters.
@@ -52,6 +53,21 @@ class VaccRateOptEngine:
                     space of the optimization problem. Broadly speaking, the constraint
                     will be of the form |V_0 - V'| = c where c is the constant specified
                     by 'constraint_bnd.'
+                - 'aggregate': boolean
+                    Since solving a high dimensional optimization problem can be challenging,
+                    one can simplify the objective by simultaneously decreasing vaccination
+                    across the some regions at once and treat it as one region for the sake of 
+                    the optimization.
+                    Setting aggregate to true enables this behavior in the function, but this
+                    requires the optional argument 'agg_vector' to be passed.
+                    How this works: if [z_1, ..., z_n] in R^n is the finer spatial level, we aggregate
+                    to a coarser spatial level in R^m with m <= n. agg_vector represents the function
+                    mapping localities in the finer spatial level to the localities in the coarser
+                    spatial level as a vector in R^n, with entries in {1, ... ,m} which correspond to
+                    the entries of the vector representation at the coarse spatial level.
+                    This requires you to pass the following optional arguments:
+                        - agg_vector: the mapping between spatial resolutions
+                        - agg_size: the number of localities in the coarser spatial level
             V_0 (numpy.ndarray):
                 Vector of length (# of patches).
                 The initial vaccination vector. Is used in the computation of the constraint.
@@ -88,6 +104,7 @@ class VaccRateOptEngine:
         assert opt_config['V_repr'] in ["ratio","max_ratio","raw"], "invalid V_repr (vaccine vector representation) argument passed"
         assert opt_config['obj'] in ["attacksize","peak","attacksize_prob"], "invalid objective function name passed"
 
+        assert len(V_0) == len(seed) == len(pop_df.index) == distances.shape[0] == distances.shape[1]
         # save arguments as attributes of the object
         self.opt_config = opt_config
         self.sim_params = sim_config
@@ -95,6 +112,7 @@ class VaccRateOptEngine:
         self.seed = seed
         self.pop_df = pop
         self.distances = distances
+        self.dims = len(V_0)
 
         # precompute vector forms of population, max to avoid recomputing it later
         self._pop_vec = np.array(self.pop_df['pop']) 
@@ -102,6 +120,17 @@ class VaccRateOptEngine:
         self._pop_norm = np.sum(self._pop_vec)
         # store (input vector, objective) pairs
         self.eval_history = {'input':None,'output':None}
+
+        if 'aggregate' in opt_config.keys():
+            assert agg_vector is not None
+            assert agg_size is not None
+            assert len(agg_vector)=len(V_0)
+            self.aggregate = True
+            self.agg_vector = agg_vector
+        else:
+            self.aggregate = False
+            self.agg_vector = None
+
     def check_constraint(self,V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
         if self.opt_config['constraint_type'] == 'eq':
@@ -111,11 +140,19 @@ class VaccRateOptEngine:
         if self.opt_config['constraint_type'] == 'ineq':
             budget_satisfied = np.all(V_delta @ self._pop_vec <= self.opt_config['constraint_bnd']*self._pop_norm)
         return vacc_not_decreased_past_zero and budget_satisfied
+        
     def query(self,
             V_delta=None,
             multithread=True,pool=None,n_sim=None,
             return_sim_pool=False):
 
+        if self.aggregate:
+            assert len(V_delta)==agg_size
+            V_delta_new = np.zeros(self.dims)
+            for i in range(self.dims):
+                V_delta_new.put(i, V_delta[self.agg_vector[i]])
+            V_delta = V_delta_new
+            
         passed = self.check_constraint(V_delta)
         if not passed:
             print("Constraint violated")
