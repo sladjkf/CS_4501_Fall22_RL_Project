@@ -15,3 +15,10 @@ ZC_immunization_sifat.csv
 VA_zips_latlong_nominatim.csv
 - VA zipcode data matching zipcodes in ZC_immunization_sifat.csv
 - retrieved from Nominatim using geopy package
+
+city_county_names.csv
+- names of the cities and counties in VA, sorted alphabetically. it is the ordering/labeling that we'll use for optimization.
+
+zipcodes_by_county.csv
+- a list of all zipcodes present in ZC_immunization_sifat.csv, labeled by the county or city that they belong to.
+- the column 'county_num' is the reindexing vector: it tells you for a particular zipcode, at what index the county it belongs to is in city_county_names.csv

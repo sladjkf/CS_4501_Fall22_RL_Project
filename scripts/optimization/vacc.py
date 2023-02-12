@@ -140,7 +140,7 @@ class VaccRateOptEngine:
         if self.opt_config['constraint_type'] == 'ineq':
             budget_satisfied = np.all(V_delta @ self._pop_vec <= self.opt_config['constraint_bnd']*self._pop_norm)
         return vacc_not_decreased_past_zero and budget_satisfied
-        
+
     def query(self,
             V_delta=None,
             multithread=True,pool=None,n_sim=None,
@@ -256,13 +256,15 @@ class VaccProblemLAMCTSWrapper:
             sim_config, pop, distances,
             cores, n_sim,
             negate, scale,
-            output_dir, name):
+            output_dir, name,
+            agg_vector=None, agg_size=None):
         self.engine = VaccRateOptEngine(
             opt_config=opt_config,
             V_0=V_0, seed=seed,
             sim_config=sim_config,
             pop=pop,
-            distances=distances
+            distances=distances,
+            agg_vector=agg_vector, agg_size=agg_size
         )
         self.pool = multiprocess.Pool(cores)
         self.best_x = None
@@ -277,16 +279,23 @@ class VaccProblemLAMCTSWrapper:
         date = datetime.datetime.now()
         self.output_file_trace = "{}vacc_sim_{}_{}_best_trace.csv".format(output_dir,name,date.isoformat())
         self.output_file_samples = "{}vacc_sim_{}_{}_samples.csv".format(output_dir,name,date.isoformat())
+
         if negate:
             self.sign = -1
         else:
             self.sign = 1
         assert len(V_0) == len(seed) == len(pop) == distances.shape[0] == distances.shape[1]
+
         if scale:
             self.scale = np.sum(pop['pop'])
         else:
             self.scale = 1
-        self.dims = len(V_0)
+
+        if agg_size is not None:
+            self.dims = len(V_0)
+        else:
+            self.dims = agg_size
+            
         self.lb = np.zeros(self.dims)
         self.ub = np.ones(self.dims)
 
