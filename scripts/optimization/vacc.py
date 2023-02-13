@@ -121,6 +121,8 @@ class VaccRateOptEngine:
         # store (input vector, objective) pairs
         self.eval_history = {'input':None,'output':None}
 
+        self.aggregate = False
+        self.agg_vector = None
         if 'aggregate' in opt_config.keys():
             assert agg_vector is not None
             assert agg_size is not None

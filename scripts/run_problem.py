@@ -60,6 +60,10 @@ with open(config_dir.format("params.cfg")) as config_file:
     opt_config = dict(sim_param_config['opt_config'])
     opt_config['constraint_bnd'] = float(opt_config['constraint_bnd'])
 
+print(tsir_config)
+
+print(opt_config)
+
 # load vaccination/population data and distance matrix
 vacc_df = pd.read_csv(config_dir.format("pop.csv"))
 dist_list = pd.read_csv(config_dir.format("dist.csv"))
@@ -132,7 +136,7 @@ if args.method == "lamcts":
         print("hello!")
         agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
-                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
                  dims = args.dims,              # the problem dimensions
                  ninits = 0,           # the number of random samples used in initializations 
                  A_ineq = np.array([P]),
@@ -152,7 +156,7 @@ if args.method == "lamcts":
         print("else branch")
         agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
-                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
                  dims = args.dims,              # the problem dimensions
                  ninits = args.n_init_pts,           # the number of random samples used in initializations 
                  A_ineq = np.array([P]),
