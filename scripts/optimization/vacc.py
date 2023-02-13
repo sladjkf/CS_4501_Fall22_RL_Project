@@ -104,7 +104,7 @@ class VaccRateOptEngine:
         assert opt_config['V_repr'] in ["ratio","max_ratio","raw"], "invalid V_repr (vaccine vector representation) argument passed"
         assert opt_config['obj'] in ["attacksize","peak","attacksize_prob"], "invalid objective function name passed"
 
-        assert len(V_0) == len(seed) == len(pop_df.index) == distances.shape[0] == distances.shape[1]
+        assert len(V_0) == len(seed) == len(pop.index) == distances.shape[0] == distances.shape[1]
         # save arguments as attributes of the object
         self.opt_config = opt_config
         self.sim_params = sim_config
@@ -124,7 +124,7 @@ class VaccRateOptEngine:
         if 'aggregate' in opt_config.keys():
             assert agg_vector is not None
             assert agg_size is not None
-            assert len(agg_vector)=len(V_0)
+            assert len(agg_vector)==len(V_0)
             self.aggregate = True
             self.agg_vector = agg_vector
         else:
@@ -147,7 +147,7 @@ class VaccRateOptEngine:
             return_sim_pool=False):
 
         if self.aggregate:
-            assert len(V_delta)==agg_size
+            assert len(V_delta)==self.agg_size
             V_delta_new = np.zeros(self.dims)
             for i in range(self.dims):
                 V_delta_new.put(i, V_delta[self.agg_vector[i]])
