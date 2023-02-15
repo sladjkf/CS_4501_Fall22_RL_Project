@@ -129,9 +129,11 @@ class VaccRateOptEngine:
             assert len(agg_vector)==len(V_0)
             self.aggregate = True
             self.agg_vector = agg_vector
+            self.agg_size = agg_size
         else:
             self.aggregate = False
             self.agg_vector = None
+            self.agg_size = None
 
     def check_constraint(self,V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
@@ -297,7 +299,6 @@ class VaccProblemLAMCTSWrapper:
             self.dims = len(V_0)
         else:
             self.dims = agg_size
-            
         self.lb = np.zeros(self.dims)
         self.ub = np.ones(self.dims)
 

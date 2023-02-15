@@ -126,6 +126,8 @@ if do_aggregate:
         this_zip_vacc = vacc_df.loc[zipcode_index,'vacc']
         if ub[county_index] > this_zip_vacc:
             ub[county_index] = this_zip_vacc
+    v.ub = ub
+    v.lb = np.zeros(args.dims)
 else:
     P = np.array(vacc_df['pop'])
     c = opt_config['constraint_bnd']
