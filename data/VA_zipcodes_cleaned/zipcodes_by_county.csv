@@ -1,0 +1,706 @@
+name,zipcode,county_num
+King William,23086,66
+New Kent,23089,83
+Middlesex,23092,80
+Louisa,23093,71
+Goochland,23102,51
+Goochland,23103,51
+King William,23106,66
+Mathews,23109,78
+King And Queen,23110,64
+Hanover,23111,56
+Loudoun,20158,70
+Loudoun,20164,70
+Loudoun,20165,70
+Loudoun,20166,70
+Chesterfield,23112,26
+Chesterfield,23113,26
+Chesterfield,23114,26
+Essex,23115,37
+Hanover,23116,56
+Louisa,23117,71
+Chesterfield,23120,26
+Buckingham,23123,17
+New Kent,23124,83
+King And Queen,23126,64
+Mathews,23128,78
+Prince William,20169,100
+Fairfax,20170,38
+Fairfax,20171,38
+Loudoun,20175,70
+Loudoun,20176,70
+Loudoun,20180,70
+Prince William,20181,100
+Powhatan,23139,97
+New Kent,23140,83
+New Kent,23141,83
+Hanover,23146,56
+King And Queen,23148,64
+Henrico,23150,58
+King And Queen,23156,64
+Mathews,23163,78
+James City,23168,63
+Middlesex,23169,80
+Fauquier,20186,41
+Fauquier,20187,41
+Fairfax,20190,38
+Fairfax,20191,38
+Fairfax,20194,38
+Fauquier,20198,41
+Fairfax,22003,38
+Middlesex,23175,80
+Middlesex,23176,80
+King And Queen,23177,64
+Middlesex,23180,80
+King William,23181,66
+James City,23185,63
+Suffolk City,23434,119
+Suffolk City,23435,119
+Suffolk City,23436,119
+Suffolk City,23437,119
+Suffolk City,23438,119
+Accomack,23440,0
+Accomack,23442,0
+Virginia Beach City,23451,123
+Virginia Beach City,23452,123
+Virginia Beach City,23453,123
+Virginia Beach City,23454,123
+Virginia Beach City,23455,123
+Virginia Beach City,23456,123
+Virginia Beach City,23457,123
+Virginia Beach City,23462,123
+Virginia Beach City,23464,123
+Isle Of Wight,23487,62
+Accomack,23488,0
+Norfolk City,23502,85
+Norfolk City,23503,85
+Norfolk City,23504,85
+Norfolk City,23505,85
+Norfolk City,23507,85
+Norfolk City,23508,85
+Norfolk City,23509,85
+Surry,23881,120
+Sussex,23882,121
+Surry,23883,120
+Dinwiddie,23885,35
+Brunswick,23887,15
+Sussex,23888,121
+Brunswick,23889,15
+Henry,24055,59
+Roanoke,24059,106
+Montgomery,24060,81
+Botetourt,24064,13
+Franklin,24065,44
+Botetourt,24066,13
+Franklin,24067,44
+Pittsylvania,24069,94
+Alleghany,24474,3
+Augusta,24477,8
+Augusta,24479,8
+Augusta,24482,8
+Rockbridge,24483,108
+Augusta,24486,8
+Bath,24487,9
+Lynchburg City,24501,73
+Lynchburg City,24502,73
+Lynchburg City,24503,73
+Lynchburg City,24504,73
+Campbell,24517,19
+Halifax,24520,54
+Amherst,24521,5
+Appomattox,24522,6
+Bedford City,24523,11
+Pittsylvania,24527,94
+Campbell,24528,19
+Mecklenburg,24529,79
+Pittsylvania,24530,94
+Pittsylvania,24531,94
+Halifax,24534,54
+Bedford,24536,10
+Campbell,24538,19
+Danville City,24540,33
+Danville City,24541,33
+Pittsylvania,24549,94
+Campbell,24550,19
+Bedford,24551,10
+Nelson,24553,82
+Campbell,24554,19
+Rockbridge,24555,108
+Bedford,24556,10
+Pittsylvania,24557,94
+Halifax,24558,54
+Albemarle,24562,1
+Pittsylvania,24563,94
+Pittsylvania,24565,94
+Pittsylvania,24566,94
+Campbell,24571,19
+Amherst,24572,5
+Amherst,24574,5
+Halifax,24577,54
+Rockbridge,24578,108
+Rockbridge,24579,108
+Pittsylvania,24586,94
+Campbell,24588,19
+Halifax,24589,54
+Albemarle,24590,1
+Halifax,24592,54
+Appomattox,24593,6
+Pittsylvania,24594,94
+Halifax,24597,54
+Halifax,24598,54
+Nelson,24599,82
+Tazewell,24601,122
+Tazewell,24602,122
+Buchanan,24603,16
+Tazewell,24605,122
+Tazewell,24606,122
+Tazewell,24609,122
+Tazewell,24613,122
+Buchanan,24614,16
+Buchanan,24620,16
+Tazewell,24622,122
+Tazewell,24630,122
+Buchanan,24631,16
+Buchanan,24634,16
+Tazewell,24637,122
+Buchanan,24639,16
+Tazewell,24641,122
+Buchanan,24646,16
+Russell,24649,110
+Tazewell,24651,122
+Nelson,22949,82
+Augusta,22952,8
+Nelson,22958,82
+Albemarle,22959,1
+Orange,22960,90
+Fluvanna,22963,43
+Nelson,22967,82
+Greene,22968,53
+Bristol,37620,14
+Richmond City,23223,105
+Richmond City,23224,105
+Richmond City,23225,105
+Henrico,23226,58
+Henrico,23227,58
+Henrico,23228,58
+Henrico,23229,58
+Henrico,23230,58
+Henrico,23231,58
+Henrico,23233,58
+Chesterfield,23234,26
+Chesterfield,23235,26
+Chesterfield,23236,26
+Chesterfield,23237,26
+Goochland,23238,51
+Henrico,23294,58
+Accomack,23301,0
+Fairfax,22309,38
+Fairfax,22310,38
+Alexandria City,22311,2
+Fairfax,22312,38
+Alexandria City,22314,2
+Fairfax,22315,38
+Fredericksburg City,22401,47
+Stafford,22405,117
+Stafford,22406,117
+Loudoun,20105,70
+Rappahannock,20106,103
+Nottoway,23824,89
+Southampton,23827,115
+Southampton,23829,115
+Spotsylvania,22407,116
+Spotsylvania,22408,116
+Caroline,22427,20
+Northumberland,22432,87
+Franklin,24137,44
+Montgomery,24138,81
+Pittsylvania,24139,94
+Radford,24141,102
+Radford,24142,102
+Giles,24147,49
+Henry,24148,59
+Montgomery,24149,81
+Giles,24150,49
+Franklin,24151,44
+Salem,24153,111
+Montgomery,24162,81
+Henry,24165,59
+Giles,24167,49
+Chesterfield,23831,26
+Chesterfield,23832,26
+Dinwiddie,23833,35
+Colonial Heights City,23834,28
+Chesterfield,23836,26
+Manassas City,20109,75
+Patrick,24171,92
+Bedford,24174,10
+Botetourt,24175,13
+Franklin,24176,44
+Roanoke,24179,106
+Franklin,24184,44
+Patrick,24185,92
+Bristol,24201,14
+Bristol,24202,14
+Washington,24210,125
+Washington,24211,125
+Wise,24216,130
+Wise,24219,130
+Dickenson,24220,34
+Lee,24221,68
+Russell,24224,110
+Russell,24225,110
+Dickenson,24226,34
+Dickenson,24228,34
+Wise,24230,130
+Washington,24236,125
+Russell,24237,110
+Lee,24243,68
+Scott,24244,112
+Hampton City,23661,55
+Poquoson City,23662,95
+Hampton City,23663,55
+Southampton,23837,115
+Chesterfield,23838,26
+Surry,23839,120
+Dinwiddie,23840,35
+Dinwiddie,23841,35
+Prince George,23842,99
+Brunswick,23843,15
+Southampton,23844,115
+Surry,23846,120
+Scott,24250,112
+Scott,24251,112
+Dickenson,24256,34
+Russell,24260,110
+Lee,24263,68
+Lee,24265,68
+Russell,24266,110
+Dickenson,24269,34
+Washington,24270,125
+Norton City,24273,88
+Lee,24277,68
+Wise,24279,130
+Russell,24280,110
+Lee,24282,68
+Wise,24283,130
+Scott,24290,112
+Grayson,24292,52
+Wise,24293,130
+Pulaski,24301,101
+Smyth,24311,114
+Wythe,24312,131
+Wythe,24313,131
+Bland,24314,12
+Bland,24315,12
+Carroll,24317,21
+Bland,24318,12
+Smyth,24319,114
+Wythe,24323,131
+Pulaski,24324,101
+Grayson,24326,52
+Hampton City,23664,55
+Hampton City,23665,55
+Hampton City,23666,55
+Emporia City,23847,36
+Franklin City,23851,45
+Hopewell City,23860,61
+Carroll,24328,21
+Grayson,24330,52
+Galax City,24333,48
+Washington,24340,125
+Carroll,24343,21
+Pulaski,24347,101
+Grayson,24348,52
+Wythe,24350,131
+Carroll,24351,21
+Smyth,24354,114
+Wythe,24360,131
+Washington,24361,125
+Grayson,24363,52
+Bland,24366,12
+Wythe,24368,131
+Hampton City,23669,55
+York,23690,132
+York,23692,132
+York,23693,132
+Southampton,23866,115
+Sussex,23867,121
+Brunswick,23868,15
+Dinwiddie,23872,35
+York,23696,132
+Portsmouth City,23701,96
+Portsmouth City,23702,96
+Portsmouth City,23703,96
+Prince George,23875,99
+Brunswick,23876,15
+Portsmouth City,23704,96
+Portsmouth City,23707,96
+Prince George,23801,99
+Petersburg City,23803,93
+Petersburg City,23805,93
+Brunswick,23821,15
+Nottoway,23930,89
+Charlotte,23934,23
+Buckingham,23936,17
+Charlotte,23937,23
+Montgomery,24073,81
+Patrick,24076,92
+Botetourt,24077,13
+Henry,24078,59
+Floyd,24079,42
+Patrick,24082,92
+Botetourt,24083,13
+Pulaski,24084,101
+Botetourt,24085,13
+Buchanan,24656,16
+Buchanan,24657,16
+Roanoke,24087,106
+Franklin,24088,44
+Henry,24089,59
+Botetourt,24090,13
+Floyd,24091,42
+Franklin,24092,44
+Bedford,24095,10
+Bedford,24101,10
+Franklin,24102,44
+Bedford,24104,10
+Martinsville City,24112,77
+Patrick,24120,92
+Bedford,24121,10
+Bedford,24122,10
+Giles,24124,49
+Craig,24127,30
+Pulaski,24132,101
+Giles,24134,49
+Giles,24136,49
+Loudoun,20135,70
+Norfolk City,23510,85
+Norfolk City,23511,85
+Norfolk City,23513,85
+Fairfax,22015,38
+Prince William,22025,100
+Prince William,22026,100
+Fairfax,22027,38
+Fairfax City,22030,39
+Norfolk City,23517,85
+Norfolk City,23518,85
+Norfolk City,23523,85
+Newport News City,23601,84
+Fairfax City,22031,39
+Fairfax,22032,38
+Fairfax,22033,38
+Fairfax,22035,38
+Fairfax,22039,38
+Fairfax,22041,38
+Fairfax,22042,38
+Fairfax,22043,38
+Fairfax,22044,38
+Accomack,23306,0
+Accomack,23308,0
+Newport News City,23602,84
+Newport News City,23603,84
+Newport News City,23604,84
+Newport News City,23605,84
+Newport News City,23606,84
+Newport News City,23607,84
+Falls Church City,22046,40
+Fairfax,22060,38
+Fairfax,22066,38
+Culpeper,22733,31
+Fauquier,22734,41
+Northampton,23310,86
+Isle Of Wight,23314,62
+Isle Of Wight,23315,62
+Chesapeake City,23320,25
+Chesapeake City,23321,25
+Chesapeake City,23322,25
+Chesapeake City,23323,25
+Culpeper,22737,31
+Madison,22738,74
+Rappahannock,22740,103
+Fauquier,22742,41
+Rappahannock,22747,103
+Harrisonburg City,22801,57
+Rockingham,22802,109
+Harrisonburg City,22807,57
+Rockingham,22811,109
+Rockingham,22812,109
+Rockingham,22815,109
+Rockingham,22820,109
+Rockingham,22821,109
+Shenandoah,22824,113
+Chesapeake City,23324,25
+Chesapeake City,23325,25
+Accomack,23336,0
+Northampton,23350,86
+Northampton,23354,86
+Accomack,23357,0
+Rockingham,22827,109
+Rockingham,22830,109
+Rockingham,22831,109
+Rockingham,22832,109
+Rockingham,22834,109
+Page,22835,91
+Shenandoah,22842,113
+Augusta,22843,8
+Shenandoah,22844,113
+Shenandoah,22845,113
+Rockingham,22846,109
+Shenandoah,22847,113
+Accomack,23359,0
+Accomack,23389,0
+Northampton,23405,86
+Accomack,23409,0
+Accomack,23410,0
+Northampton,23413,86
+Accomack,23415,0
+Accomack,23417,0
+Accomack,23418,0
+Accomack,23420,0
+Accomack,23421,0
+Accomack,23427,0
+Isle Of Wight,23430,62
+Suffolk City,23432,119
+Page,22849,91
+Rockingham,22850,109
+Page,22851,91
+Rockingham,22853,109
+Albemarle,22901,1
+Charlottesville City,22902,24
+Charlottesville City,22903,24
+Charlottesville City,22904,24
+Albemarle,22911,1
+Nelson,22920,82
+Orange,22923,90
+Albemarle,22931,1
+Albemarle,22932,1
+Greene,22935,53
+Albemarle,22936,1
+Suffolk City,23433,119
+Albemarle,22937,1
+Nelson,22938,82
+Augusta,22939,8
+Albemarle,22940,1
+Orange,22942,90
+Albemarle,22943,1
+Albemarle,22946,1
+Albemarle,22947,1
+Goochland,23063,51
+Goochland,23065,51
+Mathews,23066,78
+Hanover,23069,56
+Gloucester,23072,50
+Henrico,23075,58
+Mathews,23076,78
+Middlesex,23079,80
+Amelia,23083,4
+Fluvanna,23084,43
+Fairfax,22079,38
+Fairfax,22101,38
+Fairfax,22102,38
+Fairfax,22124,38
+Prince William,22125,100
+Prince William,22134,100
+Fairfax,22150,38
+Fairfax,22151,38
+Fairfax,22152,38
+Fairfax,22153,38
+Prince William,22172,100
+Fairfax,22180,38
+Fairfax,22181,38
+Fairfax,22182,38
+Prince William,22191,100
+Prince William,22192,100
+Prince William,22193,100
+Arlington,22201,7
+Arlington,22202,7
+Arlington,22203,7
+Williamsburg City,23187,128
+James City,23188,63
+Hanover,23192,56
+Richmond City,23219,105
+Richmond City,23220,105
+Richmond City,23221,105
+Richmond City,23222,105
+Arlington,22204,7
+Arlington,20007,7
+Wythe,24382,131
+Staunton City,24401,118
+Bath,24412,9
+Buena Vista City,24416,18
+Augusta,24421,8
+Alleghany,24422,3
+Covington City,24426,29
+Augusta,24430,8
+Augusta,24431,8
+Augusta,24432,8
+Rockbridge,24435,108
+Rockbridge,24439,108
+Augusta,24440,8
+Rockingham,24441,109
+Bath,24445,9
+Lexington City,24450,69
+Augusta,24459,8
+Bath,24460,9
+Nelson,24464,82
+Highland,24465,60
+Augusta,24467,8
+Rockingham,24471,109
+Manassas City,20110,75
+Manassas Park City,20111,76
+Manassas Park City,20112,76
+Fauquier,20115,41
+Loudoun,20117,70
+Fauquier,20119,41
+Smyth,24370,114
+Fairfax,20120,38
+Fairfax,20121,38
+Fairfax,20124,38
+Loudoun,20132,70
+Prince William,20136,100
+Fauquier,20137,41
+Loudoun,20141,70
+Grayson,24378,52
+Sussex,23890,121
+Dinwiddie,23894,35
+Isle Of Wight,23898,62
+Loudoun,20147,70
+Loudoun,20148,70
+Fairfax,20151,38
+Loudoun,20152,70
+Prince William,20155,100
+Orange,22433,90
+Northumberland,22435,87
+Prince Edward,23901,98
+Mecklenburg,23917,79
+Mecklenburg,23919,79
+Brunswick,23920,15
+Buckingham,23921,17
+Nottoway,23922,89
+Charlotte,23923,23
+Mecklenburg,23924,79
+Essex,22436,37
+Essex,22437,37
+Essex,22438,37
+Westmoreland,22443,127
+King George,22448,65
+Richmond,22460,104
+Westmoreland,22469,127
+Northumberland,22473,87
+Lancaster,22480,67
+Lancaster,22482,67
+King George,22485,65
+Westmoreland,22488,127
+Lancaster,22503,67
+Orange,22508,90
+Northumberland,22511,87
+Caroline,22514,20
+Westmoreland,22520,127
+Spotsylvania,22534,116
+Mecklenburg,23927,79
+Caroline,22538,20
+Northumberland,22539,87
+Caroline,22546,20
+Spotsylvania,22551,116
+Spotsylvania,22553,116
+Stafford,22554,117
+Stafford,22556,117
+Essex,22560,37
+Arlington,22205,7
+Arlington,22206,7
+Arlington,22207,7
+Arlington,22209,7
+Arlington,22213,7
+Alexandria City,22301,2
+Alexandria City,22302,2
+Fairfax,22303,38
+Richmond,22572,104
+Lancaster,22576,67
+Lancaster,22578,67
+Caroline,22580,20
+Winchester City,22601,129
+Frederick,22602,46
+Frederick,22603,46
+Warren,22610,124
+Clarke,22611,27
+Clarke,22620,27
+Rappahannock,22623,103
+Frederick,22624,46
+Frederick,22625,46
+Rappahannock,22627,103
+Warren,22630,124
+Frederick,22637,46
+Fauquier,22639,41
+Alexandria City,22304,2
+Alexandria City,22305,2
+Fairfax,22306,38
+Fairfax,22307,38
+Fairfax,22308,38
+Greene,22973,53
+Fluvanna,22974,43
+Lunenburg,23938,72
+Shenandoah,22644,113
+Frederick,22645,46
+Page,22650,91
+Frederick,22654,46
+Frederick,22655,46
+Frederick,22656,46
+Shenandoah,22657,113
+Shenandoah,22660,113
+Clarke,22663,27
+Shenandoah,22664,113
+Culpeper,22701,31
+Fauquier,22712,41
+Culpeper,22713,31
+Culpeper,22714,31
+Rappahannock,22716,103
+Culpeper,22718,31
+Waynesboro City,22980,126
+Amelia,23002,4
+Buckingham,23004,17
+Prince Edward,23942,98
+Lunenburg,23944,72
+Charlotte,23947,23
+Mecklenburg,23950,79
+Prince Edward,23954,98
+Appomattox,23958,6
+Charlotte,23959,23
+Prince Edward,23960,98
+Charlotte,23962,23
+Charlotte,23963,23
+Charlotte,23964,23
+Charlotte,23967,23
+Mecklenburg,23968,79
+Mecklenburg,23970,79
+Lunenburg,23974,72
+Roanoke City,24012,107
+Roanoke City,24013,107
+Roanoke City,24014,107
+Roanoke City,24015,107
+Roanoke City,24016,107
+Hanover,23005,56
+King William,23009,66
+New Kent,23011,83
+Hanover,23015,56
+Fluvanna,23022,43
+Roanoke City,24017,107
+Roanoke,24018,106
+Botetourt,24019,13
+Madison,22719,74
+Culpeper,22724,31
+Madison,22727,74
+Fauquier,22728,41
+Louisa,23024,71
+Cumberland,23027,32
+Charles City,23030,22
+Mathews,23035,78
+Goochland,23038,51
+Cumberland,23040,32
+Middlesex,23043,80
+Hanover,23047,56
+Hanover,23059,56
+Patrick,24053,92
+Henry,24054,59
+Henrico,23060,58
+Gloucester,23061,50
+Newport News City,23608,84

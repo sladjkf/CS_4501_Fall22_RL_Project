@@ -28,6 +28,10 @@ parser.add_argument('--samples',type=int, default=1000000000)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
 
+# county level optimization
+parser.add_argument('--agg_size', type=int, default=None)
+parser.add_argument('--agg_mapping', type=str, default=None)
+
 parser.add_argument("--cp",type=float,default=0.1)
 parser.add_argument("--treesize",type=int,default=10)
 
@@ -56,6 +60,10 @@ with open(config_dir.format("params.cfg")) as config_file:
     opt_config = dict(sim_param_config['opt_config'])
     opt_config['constraint_bnd'] = float(opt_config['constraint_bnd'])
 
+print(tsir_config)
+
+print(opt_config)
+
 # load vaccination/population data and distance matrix
 vacc_df = pd.read_csv(config_dir.format("pop.csv"))
 dist_list = pd.read_csv(config_dir.format("dist.csv"))
@@ -67,7 +75,30 @@ seed = np.array(seed).flatten()
 
 
 torch.set_num_threads(args.threads)
-v = vacc.VaccProblemLAMCTSWrapper(
+
+# should use aggregate in opt_config
+
+do_aggregate = args.agg_size is not None and args.agg_mapping is not None
+
+if do_aggregate:
+    agg_mapping = pd.read_csv(args.agg_mapping)
+    agg_mapping = np.array(agg_mapping['mapping'])
+    v = vacc.VaccProblemLAMCTSWrapper(
+        opt_config = opt_config, 
+        V_0= vacc_df['vacc'], 
+        seed = seed,
+        sim_config = tsir_config, 
+        pop = vacc_df, 
+        distances = np.array(dist_mat),
+        negate=True, scale=True,
+        cores=args.threads, n_sim=args.sim_draws,
+        output_dir = args.out_dir,
+        name=args.name,
+        agg_vector=agg_mapping,
+        agg_size=args.agg_size
+    )
+else:
+    v = vacc.VaccProblemLAMCTSWrapper(
         opt_config = opt_config, 
         V_0= vacc_df['vacc'], 
         seed = seed,
@@ -81,17 +112,33 @@ v = vacc.VaccProblemLAMCTSWrapper(
     )
 
 
+
 from ConstrainedLaMCTS.LAMCTS.lamcts import MCTS
 
-P = np.array(vacc_df['pop'])
-c = opt_config['constraint_bnd']
+if do_aggregate:
+    P = np.zeros(args.agg_size)
+    for zipcode_index, county_index in enumerate(agg_mapping):
+        P[county_index] += vacc_df['pop'][zipcode_index]
+    c = opt_config['constraint_bnd']
+    # upper bound by the least vaccinated in each county
+    ub = np.ones(args.agg_size)*np.inf
+    for zipcode_index, county_index in enumerate(agg_mapping):
+        this_zip_vacc = vacc_df.loc[zipcode_index,'vacc']
+        if ub[county_index] > this_zip_vacc:
+            ub[county_index] = this_zip_vacc
+    v.ub = ub
+    v.lb = np.zeros(args.dims)
+else:
+    P = np.array(vacc_df['pop'])
+    c = opt_config['constraint_bnd']
+    ub = np.array(vacc_df['vacc'])
 
 if args.method == "lamcts":
     if args.load != "":
         print("hello!")
         agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
-                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
                  dims = args.dims,              # the problem dimensions
                  ninits = 0,           # the number of random samples used in initializations 
                  A_ineq = np.array([P]),
@@ -111,7 +158,7 @@ if args.method == "lamcts":
         print("else branch")
         agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
-                 ub = np.ones(args.dims),       # the upper bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
                  dims = args.dims,              # the problem dimensions
                  ninits = args.n_init_pts,           # the number of random samples used in initializations 
                  A_ineq = np.array([P]),
