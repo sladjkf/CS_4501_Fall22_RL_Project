@@ -4,9 +4,9 @@ load configuration file and initialize the function
 import configparser
 import pandas as pd
 import numpy as np
-from scripts.optimization import vacc
+from my_scripts.optimization import vacc
 #from scripts.optimization import vacc_bayes_opt
-from ConstrainedLaMCTS.LAMCTS import bayes_opt
+#from ConstrainedLaMCTS.LAMCTS import bayes_opt
 import multiprocess
 import torch
 import argparse
@@ -22,11 +22,15 @@ parser.add_argument('--out_dir', required=True)
 parser.add_argument('--name', required=True)
 parser.add_argument('--dims',type=int,required=True)
 
-parser.add_argument('--threads', type=int, default=12)
+parser.add_argument('--threads', type=int, default=40)
+parser.add_argument('--threads_per_sim', type=int, default=20)
+parser.add_argument('--sim_workers', type=int, default=2)
+parser.add_argument('--batch_size',type=int, default=2)
+
 parser.add_argument('--sim_draws', type=int, default=100)
 parser.add_argument('--n_init_pts',type=int,default=150)
 parser.add_argument('--iters', type=int,default=250)
-parser.add_argument('--samples',type=int, default=1000000000)
+parser.add_argument('--samples',type=int, default=100000)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
 
@@ -35,7 +39,9 @@ parser.add_argument('--agg_size', type=int, default=None)
 parser.add_argument('--agg_mapping', type=str, default=None)
 
 parser.add_argument("--cp",type=float,default=0.1)
-parser.add_argument("--treesize",type=int,default=10)
+parser.add_argument("--leaf_size",type=int,default=100)
+
+parser.add_argument("--hopsy_thin",type=int,default=150)
 
 args = parser.parse_args()
 print(args)
@@ -93,7 +99,7 @@ if do_aggregate:
         pop = vacc_df, 
         distances = np.array(dist_mat),
         negate=True, scale=True,
-        cores=args.threads, n_sim=args.sim_draws,
+        cores=args.threads_per_sim, n_sim=args.sim_draws,
         output_dir = args.out_dir,
         name=args.name,
         agg_vector=agg_mapping,
@@ -108,7 +114,7 @@ else:
         pop = vacc_df, 
         distances = np.array(dist_mat),
         negate=True, scale=True,
-        cores=args.threads, n_sim=args.sim_draws,
+        cores=args.threads_per_sim, n_sim=args.sim_draws,
         output_dir = args.out_dir,
         name=args.name
     )
@@ -148,11 +154,14 @@ if args.method == "lamcts":
                  A_eq = None, b_eq = None,
                  func = v,               # function object to be optimized
                  Cp = args.cp,              # Cp for MCTS
-                 leaf_size = args.treesize, # tree leaf size
+                 leaf_size = args.leaf_size, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
-                 num_threads = args.threads
+                 num_threads = args.threads,
+                 sim_worker = args.sim_workers,
+                 threads_per_sim = args.threads_per_sim,
+                 hopsy_thin = args.hopsy_thin
                  )
         agent.load_agent(load_path=args.load)
         agent.search(iterations=args.iters, max_samples=args.samples)
@@ -168,11 +177,14 @@ if args.method == "lamcts":
                  A_eq = None, b_eq = None,
                  func = v,               # function object to be optimized
                  Cp = args.cp,              # Cp for MCTS
-                 leaf_size = args.treesize, # tree leaf size
+                 leaf_size = args.leaf_size, # tree leaf size
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
-                 num_threads = args.threads
+                 num_threads = args.threads,
+                 sim_worker = args.sim_workers,
+                 threads_per_sim = args.threads_per_sim,
+                 hopsy_thin = args.hopsy_thin
                  )
         agent.search(iterations = args.iters, max_samples=args.samples)
     agent.dump_agent(name=args.name+"mcts_agent", out_dir=args.out_dir)
@@ -191,7 +203,10 @@ elif args.method == "bo":
                  kernel_type = 'linear', #SVM configruation
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'bo',
-                 num_threads = args.num_threads
+                 num_threads = args.num_threads,
+                 sim_worker = args.sim_workers,
+                 threads_per_sim = args.threads_per_sim,
+                 hopsy_thin = args.hopsy_thin
                  )
     agent.search(iterations = args.iters)
 
