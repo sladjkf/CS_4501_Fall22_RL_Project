@@ -119,7 +119,7 @@ class VaccRateOptEngine:
         self._max_pop = max(self._pop_vec)
         self._pop_norm = np.sum(self._pop_vec)
         # store (input vector, objective) pairs
-        self.eval_history = {'input':None,'output':None}
+        self.eval_history = {'input':[],'output':[]}
 
         self.aggregate = False
         self.agg_vector = None

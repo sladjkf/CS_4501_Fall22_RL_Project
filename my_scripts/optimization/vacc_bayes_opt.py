@@ -1,4 +1,4 @@
-import scipy.optimize
+nimport scipy.optimize
 from scipy.stats import norm as normal
 from diversipy import polytope
 import sklearn.gaussian_process as gp
