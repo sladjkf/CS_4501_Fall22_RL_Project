@@ -159,7 +159,7 @@ if args.method == "lamcts":
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
                  num_threads = args.threads,
-                 sim_worker = args.sim_workers,
+                 sim_workers = args.sim_workers,
                  threads_per_sim = args.threads_per_sim,
                  hopsy_thin = args.hopsy_thin
                  )
@@ -182,7 +182,7 @@ if args.method == "lamcts":
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'turbo',
                  num_threads = args.threads,
-                 sim_worker = args.sim_workers,
+                 sim_workers = args.sim_workers,
                  threads_per_sim = args.threads_per_sim,
                  hopsy_thin = args.hopsy_thin
                  )
@@ -204,7 +204,7 @@ elif args.method == "bo":
                  gamma_type = "auto",    #SVM configruation
                  solver_type = 'bo',
                  num_threads = args.num_threads,
-                 sim_worker = args.sim_workers,
+                 sim_workers = args.sim_workers,
                  threads_per_sim = args.threads_per_sim,
                  hopsy_thin = args.hopsy_thin
                  )

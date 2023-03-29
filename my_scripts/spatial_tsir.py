@@ -670,7 +670,7 @@ class spatial_tSIR_pool:
         to_save.insert(0,"sim_num",sim_indices)
         to_save.insert(1,"time",time_indices)
         to_save.to_csv(path, index=False)
-    def run_simulation(self,multi=True,pool=None):
+    def run_simulation(self,multi=True,pool=None, asyn=False):
         """
         Run the pool of simulations.
         multi: bool
@@ -680,12 +680,12 @@ class spatial_tSIR_pool:
 
         Return: None.
         """
-        if multi and type(Pool) != type(None):
+        if multi and (pool is not None):
             self.sim_list = pool.map(
                     lambda sim: 
                             (sim.run_simulation(),
                             sim)[-1],
-                    self.sim_list)
+                    self.sim_list)           
         elif not multi:
             for sim in self.sim_list:
                 sim.run_simulation()
@@ -693,6 +693,27 @@ class spatial_tSIR_pool:
             print("Invalid arguments - either multi=False, or multi=True and a pool object supplied")
         # retrieve the state matrices of each simulation and make life slightly easier
         self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in self.sim_list])
+    def run_simulation_async(self,pool):
+        """
+        Run the pool of simulations (non-blocking)
+        multi: bool
+            If true, the simulations will be run using multiple threads/cores
+            via the 'multiprocess' module.
+        pool: multiprocess.Pool object
+
+        Return: None?
+        """
+        def callback(sim_list):
+            self.sim_state_mats = np.array([np.array(sim.get_ts_matrix()) for sim in sim_list]) 
+        
+        result_obj = pool.map_async(
+                lambda sim: 
+                        (sim.run_simulation(),
+                        sim)[-1],
+                self.sim_list,
+                callback=callback)
+        
+        return result_obj
     def plot_interval(self,
             select=None,time_range=None,
             quantiles=[0.025,0.975],int_type="pred"):

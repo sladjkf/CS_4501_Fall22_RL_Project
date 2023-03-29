@@ -194,7 +194,7 @@ class VaccRateOptEngine:
                     distances = self.distances
                 )
         sim_pool.run_simulation(pool=pool)
-
+        # ------
         # return a sample of the statistic
         if self.opt_config['obj']=="attacksize":
             result = sim_pool.get_attack_size_samples()
@@ -217,7 +217,87 @@ class VaccRateOptEngine:
             return result, sim_pool
         else:
             return result
+        
+    ### ASYNC VERSION ###
+    def query_async(self,
+            V_delta=None,
+            pool=None,n_sim=None,
+            return_sim_pool=False):
+        
+        ## same as query function above... ##
+        if self.aggregate:
+            assert len(V_delta)==self.agg_size
+            V_delta_new = np.zeros(self.dims)
+            for i in range(self.dims):
+                V_delta_new.put(i, V_delta[self.agg_vector[i]])
+            V_delta = V_delta_new
+            
+        passed = self.check_constraint(V_delta)
+        if not passed:
+            print("Constraint violated")
+            return np.array([-1]) # TODO: probably bad behavior, but ok for placeholding?
 
+        # SETUP INITIAL STATE #
+        # TODO: modify computation of V_unscaled such that V_prime
+        # represents a change in vaccination rates rather than a new state
+        if self.opt_config['V_repr'] == "max_ratio":
+            V_unscaled = self._max_pop*(self.V_0 - V_delta)
+        elif self.opt_config['V_repr'] == "ratio":
+            V_unscaled = self._pop_vec*(self.V_0 - V_delta)  # element by element
+        elif self.opt_config['V_repr'] == "raw":
+            pass
+        else:
+            raise ValueError("Invalid string for V_repr")
+        V_unscaled = np.round(V_unscaled)
+        initial_state = np.zeros((len(self.pop_df.index),2))
+        initial_state[:, 0] = self.seed
+        #initial_state[:,0] = seed_prime
+        initial_state[:, 1] = V_unscaled
+
+        assert type(pool) != type(None) and type(n_sim) != type(None),\
+                "You must pass a multithread.Pool object and n_sim when in multithreading mode"
+        sim_pool = spatial_tSIR_pool(
+                    config = self.sim_params,
+                    patch_pop = self.pop_df,
+                    initial_state = initial_state,
+                    n_sim = n_sim,
+                    distances = self.distances
+                )
+        promise = sim_pool.run_simulation_async(pool=pool)
+        
+        # keep a record of the evaluation results
+        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
+            # just store as a list to enable ragged inputs
+            self.eval_history['input'] = [np.array(V_delta)]
+            #self.eval_history['output'] = [np.array(result)]
+        else:
+            self.eval_history['input'].append(np.array(V_delta))
+            #self.eval_history['output'].append(np.array(result))
+            
+        return promise, sim_pool
+    
+    def process_promise(self, promise, sim_pool):
+        # block until computation finishes
+        promise.get()
+        if self.opt_config['obj']=="attacksize":
+            result = sim_pool.get_attack_size_samples()
+        elif self.opt_config['obj']=="peak":
+            result = np.max(sim_pool.get_samples(),axis=1)
+        elif self.opt_config['obj']=="attacksize_prob":
+            # It seems more natural to formulate it as
+            # 1 if exceeded, 0 if below the bound
+            # so the probability is probability of attack size above this cutoff?
+            result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
+        # keep a record of the evaluation results
+        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
+            # just store as a list to enable ragged inputs
+            #self.eval_history['input'] = [np.array(V_delta)]
+            self.eval_history['output'] = [np.array(result)]
+        else:
+            #self.eval_history['input'].append(np.array(V_delta))
+            self.eval_history['output'].append(np.array(result))
+        return result
+        
     def save_eval_history(self,
             path=None,
             as_csv=False,as_serial=True):
@@ -258,7 +338,8 @@ class VaccProblemLAMCTSWrapper:
     def __init__(self,
             opt_config, V_0, seed,
             sim_config, pop, distances,
-            cores, n_sim,
+            cores, 
+            n_sim,
             negate, scale,
             output_dir, name,
             agg_vector=None, agg_size=None):
@@ -270,7 +351,6 @@ class VaccProblemLAMCTSWrapper:
             distances=distances,
             agg_vector=agg_vector, agg_size=agg_size
         )
-        self.pool = multiprocess.Pool(cores)
         self.best_x = None
         self.best_y = None
         self.last_x = None
@@ -278,6 +358,11 @@ class VaccProblemLAMCTSWrapper:
 
         self.n_sim = n_sim
         self.cores = cores
+        self.pool = multiprocess.Pool(cores)
+        #self.sim_workers = sim_workers
+        #self.threads_per_sim = threads_per_sim
+        #self.pools = [multiprocess.Pool(self.threads_per_sim) for i in range(self.sim_workers)]
+        
         assert os.path.exists(output_dir), "invalid directory"
 
         date = datetime.datetime.now()
@@ -302,20 +387,38 @@ class VaccProblemLAMCTSWrapper:
         self.lb = np.zeros(self.dims)
         self.ub = np.ones(self.dims)
 
-    def __call__(self, x):
-        result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
-        result = np.mean(result)
-        if self.best_x is None and self.best_y is None:
-            self.best_x = x
-            self.best_y = result
+    def __call__(self, x, pool=None, batch=False):
+        """
+        Evaluate the function.
+        If batch = True:
+            x : an iterable of x's to evaluate. (multiple)
+            pool : an iterable of multiprocess.pool objects (one for each point)
+        """
+        if batch:
+            promises_and_pools = [self.engine.query_async(V_delta=x, pool=p, n_sim=self.n_sim) for p,x in zip(pool,x)]
+            # block until each pool finishes
+            [result[0].get() for result in promises_and_pools]
+            # now finish the computation
+            batch_results = [self.sign*np.mean(self.engine.process_promise(promise,sim_pool))/self.scale for promise,sim_pool in promises_and_pools]
+            return batch_results
         else:
-            if self.best_y <= result:
+            if pool is None:
+                result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
+            else:
+                result = self.engine.query(V_delta=x, pool=pool, n_sim=self.n_sim)
+            # ----
+            result = np.mean(result)
+            if self.best_x is None and self.best_y is None:
                 self.best_x = x
                 self.best_y = result
-        self.last_x = x
-        self.last_y = result
-        self.track()
-        return self.sign*result/self.scale
+            else:
+                if self.best_y <= result:
+                    self.best_x = x
+                    self.best_y = result
+            self.last_x = x
+            self.last_y = result
+            self.track()
+            return self.sign*result/self.scale
         
     def track(self):
         if os.path.exists(self.output_file_trace):
