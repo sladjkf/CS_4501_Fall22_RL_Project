@@ -399,8 +399,19 @@ class VaccProblemLAMCTSWrapper:
             # block until each pool finishes
             [result[0].get() for result in promises_and_pools]
             # now finish the computation
-            batch_results = [self.sign*np.mean(self.engine.process_promise(promise,sim_pool))/self.scale for promise,sim_pool in promises_and_pools]
-            return batch_results
+            batch_results = [np.mean(self.engine.process_promise(promise,sim_pool)) for promise,sim_pool in promises_and_pools]
+            for x,result in zip(x,batch_results):
+                if self.best_x is None and self.best_y is None:
+                    self.best_x = x
+                    self.best_y = result
+                else:
+                    if self.best_y <= result:
+                        self.best_x = x
+                        self.best_y = result
+                self.last_x = x
+                self.last_y = result
+                self.track()
+            return self.sign*np.array(batch_results)/self.scale
         else:
             if pool is None:
                 result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
