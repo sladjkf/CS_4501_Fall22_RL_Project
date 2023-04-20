@@ -11,6 +11,7 @@ import multiprocess
 import torch
 import argparse
 import os.path
+import sys
 from ConstrainedLaMCTS.LAMCTS.lamcts import MCTS
 
 parser = argparse.ArgumentParser(
@@ -33,6 +34,8 @@ parser.add_argument('--iters', type=int,default=250)
 parser.add_argument('--samples',type=int, default=100000)
 parser.add_argument('--method', default="lamcts")
 parser.add_argument('--load', type=str, default="")
+# provide a comma separated string: "pathtosamples.csv,path_to_best_trace.csv"
+parser.add_argument('--load_samples', type=str, default="")
 
 # county level optimization
 parser.add_argument('--agg_size', type=int, default=None)
@@ -63,6 +66,8 @@ with open(config_dir.format("params.cfg")) as config_file:
     for k, v in tsir_config_str.items():
         if k == 'iters':
             tsir_config['iters'] = int(tsir_config_str['iters'])
+        elif k == 'grav_variant':
+            tsir_config['grav_variant'] = tsir_config_str['grav_variant']
         else:
             tsir_config[k] = float(tsir_config_str[k])
     opt_config = dict(sim_param_config['opt_config'])
@@ -136,13 +141,23 @@ if do_aggregate:
             ub[county_index] = this_zip_vacc
     v.ub = ub
     v.lb = np.zeros(args.dims)
+    #for index, element in enumerate(ub):
+        # if there are redundant cities (no zipcodes assigned)
+        # just give it an upper bound of 1
+        # essentially just a dummy var, doesn't affect opt
+    #    if np.isinf(element):
+    #        ub[index] = 1
 else:
     P = np.array(vacc_df['pop'])
     c = opt_config['constraint_bnd']
     ub = np.array(vacc_df['vacc'])
 
+print(P)
+print(c)
+print(ub)
+
 if args.method == "lamcts":
-    if args.load != "":
+    if args.load != "" and args.load_samples == "":
         print("hello!")
         agent = MCTS(
                  lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
@@ -165,6 +180,55 @@ if args.method == "lamcts":
                  )
         agent.load_agent(load_path=args.load)
         agent.search(iterations=args.iters, max_samples=args.samples)
+    elif args.load == "" and args.load_samples != "":
+        agent = MCTS(
+                 lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
+                 dims = args.dims,              # the problem dimensions
+                 ninits = 0,           # the number of random samples used in initializations 
+                 A_ineq = np.array([P]),
+                 b_ineq = np.array([c*np.sum(P)]),
+                 A_eq = None, b_eq = None,
+                 func = v,               # function object to be optimized
+                 Cp = args.cp,              # Cp for MCTS
+                 leaf_size = args.leaf_size, # tree leaf size
+                 kernel_type = 'linear', #SVM configruation
+                 gamma_type = "auto",    #SVM configruation
+                 solver_type = 'turbo',
+                 num_threads = args.threads,
+                 sim_workers = args.sim_workers,
+                 threads_per_sim = args.threads_per_sim,
+                 hopsy_thin = args.hopsy_thin
+                 )
+        samples_path, best_trace_path = args.load_samples.split(",")
+        agent.load_samples_from_file(samples=samples_path, best_trace=best_trace_path)
+        agent.dynamic_treeify()
+        agent.search(iterations=args.iters, max_samples=args.samples)        
+    elif args.load != "" and args.load_samples != "":
+        print("loading both mcts agent, then new samples")
+        agent = MCTS(
+                 lb = np.zeros(args.dims),      # the lower bound of each problem dimensions
+                 ub = ub,       # the upper bound of each problem dimensions
+                 dims = args.dims,              # the problem dimensions
+                 ninits = 0,           # the number of random samples used in initializations 
+                 A_ineq = np.array([P]),
+                 b_ineq = np.array([c*np.sum(P)]),
+                 A_eq = None, b_eq = None,
+                 func = v,               # function object to be optimized
+                 Cp = args.cp,              # Cp for MCTS
+                 leaf_size = args.leaf_size, # tree leaf size
+                 kernel_type = 'linear', #SVM configruation
+                 gamma_type = "auto",    #SVM configruation
+                 solver_type = 'turbo',
+                 num_threads = args.threads,
+                 sim_workers = args.sim_workers,
+                 threads_per_sim = args.threads_per_sim,
+                 hopsy_thin = args.hopsy_thin
+                 )
+        agent.load_agent(load_path=args.load) 
+        agent.load_samples_from_file(samples=samples_path, best_trace=best_trace_path)
+        agent.dynamic_treeify()
+        agent.search(iterations=args.iters, max_samples=args.samples) 
     else:
         print("else branch")
         agent = MCTS(
