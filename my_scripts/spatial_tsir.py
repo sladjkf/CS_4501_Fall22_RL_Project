@@ -148,11 +148,12 @@ def get_distances(network):
     return distance_matrix
 
 @njit
-def gravity_numba(pop_vec, distances, infected, tau1, tau2, rho, theta, variant="xia"):
+def gravity_numba(pop_vec, distances, infected, tau1, tau2, rho, theta, phi=0, variant="orig"):
     num_locations = len(pop_vec)
     adj_matrix = np.zeros((num_locations,num_locations))
 
     pop_i = np.repeat(pop_vec,num_locations)
+    inf_i = np.repeat(infected,num_locations)
     #not supported by numba
     #pop_j = np.tile(pop_vec,num_locations)
     #inf_j = np.tile(infected,num_locations)
@@ -171,9 +172,10 @@ def gravity_numba(pop_vec, distances, infected, tau1, tau2, rho, theta, variant=
     # try:
     if variant=="xia":
         #adj_mat_flat =  (pop_j**tau1) * (inf_i**tau2) / (distances_ij**rho)
-        adj_mat_flat = (pop_i**tau1) * (inf_j**tau2) / (distances_ij**rho)
+        adj_mat_flat = theta*(pop_i**tau1) * (inf_j**tau2) / (distances_ij**rho)
     elif variant=="orig":
-        adj_mat_flat = (pop_i**tau1) * (pop_j**tau2) * (inf_j/pop_j) / (distances_ij**rho)
+        #adj_mat_flat = theta*(pop_i**tau1) * (pop_j**tau2) * (inf_j/pop_j) / (distances_ij**rho)
+        adj_mat_flat = theta*(pop_i**tau1)* (inf_i/pop_i) * (pop_j**tau2) / (distances_ij**rho)
     # except RuntimeWarning:
     #     print("num_locations",num_locations)
     #     print(np.argwhere(np.isnan(pop_j)))
@@ -190,7 +192,7 @@ def gravity_numba(pop_vec, distances, infected, tau1, tau2, rho, theta, variant=
     adj_matrix = adj_matrix.reshape(shape)
 
     # freely sum; since diagonal is 0 don't need to add conditional
-    m = theta*np.sum(adj_matrix,axis=0)
+    m = np.sum(adj_matrix,axis=0)
     #print(m)
 
     return adj_matrix, m
@@ -482,9 +484,11 @@ class spatial_tSIR:
 
             # stop if I_t = 0 in order to save on simulation
             # TODO: good idea, but you get "ragged nested sequences."
-            # how do you fix that?
-            #if np.sum(I_t) == 0:
-            #    break
+            # how do you fix that? (just append a bunch of zero
+            if np.sum(I_t) == 0:
+                for i in range(iter_num,self.config['iters']):
+                    self.state_matrix_series.append(last_matrix)
+                break
 
             # get current beta
             # currently assuming mod 26 (transmission rate over a year)
