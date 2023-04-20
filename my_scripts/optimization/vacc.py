@@ -26,7 +26,7 @@ class VaccRateOptEngine:
     def __init__(self,
             opt_config, V_0, seed,
             sim_config, pop, distances, 
-            agg_vector=None, agg_size=None):
+            agg_vector=None, agg_size=None, save_memory=False):
         # TODO: fill out the rest of the docstring
         """
         Create a new optimization oracle, initializing with certain fixed parameters.
@@ -134,6 +134,7 @@ class VaccRateOptEngine:
             self.aggregate = False
             self.agg_vector = None
             self.agg_size = None
+        self.save_memory = save_memory
 
     def check_constraint(self,V_delta):
         vacc_not_decreased_past_zero = all(self.V_0 - V_delta >= 0)
@@ -206,13 +207,14 @@ class VaccRateOptEngine:
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
         # keep a record of the evaluation results
-        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            # just store as a list to enable ragged inputs
-            self.eval_history['input'] = [np.array(V_delta)]
-            self.eval_history['output'] = [np.array(result)]
-        else:
-            self.eval_history['input'].append(np.array(V_delta))
-            self.eval_history['output'].append(np.array(result))
+        if self.save_memory:
+            if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
+                # just store as a list to enable ragged inputs
+                self.eval_history['input'] = [np.array(V_delta)]
+                self.eval_history['output'] = [np.array(result)]
+            else:
+                self.eval_history['input'].append(np.array(V_delta))
+                self.eval_history['output'].append(np.array(result))
         if return_sim_pool:
             return result, sim_pool
         else:
@@ -289,13 +291,14 @@ class VaccRateOptEngine:
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
         # keep a record of the evaluation results
-        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            # just store as a list to enable ragged inputs
-            #self.eval_history['input'] = [np.array(V_delta)]
-            self.eval_history['output'] = [np.array(result)]
-        else:
-            #self.eval_history['input'].append(np.array(V_delta))
-            self.eval_history['output'].append(np.array(result))
+        if self.save_memory:
+            if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
+                # just store as a list to enable ragged inputs
+                #self.eval_history['input'] = [np.array(V_delta)]
+                self.eval_history['output'] = [np.array(result)]
+            else:
+                #self.eval_history['input'].append(np.array(V_delta))
+                self.eval_history['output'].append(np.array(result))
         return result
         
     def save_eval_history(self,
@@ -342,14 +345,15 @@ class VaccProblemLAMCTSWrapper:
             n_sim,
             negate, scale,
             output_dir, name,
-            agg_vector=None, agg_size=None):
+            agg_vector=None, agg_size=None, save_memory=False):
         self.engine = VaccRateOptEngine(
             opt_config=opt_config,
             V_0=V_0, seed=seed,
             sim_config=sim_config,
             pop=pop,
             distances=distances,
-            agg_vector=agg_vector, agg_size=agg_size
+            agg_vector=agg_vector, agg_size=agg_size,
+            save_memory=save_memory
         )
         self.best_x = None
         self.best_y = None
