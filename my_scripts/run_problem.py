@@ -109,7 +109,7 @@ if do_aggregate:
         name=args.name,
         agg_vector=agg_mapping,
         agg_size=args.agg_size,
-        save_memory=False
+        save_memory=True
     )
 else:
     v = vacc.VaccProblemLAMCTSWrapper(
@@ -123,7 +123,7 @@ else:
         cores=args.threads_per_sim, n_sim=args.sim_draws,
         output_dir = args.out_dir,
         name=args.name,
-        save_memory=False
+        save_memory=True
     )
 
 
