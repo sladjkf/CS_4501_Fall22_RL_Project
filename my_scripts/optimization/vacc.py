@@ -207,7 +207,7 @@ class VaccRateOptEngine:
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
         # keep a record of the evaluation results
-        if self.save_memory:
+        if not self.save_memory:
             if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
                 # just store as a list to enable ragged inputs
                 self.eval_history['input'] = [np.array(V_delta)]
@@ -268,13 +268,14 @@ class VaccRateOptEngine:
         promise = sim_pool.run_simulation_async(pool=pool)
         
         # keep a record of the evaluation results
-        if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
-            # just store as a list to enable ragged inputs
-            self.eval_history['input'] = [np.array(V_delta)]
-            #self.eval_history['output'] = [np.array(result)]
-        else:
-            self.eval_history['input'].append(np.array(V_delta))
-            #self.eval_history['output'].append(np.array(result))
+        if not self.save_memory:
+            if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
+                # just store as a list to enable ragged inputs
+                self.eval_history['input'] = [np.array(V_delta)]
+                #self.eval_history['output'] = [np.array(result)]
+            else:
+                self.eval_history['input'].append(np.array(V_delta))
+                #self.eval_history['output'].append(np.array(result))
             
         return promise, sim_pool
     
@@ -291,7 +292,7 @@ class VaccRateOptEngine:
             # so the probability is probability of attack size above this cutoff?
             result = np.int64(sim_pool.get_attack_size_samples() > self.opt_config['attacksize_cutoff'])
         # keep a record of the evaluation results
-        if self.save_memory:
+        if not self.save_memory:
             if type(self.eval_history['input']) == type(None) and type(self.eval_history['output']) == type(None):
                 # just store as a list to enable ragged inputs
                 #self.eval_history['input'] = [np.array(V_delta)]
