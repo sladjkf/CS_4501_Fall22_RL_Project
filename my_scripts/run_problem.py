@@ -8,11 +8,17 @@ from my_scripts.optimization import vacc
 #from scripts.optimization import vacc_bayes_opt
 #from ConstrainedLaMCTS.LAMCTS import bayes_opt
 import multiprocess
+import multiprocessing
 import torch
 import argparse
 import os.path
 import sys
 from ConstrainedLaMCTS.LAMCTS.lamcts import MCTS
+
+# hopefully mitigate memory issues from copying a large amount of state
+# from the parent process. Will be slower, but maybe that's ok?
+multiprocess.set_start_method('spawn')
+multiprocessing.set_start_method('spawn')
 
 parser = argparse.ArgumentParser(
         prog = "Run optimization"
