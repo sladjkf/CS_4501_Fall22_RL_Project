@@ -388,7 +388,7 @@ class VaccProblemLAMCTSWrapper:
         self.lb = np.zeros(self.dims)
         self.ub = np.ones(self.dims)
 
-    def __call__(self, x, pool=None, batch=False):
+    def __call__(self, x, pool=None, batch=False, return_sim_pool=False):
         """
         Evaluate the function.
         If batch = True:
@@ -400,6 +400,7 @@ class VaccProblemLAMCTSWrapper:
             # block until each pool finishes
             [result[0].get() for result in promises_and_pools]
             # now finish the computation
+            sim_pool = [x[1] for x in promises_and_pools]
             batch_results = [np.mean(self.engine.process_promise(promise,sim_pool)) for promise,sim_pool in promises_and_pools]
             for x,result in zip(x,batch_results):
                 if self.best_x is None and self.best_y is None:
@@ -412,12 +413,20 @@ class VaccProblemLAMCTSWrapper:
                 self.last_x = x
                 self.last_y = result
                 self.track()
-            return self.sign*np.array(batch_results)/self.scale
+            final_result = self.sign*np.array(batch_results)/self.scale
         else:
             if pool is None:
-                result = self.engine.query(V_delta=x, pool=self.pool, n_sim=self.n_sim)
+                result = self.engine.query(V_delta=x, 
+                                           pool=self.pool, 
+                                           n_sim=self.n_sim,
+                                           return_sim_pool=return_sim_pool)
             else:
-                result = self.engine.query(V_delta=x, pool=pool, n_sim=self.n_sim)
+                result = self.engine.query(V_delta=x, 
+                                           pool=pool, 
+                                           n_sim=self.n_sim,
+                                           return_sim_pool=return_sim_pool)
+            if return_sim_pool:
+                result,sim_pool = result
             # ----
             result = np.mean(result)
             if self.best_x is None and self.best_y is None:
@@ -430,7 +439,11 @@ class VaccProblemLAMCTSWrapper:
             self.last_x = x
             self.last_y = result
             self.track()
-            return self.sign*result/self.scale
+            final_result = self.sign*result/self.scale
+        if return_sim_pool:
+            return final_result,sim_pool
+        else:
+            return final_result
         
     def track(self):
         if os.path.exists(self.output_file_trace):
