@@ -48,9 +48,13 @@ if __name__ == "__main__":
     parser.add_argument('--agg_size', type=int, default=None)
     parser.add_argument('--agg_mapping', type=str, default=None)
 
+    # surveillance regions
+    parser.add_argument('--surv_mapping', type=str, default=None) # vector with length = # of regions?
+    parser.add_argument('--surv_constrs', type=str, default=None) # comma separated list of constraints
+
+    # optimizer hyperparameters
     parser.add_argument("--cp",type=float,default=0.1)
     parser.add_argument("--leaf_size",type=int,default=100)
-
     parser.add_argument("--hopsy_thin",type=int,default=150)
 
     args = parser.parse_args()
@@ -81,7 +85,6 @@ if __name__ == "__main__":
         opt_config['constraint_bnd'] = float(opt_config['constraint_bnd'])
 
     print(tsir_config)
-
     print(opt_config)
 
     # load vaccination/population data and distance matrix
@@ -133,9 +136,6 @@ if __name__ == "__main__":
             save_memory=True
         )
 
-
-
-
     if do_aggregate:
         P = np.zeros(args.agg_size)
         for zipcode_index, county_index in enumerate(agg_mapping):
@@ -160,9 +160,34 @@ if __name__ == "__main__":
         c = opt_config['constraint_bnd']
         ub = np.array(vacc_df['vacc'])
 
-    print(P)
-    print(c)
-    print(ub)
+    A_ineq = [P]
+    b_ineq = [c*np.sum(P)]
+    #A_ineq = []
+    #b_ineq = []
+
+    # if running VHHA constrained version
+    if args.surv_mapping is not None and args.surv_constrs is not None:
+        surv_map_vec = np.array(pd.read_csv(args.surv_mapping)['surv_mapping'])
+        surv_constrs = np.float64(args.surv_constrs.split(","))
+        num_regions = np.max(surv_map_vec)+1
+        assert len(surv_constrs) == num_regions, "number of constraint bounds provided did not match indices in mapping vector. maybe you forgot to 0-index?, \nsurv_constrs: {}\n num_regions: {}".format(surv_constrs,num_regions)
+        for this_region_index, perc_constr in zip(range(num_regions),surv_constrs):
+            if np.isinf(perc_constr):
+                continue
+            this_indicator_vec = np.int64(surv_map_vec == this_region_index)
+            constr_LHS = P*this_indicator_vec # elementwise product
+            constr_RHS = perc_constr * (P @ this_indicator_vec)
+            A_ineq.append(constr_LHS)
+            b_ineq.append(constr_RHS)
+
+    A_ineq = np.array(A_ineq)
+    b_ineq = np.array(b_ineq)
+
+    print("population vector\n", P)
+    print("rhs constraint bound\n",c)
+    print("upper bound vector\n",ub)
+    print("A_ineq\n",A_ineq)
+    print("b_ineq\n",b_ineq)
 
     if args.method == "lamcts":
         if args.load != "" and args.load_samples == "":
@@ -172,8 +197,8 @@ if __name__ == "__main__":
                      ub = ub,       # the upper bound of each problem dimensions
                      dims = args.dims,              # the problem dimensions
                      ninits = 0,           # the number of random samples used in initializations 
-                     A_ineq = np.array([P]),
-                     b_ineq = np.array([c*np.sum(P)]),
+                     A_ineq = A_ineq,
+                     b_ineq = b_ineq,
                      A_eq = None, b_eq = None,
                      func = v,               # function object to be optimized
                      Cp = args.cp,              # Cp for MCTS
@@ -194,8 +219,8 @@ if __name__ == "__main__":
                      ub = ub,       # the upper bound of each problem dimensions
                      dims = args.dims,              # the problem dimensions
                      ninits = 0,           # the number of random samples used in initializations 
-                     A_ineq = np.array([P]),
-                     b_ineq = np.array([c*np.sum(P)]),
+                     A_ineq = A_ineq,
+                     b_ineq = b_ineq,
                      A_eq = None, b_eq = None,
                      func = v,               # function object to be optimized
                      Cp = args.cp,              # Cp for MCTS
@@ -219,8 +244,8 @@ if __name__ == "__main__":
                      ub = ub,       # the upper bound of each problem dimensions
                      dims = args.dims,              # the problem dimensions
                      ninits = 0,           # the number of random samples used in initializations 
-                     A_ineq = np.array([P]),
-                     b_ineq = np.array([c*np.sum(P)]),
+                     A_ineq = A_ineq,
+                     b_ineq = b_ineq,
                      A_eq = None, b_eq = None,
                      func = v,               # function object to be optimized
                      Cp = args.cp,              # Cp for MCTS
@@ -244,8 +269,8 @@ if __name__ == "__main__":
                      ub = ub,       # the upper bound of each problem dimensions
                      dims = args.dims,              # the problem dimensions
                      ninits = args.n_init_pts,           # the number of random samples used in initializations 
-                     A_ineq = np.array([P]),
-                     b_ineq = np.array([c*np.sum(P)]),
+                     A_ineq = A_ineq,
+                     b_ineq = b_ineq,
                      A_eq = None, b_eq = None,
                      func = v,               # function object to be optimized
                      Cp = args.cp,              # Cp for MCTS
@@ -266,8 +291,8 @@ if __name__ == "__main__":
                      ub = np.ones(args.dims),       # the upper bound of each problem dimensions
                      dims = args.dims,              # the problem dimensions
                      ninits = args.n_init_pts,           # the number of random samples used in initializations 
-                     A_ineq = np.array([P]),
-                     b_ineq = np.array([c*np.sum(P)]),
+                     A_ineq = A_ineq,
+                     b_ineq = b_ineq,
                      A_eq = None, b_eq = None,
                      func = v,               # function object to be optimized
                      Cp = 10,              # Cp for MCTS
