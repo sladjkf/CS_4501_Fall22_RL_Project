@@ -370,6 +370,9 @@ class VaccProblemLAMCTSWrapper:
         self.output_file_trace = "{}vacc_sim_{}_{}_best_trace.csv".format(output_dir,name,date.isoformat())
         self.output_file_samples = "{}vacc_sim_{}_{}_samples.csv".format(output_dir,name,date.isoformat())
 
+        print(self.output_file_trace)
+        print(self.output_file_samples)
+
         if negate:
             self.sign = -1
         else:

@@ -14,6 +14,7 @@ import argparse
 import os.path
 import sys
 from ConstrainedLaMCTS.LAMCTS.lamcts import MCTS
+from scipy.optimize import linprog
 
 # hopefully mitigate memory issues from copying a large amount of state
 # from the parent process. Will be slower, but maybe that's ok?
@@ -188,6 +189,13 @@ if __name__ == "__main__":
     print("upper bound vector\n",ub)
     print("A_ineq\n",A_ineq)
     print("b_ineq\n",b_ineq)
+
+    lp_bounds = [(0,up) for up in ub]
+    test_feas = linprog(c=np.zeros(len(P)), A_ub=A_ineq, b_ub=b_ineq, bounds=lp_bounds)
+    if test_feas.status==2:
+        raise ValueError("Problem appears to be infeasible")
+    elif test_feas.status==0:
+        print("Problem appears to be feasible")
 
     if args.method == "lamcts":
         if args.load != "" and args.load_samples == "":
