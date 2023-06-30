@@ -1,5 +1,100 @@
 """
-load configuration file and initialize the function
+This script is used for running the vaccination scenario optimization problems.
+Optimization results are outputted in the specified directory (see below) and two files are created:
+- '..best_trace.csv', which stores the best optima seen so far for each iteration of the optimization
+- '..samples.csv', which stores all evaluations of the objective functions in the order they were computed
+
+A description of the runtime arguments that may be used with this program are as follows:
+
+REQUIRED settings:
+--cfg_dir: 
+	(Required, str) Give the path to the directory containing configuration info to set up the simulation.
+	For this project, configuration directories can contain these files.
+	- pop.csv: A csv file which lists zipcodes and their populations. Has the columns:
+		- 'id': zipcode number
+		- 'pop': population
+		- 'vacc': vaccination rate
+	- dist.csv: A csv file which lists all the pairwise distances between zipcodes. Has the columns:
+		- 'zipcode1, zipcode2, distKM': For each row, 'distKM' is the distance in KM between zipcode1, zipcode2.
+	- params.cfg: A ConfigParser compliant file which defines parameters for the tSIR simulation and optimization.
+	  Please see the 'config' folder for example configurations.
+	- A seeding file: This is a csv file which specifies where the initial infected case(s) is/are.
+	  It is a vector with the same # of rows as pop.csv. Each row contains a number specifying the number of initial cases
+	  the corresponding zipcode in pop.csv.
+	All files should share a common indexing, e.g the first row of pop.csv should correspond to the first row of the seeding file,
+	and the zipcodes in dist.csv should match those in pop.csv.
+
+--out_dir: (Required, str) Give the path to the directory to output the optimization results in.
+
+--name: (Required, str) Give an identifier string which will be included in the optimization result output filenames.
+
+--dims: (Required, str) Specify the dimension of the problem. 
+  This is typically the number of zipcodes, or if aggregating, the number of aggregation regions.
+
+COMPUTATION settings:
+
+--threads: How many total processes can be run in parallel using multiprocess.
+  This is typically how many cores you have available for your use.
+
+--sim_workers: How many total simulations are run in parallel at the same time.
+  Set equal to 1 for serial evaluation. If using more than 1, you usually want to 
+  set batch_size the same as sim_workers.
+
+--threads_per_sim: How many processes to allocate to each simulation. Usually, this should
+  be equal to (threads)/(sim_workers), e.g 20 threads and 4 sim_workers is 5 threads_per_sim.
+
+--batch_size: How many data points batched TurBO is allowed to acquire at a time via Thompson sampling. 
+  Usually, this should be equal to sim_workers.
+
+--sim_draws: How many simulation replicates are run per objective function evaluation.
+  Since the tSIR simulation is stochastic, the objective is usually a sample statistic of 
+  simulation replicates (i.e mean). This argument specifies the number of samples to draw in one 
+  objective function evaluation.
+
+--n_init_pts: How many initial points to draw to initialize LAMCTS.
+
+--iters: The total number of LAMCTS iterations allowed.
+
+--samples: The total number of samples allowed.
+
+--method: Use LAMCTS or vanilla BO (almost always use LAMCTS).
+
+--load: Load a dumped LAMCTS_agent file. Specify the path to the file.
+  This is a pickle file which the LAMCTS program saves upon successful completion.
+
+--load_samples (str) : Load samples from a previous run. The format is
+  "path/to/samples.csv,path/to/best_trace.csv."
+
+AGGREGATE problem options:
+
+These options should only be specified if the aggregate problem is to be run.
+In the aggregate problem, the feasible set of solutions is constrained by grouping
+sets of zipcodes together into larger spatial units (e.g counties). This enables the
+simulation model to still run at a finer level of spatial aggregation, while reducing
+the level of the larger optimization problem.
+
+Each zipcode is assumed to belong to one county only.
+
+--agg_size: Number of dimensions (larger spatial units) in the aggregated problem. 
+  If aggregating, --dims=--agg_size.
+--agg_mapping: Path to file specifying the aggregation mapping.
+  This is a text file/csv where each row contains one number, with each row corresponding
+  to rows of pop.csv. The number indicates which county the zipcode is mapped into.
+
+SURVEILLANCE problem options:
+
+--surv_mapping: Path to file specifying the surveillance mapping.
+  Similar to agg_mapping.
+
+--surv_constrs: Comma-delimited string specifying constraints for each surveillance region.
+  e.g "0.05,0.05,0.05,0.05,0.05" if each surveillance region is to have a 5% constraint, and there
+  are 5 regions. The ordering follows the labels in the surv_mapping file.
+
+LAMCTS hyperparameters:
+
+--cp: LAMCTS hyperparameter. Determines UCT bonus applied to nodes of the search tree.
+--leaf_size: LAMCTS hyperparameter. Determines splitting thresholds for nodes of the search tree.
+--hopsy_thin: hopsy hyperparameter. Determines thinning for MCMC sampler chains.
 """
 import configparser
 import pandas as pd
